@@ -368,6 +368,15 @@ a:hover { color: var(--accent-hover); }
   max-width: 100%;
 }
 
+/* Dictionnaire — même colonne de lecture que les fiches d'arrêt */
+.site-main.dict-page {
+  width: min(var(--read-column), calc(100% - 2rem));
+  max-width: 100%;
+  margin-inline: auto;
+  box-sizing: border-box;
+  padding-inline: clamp(1rem, 2.2vw, 2rem);
+}
+
 .site-main.narrow {
   width: min(28rem, calc(100% - 2rem));
   margin: 0 auto;
