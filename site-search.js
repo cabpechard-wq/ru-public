@@ -103,7 +103,7 @@
       '<label class="site-nav-search-label" for="site-search-input">' +
         '<span class="visually-hidden">Rechercher</span>' +
         '<input id="site-search-input" class="site-nav-search-input" type="search" ' +
-          'placeholder="Rechercher (cours, dico, arrêts)" autocomplete="off" ' +
+          'placeholder="Rechercher (cours, dictionnaire, arrêts…)" autocomplete="off" ' +
           'spellcheck="false" enterkeyhint="search" />' +
       "</label>" +
       '<div class="site-nav-search-panel" hidden role="listbox" aria-label="Résultats de recherche"></div>';
