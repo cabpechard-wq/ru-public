@@ -9,11 +9,11 @@
   --accent-soft: rgba(196, 163, 90, .12);
   --manuel-quote-border: rgba(196, 163, 90, .55);
   --manuel-h3: #8a7030;
-  --manuel-h4: #3a3a3a;
+  --manuel-h4: #3f5168;
   --manuel-h5: #5a5a5a;
-  --manuel-encadre-border: #c4a35a;
-  --secondary-soft: rgba(168, 168, 176, .14);
-  --secondary: #8a8a96;
+  --manuel-encadre-border: #3f5168;
+  --secondary-soft: rgba(63, 81, 104, .12);
+  --secondary: #3f5168;
   --launch-stamp: #c4a35a;
   --launch-stamp-bg: rgba(196, 163, 90, 0.12);
   --border: rgba(26, 26, 26, .1);
@@ -2887,12 +2887,13 @@ input:focus {
   font-weight: 500;
 }
 .site-title { font-weight: 500; letter-spacing: -.02em; }
-.site-title-hero em { font-style: italic; color: var(--accent); }
+.site-title-hero em { font-style: italic; color: var(--secondary); }
+.site-nav-product em { color: var(--secondary); font-style: italic; }
 .site-section-header h2 { color: var(--ink); }
 .manuel-content .legal-prose > h2 { color: var(--accent); }
 .home-rule {
-  height: 1px;
-  background: var(--border);
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 36%, var(--secondary) 36%, var(--secondary) 68%, transparent 100%);
   opacity: 1;
 }
 .ex-item {
@@ -2906,18 +2907,18 @@ input:focus {
 }
 .ex-item:hover {
   border-color: transparent;
-  border-bottom-color: var(--ink);
+  border-bottom-color: var(--secondary);
   box-shadow: none;
   transform: none;
   background: transparent;
 }
 .ex-item-type {
   letter-spacing: .14em;
-  color: var(--muted);
-  font-weight: 500;
+  color: var(--secondary);
+  font-weight: 600;
 }
-.ex-item-cta { color: var(--muted); font-weight: 500; }
-.ex-item:hover .ex-item-cta { color: var(--ink); }
+.ex-item-cta { color: var(--accent); font-weight: 500; }
+.ex-item:hover .ex-item-cta { color: var(--secondary); }
 .home-access-card {
   background: transparent;
   border: 1px solid var(--border);
@@ -2925,18 +2926,24 @@ input:focus {
   box-shadow: none;
 }
 .home-access-card.is-accent {
-  background: transparent;
-  border-color: var(--ink);
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+  border-bottom: 2px solid var(--secondary);
 }
 .btn.fill-secondary {
-  background: var(--ink);
+  background: var(--accent);
   color: #fff;
   border-radius: 0;
 }
 .btn.outline-accent {
-  border-color: var(--ink);
-  color: var(--ink);
+  border-color: var(--secondary);
+  color: var(--secondary);
   border-radius: 0;
+}
+.btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+  border-color: var(--secondary);
 }
 .btn { border-radius: 0; box-shadow: none; }
 .btn-capsule {
@@ -2948,17 +2955,94 @@ input:focus {
   border-right: 1px solid var(--border);
   background: transparent;
 }
+.manuel-nav-side a.is-current {
+  color: var(--secondary);
+  border-left: 2px solid var(--accent);
+}
 blockquote, .manuel-prose blockquote {
-  border-color: var(--ink);
-  background: transparent;
-  border-width: 0 0 0 1px;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 5%, transparent);
+  border-width: 0 0 0 2px;
 }
 .encadre {
-  border: 1px solid var(--border);
-  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--secondary) 28%, var(--border));
+  border-left: 3px solid var(--secondary);
+  background: color-mix(in srgb, var(--secondary) 4%, transparent);
 }
 .site-footer {
-  border-top: 1px solid var(--border);
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--secondary) 55%, var(--secondary) 100%) 1;
   background: transparent;
 }
 .site-nav-user { border-radius: 0; }
+.site-nav-user svg { color: var(--secondary); }
+
+/* —— Dualité laiton / ardoise (manuel, dict, arrêts, TD) —— */
+.ex-rubrique-title { color: var(--accent); }
+.ex-rubrique .ex-item-type { color: var(--secondary); }
+.manuel-content .legal-prose > h3 { color: var(--accent); }
+.manuel-content .legal-prose > h4 { color: var(--secondary); }
+.manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link):hover {
+  color: var(--secondary);
+  text-decoration-color: var(--secondary);
+}
+.dict-index a:hover,
+.dict-index a:focus-visible { color: var(--secondary); }
+.arrets-advanced-label,
+.arrets-theme-label { color: var(--secondary); }
+.site-linked-resources-title { color: var(--secondary); }
+.portee-tip-label { color: var(--secondary); }
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--secondary) 35%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 5%, var(--bg-elevated));
+}
+.classifier-hint { color: var(--secondary); opacity: .9; }
+.chip[aria-pressed="true"] {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+}
+.site-tts--capsules.is-active .site-tts-play,
+.site-tts-progress-fill {
+  background: color-mix(in srgb, var(--secondary) 45%, var(--accent));
+}
+
+/* —— Hubs Amphithéâtre / TD / Bibliothèque (+ colonnes accueil) —— */
+.home-col .site-hero-kicker { color: var(--accent); }
+.home-col-title { color: var(--accent); }
+.home-col-title:hover { color: var(--secondary); }
+.home-col .ex-item-type,
+.home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
+.home-col .ex-item-cta { color: var(--accent); }
+.home-col .ex-item:hover .ex-item-cta { color: var(--secondary); }
+.home-col .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.home-col .btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+.site-main.hub-wide > .site-hero-kicker { color: var(--accent); }
+.site-main.hub-wide > .site-title { color: var(--accent); }
+.site-main.hub-wide > .site-title::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 2px;
+  margin-top: .55rem;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 45%, var(--secondary) 45%, var(--secondary) 100%);
+}
+.site-main.hub-wide .ex-item-type { color: var(--secondary); }
+.site-main.hub-wide .ex-item-cta { color: var(--accent); }
+.site-main.hub-wide .ex-item:hover .ex-item-cta { color: var(--secondary); }
+.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
+.site-main.hub-wide .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.site-main.hub-wide .btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+.site-crumb strong { color: var(--secondary); }

@@ -2953,3 +2953,146 @@ blockquote, .manuel-prose blockquote {
   border-top: 3px solid var(--accent);
   background: #fff;
 }
+
+/* —— Dualité accent / secondaire (pages + TD) —— */
+.site-nav {
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 62%, var(--secondary) 62%, var(--secondary) 100%) 1;
+}
+.site-nav-user svg {
+  color: var(--secondary);
+}
+.ex-rubrique-title {
+  color: var(--accent);
+}
+.ex-rubrique .ex-item-type {
+  color: var(--secondary);
+}
+.ex-rubrique-actions .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.ex-rubrique-actions .btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+.manuel-content .legal-prose > h3 {
+  color: var(--accent);
+}
+.manuel-content .legal-prose > h4 {
+  color: var(--secondary);
+}
+.manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link) {
+  text-decoration-color: color-mix(in srgb, var(--secondary) 45%, currentColor);
+}
+.manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link):hover {
+  color: var(--secondary);
+  text-decoration-color: var(--secondary);
+}
+.dict-index a:hover,
+.dict-index a:focus-visible {
+  color: var(--secondary);
+}
+.dict-term {
+  border-bottom-color: color-mix(in srgb, var(--secondary) 35%, var(--border));
+}
+.arrets-advanced-label,
+.arrets-theme-label {
+  color: var(--secondary);
+}
+.arrets-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+.site-linked-resources-title {
+  color: var(--secondary);
+}
+.portee-tip-label {
+  color: var(--secondary);
+}
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--secondary) 40%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 6%, var(--bg-elevated));
+}
+.classifier-hint {
+  color: var(--secondary);
+  opacity: .85;
+}
+.chip[aria-pressed="true"] {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: #fff;
+}
+.site-tts--capsules.is-active .site-tts-play,
+.site-tts-progress-fill {
+  background: color-mix(in srgb, var(--secondary) 70%, var(--accent));
+}
+.site-footer {
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 55%, var(--secondary) 55%, var(--secondary) 100%) 1;
+}
+
+/* —— Hubs Amphithéâtre / TD / Bibliothèque (+ colonnes accueil) —— */
+.home-col .site-hero-kicker {
+  color: var(--accent);
+}
+.home-col-title {
+  color: var(--accent);
+}
+.home-col-title:hover {
+  color: var(--secondary);
+}
+.home-col .ex-item-type,
+.home-col .ex-rubrique .ex-item-type {
+  color: var(--secondary);
+}
+.home-col .ex-item-cta {
+  color: var(--accent);
+}
+.home-col .ex-item:hover .ex-item-cta {
+  color: var(--secondary);
+}
+.home-col .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.home-col .btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+.site-main.hub-wide > .site-hero-kicker {
+  color: var(--accent);
+}
+.site-main.hub-wide > .site-title {
+  color: var(--accent);
+}
+.site-main.hub-wide > .site-title::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 3px;
+  margin-top: .55rem;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 45%, var(--secondary) 45%, var(--secondary) 100%);
+}
+.site-main.hub-wide .ex-item-type {
+  color: var(--secondary);
+}
+.site-main.hub-wide .ex-item-cta {
+  color: var(--accent);
+}
+.site-main.hub-wide .ex-item:hover .ex-item-cta {
+  color: var(--secondary);
+}
+.site-main.hub-wide .ex-rubrique-title {
+  color: var(--accent);
+}
+.site-main.hub-wide .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--secondary);
+}
+.site-main.hub-wide .btn.outline-accent:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+.site-crumb strong {
+  color: var(--secondary);
+}

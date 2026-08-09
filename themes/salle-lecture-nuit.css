@@ -9,11 +9,11 @@
   --accent-soft: rgba(192, 196, 204, .12);
   --manuel-quote-border: rgba(192, 196, 204, .5);
   --manuel-h3: #e4e7ec;
-  --manuel-h4: #e0e0e0;
+  --manuel-h4: #9aa3b2;
   --manuel-h5: #b0b0b0;
-  --manuel-encadre-border: #a8aeb8;
-  --secondary-soft: rgba(192, 196, 204, .1);
-  --secondary: #a8aeb8;
+  --manuel-encadre-border: #8a93a3;
+  --secondary-soft: rgba(154, 163, 178, .12);
+  --secondary: #9aa3b2;
   --launch-stamp: #c0c4cc;
   --launch-stamp-bg: rgba(192, 196, 204, 0.12);
   --border: rgba(255, 255, 255, .22);
@@ -2888,13 +2888,14 @@ input:focus {
   font-weight: 500;
 }
 .site-title { font-weight: 500; letter-spacing: -.02em; color: #fff; }
-.site-title-hero em { font-style: italic; color: var(--accent); }
+.site-title-hero em { font-style: italic; color: var(--secondary); }
+.site-nav-product em { color: var(--secondary); font-style: italic; }
 .site-section-header h2 { color: #fff; }
 .manuel-content .legal-prose > h2 { color: var(--accent); }
 .home-rule {
   height: 1px;
-  background: var(--border);
-  opacity: 1;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 20%, var(--secondary) 55%, transparent 100%);
+  opacity: .55;
 }
 .ex-item {
   background: transparent;
@@ -2907,19 +2908,19 @@ input:focus {
 }
 .ex-item:hover {
   border-color: transparent;
-  border-bottom-color: #fff;
+  border-bottom-color: var(--secondary);
   box-shadow: none;
   transform: none;
   background: transparent;
 }
 .ex-item-type {
   letter-spacing: .14em;
-  color: var(--muted);
+  color: var(--secondary);
   font-weight: 500;
 }
 .ex-item-title { color: #fff; }
 .ex-item-cta { color: var(--muted); font-weight: 500; }
-.ex-item:hover .ex-item-cta { color: #fff; }
+.ex-item:hover .ex-item-cta { color: var(--accent); }
 .home-access-card {
   background: transparent;
   border: 1px solid var(--border);
@@ -2928,7 +2929,7 @@ input:focus {
 }
 .home-access-card.is-accent {
   background: transparent;
-  border-color: #fff;
+  border-color: color-mix(in srgb, var(--secondary) 50%, #fff);
 }
 .home-access-card h3 { color: #fff; }
 .btn.fill-secondary {
@@ -2937,9 +2938,14 @@ input:focus {
   border-radius: 0;
 }
 .btn.outline-accent {
-  border-color: #fff;
-  color: #fff;
+  border-color: var(--secondary);
+  color: var(--accent);
   border-radius: 0;
+}
+.btn.outline-accent:hover {
+  border-color: var(--accent);
+  color: #fff;
+  background: transparent;
 }
 .btn { border-radius: 0; box-shadow: none; }
 .btn-capsule {
@@ -2954,13 +2960,17 @@ input:focus {
 .manuel-nav-side a { color: var(--muted); }
 .manuel-nav-side a.is-current,
 .manuel-nav-side a:hover { color: #fff; }
+.manuel-nav-side a.is-current {
+  border-left: 1px solid var(--secondary);
+}
 blockquote, .manuel-prose blockquote {
-  border-color: #fff;
+  border-color: var(--secondary);
   background: transparent;
   border-width: 0 0 0 1px;
 }
 .encadre {
   border: 1px solid var(--border);
+  border-left: 1px solid var(--secondary);
   background: transparent;
 }
 .site-footer {
@@ -2973,3 +2983,37 @@ blockquote, .manuel-prose blockquote {
   background: #0a0a0a;
   color: #fff;
 }
+.site-nav-user svg { color: var(--secondary); }
+
+/* —— Dualité discrète (manuel, dict, arrêts, TD) —— */
+.manuel-content .legal-prose > h4 { color: var(--secondary); }
+.portee-tip-label { color: var(--secondary); }
+.classifier-hint { color: var(--secondary); opacity: .75; }
+.chip[aria-pressed="true"] {
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--accent);
+}
+.site-linked-resources-title { color: var(--secondary); }
+.arrets-advanced-label,
+.arrets-theme-label { color: var(--secondary); opacity: .9; }
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--secondary) 40%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 4%, var(--bg-elevated));
+}
+
+/* —— Hubs Amphithéâtre / TD / Bibliothèque (discret) —— */
+.home-col-title:hover { color: var(--secondary); }
+.home-col .ex-item-type,
+.home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
+.home-col .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--accent);
+}
+.site-main.hub-wide .ex-item-type { color: var(--secondary); }
+.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
+.site-main.hub-wide .btn.outline-accent {
+  border-color: var(--secondary);
+  color: var(--accent);
+}
+.site-crumb strong { color: var(--secondary); }
