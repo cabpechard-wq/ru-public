@@ -366,7 +366,9 @@ a:hover { color: var(--accent-hover); }
 }
 
 /* Dictionnaire — même colonne de lecture que les fiches d'arrêt */
-.site-main.dict-page {
+.site-main.dict-page,
+.site-main.legal-page:has(.dict-entries),
+.site-main.manuel-layout:has(.dict-entries) {
   width: min(var(--read-column), calc(100% - 2rem));
   max-width: 100%;
   margin-inline: auto;
@@ -1865,11 +1867,28 @@ input:focus {
   text-decoration-thickness: 1px;
 }
 
-/* Glossaire : discret, formatage d'origine (gras / souligné si présent dans Notion) */
+/* Glossaire / cours / arrêts : visibles (seed recyclé sans soulignement Notion) */
 .manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link) {
   color: var(--ink);
   font-weight: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, currentColor);
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 1px;
+}
+
+.manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link):hover {
+  color: var(--accent);
+  text-decoration-color: var(--accent);
+}
+
+/* Lien Notion non résolu : texte seul, non cliquable */
+.manuel-content .legal-prose .notion-link-inactive,
+.legal-prose .notion-link-inactive {
+  color: inherit;
+  font-weight: inherit;
   text-decoration: none;
+  cursor: inherit;
 }
 
 /* Autres liens : couleur Notion ou héritée ; soulignement = couleur du texte du lien */

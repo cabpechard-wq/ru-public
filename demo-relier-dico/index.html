@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Relations (Grands notions) - démo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="theme-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link id="theme-css" rel="stylesheet" href="../site.css">
+<style>
+/* Relier — charte via site.css / themes/ ; jetons locaux pour l’exercice */
+:root {
+  --brass: var(--accent);
+  --ok: #3d9a6a;
+  --ok-soft: rgba(61, 154, 106, .16);
+  --bad: #c45c5c;
+  --bad-soft: rgba(196, 92, 92, .16);
+  --line: var(--accent);
+  --line-soft: rgba(196, 163, 90, .55);
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+body { padding: 0 0 3.5rem; }
+.wrap { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 0; }
+.screen[hidden] { display: none !important; }
+.page-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem 1.25rem;
+  margin: 0 0 .4rem;
+}
+.page-title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.page-sub {
+  margin: 0 0 1.5rem;
+  color: var(--muted); font-size: .95rem; line-height: 1.5;
+}
+.demo-upsell {
+  flex: 0 0 auto;
+  margin: 0;
+  margin-left: auto;
+}
+.demo-upsell-link {
+  display: inline-block;
+  padding: .35rem 0;
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-size: .68em;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.demo-upsell-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.home-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .15rem 1.1rem 1.1rem;
+}
+.classifier + .classifier { border-top: 1px solid var(--border); }
+.classifier-row {
+  display: flex; align-items: center; gap: .75rem; min-height: 3rem;
+}
+.classifier-toggle {
+  appearance: none; border: 0; background: none; padding: 0;
+  display: flex; align-items: center; gap: .6rem;
+  cursor: pointer; color: inherit; font: inherit; min-width: 0;
+}
+.classifier-title {
+  margin: 0; font-size: 1rem; font-weight: 700; color: var(--ink);
+}
+.classifier-hint {
+  font-size: .72rem; font-weight: 500; color: var(--muted);
+}
+.classifier-chevron {
+  width: 1rem; height: 1rem; color: var(--ink); flex: 0 0 auto;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.classifier.is-open .classifier-chevron { transform: rotate(180deg); }
+.classifier-clear {
+  appearance: none; border: 0; background: none; padding: 0;
+  margin-left: auto; color: var(--muted);
+  font: 500 .82rem var(--font-ui); cursor: pointer; white-space: nowrap;
+}
+.classifier-clear:hover { color: var(--accent); }
+.classifier-slide {
+  height: 0; overflow: hidden;
+  transition: height .35s cubic-bezier(.2,.8,.2,1);
+}
+.classifier-slide-inner { min-height: 0; }
+.classifier-body { padding: 0 0 1rem 1.5rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chips-empty { margin: 0; color: var(--muted); font-size: .9rem; }
+.chip {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--muted);
+  border-radius: 999px; padding: .4rem .85rem;
+  font: 600 .78rem var(--font-ui); cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: var(--bg);
+}
+.chip.is-disabled, .chip:disabled {
+  opacity: .28; cursor: not-allowed; pointer-events: none;
+  background: var(--bg-elevated); color: var(--muted);
+}
+.chip.is-exclusive-dim:not([aria-pressed="true"]) {
+  opacity: .28; background: var(--bg-elevated); color: var(--muted);
+}
+.chip-importance {
+  letter-spacing: .06em; color: var(--brass);
+  border-color: rgba(196, 163, 90, .35);
+}
+.chip-importance[aria-pressed="true"],
+.chip-importance[aria-pressed="true"]:hover {
+  background: var(--brass); border-color: var(--brass); color: var(--bg);
+}
+.chip-size[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: var(--bg);
+}
+.chip[data-color="default"], .tag[data-color="default"] {
+  --chip-border: #d1d5db; --chip-vivid: #4b5563;
+}
+.chip[data-color="gray"], .tag[data-color="gray"] {
+  --chip-border: #d1d5db; --chip-vivid: #4b5563;
+}
+.chip[data-color="brown"], .tag[data-color="brown"] {
+  --chip-border: #d4a574; --chip-vivid: #9a5b3a;
+}
+.chip[data-color="orange"], .tag[data-color="orange"] {
+  --chip-border: #fdba74; --chip-vivid: #ea580c;
+}
+.chip[data-color="yellow"], .tag[data-color="yellow"] {
+  --chip-border: #facc15; --chip-vivid: #ca8a04;
+}
+.chip[data-color="green"], .tag[data-color="green"] {
+  --chip-border: #009900; --chip-vivid: #009900;
+}
+.chip[data-color="blue"], .tag[data-color="blue"] {
+  --chip-border: #93c5fd; --chip-vivid: #2563eb;
+}
+.chip[data-color="purple"], .tag[data-color="purple"] {
+  --chip-border: #d8b4fe; --chip-vivid: #9333ea;
+}
+.chip[data-color="pink"], .tag[data-color="pink"] {
+  --chip-border: #f9a8d4; --chip-vivid: #db2777;
+}
+.chip[data-color="red"], .tag[data-color="red"] {
+  --chip-border: #fca5a5; --chip-vivid: #dc2626;
+}
+
+.chip[data-color] {
+  background: var(--bg-elevated);
+  border-color: var(--chip-border);
+  color: var(--muted);
+}
+.chip[data-color]:hover:not(:disabled):not(.is-disabled):not(.is-exclusive-dim):not([aria-pressed="true"]) {
+  background: var(--bg-elevated);
+  border-color: var(--chip-vivid);
+  color: var(--chip-vivid);
+}
+.chip[data-color][aria-pressed="true"],
+.chip[data-color][aria-pressed="true"]:hover {
+  background: var(--chip-vivid);
+  border-color: var(--chip-vivid);
+  color: #0e1419;
+}
+.chip[data-color].is-disabled,
+.chip[data-color]:disabled,
+.chip[data-color].is-exclusive-dim:not([aria-pressed="true"]) {
+  background: var(--bg-elevated);
+  border-color: var(--chip-border);
+  color: var(--muted);
+  opacity: .28;
+}
+.tag[data-color] {
+  background: var(--bg);
+  border: 1px solid var(--chip-border);
+  color: var(--muted);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classifier-chevron { transition: none; }
+}
+.home-footer {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .85rem;
+  margin-top: .1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.home-count { font-weight: 600; font-size: .98rem; }
+.home-count span { color: var(--accent); font-family: var(--font-display); font-size: 1.2rem; }
+.home-hint { display: block; margin-top: .15rem; font-size: .8rem; color: var(--muted); }
+.home-actions { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
+.btn-start {
+  appearance: none; border: 0;
+  background: var(--accent); color: var(--bg);
+  border-radius: var(--radius); padding: .8rem 1.25rem;
+  font: 650 .92rem var(--font-ui); cursor: pointer;
+}
+.btn-start:disabled { opacity: .35; cursor: default; }
+.btn-start:not(:disabled):hover { background: var(--accent-hover); }
+.series-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .65rem;
+  margin-top: .85rem; padding-top: .85rem;
+  border-top: 1px solid var(--border);
+}
+.series-label {
+  font-size: .85rem; font-weight: 650; color: var(--ink); margin-right: .25rem;
+}
+
+/* —— Jeu —— */
+.game-bar {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .75rem; margin-bottom: 1rem;
+}
+.btn-back {
+  appearance: none; border: 0; background: none; padding: 0;
+  color: var(--muted); font: 600 .9rem var(--font-ui); cursor: pointer;
+}
+.btn-back:hover { color: var(--accent); }
+.game-summary {
+  font-size: .88rem; color: var(--muted); text-align: right;
+}
+.board-wrap {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem .85rem 1.15rem;
+  overflow: visible;
+}
+.board {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.board-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  min-width: 0;
+}
+.col-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+#board-rows {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  min-width: 0;
+}
+.board-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: stretch;
+  min-width: 0;
+}
+.pair-item {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--ink);
+  border-radius: var(--radius);
+  padding: .7rem .85rem;
+  font: 500 .9rem / 1.4 var(--font-ui);
+  text-align: left;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: border-color .15s, background .15s, box-shadow .15s, opacity .15s;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.pair-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.pair-item.is-source { cursor: grab; }
+.pair-item.is-target { cursor: default; }
+.pair-item.is-dragging {
+  opacity: .55; cursor: grabbing;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+}
+.pair-item.is-drop-hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.pair-item.is-correct {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.pair-item.is-incorrect {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.pair-item .pair-label {
+  display: block;
+  word-break: break-word;
+}
+.portee-tip {
+  position: absolute;
+  z-index: 12;
+  width: min(22rem, 42vw);
+  max-height: min(24rem, 70vh);
+  padding: .9rem 0 .9rem 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, .2),
+    0 10px 28px rgba(0, 0, 0, .35);
+  box-sizing: border-box;
+  text-align: left;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  cursor: default;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(.35rem);
+  transition: opacity .15s ease, visibility .15s ease, transform .15s ease;
+}
+.portee-tip.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.portee-tip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: var(--portee-arrow-top, 1.4rem);
+  border: 8px solid transparent;
+  border-right-color: var(--border);
+}
+.portee-tip::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: calc(var(--portee-arrow-top, 1.4rem) + .1rem);
+  border: 7px solid transparent;
+  border-right-color: var(--bg-elevated);
+  margin-right: -1px;
+}
+.portee-tip-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: .65rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196, 163, 90, .42) transparent;
+  background:
+    linear-gradient(var(--bg-elevated) 28%, rgba(22, 32, 40, 0)) center top,
+    linear-gradient(rgba(22, 32, 40, 0), var(--bg-elevated) 72%) center bottom;
+  background-size: 100% 1.35rem, 100% 1.35rem;
+  background-repeat: no-repeat;
+  background-attachment: local, local;
+}
+.portee-tip-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.portee-tip-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin: .15rem 0;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb {
+  background: rgba(196, 163, 90, .32);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 163, 90, .58);
+  background-clip: padding-box;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb:active {
+  background: var(--accent);
+  background-clip: padding-box;
+}
+.portee-tip-label {
+  margin: 0 0 .35rem;
+  font-family: var(--font-display);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--secondary, var(--accent));
+}
+.portee-tip-text {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: .8rem;
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--ink);
+  text-align: justify;
+  white-space: pre-wrap;
+}
+.portee-tip.is-empty .portee-tip-text {
+  color: var(--muted);
+  font-style: italic;
+  text-align: left;
+}
+.svg-layer {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+.svg-layer line {
+  stroke: var(--line-soft);
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+}
+.svg-layer line.is-provisional {
+  stroke: var(--line);
+  stroke-dasharray: 5 4;
+  opacity: .9;
+}
+.svg-layer line.is-link {
+  stroke: var(--line-soft);
+  opacity: .85;
+}
+.svg-layer line.is-correct {
+  stroke: var(--ok);
+  opacity: 1;
+}
+.svg-layer line.is-incorrect {
+  stroke: var(--bad);
+  opacity: 1;
+}
+.game-actions {
+  display: flex; flex-wrap: wrap; gap: .55rem;
+  margin-top: 1rem; align-items: center;
+}
+.btn {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--ink);
+  border-radius: var(--radius); padding: .7rem 1.1rem;
+  font: 650 .9rem var(--font-ui); cursor: pointer;
+}
+.btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: .35; cursor: default; }
+.btn-primary {
+  border: 0; background: var(--accent); color: var(--bg);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover); color: var(--bg); border: 0;
+}
+.score-banner {
+  margin-top: 1rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.score-banner[hidden] { display: none !important; }
+.score-banner strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+.score-banner.is-perfect strong { color: var(--ok); }
+.empty-filter {
+  margin: 1.5rem 0; color: var(--muted); text-align: center;
+}
+.study-copy {
+  margin: 1.25rem 0 0;
+  font-size: .72rem; color: var(--muted); line-height: 1.45;
+}
+@media (max-width: 720px) {
+  .wrap { padding: 1.15rem .75rem 0; }
+  .board-head, .board-row { gap: 1.35rem 2.25rem; }
+  .pair-item { padding: .6rem .7rem; font-size: .84rem; }
+  .portee-tip {
+    width: min(18rem, calc(100vw - 1.5rem));
+    max-height: min(16rem, 50vh);
+  }
+  .home-footer { flex-direction: column; align-items: stretch; }
+  .home-actions { width: 100%; }
+  .btn-start { flex: 1; width: 100%; }
+  .game-actions .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pair-item { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <section class="screen" id="screen-home" aria-label="Accueil Relier">
+    <div class="page-heading">
+      <h1 class="page-title">Relations (Grands notions) - démo</h1>
+      <p class="demo-upsell"><a class="demo-upsell-link" href="../checkout/">Accès à toutes les ressources…</a></p>
+    </div>
+    <p class="page-sub">Associez chaque notion à sa définition. Filtrez par lettre, choisissez la taille de série, puis reliez.</p>
+    <div class="home-card">
+      
+      <div class="classifier" data-group-panel="theme">
+        <div class="classifier-row">
+          <button type="button" class="classifier-toggle" aria-expanded="false" aria-controls="chips-theme">
+            <svg class="classifier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="classifier-title">Lettres <span class="classifier-hint">(1 seul choix)</span></span>
+          </button>
+          <button type="button" class="classifier-clear" data-clear="theme">Effacer la sélection</button>
+        </div>
+        <div class="classifier-slide">
+          <div class="classifier-slide-inner">
+            <div class="classifier-body">
+              <div class="chips" id="chips-theme" role="group" aria-label="Lettres"><button type="button" class="chip" data-group="theme" data-value="A" data-color="default" aria-pressed="false">A</button>
+<button type="button" class="chip" data-group="theme" data-value="B" data-color="default" aria-pressed="false">B</button>
+<button type="button" class="chip" data-group="theme" data-value="C" data-color="default" aria-pressed="false">C</button>
+<button type="button" class="chip" data-group="theme" data-value="D" data-color="default" aria-pressed="false">D</button>
+<button type="button" class="chip" data-group="theme" data-value="E" data-color="default" aria-pressed="false">E</button>
+<button type="button" class="chip" data-group="theme" data-value="F" data-color="default" aria-pressed="false">F</button>
+<button type="button" class="chip" data-group="theme" data-value="G" data-color="default" aria-pressed="false">G</button>
+<button type="button" class="chip" data-group="theme" data-value="H" data-color="default" aria-pressed="false">H</button>
+<button type="button" class="chip" data-group="theme" data-value="I" data-color="default" aria-pressed="false">I</button>
+<button type="button" class="chip" data-group="theme" data-value="J" data-color="default" aria-pressed="false">J</button>
+<button type="button" class="chip" data-group="theme" data-value="L" data-color="default" aria-pressed="false">L</button>
+<button type="button" class="chip" data-group="theme" data-value="M" data-color="default" aria-pressed="false">M</button>
+<button type="button" class="chip" data-group="theme" data-value="N" data-color="default" aria-pressed="false">N</button>
+<button type="button" class="chip" data-group="theme" data-value="O" data-color="default" aria-pressed="false">O</button>
+<button type="button" class="chip" data-group="theme" data-value="P" data-color="default" aria-pressed="false">P</button>
+<button type="button" class="chip" data-group="theme" data-value="Q" data-color="default" aria-pressed="false">Q</button>
+<button type="button" class="chip" data-group="theme" data-value="R" data-color="default" aria-pressed="false">R</button>
+<button type="button" class="chip" data-group="theme" data-value="S" data-color="default" aria-pressed="false">S</button>
+<button type="button" class="chip" data-group="theme" data-value="T" data-color="default" aria-pressed="false">T</button>
+<button type="button" class="chip" data-group="theme" data-value="U" data-color="default" aria-pressed="false">U</button>
+<button type="button" class="chip" data-group="theme" data-value="V" data-color="default" aria-pressed="false">V</button>
+<button type="button" class="chip" data-group="theme" data-value="É" data-color="default" aria-pressed="false">É</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="series-row" role="group" aria-label="Taille de série">
+        <span class="series-label">Série</span>
+        <button type="button" class="chip chip-size" data-size="3" aria-pressed="true">3</button>
+        <button type="button" class="chip chip-size" data-size="5" aria-pressed="false">5</button>
+        <button type="button" class="chip chip-size" data-size="10" aria-pressed="false">10</button>
+      </div>
+      <div class="home-footer">
+        <div>
+          <div class="home-count"><span id="home-count">8</span> paire(s)</div>
+          <span class="home-hint" id="home-hint">Tout le set</span>
+        </div>
+        <div class="home-actions">
+          <button type="button" class="btn-start" id="btn-start">Relier</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-game" hidden aria-label="Exercice Relier">
+    <div class="game-bar">
+      <button type="button" class="btn-back" id="btn-back">← Accueil</button>
+      <div class="game-summary" id="game-summary"></div>
+    </div>
+    <div class="empty-filter" id="empty-filter" hidden>Aucune paire pour ces filtres.</div>
+    <div class="board-wrap" id="board-wrap">
+      <svg class="svg-layer" id="svg-layer" aria-hidden="true"></svg>
+      <div class="board" id="board">
+        <div class="board-head" aria-hidden="true">
+          <h2 class="col-title">Notion</h2>
+          <h2 class="col-title">Définition</h2>
+        </div>
+        <div id="board-rows" role="group" aria-label="Paires à relier"></div>
+      </div>
+      
+    </div>
+    <div class="game-actions">
+      <button type="button" class="btn btn-primary" id="btn-check">Vérifier</button>
+      <button type="button" class="btn" id="btn-answers">Voir les réponses</button>
+      <button type="button" class="btn" id="btn-reset">Réinitialiser</button>
+      <button type="button" class="btn" id="btn-new">Nouvelle série</button>
+    </div>
+    <div class="score-banner" id="score-banner" hidden role="status" aria-live="polite"></div>
+    <p class="study-copy">© Éditions Particulières · Tous droits réservés · Reproductions / exportations interdites</p>
+  </section>
+</div>
+<script>
+const DATA = [{"id": "Acte administratif unilatéral", "recto": "Acte administratif unilatéral", "objet": "Acte juridique émanant d’une seule volonté administrative et modifiant l’ordonnancement juridique sans le consentement de son destinataire.", "portee": "", "themes": ["A"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Clause générale de compétence", "recto": "Clause générale de compétence", "objet": "Aptitude reconnue à une collectivité territoriale pour intervenir dans toute affaire présentant un intérêt local, au-delà de ses compétences spécialement énumérées par les textes.", "portee": "", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Contrôle de légalité", "recto": "Contrôle de légalité", "objet": "Contrôle exercé par le représentant de l’État sur les actes des collectivités territoriales afin d’en assurer la conformité au droit, notamment par le déféré devant le juge administratif.", "portee": "", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Domaine public", "recto": "Domaine public", "objet": "Ensemble des biens appartenant à une personne publique et affectés soit à l’usage direct du public, soit à un service public sous réserve, dans ce cas, d’un aménagement indispensable ou d’une condition équivalente prévue par le droit positif.", "portee": "", "themes": ["D"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Expropriation", "recto": "Expropriation", "objet": "Procédure permettant à une personne publique, pour cause d’utilité publique et moyennant une juste et préalable indemnité, de contraindre un propriétaire à céder son bien.", "portee": "", "themes": ["E"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Police administrative", "recto": "Police administrative", "objet": "Ensemble des mesures préventives destinées à préserver l’ordre public et à éviter les troubles, par opposition à la police judiciaire qui poursuit un but répressif.", "portee": "", "themes": ["P"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Recours pour excès de pouvoir", "recto": "Recours pour excès de pouvoir", "objet": "Recours contentieux tendant à l’annulation d’un acte administratif unilatéral illégal par le juge administratif, la légalité de l’acte s’appréciant en principe à la date de son édiction.", "portee": "", "themes": ["R"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Service public", "recto": "Service public", "objet": "Activité d’intérêt général assurée ou assumée par une personne publique, ou confiée sous son contrôle à une personne privée, et soumise à un régime juridique spécifique orienté vers la satisfaction de l’intérêt général.", "portee": "", "themes": ["S"], "notions": [], "importance": "", "importance_level": 0}];
+const SHOW_PORTEE = false;
+const LEFT_LABEL = "Notion";
+const RIGHT_LABEL = "Définition";
+const selected = { theme: new Set(), notion: new Set(), importance: new Set() };
+let seriesSize = 3;
+let series = [];          // indices dans DATA
+let links = new Map();    // sourceId -> targetId
+let verified = false;
+let drag = null;          // { sourceId, pointerId, ... }
+
+const home = document.getElementById("screen-home");
+const game = document.getElementById("screen-game");
+const homeCount = document.getElementById("home-count");
+const homeHint = document.getElementById("home-hint");
+const btnStart = document.getElementById("btn-start");
+const btnBack = document.getElementById("btn-back");
+const btnCheck = document.getElementById("btn-check");
+const btnAnswers = document.getElementById("btn-answers");
+const btnReset = document.getElementById("btn-reset");
+const btnNew = document.getElementById("btn-new");
+const gameSummary = document.getElementById("game-summary");
+const boardRows = document.getElementById("board-rows");
+const boardWrap = document.getElementById("board-wrap");
+const svgLayer = document.getElementById("svg-layer");
+const scoreBanner = document.getElementById("score-banner");
+const emptyFilter = document.getElementById("empty-filter");
+const porteeTip = document.getElementById("portee-tip");
+const porteeTipText = document.getElementById("portee-tip-text");
+let porteeTipId = null;
+
+function sourceItems() {
+  return boardRows.querySelectorAll(".pair-item.is-source");
+}
+function targetItems() {
+  return boardRows.querySelectorAll(".pair-item.is-target");
+}
+function findSource(id) {
+  return Array.from(sourceItems()).find(el => el.dataset.id === id) || null;
+}
+function findTarget(id) {
+  return Array.from(targetItems()).find(el => el.dataset.id === id) || null;
+}
+
+function hidePorteeTip() {
+  if (!SHOW_PORTEE || !porteeTip) return;
+  porteeTipId = null;
+  porteeTip.classList.remove("is-open", "is-empty", "has-content");
+  porteeTip.setAttribute("aria-hidden", "true");
+}
+
+let porteeHideTimer = null;
+function scheduleHidePorteeTip() {
+  if (!SHOW_PORTEE) return;
+  clearTimeout(porteeHideTimer);
+  porteeHideTimer = setTimeout(() => hidePorteeTip(), 120);
+}
+function cancelHidePorteeTip() {
+  if (!SHOW_PORTEE) return;
+  clearTimeout(porteeHideTimer);
+  porteeHideTimer = null;
+}
+
+function showPorteeTip(targetEl) {
+  if (!SHOW_PORTEE || !porteeTip || !porteeTipText) return;
+  if (!targetEl || drag) {
+    hidePorteeTip();
+    return;
+  }
+  cancelHidePorteeTip();
+  const id = targetEl.dataset.id;
+  const card = DATA.find(c => pairId(c) === id);
+  const portee = ((card && card.portee) || "").trim();
+  porteeTipId = id;
+  porteeTipText.textContent = portee || "Portée non renseignée.";
+  porteeTip.classList.toggle("is-empty", !portee);
+  porteeTip.classList.toggle("has-content", Boolean(portee));
+  porteeTip.classList.add("is-open");
+  porteeTip.setAttribute("aria-hidden", "false");
+
+  const wrapRect = boardWrap.getBoundingClientRect();
+  const itemRect = targetEl.getBoundingClientRect();
+  // Toujours à droite de l’objet (comme la fiche Flipcards)
+  const tipW = Math.min(352, Math.max(220, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.42)));
+  porteeTip.style.width = tipW + "px";
+  const left = itemRect.right - wrapRect.left + 12;
+  porteeTip.style.left = left + "px";
+
+  const midY = itemRect.top + itemRect.height / 2 - wrapRect.top;
+  porteeTip.style.top = Math.max(8, midY - 28) + "px";
+
+  requestAnimationFrame(() => {
+    if (porteeTipId !== id) return;
+    const tipH = porteeTip.offsetHeight || 80;
+    let top = itemRect.top + itemRect.height / 2 - wrapRect.top - tipH / 2;
+    const maxTop = Math.max(8, Math.max(wrapRect.height, itemRect.bottom - wrapRect.top + 8) - tipH - 8);
+    top = Math.max(8, Math.min(top, maxTop));
+    porteeTip.style.top = top + "px";
+    // Flèche alignée sur le milieu de la case
+    const arrowY = Math.max(14, Math.min(itemRect.top + itemRect.height / 2 - wrapRect.top - top - 8, tipH - 28));
+    porteeTip.style.setProperty("--portee-arrow-top", arrowY + "px");
+  });
+}
+
+function selectedList(group) {
+  return [...selected[group]];
+}
+
+function matchesFilters(card) {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance").map(Number);
+  if (themes.length && !(card.themes || []).some(t => themes.includes(t))) return false;
+  if (notions.length && !(card.notions || []).some(n => notions.includes(n))) return false;
+  if (levels.length && !levels.includes(Number(card.importance_level) || 0)) return false;
+  return true;
+}
+
+function filteredIndexes() {
+  return DATA.map((_, idx) => idx).filter(idx => matchesFilters(DATA[idx]));
+}
+
+function selectionHint() {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance");
+  if (!themes.length && !notions.length && !levels.length) return "Tout le set · série de " + seriesSize;
+  const bits = [];
+  if (themes.length) bits.push(themes.length + " thème(s)");
+  if (notions.length) bits.push(notions.length + " notion(s)");
+  if (levels.length) bits.push(levels.length + " importance(s)");
+  bits.push("série de " + seriesSize);
+  return bits.join(" · ");
+}
+
+function cardMatchesUpstream(card, opts) {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance").map(Number);
+  const applyTheme = !opts || opts.applyTheme !== false;
+  const applyNotion = !!(opts && opts.applyNotion);
+  const applyImportance = !!(opts && opts.applyImportance);
+  if (applyTheme && themes.length && !(card.themes || []).some(t => themes.includes(t))) return false;
+  if (applyNotion && notions.length && !(card.notions || []).some(n => notions.includes(n))) return false;
+  if (applyImportance && levels.length && !levels.includes(Number(card.importance_level) || 0)) return false;
+  return true;
+}
+
+function collectTags(pred) {
+  const themes = new Set();
+  const notions = new Set();
+  const importance = new Set();
+  for (const card of DATA) {
+    if (!pred(card)) continue;
+    (card.themes || []).forEach(t => themes.add(t));
+    (card.notions || []).forEach(n => notions.add(n));
+    const lvl = Number(card.importance_level) || 0;
+    if (lvl) importance.add(String(lvl));
+  }
+  return { themes, notions, importance };
+}
+
+function tagsPresentInData() {
+  return collectTags(() => true);
+}
+
+function setChipState(btn, ok, exclusiveDim) {
+  btn.classList.toggle("is-disabled", !ok);
+  btn.classList.toggle("is-exclusive-dim", !!exclusiveDim);
+  btn.disabled = !ok;
+  btn.setAttribute("aria-disabled", ok ? "false" : "true");
+}
+
+function updateChipAvailability() {
+  const present = tagsPresentInData();
+  const themeExclusive = selected.theme.size > 0;
+  const hasLower = selected.notion.size > 0 || selected.importance.size > 0;
+
+  let notionScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: false, applyImportance: false })
+  );
+  let starScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: true, applyImportance: false })
+  );
+  let themeScope = hasLower
+    ? collectTags(card =>
+        cardMatchesUpstream(card, { applyTheme: false, applyNotion: true, applyImportance: true })
+      )
+    : present;
+
+  document.querySelectorAll('.chip[data-group="notion"]').forEach(btn => {
+    if (selected.notion.has(btn.dataset.value) && !notionScope.notions.has(btn.dataset.value)) {
+      selected.notion.delete(btn.dataset.value);
+      btn.setAttribute("aria-pressed", "false");
+    }
+  });
+  starScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: true, applyImportance: false })
+  );
+  document.querySelectorAll('.chip[data-group="importance"]').forEach(btn => {
+    if (selected.importance.has(btn.dataset.value) && !starScope.importance.has(btn.dataset.value)) {
+      selected.importance.delete(btn.dataset.value);
+      btn.setAttribute("aria-pressed", "false");
+    }
+  });
+  if (hasLower) {
+    themeScope = collectTags(card =>
+      cardMatchesUpstream(card, { applyTheme: false, applyNotion: true, applyImportance: true })
+    );
+  }
+
+  document.querySelectorAll(".chip[data-group]").forEach(btn => {
+    const group = btn.dataset.group;
+    const value = btn.dataset.value;
+    const isSelected = selected[group].has(value);
+    let ok = true;
+    let exclusiveDim = false;
+    if (group === "theme") {
+      ok = themeScope.themes.has(value);
+      exclusiveDim = themeExclusive && !isSelected && ok;
+    } else if (group === "notion") {
+      ok = notionScope.notions.has(value);
+    } else if (group === "importance") {
+      ok = starScope.importance.has(value);
+    }
+    setChipState(btn, ok, exclusiveDim);
+  });
+}
+
+function updateHomeCount() {
+  updateChipAvailability();
+  const n = filteredIndexes().length;
+  homeCount.textContent = String(n);
+  homeHint.textContent = selectionHint();
+  const need = Math.min(seriesSize, n);
+  btnStart.disabled = need < 2;
+}
+
+function randInt(max) {
+  // Entier uniforme dans [0, max)
+  if (max <= 1) return 0;
+  if (window.crypto && crypto.getRandomValues) {
+    const buf = new Uint32Array(1);
+    const limit = Math.floor(0x100000000 / max) * max;
+    let x;
+    do {
+      crypto.getRandomValues(buf);
+      x = buf[0];
+    } while (x >= limit);
+    return x % max;
+  }
+  return Math.floor(Math.random() * max);
+}
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let k = a.length - 1; k > 0; k--) {
+    const j = randInt(k + 1);
+    const tmp = a[k];
+    a[k] = a[j];
+    a[j] = tmp;
+  }
+  return a;
+}
+
+/** Colonne de droite : dérangement garanti (algo de Sattolo = cycle, 0 point fixe). */
+function shuffleTargetsForSources(sources, targetPayload) {
+  const n = sources.length;
+  const items = sources.map(targetPayload);
+  if (n <= 1) return items;
+  // Sattolo : pour i de n-1 à 1, échange avec j uniformément dans [0, i)
+  // → permutation circulaire aléatoire, donc aucun item face à sa source.
+  for (let i = n - 1; i > 0; i--) {
+    const j = randInt(i);
+    const tmp = items[i];
+    items[i] = items[j];
+    items[j] = tmp;
+  }
+  return items;
+}
+
+function pairId(card) {
+  return String(card.id || card.recto);
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function clearResultClasses() {
+  document.querySelectorAll(".pair-item").forEach(el => {
+    el.classList.remove("is-correct", "is-incorrect");
+  });
+  verified = false;
+  scoreBanner.hidden = true;
+  scoreBanner.classList.remove("is-perfect");
+  scoreBanner.textContent = "";
+}
+
+function setLink(sourceId, targetId) {
+  // Libérer la cible si déjà prise
+  for (const [sid, tid] of [...links.entries()]) {
+    if (tid === targetId && sid !== sourceId) links.delete(sid);
+  }
+  // Remplacer le lien existant du source
+  links.set(sourceId, targetId);
+  clearResultClasses();
+  syncLinkedClasses();
+  drawLinks();
+}
+
+function syncLinkedClasses() {
+  const linkedSources = new Set(links.keys());
+  const linkedTargets = new Set(links.values());
+  sourceItems().forEach(el => {
+    el.classList.toggle("is-linked", linkedSources.has(el.dataset.id));
+  });
+  targetItems().forEach(el => {
+    el.classList.toggle("is-linked", linkedTargets.has(el.dataset.id));
+  });
+}
+
+function boardPoint(clientX, clientY) {
+  const r = boardWrap.getBoundingClientRect();
+  return { x: clientX - r.left, y: clientY - r.top };
+}
+
+function anchorPoint(el, side) {
+  const br = boardWrap.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  const y = r.top + r.height / 2 - br.top;
+  const x = side === "right" ? r.right - br.left : r.left - br.left;
+  return { x, y };
+}
+
+function drawLinks(provisional) {
+  const ns = "http://www.w3.org/2000/svg";
+  while (svgLayer.firstChild) svgLayer.removeChild(svgLayer.firstChild);
+  const rect = boardWrap.getBoundingClientRect();
+  svgLayer.setAttribute("viewBox", "0 0 " + rect.width + " " + rect.height);
+  svgLayer.setAttribute("width", String(rect.width));
+  svgLayer.setAttribute("height", String(rect.height));
+
+  for (const [sid, tid] of links.entries()) {
+    const sEl = findSource(sid);
+    const tEl = findTarget(tid);
+    if (!sEl || !tEl) continue;
+    const a = anchorPoint(sEl, "right");
+    const b = anchorPoint(tEl, "left");
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", a.x); line.setAttribute("y1", a.y);
+    line.setAttribute("x2", b.x); line.setAttribute("y2", b.y);
+    line.classList.add("is-link");
+    if (verified) {
+      // Cible porte l’id de la décision propriétaire de l’objet → sid === tid
+      line.classList.add(sid === tid ? "is-correct" : "is-incorrect");
+    }
+    svgLayer.appendChild(line);
+  }
+
+  if (provisional) {
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", provisional.x1);
+    line.setAttribute("y1", provisional.y1);
+    line.setAttribute("x2", provisional.x2);
+    line.setAttribute("y2", provisional.y2);
+    line.classList.add("is-provisional");
+    svgLayer.appendChild(line);
+  }
+}
+
+function makeSourceBtn(c) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pair-item is-source";
+  btn.dataset.id = pairId(c);
+  btn.dataset.recto = c.recto;
+  btn.innerHTML = '<span class="pair-label">' + escHtml(c.recto) + "</span>";
+  btn.setAttribute("aria-label", LEFT_LABEL + " : " + c.recto);
+  return btn;
+}
+
+function makeTargetBtn(t) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pair-item is-target";
+  btn.dataset.id = t.id;
+  btn.dataset.objet = t.objet;
+  btn.innerHTML = '<span class="pair-label">' + escHtml(t.objet) + "</span>";
+  btn.setAttribute("aria-label", RIGHT_LABEL + " : " + t.objet);
+  if (SHOW_PORTEE) {
+    btn.addEventListener("pointerenter", () => showPorteeTip(btn));
+    btn.addEventListener("pointerleave", () => {
+      if (porteeTipId === t.id) scheduleHidePorteeTip();
+    });
+    btn.addEventListener("focus", () => showPorteeTip(btn));
+    btn.addEventListener("blur", () => {
+      if (porteeTipId === t.id) scheduleHidePorteeTip();
+    });
+  }
+  return btn;
+}
+
+function renderBoard() {
+  boardRows.innerHTML = "";
+  links = new Map();
+  clearResultClasses();
+  hidePorteeTip();
+
+  // Gauche : ordre alphabétique stable ; droite : dérangement systématique
+  const cards = series.map(idx => DATA[idx]);
+  const sources = cards.slice().sort((a, b) =>
+    String(a.recto || "").localeCompare(String(b.recto || ""), "fr", { sensitivity: "base" })
+  );
+  const targets = shuffleTargetsForSources(sources, c => ({
+    id: pairId(c),
+    objet: c.objet,
+    portee: c.portee || "",
+  }));
+
+  for (let i = 0; i < sources.length; i++) {
+    const row = document.createElement("div");
+    row.className = "board-row";
+    row.appendChild(makeSourceBtn(sources[i]));
+    row.appendChild(makeTargetBtn(targets[i]));
+    boardRows.appendChild(row);
+  }
+
+  requestAnimationFrame(() => drawLinks());
+}
+
+function enterGame() {
+  const pool = filteredIndexes();
+  if (pool.length < 2) {
+    emptyFilter.hidden = false;
+    boardWrap.hidden = true;
+    return;
+  }
+  emptyFilter.hidden = true;
+  boardWrap.hidden = false;
+  const size = Math.min(seriesSize, pool.length);
+  series = shuffleArray(pool).slice(0, size);
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance");
+  const bits = [];
+  if (themes.length) bits.push(themes.length + " thème(s)");
+  if (notions.length) bits.push(notions.length + " notion(s)");
+  if (levels.length) bits.push(levels.length + " ★");
+  bits.push(series.length + " paire(s)");
+  gameSummary.textContent = bits.join(" · ");
+  home.hidden = true;
+  game.hidden = false;
+  renderBoard();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function leaveGame() {
+  drag = null;
+  home.hidden = false;
+  game.hidden = true;
+  updateHomeCount();
+}
+
+function verify() {
+  if (!series.length) return;
+  let correct = 0;
+  const total = series.length;
+  sourceItems().forEach(sEl => {
+    const sid = sEl.dataset.id;
+    const tid = links.get(sid);
+    sEl.classList.remove("is-correct", "is-incorrect");
+    if (!tid) {
+      sEl.classList.add("is-incorrect");
+      return;
+    }
+    const tEl = findTarget(tid);
+    const ok = sid === tid;
+    sEl.classList.add(ok ? "is-correct" : "is-incorrect");
+    if (tEl) {
+      tEl.classList.remove("is-correct", "is-incorrect");
+      tEl.classList.add(ok ? "is-correct" : "is-incorrect");
+    }
+    if (ok) correct += 1;
+  });
+  targetItems().forEach(tEl => {
+    const taken = [...links.values()].includes(tEl.dataset.id);
+    if (!taken) {
+      tEl.classList.remove("is-correct");
+      tEl.classList.add("is-incorrect");
+    }
+  });
+  verified = true;
+  drawLinks();
+  scoreBanner.hidden = false;
+  scoreBanner.classList.toggle("is-perfect", correct === total && total > 0);
+  scoreBanner.innerHTML = "Score : <strong>" + correct + " / " + total + "</strong>"
+    + (correct === total
+      ? " — Bravo, toutes les associations sont justes."
+      : " — Reliez à nouveau ou réinitialisez pour corriger.");
+}
+
+function showAnswers() {
+  if (!series.length) return;
+  hidePorteeTip();
+  // Garde l’ordre mélangé du plateau ; trace seulement les associations correctes.
+  links = new Map();
+  sourceItems().forEach(el => {
+    const id = el.dataset.id;
+    if (id) links.set(id, id);
+  });
+
+  verified = true;
+  clearResultClasses();
+  syncLinkedClasses();
+  sourceItems().forEach(el => {
+    el.classList.remove("is-incorrect");
+    el.classList.add("is-correct", "is-linked");
+  });
+  targetItems().forEach(el => {
+    el.classList.remove("is-incorrect");
+    el.classList.add("is-correct", "is-linked");
+  });
+  drawLinks();
+  scoreBanner.hidden = false;
+  scoreBanner.classList.add("is-perfect");
+  scoreBanner.innerHTML = "Réponses : <strong>" + links.size + " / " + links.size + "</strong>"
+    + " — Associations correctes affichées (ordre du plateau inchangé).";
+}
+
+function resetLinks() {
+  // Reconstruit le plateau (même série, colonne de droite remélangée).
+  renderBoard();
+}
+
+function newSeries() {
+  enterGame();
+}
+
+/* —— Pointer Events DnD —— */
+function targetUnderPoint(clientX, clientY) {
+  const els = document.elementsFromPoint(clientX, clientY);
+  for (const el of els) {
+    const item = el.closest && el.closest(".pair-item.is-target");
+    if (item && boardRows.contains(item)) return item;
+  }
+  return null;
+}
+
+function onPointerDown(e) {
+  const src = e.target.closest && e.target.closest(".pair-item.is-source");
+  if (!src || !boardRows.contains(src)) return;
+  if (e.button != null && e.button !== 0) return;
+  e.preventDefault();
+  hidePorteeTip();
+  src.setPointerCapture(e.pointerId);
+  const a = anchorPoint(src, "right");
+  const p = boardPoint(e.clientX, e.clientY);
+  drag = {
+    sourceId: src.dataset.id,
+    pointerId: e.pointerId,
+    el: src,
+    x1: a.x, y1: a.y,
+  };
+  src.classList.add("is-dragging");
+  drawLinks({ x1: a.x, y1: a.y, x2: p.x, y2: p.y });
+}
+
+function onPointerMove(e) {
+  if (!drag || e.pointerId !== drag.pointerId) return;
+  e.preventDefault();
+  const a = anchorPoint(drag.el, "right");
+  const p = boardPoint(e.clientX, e.clientY);
+  drag.x1 = a.x; drag.y1 = a.y;
+  document.querySelectorAll(".pair-item.is-drop-hover").forEach(el => el.classList.remove("is-drop-hover"));
+  const over = targetUnderPoint(e.clientX, e.clientY);
+  if (over) over.classList.add("is-drop-hover");
+  drawLinks({ x1: a.x, y1: a.y, x2: p.x, y2: p.y });
+}
+
+function endDrag(e, commit) {
+  if (!drag || e.pointerId !== drag.pointerId) return;
+  const src = drag.el;
+  try { src.releasePointerCapture(e.pointerId); } catch (_) {}
+  src.classList.remove("is-dragging");
+  document.querySelectorAll(".pair-item.is-drop-hover").forEach(el => el.classList.remove("is-drop-hover"));
+  if (commit) {
+    const over = targetUnderPoint(e.clientX, e.clientY);
+    if (over) setLink(drag.sourceId, over.dataset.id);
+    else drawLinks();
+  } else {
+    drawLinks();
+  }
+  drag = null;
+}
+
+function onPointerUp(e) { endDrag(e, true); }
+function onPointerCancel(e) { endDrag(e, false); }
+
+boardRows.addEventListener("pointerdown", onPointerDown);
+if (SHOW_PORTEE && porteeTip) {
+  porteeTip.addEventListener("pointerenter", cancelHidePorteeTip);
+  porteeTip.addEventListener("pointerleave", scheduleHidePorteeTip);
+}
+window.addEventListener("pointermove", onPointerMove, { passive: false });
+window.addEventListener("pointerup", onPointerUp);
+window.addEventListener("pointercancel", onPointerCancel);
+window.addEventListener("resize", () => drawLinks());
+
+/* —— Filtres / UI accueil —— */
+document.querySelectorAll(".classifier-toggle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const panel = btn.closest(".classifier");
+    const open = !panel.classList.contains("is-open");
+    panel.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    const slide = panel.querySelector(".classifier-slide");
+    if (!slide) return;
+    if (open) {
+      const inner = slide.querySelector(".classifier-slide-inner");
+      slide.style.height = (inner ? inner.scrollHeight : 0) + "px";
+      const done = () => { slide.style.height = "auto"; slide.removeEventListener("transitionend", done); };
+      slide.addEventListener("transitionend", done);
+    } else {
+      slide.style.height = slide.scrollHeight + "px";
+      requestAnimationFrame(() => { slide.style.height = "0px"; });
+    }
+  });
+});
+
+document.querySelectorAll(".classifier-clear").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const group = btn.getAttribute("data-clear");
+    selected[group].clear();
+    document.querySelectorAll('.chip[data-group="' + group + '"]').forEach(c => {
+      c.setAttribute("aria-pressed", "false");
+    });
+    updateHomeCount();
+  });
+});
+
+document.querySelectorAll(".chip[data-group]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+    const group = btn.dataset.group;
+    const value = btn.dataset.value;
+    const on = btn.getAttribute("aria-pressed") === "true";
+    if (group === "theme") {
+      selected.theme.clear();
+      document.querySelectorAll('.chip[data-group="theme"]').forEach(c => c.setAttribute("aria-pressed", "false"));
+      if (!on) {
+        selected.theme.add(value);
+        btn.setAttribute("aria-pressed", "true");
+      }
+    } else {
+      if (on) {
+        selected[group].delete(value);
+        btn.setAttribute("aria-pressed", "false");
+      } else {
+        selected[group].add(value);
+        btn.setAttribute("aria-pressed", "true");
+      }
+    }
+    updateHomeCount();
+  });
+});
+
+document.querySelectorAll(".chip-size").forEach(btn => {
+  btn.addEventListener("click", () => {
+    seriesSize = Number(btn.dataset.size) || 3;
+    document.querySelectorAll(".chip-size").forEach(c => {
+      c.setAttribute("aria-pressed", c === btn ? "true" : "false");
+    });
+    updateHomeCount();
+  });
+});
+
+btnStart.addEventListener("click", enterGame);
+btnBack.addEventListener("click", leaveGame);
+btnCheck.addEventListener("click", verify);
+btnAnswers.addEventListener("click", showAnswers);
+btnReset.addEventListener("click", resetLinks);
+btnNew.addEventListener("click", newSeries);
+
+updateHomeCount();
+</script>
+<script src="../auth.js?v=4"></script>
+<script src="../site-nav.js?v=19"></script>
+</body>
+</html>
