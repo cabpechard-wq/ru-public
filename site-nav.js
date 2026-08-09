@@ -92,6 +92,7 @@
   const auth = header.querySelector(".site-nav-auth");
   const emailEl = header.querySelector("[data-nav-email]");
   const logoutBtn = header.querySelector("[data-nav-logout]");
+  const checkoutLink = header.querySelector('[data-nav="checkout"]');
 
   logoutBtn.addEventListener("click", () => {
     if (window.FLIPCARDS_AUTH) FLIPCARDS_AUTH.clearToken();
@@ -105,10 +106,12 @@
       guest.hidden = true;
       auth.hidden = false;
       emailEl.textContent = me.email;
+      if (checkoutLink) checkoutLink.hidden = true;
     } else {
       guest.hidden = false;
       auth.hidden = true;
       emailEl.textContent = "";
+      if (checkoutLink) checkoutLink.hidden = false;
     }
     return me;
   }
