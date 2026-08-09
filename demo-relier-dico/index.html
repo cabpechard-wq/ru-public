@@ -450,6 +450,61 @@ body { padding: 0 0 3.5rem; }
   font-style: italic;
   text-align: left;
 }
+.faits-tip {
+  transform: translateX(-.35rem);
+}
+.faits-tip.is-open {
+  transform: translateX(0);
+}
+.faits-tip::before {
+  left: 100%;
+  right: auto;
+  border-right-color: transparent;
+  border-left-color: var(--border);
+}
+.faits-tip::after {
+  left: 100%;
+  right: auto;
+  border-right-color: transparent;
+  border-left-color: var(--bg-elevated);
+  margin-right: 0;
+  margin-left: -1px;
+}
+.arret-links {
+  margin: 1.35rem 0 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+}
+.arret-links[hidden] { display: none !important; }
+.arret-links-title {
+  margin: 0 0 .55rem;
+  font-family: var(--font-display);
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--secondary, var(--accent));
+}
+.arret-links-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .85rem;
+}
+.arret-links-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: .86rem;
+  font-weight: 550;
+}
+.arret-links-list a:hover {
+  text-decoration: underline;
+  text-underline-offset: .14em;
+}
 .svg-layer {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
@@ -528,6 +583,9 @@ body { padding: 0 0 3.5rem; }
   .portee-tip {
     width: min(18rem, calc(100vw - 1.5rem));
     max-height: min(16rem, 50vh);
+  }
+  .faits-tip {
+    width: min(18rem, calc(100vw - 1.5rem));
   }
   .home-footer { flex-direction: column; align-items: stretch; }
   .home-actions { width: 100%; }
@@ -620,6 +678,7 @@ body { padding: 0 0 3.5rem; }
         <div id="board-rows" role="group" aria-label="Paires à relier"></div>
       </div>
       
+      
     </div>
     <div class="game-actions">
       <button type="button" class="btn btn-primary" id="btn-check">Vérifier</button>
@@ -628,12 +687,15 @@ body { padding: 0 0 3.5rem; }
       <button type="button" class="btn" id="btn-new">Nouvelle série</button>
     </div>
     <div class="score-banner" id="score-banner" hidden role="status" aria-live="polite"></div>
+    
     <p class="study-copy">© Éditions Particulières · Tous droits réservés · Reproductions / exportations interdites</p>
   </section>
 </div>
 <script>
-const DATA = [{"id": "Acte administratif unilatéral", "recto": "Acte administratif unilatéral", "objet": "Acte juridique émanant d’une seule volonté administrative et modifiant l’ordonnancement juridique sans le consentement de son destinataire.", "portee": "", "themes": ["A"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Clause générale de compétence", "recto": "Clause générale de compétence", "objet": "Aptitude reconnue à une collectivité territoriale pour intervenir dans toute affaire présentant un intérêt local, au-delà de ses compétences spécialement énumérées par les textes.", "portee": "", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Contrôle de légalité", "recto": "Contrôle de légalité", "objet": "Contrôle exercé par le représentant de l’État sur les actes des collectivités territoriales afin d’en assurer la conformité au droit, notamment par le déféré devant le juge administratif.", "portee": "", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Domaine public", "recto": "Domaine public", "objet": "Ensemble des biens appartenant à une personne publique et affectés soit à l’usage direct du public, soit à un service public sous réserve, dans ce cas, d’un aménagement indispensable ou d’une condition équivalente prévue par le droit positif.", "portee": "", "themes": ["D"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Expropriation", "recto": "Expropriation", "objet": "Procédure permettant à une personne publique, pour cause d’utilité publique et moyennant une juste et préalable indemnité, de contraindre un propriétaire à céder son bien.", "portee": "", "themes": ["E"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Police administrative", "recto": "Police administrative", "objet": "Ensemble des mesures préventives destinées à préserver l’ordre public et à éviter les troubles, par opposition à la police judiciaire qui poursuit un but répressif.", "portee": "", "themes": ["P"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Recours pour excès de pouvoir", "recto": "Recours pour excès de pouvoir", "objet": "Recours contentieux tendant à l’annulation d’un acte administratif unilatéral illégal par le juge administratif, la légalité de l’acte s’appréciant en principe à la date de son édiction.", "portee": "", "themes": ["R"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Service public", "recto": "Service public", "objet": "Activité d’intérêt général assurée ou assumée par une personne publique, ou confiée sous son contrôle à une personne privée, et soumise à un régime juridique spécifique orienté vers la satisfaction de l’intérêt général.", "portee": "", "themes": ["S"], "notions": [], "importance": "", "importance_level": 0}];
+const DATA = [{"id": "Acte administratif unilatéral", "recto": "Acte administratif unilatéral", "objet": "Acte juridique émanant d’une seule volonté administrative et modifiant l’ordonnancement juridique sans le consentement de son destinataire.", "portee": "", "faits": "", "slug": "acte-administratif-unilateral", "themes": ["A"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Clause générale de compétence", "recto": "Clause générale de compétence", "objet": "Aptitude reconnue à une collectivité territoriale pour intervenir dans toute affaire présentant un intérêt local, au-delà de ses compétences spécialement énumérées par les textes.", "portee": "", "faits": "", "slug": "clause-generale-de-competence", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Contrôle de légalité", "recto": "Contrôle de légalité", "objet": "Contrôle exercé par le représentant de l’État sur les actes des collectivités territoriales afin d’en assurer la conformité au droit, notamment par le déféré devant le juge administratif.", "portee": "", "faits": "", "slug": "controle-de-legalite", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Domaine public", "recto": "Domaine public", "objet": "Ensemble des biens appartenant à une personne publique et affectés soit à l’usage direct du public, soit à un service public sous réserve, dans ce cas, d’un aménagement indispensable ou d’une condition équivalente prévue par le droit positif.", "portee": "", "faits": "", "slug": "domaine-public", "themes": ["D"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Expropriation", "recto": "Expropriation", "objet": "Procédure permettant à une personne publique, pour cause d’utilité publique et moyennant une juste et préalable indemnité, de contraindre un propriétaire à céder son bien.", "portee": "", "faits": "", "slug": "expropriation", "themes": ["E"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Police administrative", "recto": "Police administrative", "objet": "Ensemble des mesures préventives destinées à préserver l’ordre public et à éviter les troubles, par opposition à la police judiciaire qui poursuit un but répressif.", "portee": "", "faits": "", "slug": "police-administrative", "themes": ["P"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Recours pour excès de pouvoir", "recto": "Recours pour excès de pouvoir", "objet": "Recours contentieux tendant à l’annulation d’un acte administratif unilatéral illégal par le juge administratif, la légalité de l’acte s’appréciant en principe à la date de son édiction.", "portee": "", "faits": "", "slug": "recours-pour-exces-de-pouvoir", "themes": ["R"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Service public", "recto": "Service public", "objet": "Activité d’intérêt général assurée ou assumée par une personne publique, ou confiée sous son contrôle à une personne privée, et soumise à un régime juridique spécifique orienté vers la satisfaction de l’intérêt général.", "portee": "", "faits": "", "slug": "service-public", "themes": ["S"], "notions": [], "importance": "", "importance_level": 0}];
 const SHOW_PORTEE = false;
+const SHOW_FAITS = false;
+const SHOW_ARRET_LINKS = false;
 const LEFT_LABEL = "Notion";
 const RIGHT_LABEL = "Définition";
 const selected = { theme: new Set(), notion: new Set(), importance: new Set() };
@@ -662,6 +724,11 @@ const emptyFilter = document.getElementById("empty-filter");
 const porteeTip = document.getElementById("portee-tip");
 const porteeTipText = document.getElementById("portee-tip-text");
 let porteeTipId = null;
+const faitsTip = document.getElementById("faits-tip");
+const faitsTipText = document.getElementById("faits-tip-text");
+let faitsTipId = null;
+const arretLinks = document.getElementById("arret-links");
+const arretLinksList = document.getElementById("arret-links-list");
 
 function sourceItems() {
   return boardRows.querySelectorAll(".pair-item.is-source");
@@ -695,12 +762,33 @@ function cancelHidePorteeTip() {
   porteeHideTimer = null;
 }
 
+function hideFaitsTip() {
+  if (!SHOW_FAITS || !faitsTip) return;
+  faitsTipId = null;
+  faitsTip.classList.remove("is-open", "is-empty", "has-content");
+  faitsTip.setAttribute("aria-hidden", "true");
+}
+
+let faitsHideTimer = null;
+function scheduleHideFaitsTip() {
+  if (!SHOW_FAITS) return;
+  clearTimeout(faitsHideTimer);
+  faitsHideTimer = setTimeout(() => hideFaitsTip(), 120);
+}
+function cancelHideFaitsTip() {
+  if (!SHOW_FAITS) return;
+  clearTimeout(faitsHideTimer);
+  faitsHideTimer = null;
+}
+
 function showPorteeTip(targetEl) {
   if (!SHOW_PORTEE || !porteeTip || !porteeTipText) return;
   if (!targetEl || drag) {
     hidePorteeTip();
+    hideFaitsTip();
     return;
   }
+  hideFaitsTip();
   cancelHidePorteeTip();
   const id = targetEl.dataset.id;
   const card = DATA.find(c => pairId(c) === id);
@@ -734,6 +822,66 @@ function showPorteeTip(targetEl) {
     const arrowY = Math.max(14, Math.min(itemRect.top + itemRect.height / 2 - wrapRect.top - top - 8, tipH - 28));
     porteeTip.style.setProperty("--portee-arrow-top", arrowY + "px");
   });
+}
+
+function showFaitsTip(sourceEl) {
+  if (!SHOW_FAITS || !faitsTip || !faitsTipText) return;
+  if (!sourceEl || drag) {
+    hideFaitsTip();
+    return;
+  }
+  hidePorteeTip();
+  cancelHideFaitsTip();
+  const id = sourceEl.dataset.id;
+  const card = DATA.find(c => pairId(c) === id);
+  const faits = ((card && card.faits) || "").trim();
+  faitsTipId = id;
+  faitsTipText.textContent = faits || "Faits non renseignés.";
+  faitsTip.classList.toggle("is-empty", !faits);
+  faitsTip.classList.toggle("has-content", Boolean(faits));
+  faitsTip.classList.add("is-open");
+  faitsTip.setAttribute("aria-hidden", "false");
+
+  const wrapRect = boardWrap.getBoundingClientRect();
+  const itemRect = sourceEl.getBoundingClientRect();
+  const tipW = Math.min(352, Math.max(220, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.42)));
+  faitsTip.style.width = tipW + "px";
+  const left = itemRect.left - wrapRect.left - tipW - 12;
+  faitsTip.style.left = Math.max(0, left) + "px";
+
+  const midY = itemRect.top + itemRect.height / 2 - wrapRect.top;
+  faitsTip.style.top = Math.max(8, midY - 28) + "px";
+
+  requestAnimationFrame(() => {
+    if (faitsTipId !== id) return;
+    const tipH = faitsTip.offsetHeight || 80;
+    let top = itemRect.top + itemRect.height / 2 - wrapRect.top - tipH / 2;
+    const maxTop = Math.max(8, Math.max(wrapRect.height, itemRect.bottom - wrapRect.top + 8) - tipH - 8);
+    top = Math.max(8, Math.min(top, maxTop));
+    faitsTip.style.top = top + "px";
+    const arrowY = Math.max(14, Math.min(itemRect.top + itemRect.height / 2 - wrapRect.top - top - 8, tipH - 28));
+    faitsTip.style.setProperty("--portee-arrow-top", arrowY + "px");
+  });
+}
+
+function renderArretLinks() {
+  if (!SHOW_ARRET_LINKS || !arretLinks || !arretLinksList) return;
+  const cards = series
+    .map(idx => DATA[idx])
+    .filter(c => ((c && c.slug) || "").trim() && ((c && c.recto) || "").trim());
+  if (!cards.length) {
+    arretLinks.hidden = true;
+    arretLinksList.innerHTML = "";
+    return;
+  }
+  cards.sort((a, b) =>
+    String(a.recto || "").localeCompare(String(b.recto || ""), "fr", { sensitivity: "base" })
+  );
+  arretLinksList.innerHTML = cards.map(c =>
+    '<li><a href="../arrets/' + encodeURIComponent(c.slug) + '/">' +
+    escHtml(c.recto) + "</a></li>"
+  ).join("");
+  arretLinks.hidden = false;
 }
 
 function selectedList(group) {
@@ -1015,6 +1163,16 @@ function makeSourceBtn(c) {
   btn.dataset.recto = c.recto;
   btn.innerHTML = '<span class="pair-label">' + escHtml(c.recto) + "</span>";
   btn.setAttribute("aria-label", LEFT_LABEL + " : " + c.recto);
+  if (SHOW_FAITS) {
+    btn.addEventListener("pointerenter", () => showFaitsTip(btn));
+    btn.addEventListener("pointerleave", () => {
+      if (faitsTipId === pairId(c)) scheduleHideFaitsTip();
+    });
+    btn.addEventListener("focus", () => showFaitsTip(btn));
+    btn.addEventListener("blur", () => {
+      if (faitsTipId === pairId(c)) scheduleHideFaitsTip();
+    });
+  }
   return btn;
 }
 
@@ -1044,6 +1202,7 @@ function renderBoard() {
   links = new Map();
   clearResultClasses();
   hidePorteeTip();
+  hideFaitsTip();
 
   // Gauche : ordre alphabétique stable ; droite : dérangement systématique
   const cards = series.map(idx => DATA[idx]);
@@ -1064,6 +1223,7 @@ function renderBoard() {
     boardRows.appendChild(row);
   }
 
+  renderArretLinks();
   requestAnimationFrame(() => drawLinks());
 }
 
@@ -1072,6 +1232,7 @@ function enterGame() {
   if (pool.length < 2) {
     emptyFilter.hidden = false;
     boardWrap.hidden = true;
+    if (arretLinks) arretLinks.hidden = true;
     return;
   }
   emptyFilter.hidden = true;
@@ -1141,6 +1302,7 @@ function verify() {
 function showAnswers() {
   if (!series.length) return;
   hidePorteeTip();
+  hideFaitsTip();
   // Garde l’ordre mélangé du plateau ; trace seulement les associations correctes.
   links = new Map();
   sourceItems().forEach(el => {
@@ -1191,6 +1353,7 @@ function onPointerDown(e) {
   if (e.button != null && e.button !== 0) return;
   e.preventDefault();
   hidePorteeTip();
+  hideFaitsTip();
   src.setPointerCapture(e.pointerId);
   const a = anchorPoint(src, "right");
   const p = boardPoint(e.clientX, e.clientY);
@@ -1239,6 +1402,10 @@ boardRows.addEventListener("pointerdown", onPointerDown);
 if (SHOW_PORTEE && porteeTip) {
   porteeTip.addEventListener("pointerenter", cancelHidePorteeTip);
   porteeTip.addEventListener("pointerleave", scheduleHidePorteeTip);
+}
+if (SHOW_FAITS && faitsTip) {
+  faitsTip.addEventListener("pointerenter", cancelHideFaitsTip);
+  faitsTip.addEventListener("pointerleave", scheduleHideFaitsTip);
 }
 window.addEventListener("pointermove", onPointerMove, { passive: false });
 window.addEventListener("pointerup", onPointerUp);
