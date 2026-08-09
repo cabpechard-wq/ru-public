@@ -368,11 +368,11 @@ a:hover { color: var(--accent-hover); }
   max-width: 100%;
 }
 
-/* Dictionnaire — même colonne de lecture que les fiches d'arrêt */
+/* Dictionnaire — même largeur que l'index Arrêts (hub-wide) */
 .site-main.dict-page,
 .site-main.legal-page:has(.dict-entries),
 .site-main.manuel-layout:has(.dict-entries) {
-  width: min(var(--read-column), calc(100% - 2rem));
+  width: min(68rem, calc(100% - 2rem));
   max-width: 100%;
   margin-inline: auto;
   box-sizing: border-box;
@@ -2580,7 +2580,7 @@ input:focus {
 
 .arrets-advanced-row {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
   align-items: end;
   gap: .55rem .65rem;
   width: 100%;
@@ -2592,7 +2592,7 @@ input:focus {
 }
 
 .arrets-advanced-row.has-formation {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
 }
 
 .arrets-advanced-field {
