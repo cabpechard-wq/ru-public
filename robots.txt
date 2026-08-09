@@ -1,3 +1,9 @@
 User-agent: *
 Disallow: /flipcards/
+Disallow: /relier/
+Disallow: /relier-dico/
+Disallow: /flipcards-dico/
 Allow: /demo/
+Allow: /demo-relier/
+Allow: /demo-relier-dico/
+Allow: /demo-flipcards-dico/

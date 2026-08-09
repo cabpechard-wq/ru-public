@@ -18,13 +18,13 @@
     <strong>Nouveau mot de passe</strong>
   </p>
   <h1 class="site-title">Nouveau mot de passe</h1>
-  <p class="site-lead">4 caractères minimum.</p>
+  <p class="site-lead">10 caractères minimum.</p>
   <div class="site-panel">
     <form id="f">
       <label class="field" for="pw">Mot de passe</label>
-      <input id="pw" type="password" minlength="4" required autocomplete="new-password">
+      <input id="pw" type="password" minlength="10" required autocomplete="new-password">
       <label class="field" for="pw2">Confirmer</label>
-      <input id="pw2" type="password" minlength="4" required autocomplete="new-password">
+      <input id="pw2" type="password" minlength="10" required autocomplete="new-password">
       <button class="btn block" type="submit" style="margin-top:1rem">Enregistrer</button>
       <div class="err" id="err"></div>
     </form>
@@ -43,7 +43,7 @@ document.getElementById("f").addEventListener("submit", async (e) => {
   err.textContent = "";
   const pw = document.getElementById("pw").value;
   const pw2 = document.getElementById("pw2").value;
-  if (pw.length < 4) { err.textContent = "4 caractères minimum."; return; }
+  if (pw.length < 10) { err.textContent = "10 caractères minimum."; return; }
   if (pw !== pw2) { err.textContent = "Les mots de passe ne correspondent pas."; return; }
   try {
     const data = await FLIPCARDS_AUTH.api("/api/reset", {

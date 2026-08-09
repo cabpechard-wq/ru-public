@@ -25,16 +25,19 @@
       <label class="field" for="email">E-mail <span class="field-hint">(e-mail fourni lors du paiement)</span></label>
       <input id="email" type="email" required autocomplete="username">
       <label class="field" for="pw">Mot de passe</label>
-      <input id="pw" type="password" required minlength="4" autocomplete="current-password">
+      <input id="pw" type="password" required minlength="10" autocomplete="current-password">
       <label class="field" style="display:flex;align-items:center;gap:.45rem;font-weight:500;color:var(--muted)">
         <input type="checkbox" id="remember" checked style="width:auto"> Rester connecté sur cet appareil
       </label>
       <button class="btn block" type="submit" style="margin-top:1rem">Se connecter</button>
       <div class="err" id="err"></div>
     </form>
-    <div class="form-links">
-      <a href="./forgot/">Mot de passe oublié</a><br>
-      <a href="./compte/">Modifier le mot de passe</a><br>
+    <div class="form-links form-links-row">
+      <div class="form-links-account">
+        <a href="./forgot/">Mot de passe oublié</a>
+        <span class="form-links-sep" aria-hidden="true">·</span>
+        <a href="./compte/">Modifier le mot de passe</a>
+      </div>
       <a class="btn-capsule" href="../checkout/">S’inscrire</a>
     </div>
   </div>

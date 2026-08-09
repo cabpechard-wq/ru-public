@@ -1,3 +1,12 @@
 /flipcards/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+/relier/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+/relier-dico/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+/flipcards-dico/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="720" viewBox="0 0 520 720" fill="none">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c4a06a"/>
+      <stop offset="55%" stop-color="#8a6238"/>
+      <stop offset="100%" stop-color="#5c3d22"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#efe6d4"/>
+      <stop offset="100%" stop-color="#d4c4a8"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="28%" stop-color="#fff" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="1"/>
+    </linearGradient>
+    <mask id="soft"><rect width="520" height="720" fill="url(#fade)"/></mask>
+    <radialGradient id="spot" cx="60%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#d4a84b" stop-opacity=".35"/>
+      <stop offset="100%" stop-color="#d4a84b" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g mask="url(#soft)" opacity=".92">
+    <!-- hall backdrop -->
+    <path d="M40 80 C120 40, 400 40, 500 90 L500 200 C420 160, 120 160, 40 200 Z" fill="url(#cream)" opacity=".55"/>
+    <ellipse cx="270" cy="170" rx="210" ry="48" fill="url(#spot)"/>
+    <!-- stage / tribune -->
+    <ellipse cx="270" cy="210" rx="70" ry="18" fill="#6b4424"/>
+    <rect x="230" y="175" width="80" height="40" rx="4" fill="url(#wood)"/>
+    <rect x="245" y="155" width="50" height="28" rx="3" fill="#3d2814"/>
+    <!-- concentric wooden benches (Sorbonne horseshoe) -->
+    <path d="M70 250 C140 220, 400 220, 470 250" stroke="url(#wood)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M55 295 C140 255, 400 255, 485 295" stroke="url(#wood)" stroke-width="15" fill="none" stroke-linecap="round"/>
+    <path d="M42 345 C140 295, 400 295, 498 345" stroke="url(#wood)" stroke-width="16" fill="none" stroke-linecap="round"/>
+    <path d="M32 400 C140 340, 400 340, 505 400" stroke="url(#wood)" stroke-width="17" fill="none" stroke-linecap="round"/>
+    <path d="M24 460 C140 390, 400 390, 508 460" stroke="url(#wood)" stroke-width="18" fill="none" stroke-linecap="round"/>
+    <path d="M18 525 C140 445, 400 445, 510 525" stroke="url(#wood)" stroke-width="19" fill="none" stroke-linecap="round"/>
+    <path d="M14 595 C140 505, 400 505, 512 595" stroke="url(#wood)" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <!-- bench edge highlights -->
+    <path d="M70 244 C140 214, 400 214, 470 244" stroke="#e6c98a" stroke-width="2" fill="none" opacity=".45"/>
+    <path d="M55 289 C140 249, 400 249, 485 289" stroke="#e6c98a" stroke-width="2" fill="none" opacity=".4"/>
+    <path d="M42 339 C140 289, 400 289, 498 339" stroke="#e6c98a" stroke-width="2" fill="none" opacity=".35"/>
+    <!-- aisle lines -->
+    <path d="M270 225 L270 610" stroke="#d4a84b" stroke-width="1.5" opacity=".25" stroke-dasharray="4 8"/>
+    <path d="M180 230 L120 620" stroke="#d4a84b" stroke-width="1" opacity=".18"/>
+    <path d="M360 230 L420 620" stroke="#d4a84b" stroke-width="1" opacity=".18"/>
+    <!-- columns -->
+    <rect x="48" y="100" width="18" height="140" rx="3" fill="#d8cdb8" opacity=".7"/>
+    <rect x="454" y="100" width="18" height="140" rx="3" fill="#d8cdb8" opacity=".7"/>
+    <ellipse cx="57" cy="100" rx="14" ry="6" fill="#efe6d4" opacity=".8"/>
+    <ellipse cx="463" cy="100" rx="14" ry="6" fill="#efe6d4" opacity=".8"/>
+  </g>
+</svg>

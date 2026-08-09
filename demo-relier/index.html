@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Relations (Grands arrêts) - démo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link id="theme-fonts" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap">
+<link id="theme-css" rel="stylesheet" href="../site.css">
+<style>
+/* Relier — charte via site.css / themes/ ; jetons locaux pour l’exercice */
+:root {
+  --brass: var(--accent);
+  --ok: #3d9a6a;
+  --ok-soft: rgba(61, 154, 106, .16);
+  --bad: #c45c5c;
+  --bad-soft: rgba(196, 92, 92, .16);
+  --line: var(--accent);
+  --line-soft: rgba(196, 163, 90, .55);
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%;
+  color: var(--ink);
+  font-family: var(--font-ui);
+}
+body { padding: 0 0 3.5rem; }
+.wrap { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 0; }
+.screen[hidden] { display: none !important; }
+.page-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .75rem 1.25rem;
+  margin: 0 0 .4rem;
+}
+.page-title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+.page-sub {
+  margin: 0 0 1.5rem;
+  color: var(--muted); font-size: .95rem; line-height: 1.5;
+}
+.demo-upsell {
+  flex: 0 0 auto;
+  margin: 0;
+  margin-left: auto;
+}
+.demo-upsell-link {
+  display: inline-block;
+  padding: .35rem 0;
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-size: .68em;
+  font-weight: 700;
+  letter-spacing: .08em;
+  line-height: 1.3;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.demo-upsell-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.home-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: .15rem 1.1rem 1.1rem;
+}
+.classifier + .classifier { border-top: 1px solid var(--border); }
+.classifier-row {
+  display: flex; align-items: center; gap: .75rem; min-height: 3rem;
+}
+.classifier-toggle {
+  appearance: none; border: 0; background: none; padding: 0;
+  display: flex; align-items: center; gap: .6rem;
+  cursor: pointer; color: inherit; font: inherit; min-width: 0;
+}
+.classifier-title {
+  margin: 0; font-size: 1rem; font-weight: 700; color: var(--ink);
+}
+.classifier-hint {
+  font-size: .72rem; font-weight: 500; color: var(--muted);
+}
+.classifier-chevron {
+  width: 1rem; height: 1rem; color: var(--ink); flex: 0 0 auto;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.classifier.is-open .classifier-chevron { transform: rotate(180deg); }
+.classifier-clear {
+  appearance: none; border: 0; background: none; padding: 0;
+  margin-left: auto; color: var(--muted);
+  font: 500 .82rem var(--font-ui); cursor: pointer; white-space: nowrap;
+}
+.classifier-clear:hover { color: var(--accent); }
+.classifier-slide {
+  height: 0; overflow: hidden;
+  transition: height .35s cubic-bezier(.2,.8,.2,1);
+}
+.classifier-slide-inner { min-height: 0; }
+.classifier-body { padding: 0 0 1rem 1.5rem; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chips-empty { margin: 0; color: var(--muted); font-size: .9rem; }
+.chip {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--muted);
+  border-radius: 999px; padding: .4rem .85rem;
+  font: 600 .78rem var(--font-ui); cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+}
+.chip:hover { border-color: var(--accent); color: var(--accent); }
+.chip[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: var(--bg);
+}
+.chip.is-disabled, .chip:disabled {
+  opacity: .28; cursor: not-allowed; pointer-events: none;
+  background: var(--bg-elevated); color: var(--muted);
+}
+.chip.is-exclusive-dim:not([aria-pressed="true"]) {
+  opacity: .28; background: var(--bg-elevated); color: var(--muted);
+}
+.chip-importance {
+  letter-spacing: .06em; color: var(--brass);
+  border-color: rgba(196, 163, 90, .35);
+}
+.chip-importance[aria-pressed="true"],
+.chip-importance[aria-pressed="true"]:hover {
+  background: var(--brass); border-color: var(--brass); color: var(--bg);
+}
+.chip-size[aria-pressed="true"] {
+  background: var(--accent); border-color: var(--accent); color: var(--bg);
+}
+.chip[data-color="default"], .tag[data-color="default"] {
+  --chip-border: #d1d5db; --chip-vivid: #4b5563;
+}
+.chip[data-color="gray"], .tag[data-color="gray"] {
+  --chip-border: #d1d5db; --chip-vivid: #4b5563;
+}
+.chip[data-color="brown"], .tag[data-color="brown"] {
+  --chip-border: #d4a574; --chip-vivid: #9a5b3a;
+}
+.chip[data-color="orange"], .tag[data-color="orange"] {
+  --chip-border: #fdba74; --chip-vivid: #ea580c;
+}
+.chip[data-color="yellow"], .tag[data-color="yellow"] {
+  --chip-border: #facc15; --chip-vivid: #ca8a04;
+}
+.chip[data-color="green"], .tag[data-color="green"] {
+  --chip-border: #009900; --chip-vivid: #009900;
+}
+.chip[data-color="blue"], .tag[data-color="blue"] {
+  --chip-border: #93c5fd; --chip-vivid: #2563eb;
+}
+.chip[data-color="purple"], .tag[data-color="purple"] {
+  --chip-border: #d8b4fe; --chip-vivid: #9333ea;
+}
+.chip[data-color="pink"], .tag[data-color="pink"] {
+  --chip-border: #f9a8d4; --chip-vivid: #db2777;
+}
+.chip[data-color="red"], .tag[data-color="red"] {
+  --chip-border: #fca5a5; --chip-vivid: #dc2626;
+}
+
+.chip[data-color] {
+  background: var(--bg-elevated);
+  border-color: var(--chip-border);
+  color: var(--muted);
+}
+.chip[data-color]:hover:not(:disabled):not(.is-disabled):not(.is-exclusive-dim):not([aria-pressed="true"]) {
+  background: var(--bg-elevated);
+  border-color: var(--chip-vivid);
+  color: var(--chip-vivid);
+}
+.chip[data-color][aria-pressed="true"],
+.chip[data-color][aria-pressed="true"]:hover {
+  background: var(--chip-vivid);
+  border-color: var(--chip-vivid);
+  color: #0e1419;
+}
+.chip[data-color].is-disabled,
+.chip[data-color]:disabled,
+.chip[data-color].is-exclusive-dim:not([aria-pressed="true"]) {
+  background: var(--bg-elevated);
+  border-color: var(--chip-border);
+  color: var(--muted);
+  opacity: .28;
+}
+.tag[data-color] {
+  background: var(--bg);
+  border: 1px solid var(--chip-border);
+  color: var(--muted);
+  border-radius: 999px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .classifier-chevron { transition: none; }
+}
+.home-footer {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .85rem;
+  margin-top: .1rem; padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.home-count { font-weight: 600; font-size: .98rem; }
+.home-count span { color: var(--accent); font-family: var(--font-display); font-size: 1.2rem; }
+.home-hint { display: block; margin-top: .15rem; font-size: .8rem; color: var(--muted); }
+.home-actions { display: flex; flex-wrap: wrap; gap: .55rem; align-items: center; }
+.btn-start {
+  appearance: none; border: 0;
+  background: var(--accent); color: var(--bg);
+  border-radius: var(--radius); padding: .8rem 1.25rem;
+  font: 650 .92rem var(--font-ui); cursor: pointer;
+}
+.btn-start:disabled { opacity: .35; cursor: default; }
+.btn-start:not(:disabled):hover { background: var(--accent-hover); }
+.series-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: .65rem;
+  margin-top: .85rem; padding-top: .85rem;
+  border-top: 1px solid var(--border);
+}
+.series-label {
+  font-size: .85rem; font-weight: 650; color: var(--ink); margin-right: .25rem;
+}
+
+/* —— Jeu —— */
+.game-bar {
+  display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: space-between; gap: .75rem; margin-bottom: 1rem;
+}
+.btn-back {
+  appearance: none; border: 0; background: none; padding: 0;
+  color: var(--muted); font: 600 .9rem var(--font-ui); cursor: pointer;
+}
+.btn-back:hover { color: var(--accent); }
+.game-summary {
+  font-size: .88rem; color: var(--muted); text-align: right;
+}
+.board-wrap {
+  position: relative;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem .85rem 1.15rem;
+  overflow: visible;
+}
+.board {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+}
+.board-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  min-width: 0;
+}
+.col-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--accent);
+}
+#board-rows {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  min-width: 0;
+}
+.board-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4.5rem;
+  align-items: stretch;
+  min-width: 0;
+}
+.pair-item {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--ink);
+  border-radius: var(--radius);
+  padding: .7rem .85rem;
+  font: 500 .9rem / 1.4 var(--font-ui);
+  text-align: left;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: border-color .15s, background .15s, box-shadow .15s, opacity .15s;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+.pair-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.pair-item.is-source { cursor: grab; }
+.pair-item.is-target { cursor: default; }
+.pair-item.is-dragging {
+  opacity: .55; cursor: grabbing;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+}
+.pair-item.is-drop-hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.pair-item.is-correct {
+  border-color: var(--ok);
+  background: var(--ok-soft);
+}
+.pair-item.is-incorrect {
+  border-color: var(--bad);
+  background: var(--bad-soft);
+}
+.pair-item .pair-label {
+  display: block;
+  word-break: break-word;
+}
+.portee-tip {
+  position: absolute;
+  z-index: 12;
+  width: min(22rem, 42vw);
+  max-height: min(24rem, 70vh);
+  padding: .9rem 0 .9rem 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, .2),
+    0 10px 28px rgba(0, 0, 0, .35);
+  box-sizing: border-box;
+  text-align: left;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  cursor: default;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(.35rem);
+  transition: opacity .15s ease, visibility .15s ease, transform .15s ease;
+}
+.portee-tip.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+.portee-tip::before {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: var(--portee-arrow-top, 1.4rem);
+  border: 8px solid transparent;
+  border-right-color: var(--border);
+}
+.portee-tip::after {
+  content: "";
+  position: absolute;
+  right: 100%;
+  top: calc(var(--portee-arrow-top, 1.4rem) + .1rem);
+  border: 7px solid transparent;
+  border-right-color: var(--bg-elevated);
+  margin-right: -1px;
+}
+.portee-tip-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: .65rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(196, 163, 90, .42) transparent;
+  background:
+    linear-gradient(var(--bg-elevated) 28%, rgba(22, 32, 40, 0)) center top,
+    linear-gradient(rgba(22, 32, 40, 0), var(--bg-elevated) 72%) center bottom;
+  background-size: 100% 1.35rem, 100% 1.35rem;
+  background-repeat: no-repeat;
+  background-attachment: local, local;
+}
+.portee-tip-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.portee-tip-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  margin: .15rem 0;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb {
+  background: rgba(196, 163, 90, .32);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(196, 163, 90, .58);
+  background-clip: padding-box;
+}
+.portee-tip-scroll::-webkit-scrollbar-thumb:active {
+  background: var(--accent);
+  background-clip: padding-box;
+}
+.portee-tip-label {
+  margin: 0 0 .35rem;
+  font-family: var(--font-display);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--secondary, var(--accent));
+}
+.portee-tip-text {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: .8rem;
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--ink);
+  text-align: justify;
+  white-space: pre-wrap;
+}
+.portee-tip.is-empty .portee-tip-text {
+  color: var(--muted);
+  font-style: italic;
+  text-align: left;
+}
+.svg-layer {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 3;
+  overflow: visible;
+}
+.svg-layer line {
+  stroke: var(--line-soft);
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+}
+.svg-layer line.is-provisional {
+  stroke: var(--line);
+  stroke-dasharray: 5 4;
+  opacity: .9;
+}
+.svg-layer line.is-link {
+  stroke: var(--line-soft);
+  opacity: .85;
+}
+.svg-layer line.is-correct {
+  stroke: var(--ok);
+  opacity: 1;
+}
+.svg-layer line.is-incorrect {
+  stroke: var(--bad);
+  opacity: 1;
+}
+.game-actions {
+  display: flex; flex-wrap: wrap; gap: .55rem;
+  margin-top: 1rem; align-items: center;
+}
+.btn {
+  appearance: none; border: 1px solid var(--border);
+  background: var(--bg-elevated); color: var(--ink);
+  border-radius: var(--radius); padding: .7rem 1.1rem;
+  font: 650 .9rem var(--font-ui); cursor: pointer;
+}
+.btn:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: .35; cursor: default; }
+.btn-primary {
+  border: 0; background: var(--accent); color: var(--bg);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-hover); color: var(--bg); border: 0;
+}
+.score-banner {
+  margin-top: 1rem;
+  padding: .85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.score-banner[hidden] { display: none !important; }
+.score-banner strong {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+.score-banner.is-perfect strong { color: var(--ok); }
+.empty-filter {
+  margin: 1.5rem 0; color: var(--muted); text-align: center;
+}
+.study-copy {
+  margin: 1.25rem 0 0;
+  font-size: .72rem; color: var(--muted); line-height: 1.45;
+}
+@media (max-width: 720px) {
+  .wrap { padding: 1.15rem .75rem 0; }
+  .board-head, .board-row { gap: 1.35rem 2.25rem; }
+  .pair-item { padding: .6rem .7rem; font-size: .84rem; }
+  .portee-tip {
+    width: min(18rem, calc(100vw - 1.5rem));
+    max-height: min(16rem, 50vh);
+  }
+  .home-footer { flex-direction: column; align-items: stretch; }
+  .home-actions { width: 100%; }
+  .btn-start { flex: 1; width: 100%; }
+  .game-actions .btn { flex: 1 1 auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pair-item { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" id="app">
+  <section class="screen" id="screen-home" aria-label="Accueil Relier">
+    <div class="page-heading">
+      <h1 class="page-title">Relations (Grands arrêts) - démo</h1>
+      <p class="demo-upsell"><a class="demo-upsell-link" href="../checkout/">Accès à toutes les ressources…</a></p>
+    </div>
+    <p class="page-sub">Associez chaque nom à sa objet. Choisissez la taille de série, puis reliez.</p>
+    <div class="home-card">
+      
+      <div class="classifier" data-group-panel="theme">
+        <div class="classifier-row">
+          <button type="button" class="classifier-toggle" aria-expanded="false" aria-controls="chips-theme">
+            <svg class="classifier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="classifier-title">1- Thèmes <span class="classifier-hint">(1 seul choix)</span></span>
+          </button>
+          <button type="button" class="classifier-clear" data-clear="theme">Effacer la sélection</button>
+        </div>
+        <div class="classifier-slide">
+          <div class="classifier-slide-inner">
+            <div class="classifier-body">
+              <div class="chips" id="chips-theme" role="group" aria-label="1- Thèmes"><button type="button" class="chip" data-group="theme" data-value="Actes administratifs unilatéraux" data-color="green" aria-pressed="false">Actes administratifs unilatéraux</button>
+<button type="button" class="chip" data-group="theme" data-value="Biens de l&#x27;administration" data-color="green" aria-pressed="false">Biens de l&#x27;administration</button>
+<button type="button" class="chip" data-group="theme" data-value="Collectivités territoriales / décentralisation" data-color="orange" aria-pressed="false">Collectivités territoriales / décentralisation</button>
+<button type="button" class="chip" data-group="theme" data-value="Compétence de la juridiction administrative" data-color="purple" aria-pressed="false">Compétence de la juridiction administrative</button>
+<button type="button" class="chip" data-group="theme" data-value="Constitution" data-color="yellow" aria-pressed="false">Constitution</button>
+<button type="button" class="chip" data-group="theme" data-value="Contrats administratifs" data-color="green" aria-pressed="false">Contrats administratifs</button>
+<button type="button" class="chip" data-group="theme" data-value="Droit international" data-color="yellow" aria-pressed="false">Droit international</button>
+<button type="button" class="chip" data-group="theme" data-value="Entités publiques spécialisées" data-color="orange" aria-pressed="false">Entités publiques spécialisées</button>
+<button type="button" class="chip" data-group="theme" data-value="Loi et règlements" data-color="yellow" aria-pressed="false">Loi et règlements</button>
+<button type="button" class="chip" data-group="theme" data-value="Organisation et fonctionnement de la juridiction administrative" data-color="purple" aria-pressed="false">Organisation et fonctionnement de la juridiction administrative</button>
+<button type="button" class="chip" data-group="theme" data-value="Pouvoir de police" data-color="green" aria-pressed="false">Pouvoir de police</button>
+<button type="button" class="chip" data-group="theme" data-value="Principes du système normatif" data-color="yellow" aria-pressed="false">Principes du système normatif</button>
+<button type="button" class="chip" data-group="theme" data-value="Principes généraux de la responsabilité de l&#x27;administration" data-color="red" aria-pressed="false">Principes généraux de la responsabilité de l&#x27;administration</button>
+<button type="button" class="chip" data-group="theme" data-value="Principes généraux du droit" data-color="yellow" aria-pressed="false">Principes généraux du droit</button>
+<button type="button" class="chip" data-group="theme" data-value="Quasi-contrats" data-color="red" aria-pressed="false">Quasi-contrats</button>
+<button type="button" class="chip" data-group="theme" data-value="Responsabilité des agents publics" data-color="red" aria-pressed="false">Responsabilité des agents publics</button>
+<button type="button" class="chip" data-group="theme" data-value="Responsabilité pour faute" data-color="red" aria-pressed="false">Responsabilité pour faute</button>
+<button type="button" class="chip" data-group="theme" data-value="Responsabilité sans faute" data-color="red" aria-pressed="false">Responsabilité sans faute</button>
+<button type="button" class="chip" data-group="theme" data-value="Service public" data-color="green" aria-pressed="false">Service public</button>
+<button type="button" class="chip" data-group="theme" data-value="État / déconcentration" data-color="orange" aria-pressed="false">État / déconcentration</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="classifier" data-group-panel="notion">
+        <div class="classifier-row">
+          <button type="button" class="classifier-toggle" aria-expanded="false" aria-controls="chips-notion">
+            <svg class="classifier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="classifier-title">2- Notions <span class="classifier-hint">(filtre par sélection multiple)</span></span>
+          </button>
+          <button type="button" class="classifier-clear" data-clear="notion">Effacer la sélection</button>
+        </div>
+        <div class="classifier-slide">
+          <div class="classifier-slide-inner">
+            <div class="classifier-body">
+              <div class="chips" id="chips-notion" role="group" aria-label="Notions"><button type="button" class="chip" data-group="notion" data-value="Abrogation implicite" data-color="red" aria-pressed="false">Abrogation implicite</button>
+<button type="button" class="chip" data-group="notion" data-value="Acte administratif unilatéral (qualification)" data-color="gray" aria-pressed="false">Acte administratif unilatéral (qualification)</button>
+<button type="button" class="chip" data-group="notion" data-value="Acte de gouvernement" data-color="yellow" aria-pressed="false">Acte de gouvernement</button>
+<button type="button" class="chip" data-group="notion" data-value="Acte détachable" data-color="blue" aria-pressed="false">Acte détachable</button>
+<button type="button" class="chip" data-group="notion" data-value="Acte préparatoire aux opérations électorales" data-color="orange" aria-pressed="false">Acte préparatoire aux opérations électorales</button>
+<button type="button" class="chip" data-group="notion" data-value="Action en désaveu (recevabilité)" data-color="orange" aria-pressed="false">Action en désaveu (recevabilité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Adaptation outre-mer (article 73)" data-color="brown" aria-pressed="false">Adaptation outre-mer (article 73)</button>
+<button type="button" class="chip" data-group="notion" data-value="Agent contractuel de droit public (unification)" data-color="blue" aria-pressed="false">Agent contractuel de droit public (unification)</button>
+<button type="button" class="chip" data-group="notion" data-value="Agent d’un SPIC (exception fonctionnaire — direction — comptable)" data-color="pink" aria-pressed="false">Agent d’un SPIC (exception fonctionnaire — direction — comptable)</button>
+<button type="button" class="chip" data-group="notion" data-value="Aide indirecte aux entreprises" data-color="orange" aria-pressed="false">Aide indirecte aux entreprises</button>
+<button type="button" class="chip" data-group="notion" data-value="Aide sociale à l&#x27;enfance (femmes enceintes et mères isolées)" data-color="green" aria-pressed="false">Aide sociale à l&#x27;enfance (femmes enceintes et mères isolées)</button>
+<button type="button" class="chip" data-group="notion" data-value="Appel en garantie (obligations de droit privé)" data-color="gray" aria-pressed="false">Appel en garantie (obligations de droit privé)</button>
+<button type="button" class="chip" data-group="notion" data-value="Appel en garantie quasi-délictuel (absence de contrat privé)" data-color="default" aria-pressed="false">Appel en garantie quasi-délictuel (absence de contrat privé)</button>
+<button type="button" class="chip" data-group="notion" data-value="Appréciation de la légalité à la date du jugement" data-color="brown" aria-pressed="false">Appréciation de la légalité à la date du jugement</button>
+<button type="button" class="chip" data-group="notion" data-value="Association gestionnaire d&#x27;un service public" data-color="pink" aria-pressed="false">Association gestionnaire d&#x27;un service public</button>
+<button type="button" class="chip" data-group="notion" data-value="Astreinte (liquidation — compétence du juge)" data-color="brown" aria-pressed="false">Astreinte (liquidation — compétence du juge)</button>
+<button type="button" class="chip" data-group="notion" data-value="Attroupement (lieu privé)" data-color="orange" aria-pressed="false">Attroupement (lieu privé)</button>
+<button type="button" class="chip" data-group="notion" data-value="Attroupement et rassemblement (qualité de la victime)" data-color="yellow" aria-pressed="false">Attroupement et rassemblement (qualité de la victime)</button>
+<button type="button" class="chip" data-group="notion" data-value="Attroupement et rassemblement (émeute — loi de 1884)" data-color="purple" aria-pressed="false">Attroupement et rassemblement (émeute — loi de 1884)</button>
+<button type="button" class="chip" data-group="notion" data-value="Auteur de l&#x27;acte" data-color="brown" aria-pressed="false">Auteur de l&#x27;acte</button>
+<button type="button" class="chip" data-group="notion" data-value="Autonomie financière de l&#x27;établissement public" data-color="blue" aria-pressed="false">Autonomie financière de l&#x27;établissement public</button>
+<button type="button" class="chip" data-group="notion" data-value="Autorité de la chose jugée" data-color="green" aria-pressed="false">Autorité de la chose jugée</button>
+<button type="button" class="chip" data-group="notion" data-value="Brouillage d’émissions étrangères (acte de gouvernement)" data-color="brown" aria-pressed="false">Brouillage d’émissions étrangères (acte de gouvernement)</button>
+<button type="button" class="chip" data-group="notion" data-value="Carence avérée et prolongée" data-color="purple" aria-pressed="false">Carence avérée et prolongée</button>
+<button type="button" class="chip" data-group="notion" data-value="Carence normative" data-color="blue" aria-pressed="false">Carence normative</button>
+<button type="button" class="chip" data-group="notion" data-value="Catégorie d&#x27;établissement public (article 34)" data-color="gray" aria-pressed="false">Catégorie d&#x27;établissement public (article 34)</button>
+<button type="button" class="chip" data-group="notion" data-value="Cession à prix minoré (contreparties suffisantes)" data-color="brown" aria-pressed="false">Cession à prix minoré (contreparties suffisantes)</button>
+<button type="button" class="chip" data-group="notion" data-value="Charge de la preuve" data-color="red" aria-pressed="false">Charge de la preuve</button>
+<button type="button" class="chip" data-group="notion" data-value="Charge spéciale et exorbitante" data-color="purple" aria-pressed="false">Charge spéciale et exorbitante</button>
+<button type="button" class="chip" data-group="notion" data-value="Chef de préjudice (recevabilité en appel)" data-color="blue" aria-pressed="false">Chef de préjudice (recevabilité en appel)</button>
+<button type="button" class="chip" data-group="notion" data-value="Circonstances exceptionnelles" data-color="default" aria-pressed="false">Circonstances exceptionnelles</button>
+<button type="button" class="chip" data-group="notion" data-value="Classement statutaire (corps de fonctionnaires)" data-color="orange" aria-pressed="false">Classement statutaire (corps de fonctionnaires)</button>
+<button type="button" class="chip" data-group="notion" data-value="Clause compromissoire (autonomie)" data-color="gray" aria-pressed="false">Clause compromissoire (autonomie)</button>
+<button type="button" class="chip" data-group="notion" data-value="Clause exorbitante (cahier des charges annexe)" data-color="blue" aria-pressed="false">Clause exorbitante (cahier des charges annexe)</button>
+<button type="button" class="chip" data-group="notion" data-value="Clause exorbitante (définition classique)" data-color="red" aria-pressed="false">Clause exorbitante (définition classique)</button>
+<button type="button" class="chip" data-group="notion" data-value="Clause exorbitante (définition positive)" data-color="green" aria-pressed="false">Clause exorbitante (définition positive)</button>
+<button type="button" class="chip" data-group="notion" data-value="Clause limitative de responsabilité (contrat administratif)" data-color="default" aria-pressed="false">Clause limitative de responsabilité (contrat administratif)</button>
+<button type="button" class="chip" data-group="notion" data-value="Compensation financière des transferts de compétences" data-color="default" aria-pressed="false">Compensation financière des transferts de compétences</button>
+<button type="button" class="chip" data-group="notion" data-value="Composition irrégulière (avis public antérieur)" data-color="default" aria-pressed="false">Composition irrégulière (avis public antérieur)</button>
+<button type="button" class="chip" data-group="notion" data-value="Compétence de l&#x27;auteur de l&#x27;acte" data-color="yellow" aria-pressed="false">Compétence de l&#x27;auteur de l&#x27;acte</button>
+<button type="button" class="chip" data-group="notion" data-value="Compétence judiciaire (loi du 5 avril 1884)" data-color="red" aria-pressed="false">Compétence judiciaire (loi du 5 avril 1884)</button>
+<button type="button" class="chip" data-group="notion" data-value="Compétence pénale prétorienne (contrat administratif)" data-color="brown" aria-pressed="false">Compétence pénale prétorienne (contrat administratif)</button>
+<button type="button" class="chip" data-group="notion" data-value="Concurrent évincé (recevabilité du recours)" data-color="brown" aria-pressed="false">Concurrent évincé (recevabilité du recours)</button>
+<button type="button" class="chip" data-group="notion" data-value="Continuité du service public" data-color="red" aria-pressed="false">Continuité du service public</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrat de fournitures (sans travaux)" data-color="default" aria-pressed="false">Contrat de fournitures (sans travaux)</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrat d’association (enseignement privé)" data-color="purple" aria-pressed="false">Contrat d’association (enseignement privé)</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrat verbal (absence de formalisme)" data-color="pink" aria-pressed="false">Contrat verbal (absence de formalisme)</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrôle analogue (participation privée)" data-color="pink" aria-pressed="false">Contrôle analogue (participation privée)</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrôle de constitutionnalité des engagements internationaux" data-color="orange" aria-pressed="false">Contrôle de constitutionnalité des engagements internationaux</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrôle d’opportunité (exclusion)" data-color="purple" aria-pressed="false">Contrôle d’opportunité (exclusion)</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrôle restreint" data-color="brown" aria-pressed="false">Contrôle restreint</button>
+<button type="button" class="chip" data-group="notion" data-value="Contrôle étroit (clause dérogatoire)" data-color="purple" aria-pressed="false">Contrôle étroit (clause dérogatoire)</button>
+<button type="button" class="chip" data-group="notion" data-value="Critère social (marchés publics)" data-color="gray" aria-pressed="false">Critère social (marchés publics)</button>
+<button type="button" class="chip" data-group="notion" data-value="Critères d’attribution (précision suffisante)" data-color="pink" aria-pressed="false">Critères d’attribution (précision suffisante)</button>
+<button type="button" class="chip" data-group="notion" data-value="Critères environnementaux (marchés publics)" data-color="orange" aria-pressed="false">Critères environnementaux (marchés publics)</button>
+<button type="button" class="chip" data-group="notion" data-value="Devoir d&#x27;obéissance hiérarchique" data-color="orange" aria-pressed="false">Devoir d&#x27;obéissance hiérarchique</button>
+<button type="button" class="chip" data-group="notion" data-value="Domaine des lois de finances" data-color="gray" aria-pressed="false">Domaine des lois de finances</button>
+<button type="button" class="chip" data-group="notion" data-value="Domaine privé (aliénation)" data-color="default" aria-pressed="false">Domaine privé (aliénation)</button>
+<button type="button" class="chip" data-group="notion" data-value="Domaine réglementaire" data-color="red" aria-pressed="false">Domaine réglementaire</button>
+<button type="button" class="chip" data-group="notion" data-value="Domanialité publique virtuelle" data-color="brown" aria-pressed="false">Domanialité publique virtuelle</button>
+<button type="button" class="chip" data-group="notion" data-value="Dommage corporel" data-color="blue" aria-pressed="false">Dommage corporel</button>
+<button type="button" class="chip" data-group="notion" data-value="Dommage de travaux publics" data-color="pink" aria-pressed="false">Dommage de travaux publics</button>
+<button type="button" class="chip" data-group="notion" data-value="Double degré de juridiction (absence de valeur constitutionnelle)" data-color="brown" aria-pressed="false">Double degré de juridiction (absence de valeur constitutionnelle)</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit d&#x27;accès aux documents administratifs" data-color="default" aria-pressed="false">Droit d&#x27;accès aux documents administratifs</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit d&#x27;amendement (lecture définitive)" data-color="yellow" aria-pressed="false">Droit d&#x27;amendement (lecture définitive)</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit de grève" data-color="default" aria-pressed="false">Droit de grève</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit de propriété" data-color="gray" aria-pressed="false">Droit de propriété</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit d’accès à un tribunal (article 6 § 1)" data-color="default" aria-pressed="false">Droit d’accès à un tribunal (article 6 § 1)</button>
+<button type="button" class="chip" data-group="notion" data-value="Droit souple (recevabilité du recours)" data-color="blue" aria-pressed="false">Droit souple (recevabilité du recours)</button>
+<button type="button" class="chip" data-group="notion" data-value="Droits de la défense" data-color="pink" aria-pressed="false">Droits de la défense</button>
+<button type="button" class="chip" data-group="notion" data-value="Durée des délégations de service public (ordre public)" data-color="pink" aria-pressed="false">Durée des délégations de service public (ordre public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Durée du mandat des élus locaux" data-color="gray" aria-pressed="false">Durée du mandat des élus locaux</button>
+<button type="button" class="chip" data-group="notion" data-value="Déchéance du concessionnaire (procédure)" data-color="blue" aria-pressed="false">Déchéance du concessionnaire (procédure)</button>
+<button type="button" class="chip" data-group="notion" data-value="Décision confirmative" data-color="gray" aria-pressed="false">Décision confirmative</button>
+<button type="button" class="chip" data-group="notion" data-value="Déconcentration" data-color="blue" aria-pressed="false">Déconcentration</button>
+<button type="button" class="chip" data-group="notion" data-value="Décoration honorifique (Légion d’honneur)" data-color="yellow" aria-pressed="false">Décoration honorifique (Légion d’honneur)</button>
+<button type="button" class="chip" data-group="notion" data-value="Défaut d&#x27;information" data-color="default" aria-pressed="false">Défaut d&#x27;information</button>
+<button type="button" class="chip" data-group="notion" data-value="Délai de recours contentieux" data-color="gray" aria-pressed="false">Délai de recours contentieux</button>
+<button type="button" class="chip" data-group="notion" data-value="Délai raisonnable de recours" data-color="brown" aria-pressed="false">Délai raisonnable de recours</button>
+<button type="button" class="chip" data-group="notion" data-value="Détournement de pouvoir" data-color="yellow" aria-pressed="false">Détournement de pouvoir</button>
+<button type="button" class="chip" data-group="notion" data-value="Effet direct (droit de l&#x27;Union européenne)" data-color="pink" aria-pressed="false">Effet direct (droit de l&#x27;Union européenne)</button>
+<button type="button" class="chip" data-group="notion" data-value="Effet direct (traité international hors Union européenne)" data-color="brown" aria-pressed="false">Effet direct (traité international hors Union européenne)</button>
+<button type="button" class="chip" data-group="notion" data-value="Enrichissement sans cause" data-color="brown" aria-pressed="false">Enrichissement sans cause</button>
+<button type="button" class="chip" data-group="notion" data-value="Erreur manifeste d’appréciation" data-color="gray" aria-pressed="false">Erreur manifeste d’appréciation</button>
+<button type="button" class="chip" data-group="notion" data-value="Erreur matérielle (recours en rectification)" data-color="green" aria-pressed="false">Erreur matérielle (recours en rectification)</button>
+<button type="button" class="chip" data-group="notion" data-value="Examen individuel de la situation" data-color="yellow" aria-pressed="false">Examen individuel de la situation</button>
+<button type="button" class="chip" data-group="notion" data-value="Exception d’inexécution (exclusion)" data-color="gray" aria-pressed="false">Exception d’inexécution (exclusion)</button>
+<button type="button" class="chip" data-group="notion" data-value="Exception in house (quasi-régie)" data-color="green" aria-pressed="false">Exception in house (quasi-régie)</button>
+<button type="button" class="chip" data-group="notion" data-value="Expropriation pour cause d&#x27;utilité publique" data-color="red" aria-pressed="false">Expropriation pour cause d&#x27;utilité publique</button>
+<button type="button" class="chip" data-group="notion" data-value="Expulsion (occupant sans titre du domaine public)" data-color="purple" aria-pressed="false">Expulsion (occupant sans titre du domaine public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Faute de service" data-color="yellow" aria-pressed="false">Faute de service</button>
+<button type="button" class="chip" data-group="notion" data-value="Faute personnelle (détachable du service)" data-color="gray" aria-pressed="false">Faute personnelle (détachable du service)</button>
+<button type="button" class="chip" data-group="notion" data-value="Fonctionnaire de fait" data-color="yellow" aria-pressed="false">Fonctionnaire de fait</button>
+<button type="button" class="chip" data-group="notion" data-value="Fonds de commerce" data-color="default" aria-pressed="false">Fonds de commerce</button>
+<button type="button" class="chip" data-group="notion" data-value="Force majeure (contrat administratif)" data-color="pink" aria-pressed="false">Force majeure (contrat administratif)</button>
+<button type="button" class="chip" data-group="notion" data-value="Gestion d&#x27;affaires" data-color="red" aria-pressed="false">Gestion d&#x27;affaires</button>
+<button type="button" class="chip" data-group="notion" data-value="Habilitation législative (article 38)" data-color="pink" aria-pressed="false">Habilitation législative (article 38)</button>
+<button type="button" class="chip" data-group="notion" data-value="Harcèlement moral" data-color="brown" aria-pressed="false">Harcèlement moral</button>
+<button type="button" class="chip" data-group="notion" data-value="Impartialité fonctionnelle (auteur de la décision)" data-color="pink" aria-pressed="false">Impartialité fonctionnelle (auteur de la décision)</button>
+<button type="button" class="chip" data-group="notion" data-value="Impartialité objective (dualité fonctionnelle Conseil d’État)" data-color="purple" aria-pressed="false">Impartialité objective (dualité fonctionnelle Conseil d’État)</button>
+<button type="button" class="chip" data-group="notion" data-value="Impartialité objective (rapport public — gestion de fait)" data-color="yellow" aria-pressed="false">Impartialité objective (rapport public — gestion de fait)</button>
+<button type="button" class="chip" data-group="notion" data-value="Indemnisation pour inexécution (silence du contrat)" data-color="gray" aria-pressed="false">Indemnisation pour inexécution (silence du contrat)</button>
+<button type="button" class="chip" data-group="notion" data-value="Indivisibilité de la République" data-color="pink" aria-pressed="false">Indivisibilité de la République</button>
+<button type="button" class="chip" data-group="notion" data-value="Indivision successorale" data-color="green" aria-pressed="false">Indivision successorale</button>
+<button type="button" class="chip" data-group="notion" data-value="Indépendance de l&#x27;autorité judiciaire" data-color="default" aria-pressed="false">Indépendance de l&#x27;autorité judiciaire</button>
+<button type="button" class="chip" data-group="notion" data-value="Ingérence dans la correspondance (article 8 CEDH)" data-color="gray" aria-pressed="false">Ingérence dans la correspondance (article 8 CEDH)</button>
+<button type="button" class="chip" data-group="notion" data-value="Injonction (juge du contrat à une partie privée)" data-color="red" aria-pressed="false">Injonction (juge du contrat à une partie privée)</button>
+<button type="button" class="chip" data-group="notion" data-value="Injonction (plein contentieux indemnitaire)" data-color="pink" aria-pressed="false">Injonction (plein contentieux indemnitaire)</button>
+<button type="button" class="chip" data-group="notion" data-value="Insaisissabilité des biens publics" data-color="green" aria-pressed="false">Insaisissabilité des biens publics</button>
+<button type="button" class="chip" data-group="notion" data-value="Interprétation de la loi (texte clair)" data-color="brown" aria-pressed="false">Interprétation de la loi (texte clair)</button>
+<button type="button" class="chip" data-group="notion" data-value="Interprétation des traités internationaux (office du juge)" data-color="yellow" aria-pressed="false">Interprétation des traités internationaux (office du juge)</button>
+<button type="button" class="chip" data-group="notion" data-value="Intervention supplétive de l&#x27;État" data-color="brown" aria-pressed="false">Intervention supplétive de l&#x27;État</button>
+<button type="button" class="chip" data-group="notion" data-value="Intérêt moral (recevabilité du recours)" data-color="purple" aria-pressed="false">Intérêt moral (recevabilité du recours)</button>
+<button type="button" class="chip" data-group="notion" data-value="Intérêt pour agir (contribuable)" data-color="orange" aria-pressed="false">Intérêt pour agir (contribuable)</button>
+<button type="button" class="chip" data-group="notion" data-value="Intérêt public local" data-color="purple" aria-pressed="false">Intérêt public local</button>
+<button type="button" class="chip" data-group="notion" data-value="Intérêt à agir des tiers (contrat administratif)" data-color="green" aria-pressed="false">Intérêt à agir des tiers (contrat administratif)</button>
+<button type="button" class="chip" data-group="notion" data-value="Juridiction administrative" data-color="green" aria-pressed="false">Juridiction administrative</button>
+<button type="button" class="chip" data-group="notion" data-value="Langue de la République (article 2)" data-color="gray" aria-pressed="false">Langue de la République (article 2)</button>
+<button type="button" class="chip" data-group="notion" data-value="Laïcité (établissements scolaires)" data-color="green" aria-pressed="false">Laïcité (établissements scolaires)</button>
+<button type="button" class="chip" data-group="notion" data-value="Liaison du contentieux indemnitaire" data-color="gray" aria-pressed="false">Liaison du contentieux indemnitaire</button>
+<button type="button" class="chip" data-group="notion" data-value="Liberté d&#x27;entreprendre" data-color="red" aria-pressed="false">Liberté d&#x27;entreprendre</button>
+<button type="button" class="chip" data-group="notion" data-value="Liberté du commerce et de l&#x27;industrie" data-color="red" aria-pressed="false">Liberté du commerce et de l&#x27;industrie</button>
+<button type="button" class="chip" data-group="notion" data-value="Liberté individuelle et propriété privée (compétence judiciaire)" data-color="purple" aria-pressed="false">Liberté individuelle et propriété privée (compétence judiciaire)</button>
+<button type="button" class="chip" data-group="notion" data-value="Libre administration des collectivités territoriales" data-color="brown" aria-pressed="false">Libre administration des collectivités territoriales</button>
+<button type="button" class="chip" data-group="notion" data-value="Libre circulation des travailleurs (ordre public)" data-color="brown" aria-pressed="false">Libre circulation des travailleurs (ordre public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Libéralité (acceptation par une personne publique)" data-color="default" aria-pressed="false">Libéralité (acceptation par une personne publique)</button>
+<button type="button" class="chip" data-group="notion" data-value="Limites territoriales des collectivités" data-color="red" aria-pressed="false">Limites territoriales des collectivités</button>
+<button type="button" class="chip" data-group="notion" data-value="Loyauté des relations contractuelles" data-color="yellow" aria-pressed="false">Loyauté des relations contractuelles</button>
+<button type="button" class="chip" data-group="notion" data-value="Mandat implicite (personne agissant pour une personne publique)" data-color="green" aria-pressed="false">Mandat implicite (personne agissant pour une personne publique)</button>
+<button type="button" class="chip" data-group="notion" data-value="Marché public" data-color="pink" aria-pressed="false">Marché public</button>
+<button type="button" class="chip" data-group="notion" data-value="Mesure d&#x27;ordre intérieur (fonction publique)" data-color="orange" aria-pressed="false">Mesure d&#x27;ordre intérieur (fonction publique)</button>
+<button type="button" class="chip" data-group="notion" data-value="Mesures transitoires (réglementation nouvelle)" data-color="default" aria-pressed="false">Mesures transitoires (réglementation nouvelle)</button>
+<button type="button" class="chip" data-group="notion" data-value="Mission de service public (délégation — souveraineté)" data-color="red" aria-pressed="false">Mission de service public (délégation — souveraineté)</button>
+<button type="button" class="chip" data-group="notion" data-value="Mode de gestion du service public communal" data-color="green" aria-pressed="false">Mode de gestion du service public communal</button>
+<button type="button" class="chip" data-group="notion" data-value="Modulation des effets de l’annulation" data-color="default" aria-pressed="false">Modulation des effets de l’annulation</button>
+<button type="button" class="chip" data-group="notion" data-value="Moyen de légalité" data-color="gray" aria-pressed="false">Moyen de légalité</button>
+<button type="button" class="chip" data-group="notion" data-value="Mutabilité du service public" data-color="green" aria-pressed="false">Mutabilité du service public</button>
+<button type="button" class="chip" data-group="notion" data-value="Nationalité (compétence judiciaire)" data-color="default" aria-pressed="false">Nationalité (compétence judiciaire)</button>
+<button type="button" class="chip" data-group="notion" data-value="Neutralité religieuse (agents publics)" data-color="default" aria-pressed="false">Neutralité religieuse (agents publics)</button>
+<button type="button" class="chip" data-group="notion" data-value="Nomination discrétionnaire (emplois supérieurs)" data-color="yellow" aria-pressed="false">Nomination discrétionnaire (emplois supérieurs)</button>
+<button type="button" class="chip" data-group="notion" data-value="Non-lieu à statuer (jonction de requêtes)" data-color="yellow" aria-pressed="false">Non-lieu à statuer (jonction de requêtes)</button>
+<button type="button" class="chip" data-group="notion" data-value="Notation des fonctionnaires" data-color="blue" aria-pressed="false">Notation des fonctionnaires</button>
+<button type="button" class="chip" data-group="notion" data-value="Note de service (légalité)" data-color="gray" aria-pressed="false">Note de service (légalité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Nécessité et proportionnalité (police administrative)" data-color="gray" aria-pressed="false">Nécessité et proportionnalité (police administrative)</button>
+<button type="button" class="chip" data-group="notion" data-value="Négociations internationales (non-détachabilité)" data-color="yellow" aria-pressed="false">Négociations internationales (non-détachabilité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Obligations positives (droits sociaux)" data-color="blue" aria-pressed="false">Obligations positives (droits sociaux)</button>
+<button type="button" class="chip" data-group="notion" data-value="Office du juge du contrat (exécution — ancien régime)" data-color="red" aria-pressed="false">Office du juge du contrat (exécution — ancien régime)</button>
+<button type="button" class="chip" data-group="notion" data-value="Office du juge du contrat (validité)" data-color="orange" aria-pressed="false">Office du juge du contrat (validité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Ordre manifestement illégal" data-color="orange" aria-pressed="false">Ordre manifestement illégal</button>
+<button type="button" class="chip" data-group="notion" data-value="Organisation du service" data-color="purple" aria-pressed="false">Organisation du service</button>
+<button type="button" class="chip" data-group="notion" data-value="Personne privée transparente" data-color="brown" aria-pressed="false">Personne privée transparente</button>
+<button type="button" class="chip" data-group="notion" data-value="Personne publique responsable (imputation)" data-color="default" aria-pressed="false">Personne publique responsable (imputation)</button>
+<button type="button" class="chip" data-group="notion" data-value="Personne publique sui generis" data-color="purple" aria-pressed="false">Personne publique sui generis</button>
+<button type="button" class="chip" data-group="notion" data-value="Perte de chance" data-color="blue" aria-pressed="false">Perte de chance</button>
+<button type="button" class="chip" data-group="notion" data-value="Police administrative (incessibilité)" data-color="default" aria-pressed="false">Police administrative (incessibilité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Police des publications dangereuses pour la jeunesse" data-color="gray" aria-pressed="false">Police des publications dangereuses pour la jeunesse</button>
+<button type="button" class="chip" data-group="notion" data-value="Portée normative de la loi" data-color="gray" aria-pressed="false">Portée normative de la loi</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoir de dérogation du préfet" data-color="pink" aria-pressed="false">Pouvoir de dérogation du préfet</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoir discrétionnaire" data-color="red" aria-pressed="false">Pouvoir discrétionnaire</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoir hiérarchique" data-color="green" aria-pressed="false">Pouvoir hiérarchique</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoir réglementaire du chef de service" data-color="blue" aria-pressed="false">Pouvoir réglementaire du chef de service</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoirs d&#x27;instruction du juge administratif" data-color="gray" aria-pressed="false">Pouvoirs d&#x27;instruction du juge administratif</button>
+<button type="button" class="chip" data-group="notion" data-value="Pouvoirs de régulation (ordre juridictionnel administratif)" data-color="yellow" aria-pressed="false">Pouvoirs de régulation (ordre juridictionnel administratif)</button>
+<button type="button" class="chip" data-group="notion" data-value="Prescription quadriennale" data-color="default" aria-pressed="false">Prescription quadriennale</button>
+<button type="button" class="chip" data-group="notion" data-value="Primauté de la Constitution (ordre interne)" data-color="green" aria-pressed="false">Primauté de la Constitution (ordre interne)</button>
+<button type="button" class="chip" data-group="notion" data-value="Primauté du droit de l&#x27;Union" data-color="gray" aria-pressed="false">Primauté du droit de l&#x27;Union</button>
+<button type="button" class="chip" data-group="notion" data-value="Primauté du terrain contractuel (cocontractant)" data-color="red" aria-pressed="false">Primauté du terrain contractuel (cocontractant)</button>
+<button type="button" class="chip" data-group="notion" data-value="Principe d&#x27;égalité" data-color="blue" aria-pressed="false">Principe d&#x27;égalité</button>
+<button type="button" class="chip" data-group="notion" data-value="Principe de précaution (déclaration d’utilité publique)" data-color="default" aria-pressed="false">Principe de précaution (déclaration d’utilité publique)</button>
+<button type="button" class="chip" data-group="notion" data-value="Principe de spécialité" data-color="gray" aria-pressed="false">Principe de spécialité</button>
+<button type="button" class="chip" data-group="notion" data-value="Principe général du droit" data-color="gray" aria-pressed="false">Principe général du droit</button>
+<button type="button" class="chip" data-group="notion" data-value="Prohibition des libéralités (personnes publiques)" data-color="gray" aria-pressed="false">Prohibition des libéralités (personnes publiques)</button>
+<button type="button" class="chip" data-group="notion" data-value="Protectorat (responsabilité de l’État français)" data-color="pink" aria-pressed="false">Protectorat (responsabilité de l’État français)</button>
+<button type="button" class="chip" data-group="notion" data-value="Provision (référé)" data-color="green" aria-pressed="false">Provision (référé)</button>
+<button type="button" class="chip" data-group="notion" data-value="Préalable parlementaire" data-color="yellow" aria-pressed="false">Préalable parlementaire</button>
+<button type="button" class="chip" data-group="notion" data-value="Préjudice certain" data-color="default" aria-pressed="false">Préjudice certain</button>
+<button type="button" class="chip" data-group="notion" data-value="Préjudice de l&#x27;enfant né handicapé" data-color="gray" aria-pressed="false">Préjudice de l&#x27;enfant né handicapé</button>
+<button type="button" class="chip" data-group="notion" data-value="Préjudice non indemnisable" data-color="red" aria-pressed="false">Préjudice non indemnisable</button>
+<button type="button" class="chip" data-group="notion" data-value="Publication régulière (traité international)" data-color="gray" aria-pressed="false">Publication régulière (traité international)</button>
+<button type="button" class="chip" data-group="notion" data-value="Pénalités de retard (modulation judiciaire)" data-color="blue" aria-pressed="false">Pénalités de retard (modulation judiciaire)</button>
+<button type="button" class="chip" data-group="notion" data-value="Périodicité raisonnable du suffrage" data-color="brown" aria-pressed="false">Périodicité raisonnable du suffrage</button>
+<button type="button" class="chip" data-group="notion" data-value="Péréquation financière" data-color="blue" aria-pressed="false">Péréquation financière</button>
+<button type="button" class="chip" data-group="notion" data-value="Qualification a contrario (absence de clause exorbitante)" data-color="yellow" aria-pressed="false">Qualification a contrario (absence de clause exorbitante)</button>
+<button type="button" class="chip" data-group="notion" data-value="Qualité pour agir (association d’intérêts collectifs)" data-color="orange" aria-pressed="false">Qualité pour agir (association d’intérêts collectifs)</button>
+<button type="button" class="chip" data-group="notion" data-value="Recevabilité du recours pour excès de pouvoir" data-color="red" aria-pressed="false">Recevabilité du recours pour excès de pouvoir</button>
+<button type="button" class="chip" data-group="notion" data-value="Recours contre la résiliation (reprise des relations contractuelles)" data-color="red" aria-pressed="false">Recours contre la résiliation (reprise des relations contractuelles)</button>
+<button type="button" class="chip" data-group="notion" data-value="Recours hiérarchique facultatif (absence de régularisation rétroactive)" data-color="pink" aria-pressed="false">Recours hiérarchique facultatif (absence de régularisation rétroactive)</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité de l&#x27;État (service public)" data-color="default" aria-pressed="false">Responsabilité de l&#x27;État (service public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité disciplinaire de l&#x27;agent public" data-color="default" aria-pressed="false">Responsabilité disciplinaire de l&#x27;agent public</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité du fait de la fonction juridictionnelle" data-color="pink" aria-pressed="false">Responsabilité du fait de la fonction juridictionnelle</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité décennale (constructeurs publics)" data-color="blue" aria-pressed="false">Responsabilité décennale (constructeurs publics)</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité hospitalière" data-color="brown" aria-pressed="false">Responsabilité hospitalière</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité in solidum" data-color="brown" aria-pressed="false">Responsabilité in solidum</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité pour promesse illégale" data-color="red" aria-pressed="false">Responsabilité pour promesse illégale</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité précontractuelle" data-color="purple" aria-pressed="false">Responsabilité précontractuelle</button>
+<button type="button" class="chip" data-group="notion" data-value="Responsabilité sans faute (risque)" data-color="green" aria-pressed="false">Responsabilité sans faute (risque)</button>
+<button type="button" class="chip" data-group="notion" data-value="Ressources fiscales des collectivités territoriales" data-color="red" aria-pressed="false">Ressources fiscales des collectivités territoriales</button>
+<button type="button" class="chip" data-group="notion" data-value="Retrait d&#x27;une décision créatrice de droits" data-color="yellow" aria-pressed="false">Retrait d&#x27;une décision créatrice de droits</button>
+<button type="button" class="chip" data-group="notion" data-value="Retrait d’agrément (considération de la personne)" data-color="orange" aria-pressed="false">Retrait d’agrément (considération de la personne)</button>
+<button type="button" class="chip" data-group="notion" data-value="Risque accepté" data-color="orange" aria-pressed="false">Risque accepté</button>
+<button type="button" class="chip" data-group="notion" data-value="Risque social (responsabilité sans faute)" data-color="green" aria-pressed="false">Risque social (responsabilité sans faute)</button>
+<button type="button" class="chip" data-group="notion" data-value="Riverain" data-color="pink" aria-pressed="false">Riverain</button>
+<button type="button" class="chip" data-group="notion" data-value="Rupture d&#x27;égalité devant les charges publiques" data-color="yellow" aria-pressed="false">Rupture d&#x27;égalité devant les charges publiques</button>
+<button type="button" class="chip" data-group="notion" data-value="Règle générale de procédure (juridiction administrative)" data-color="blue" aria-pressed="false">Règle générale de procédure (juridiction administrative)</button>
+<button type="button" class="chip" data-group="notion" data-value="Réception de l’ouvrage (effets)" data-color="brown" aria-pressed="false">Réception de l’ouvrage (effets)</button>
+<button type="button" class="chip" data-group="notion" data-value="Récusation (délai — avant l’audience)" data-color="brown" aria-pressed="false">Récusation (délai — avant l’audience)</button>
+<button type="button" class="chip" data-group="notion" data-value="Référé mesures utiles (expulsion — service public)" data-color="gray" aria-pressed="false">Référé mesures utiles (expulsion — service public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Référé-liberté" data-color="red" aria-pressed="false">Référé-liberté</button>
+<button type="button" class="chip" data-group="notion" data-value="Réparation (dommages aux biens)" data-color="green" aria-pressed="false">Réparation (dommages aux biens)</button>
+<button type="button" class="chip" data-group="notion" data-value="Réparation (déductions)" data-color="purple" aria-pressed="false">Réparation (déductions)</button>
+<button type="button" class="chip" data-group="notion" data-value="Réparation en nature" data-color="orange" aria-pressed="false">Réparation en nature</button>
+<button type="button" class="chip" data-group="notion" data-value="Réparation intégrale" data-color="blue" aria-pressed="false">Réparation intégrale</button>
+<button type="button" class="chip" data-group="notion" data-value="Répétition de l&#x27;indu" data-color="blue" aria-pressed="false">Répétition de l&#x27;indu</button>
+<button type="button" class="chip" data-group="notion" data-value="Résiliation aux torts du cocontractant" data-color="brown" aria-pressed="false">Résiliation aux torts du cocontractant</button>
+<button type="button" class="chip" data-group="notion" data-value="Résiliation unilatérale (motif d’intérêt général)" data-color="blue" aria-pressed="false">Résiliation unilatérale (motif d’intérêt général)</button>
+<button type="button" class="chip" data-group="notion" data-value="Rétention administrative (contrôle de l’interpellation)" data-color="default" aria-pressed="false">Rétention administrative (contrôle de l’interpellation)</button>
+<button type="button" class="chip" data-group="notion" data-value="Rétroactivité de la loi fiscale" data-color="default" aria-pressed="false">Rétroactivité de la loi fiscale</button>
+<button type="button" class="chip" data-group="notion" data-value="Service public" data-color="blue" aria-pressed="false">Service public</button>
+<button type="button" class="chip" data-group="notion" data-value="Service public industriel et commercial" data-color="brown" aria-pressed="false">Service public industriel et commercial</button>
+<button type="button" class="chip" data-group="notion" data-value="Servitude d&#x27;urbanisme" data-color="yellow" aria-pressed="false">Servitude d&#x27;urbanisme</button>
+<button type="button" class="chip" data-group="notion" data-value="Solidarité nationale (aide sociale)" data-color="purple" aria-pressed="false">Solidarité nationale (aide sociale)</button>
+<button type="button" class="chip" data-group="notion" data-value="Suspension d’un traité (effets contentieux)" data-color="brown" aria-pressed="false">Suspension d’un traité (effets contentieux)</button>
+<button type="button" class="chip" data-group="notion" data-value="Suspicion légitime (irrecevabilité — Conseil d’État)" data-color="green" aria-pressed="false">Suspicion légitime (irrecevabilité — Conseil d’État)</button>
+<button type="button" class="chip" data-group="notion" data-value="Sécurité juridique" data-color="pink" aria-pressed="false">Sécurité juridique</button>
+<button type="button" class="chip" data-group="notion" data-value="Séparation des pouvoirs" data-color="blue" aria-pressed="false">Séparation des pouvoirs</button>
+<button type="button" class="chip" data-group="notion" data-value="Théorie de l&#x27;imprévision" data-color="blue" aria-pressed="false">Théorie de l&#x27;imprévision</button>
+<button type="button" class="chip" data-group="notion" data-value="Théorie de la loi-écran" data-color="brown" aria-pressed="false">Théorie de la loi-écran</button>
+<button type="button" class="chip" data-group="notion" data-value="Théorie du bilan (atteintes à l’environnement)" data-color="green" aria-pressed="false">Théorie du bilan (atteintes à l’environnement)</button>
+<button type="button" class="chip" data-group="notion" data-value="Traitement algorithmique (transparence)" data-color="purple" aria-pressed="false">Traitement algorithmique (transparence)</button>
+<button type="button" class="chip" data-group="notion" data-value="Transaction (établissement public)" data-color="purple" aria-pressed="false">Transaction (établissement public)</button>
+<button type="button" class="chip" data-group="notion" data-value="Transfert de compétences (intercommunalité)" data-color="blue" aria-pressed="false">Transfert de compétences (intercommunalité)</button>
+<button type="button" class="chip" data-group="notion" data-value="Transmission au Conseil d’État (impartialité — juridiction financière)" data-color="pink" aria-pressed="false">Transmission au Conseil d’État (impartialité — juridiction financière)</button>
+<button type="button" class="chip" data-group="notion" data-value="Transmission successorale (droit à réparation)" data-color="blue" aria-pressed="false">Transmission successorale (droit à réparation)</button>
+<button type="button" class="chip" data-group="notion" data-value="Transposition d&#x27;une directive européenne" data-color="default" aria-pressed="false">Transposition d&#x27;une directive européenne</button>
+<button type="button" class="chip" data-group="notion" data-value="Travail public (rattachement indivisible)" data-color="brown" aria-pressed="false">Travail public (rattachement indivisible)</button>
+<button type="button" class="chip" data-group="notion" data-value="Travaux préparatoires" data-color="yellow" aria-pressed="false">Travaux préparatoires</button>
+<button type="button" class="chip" data-group="notion" data-value="Travaux publics (qualification)" data-color="default" aria-pressed="false">Travaux publics (qualification)</button>
+<button type="button" class="chip" data-group="notion" data-value="Tutelle administrative" data-color="pink" aria-pressed="false">Tutelle administrative</button>
+<button type="button" class="chip" data-group="notion" data-value="Unicité du peuple français" data-color="pink" aria-pressed="false">Unicité du peuple français</button>
+<button type="button" class="chip" data-group="notion" data-value="Vice du consentement (erreur sur la personne)" data-color="gray" aria-pressed="false">Vice du consentement (erreur sur la personne)</button>
+<button type="button" class="chip" data-group="notion" data-value="Voirie" data-color="purple" aria-pressed="false">Voirie</button>
+<button type="button" class="chip" data-group="notion" data-value="Établissement public" data-color="gray" aria-pressed="false">Établissement public</button>
+<button type="button" class="chip" data-group="notion" data-value="Établissement public industriel et commercial" data-color="orange" aria-pressed="false">Établissement public industriel et commercial</button>
+<button type="button" class="chip" data-group="notion" data-value="État civil (compétence judiciaire)" data-color="default" aria-pressed="false">État civil (compétence judiciaire)</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="classifier" data-group-panel="importance">
+        <div class="classifier-row">
+          <button type="button" class="classifier-toggle" aria-expanded="false" aria-controls="chips-importance">
+            <svg class="classifier-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <span class="classifier-title">3- Importance <span class="classifier-hint">(filtre par sélection multiple)</span></span>
+          </button>
+          <button type="button" class="classifier-clear" data-clear="importance">Effacer la sélection</button>
+        </div>
+        <div class="classifier-slide">
+          <div class="classifier-slide-inner">
+            <div class="classifier-body">
+              <div class="chips" id="chips-importance" role="group" aria-label="Importance"><button type="button" class="chip chip-importance" data-group="importance" data-value="1" aria-pressed="false" title="1 étoile">★</button>
+<button type="button" class="chip chip-importance" data-group="importance" data-value="2" aria-pressed="false" title="2 étoiles">★★</button>
+<button type="button" class="chip chip-importance" data-group="importance" data-value="3" aria-pressed="false" title="3 étoiles">★★★</button>
+<button type="button" class="chip chip-importance" data-group="importance" data-value="4" aria-pressed="false" title="4 étoiles">★★★★</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="series-row" role="group" aria-label="Taille de série">
+        <span class="series-label">Série</span>
+        <button type="button" class="chip chip-size" data-size="3" aria-pressed="true">3</button>
+        <button type="button" class="chip chip-size" data-size="5" aria-pressed="false">5</button>
+        <button type="button" class="chip chip-size" data-size="10" aria-pressed="false">10</button>
+      </div>
+      <div class="home-footer">
+        <div>
+          <div class="home-count"><span id="home-count">8</span> paire(s)</div>
+          <span class="home-hint" id="home-hint">Tout le set</span>
+        </div>
+        <div class="home-actions">
+          <button type="button" class="btn-start" id="btn-start">Relier</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="screen-game" hidden aria-label="Exercice Relier">
+    <div class="game-bar">
+      <button type="button" class="btn-back" id="btn-back">← Accueil</button>
+      <div class="game-summary" id="game-summary"></div>
+    </div>
+    <div class="empty-filter" id="empty-filter" hidden>Aucune paire pour ces filtres.</div>
+    <div class="board-wrap" id="board-wrap">
+      <svg class="svg-layer" id="svg-layer" aria-hidden="true"></svg>
+      <div class="board" id="board">
+        <div class="board-head" aria-hidden="true">
+          <h2 class="col-title">Nom</h2>
+          <h2 class="col-title">Objet</h2>
+        </div>
+        <div id="board-rows" role="group" aria-label="Paires à relier"></div>
+      </div>
+      
+      <aside class="portee-tip" id="portee-tip" aria-hidden="true">
+        <div class="portee-tip-scroll">
+          <p class="portee-tip-label">Portée</p>
+          <p class="portee-tip-text" id="portee-tip-text"></p>
+        </div>
+      </aside>
+    </div>
+    <div class="game-actions">
+      <button type="button" class="btn btn-primary" id="btn-check">Vérifier</button>
+      <button type="button" class="btn" id="btn-answers">Voir les réponses</button>
+      <button type="button" class="btn" id="btn-reset">Réinitialiser</button>
+      <button type="button" class="btn" id="btn-new">Nouvelle série</button>
+    </div>
+    <div class="score-banner" id="score-banner" hidden role="status" aria-live="polite"></div>
+    <p class="study-copy">© Éditions Particulières · Tous droits réservés · Reproductions / exportations interdites</p>
+  </section>
+</div>
+<script>
+const DATA = [{"id": "fa2ebc53-0f01-4a3b-8432-a966a1830403", "recto": "TC, 1873, Blanco", "objet": "Fondement de la responsabilité de l'État et de la compétence administrative", "portee": "Le Tribunal des conflits consacre la responsabilité de l'État à raison des dommages causés par le fait des personnes qu'il emploie dans le service public, mettant fin à une tradition d'irresponsabilité, tout en la soumettant à des règles spéciales distinctes du code civil ; il en fait le critère de la compétence exclusive de la juridiction administrative pour en connaître.", "themes": ["Principes généraux de la responsabilité de l'administration"], "notions": ["Responsabilité de l'État (service public)", "Juridiction administrative"], "importance": "⭐⭐⭐⭐", "importance_level": 4}, {"id": "4d9c2a57-d3a4-4dcf-b691-c06373300616", "recto": "CE, 1875, Prince Napoléon", "objet": "Abandon du critère du mobile politique pour définir l'acte de gouvernement", "portee": "Le Conseil d'État accepte d'examiner au fond la légalité d'un acte pris pour des considérations exclusivement politiques, abandonnant le critère du mobile politique qui, depuis CE, 1822, Laffitte, soustrayait de tels actes à tout contrôle juridictionnel. La catégorie de l'acte de gouvernement n'est pas supprimée, mais son champ se réduit désormais à une liste circonscrite d'actes touchant aux rapports entre l'exécutif et le Parlement et à la conduite des relations internationales.", "themes": ["Compétence de la juridiction administrative"], "notions": ["Acte de gouvernement", "Recevabilité du recours pour excès de pouvoir"], "importance": "⭐⭐⭐⭐", "importance_level": 4}, {"id": "8fc366d1-fab9-4409-bd8e-f629ef599330", "recto": "CE, 1933, Benjamin", "objet": "Contrôle de nécessité et de proportionnalité des mesures de police restreignant la liberté de réunion", "portee": "Il incombe à l'autorité de police, en vertu de son pouvoir de maintien de l'ordre, de concilier l'exercice de ce pouvoir avec le respect des libertés publiques garanties par les lois ; une mesure de police ne peut légalement interdire l'exercice d'une liberté que si l'éventualité de troubles présente un degré de gravité tel qu'aucune mesure moins contraignante ne permettrait de maintenir l'ordre.", "themes": ["Pouvoir de police"], "notions": ["Nécessité et proportionnalité (police administrative)"], "importance": "⭐⭐⭐⭐", "importance_level": 4}, {"id": "5e46ee6f-36d8-4524-9397-9b7afb94af05", "recto": "CE, 2016, Czabaj", "objet": "Institution d’un delai raisonnable de recours en l’absence de mention reguliere des voies et delais", "portee": "Le principe de securite juridique fait obstacle a ce qu’une decision administrative individuelle notifiee a son destinataire, ou dont il est etabli qu’il en a eu connaissance, puisse etre contestee indefiniment. A defaut de mention reguliere des voies et delais de recours, le destinataire ne peut exercer de recours juridictionnel au-dela d’un delai raisonnable qui, sauf circonstances particulieres, n’excede en general pas un an a compter de la notification ou de la connaissance de la decision. Cette regle borne dans le temps les consequences du defaut d’information sans porter atteinte a la substance du droit au recours, et s’applique quelle que soit la date des faits.", "themes": ["Actes administratifs unilatéraux"], "notions": ["Sécurité juridique", "Délai raisonnable de recours"], "importance": "⭐⭐⭐⭐", "importance_level": 4}, {"id": "9e17be69-face-4f9b-9e36-69b20d6660a7", "recto": "CE, 2022, SNC Grasse-vacances", "objet": "Evaluation du prejudice indemnisable lors de la resiliation amiable d’un contrat administratif", "portee": "Si les parties a un contrat administratif peuvent contractuellement determiner les modalites de l’indemnite due au cocontractant en cas de resiliation amiable, cette indemnite ne peut exceder le prejudice reellement subi, evalue en tenant compte du gain dont le cocontractant a ete prive et des depenses non couvertes. Lorsque le contrat laissait au cocontractant la faculte de ceder ses droits, ce prejudice doit etre determine en retenant le montant le plus eleve entre le benefice escompte de l’exploitation pour la duree restant a courir et la valeur des droits cessibles.", "themes": ["Contrats administratifs"], "notions": ["Prohibition des libéralités (personnes publiques)", "Réparation intégrale"], "importance": "⭐⭐⭐", "importance_level": 3}, {"id": "c8eea745-05aa-446e-9c95-387b7d623bb3", "recto": "CE, 2022, Asso. Les Amis de la Terre Fr.", "objet": "Encadrement du pouvoir de dérogation du préfet aux normes administratives (principe d’égalité)", "portee": "La décision juge légal le décret du 8 avril 2020 qui pérennise, sur l’ensemble du territoire, la faculté pour les préfets de déroger par décisions non réglementaires à des normes arrêtées par l’administration dans sept matières limitativement énumérées. Elle précise que cette faculté ne permet pas de déroger aux normes réglementaires garantissant le respect de principes consacrés par la loi et que, les dérogations ne pouvant être accordées qu’à raison de circonstances locales et sans traiter différemment des situations locales analogues, le dispositif ne méconnaît ni le principe d’égalité ni l’objectif à valeur constitutionnelle de clarté et d’intelligibilité de la norme. La solution transpose au décret de pérennisation l’encadrement retenu pour le décret expérimental du 29 décembre 2017 ; les tables du Recueil rapprochent expressément les deux décisions (CE, 17 juin 2019, Association Les amis de la Terre France, n° 421871) et le rapporteur public relève que la généralisation reprend les mêmes domaines et les mêmes conditions d’octroi (concl. S. Hoynck, BJCL avril 2022, p. 259).", "themes": ["État / déconcentration"], "notions": ["Déconcentration", "Pouvoir de dérogation du préfet"], "importance": "⭐⭐", "importance_level": 2}, {"id": "9e538d06-cfb6-48a8-a0d7-7db0dcbf2fb5", "recto": "CE, 2021, Collectif des maires anti-pesticides", "objet": "Pesticides : Charte art. 7, distances et information des riverains", "portee": "Le Conseil d'État annule partiellement le décret et l'arrêté du 27 décembre 2019 : les modalités d'élaboration des chartes d'engagements relèvent de la loi au regard de l'article 7 de la Charte ; les distances de sécurité pour certains produits et l'information préalable des riverains sont jugées insuffisantes. Il enjoint au Gouvernement de compléter la réglementation dans un délai de six mois.", "themes": ["Constitution"], "notions": ["Domaine réglementaire", "Droit d'accès aux documents administratifs"], "importance": "⭐⭐", "importance_level": 2}, {"id": "844eac27-e945-4f74-80da-567b90e5bd09", "recto": "CE, 2020, Fédé. CFDT des finances", "objet": "Mode d'emploi contentieux des ordonnances non ratifiées après expiration du délai d'habilitation", "portee": "Le Conseil d'État synthétise le régime contentieux des ordonnances de l'article 38 non ratifiées. Il confirme qu'elles demeurent des actes administratifs attaquables par recours pour excès de pouvoir devant le Conseil d'État, compétent en premier et dernier ressort, ou par voie d'exception devant toute juridiction. Il précise que, dès l'expiration du délai d'habilitation, leurs dispositions relevant du domaine de la loi entrent dans le champ de l'article 61-1 de la Constitution : leur conformité aux droits et libertés constitutionnellement garantis ne peut alors être contestée que par voie de QPC, tandis que le Conseil d'État demeure compétent pour statuer sur les autres moyens de légalité et peut annuler l'ordonnance pour un motif étranger à la Constitution sans attendre l'issue de la QPC. La ratification ultérieure confère à l'ordonnance valeur législative rétroactive, rendant sans objet le recours pour excès de pouvoir.", "themes": ["Compétence de la juridiction administrative"], "notions": ["Habilitation législative (article 38)", "Recevabilité du recours pour excès de pouvoir"], "importance": "⭐⭐⭐⭐", "importance_level": 4}];
+const SHOW_PORTEE = true;
+const LEFT_LABEL = "Nom";
+const RIGHT_LABEL = "Objet";
+const selected = { theme: new Set(), notion: new Set(), importance: new Set() };
+let seriesSize = 3;
+let series = [];          // indices dans DATA
+let links = new Map();    // sourceId -> targetId
+let verified = false;
+let drag = null;          // { sourceId, pointerId, ... }
+
+const home = document.getElementById("screen-home");
+const game = document.getElementById("screen-game");
+const homeCount = document.getElementById("home-count");
+const homeHint = document.getElementById("home-hint");
+const btnStart = document.getElementById("btn-start");
+const btnBack = document.getElementById("btn-back");
+const btnCheck = document.getElementById("btn-check");
+const btnAnswers = document.getElementById("btn-answers");
+const btnReset = document.getElementById("btn-reset");
+const btnNew = document.getElementById("btn-new");
+const gameSummary = document.getElementById("game-summary");
+const boardRows = document.getElementById("board-rows");
+const boardWrap = document.getElementById("board-wrap");
+const svgLayer = document.getElementById("svg-layer");
+const scoreBanner = document.getElementById("score-banner");
+const emptyFilter = document.getElementById("empty-filter");
+const porteeTip = document.getElementById("portee-tip");
+const porteeTipText = document.getElementById("portee-tip-text");
+let porteeTipId = null;
+
+function sourceItems() {
+  return boardRows.querySelectorAll(".pair-item.is-source");
+}
+function targetItems() {
+  return boardRows.querySelectorAll(".pair-item.is-target");
+}
+function findSource(id) {
+  return Array.from(sourceItems()).find(el => el.dataset.id === id) || null;
+}
+function findTarget(id) {
+  return Array.from(targetItems()).find(el => el.dataset.id === id) || null;
+}
+
+function hidePorteeTip() {
+  if (!SHOW_PORTEE || !porteeTip) return;
+  porteeTipId = null;
+  porteeTip.classList.remove("is-open", "is-empty", "has-content");
+  porteeTip.setAttribute("aria-hidden", "true");
+}
+
+let porteeHideTimer = null;
+function scheduleHidePorteeTip() {
+  if (!SHOW_PORTEE) return;
+  clearTimeout(porteeHideTimer);
+  porteeHideTimer = setTimeout(() => hidePorteeTip(), 120);
+}
+function cancelHidePorteeTip() {
+  if (!SHOW_PORTEE) return;
+  clearTimeout(porteeHideTimer);
+  porteeHideTimer = null;
+}
+
+function showPorteeTip(targetEl) {
+  if (!SHOW_PORTEE || !porteeTip || !porteeTipText) return;
+  if (!targetEl || drag) {
+    hidePorteeTip();
+    return;
+  }
+  cancelHidePorteeTip();
+  const id = targetEl.dataset.id;
+  const card = DATA.find(c => pairId(c) === id);
+  const portee = ((card && card.portee) || "").trim();
+  porteeTipId = id;
+  porteeTipText.textContent = portee || "Portée non renseignée.";
+  porteeTip.classList.toggle("is-empty", !portee);
+  porteeTip.classList.toggle("has-content", Boolean(portee));
+  porteeTip.classList.add("is-open");
+  porteeTip.setAttribute("aria-hidden", "false");
+
+  const wrapRect = boardWrap.getBoundingClientRect();
+  const itemRect = targetEl.getBoundingClientRect();
+  // Toujours à droite de l’objet (comme la fiche Flipcards)
+  const tipW = Math.min(352, Math.max(220, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.42)));
+  porteeTip.style.width = tipW + "px";
+  const left = itemRect.right - wrapRect.left + 12;
+  porteeTip.style.left = left + "px";
+
+  const midY = itemRect.top + itemRect.height / 2 - wrapRect.top;
+  porteeTip.style.top = Math.max(8, midY - 28) + "px";
+
+  requestAnimationFrame(() => {
+    if (porteeTipId !== id) return;
+    const tipH = porteeTip.offsetHeight || 80;
+    let top = itemRect.top + itemRect.height / 2 - wrapRect.top - tipH / 2;
+    const maxTop = Math.max(8, Math.max(wrapRect.height, itemRect.bottom - wrapRect.top + 8) - tipH - 8);
+    top = Math.max(8, Math.min(top, maxTop));
+    porteeTip.style.top = top + "px";
+    // Flèche alignée sur le milieu de la case
+    const arrowY = Math.max(14, Math.min(itemRect.top + itemRect.height / 2 - wrapRect.top - top - 8, tipH - 28));
+    porteeTip.style.setProperty("--portee-arrow-top", arrowY + "px");
+  });
+}
+
+function selectedList(group) {
+  return [...selected[group]];
+}
+
+function matchesFilters(card) {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance").map(Number);
+  if (themes.length && !(card.themes || []).some(t => themes.includes(t))) return false;
+  if (notions.length && !(card.notions || []).some(n => notions.includes(n))) return false;
+  if (levels.length && !levels.includes(Number(card.importance_level) || 0)) return false;
+  return true;
+}
+
+function filteredIndexes() {
+  return DATA.map((_, idx) => idx).filter(idx => matchesFilters(DATA[idx]));
+}
+
+function selectionHint() {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance");
+  if (!themes.length && !notions.length && !levels.length) return "Tout le set · série de " + seriesSize;
+  const bits = [];
+  if (themes.length) bits.push(themes.length + " thème(s)");
+  if (notions.length) bits.push(notions.length + " notion(s)");
+  if (levels.length) bits.push(levels.length + " importance(s)");
+  bits.push("série de " + seriesSize);
+  return bits.join(" · ");
+}
+
+function cardMatchesUpstream(card, opts) {
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance").map(Number);
+  const applyTheme = !opts || opts.applyTheme !== false;
+  const applyNotion = !!(opts && opts.applyNotion);
+  const applyImportance = !!(opts && opts.applyImportance);
+  if (applyTheme && themes.length && !(card.themes || []).some(t => themes.includes(t))) return false;
+  if (applyNotion && notions.length && !(card.notions || []).some(n => notions.includes(n))) return false;
+  if (applyImportance && levels.length && !levels.includes(Number(card.importance_level) || 0)) return false;
+  return true;
+}
+
+function collectTags(pred) {
+  const themes = new Set();
+  const notions = new Set();
+  const importance = new Set();
+  for (const card of DATA) {
+    if (!pred(card)) continue;
+    (card.themes || []).forEach(t => themes.add(t));
+    (card.notions || []).forEach(n => notions.add(n));
+    const lvl = Number(card.importance_level) || 0;
+    if (lvl) importance.add(String(lvl));
+  }
+  return { themes, notions, importance };
+}
+
+function tagsPresentInData() {
+  return collectTags(() => true);
+}
+
+function setChipState(btn, ok, exclusiveDim) {
+  btn.classList.toggle("is-disabled", !ok);
+  btn.classList.toggle("is-exclusive-dim", !!exclusiveDim);
+  btn.disabled = !ok;
+  btn.setAttribute("aria-disabled", ok ? "false" : "true");
+}
+
+function updateChipAvailability() {
+  const present = tagsPresentInData();
+  const themeExclusive = selected.theme.size > 0;
+  const hasLower = selected.notion.size > 0 || selected.importance.size > 0;
+
+  let notionScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: false, applyImportance: false })
+  );
+  let starScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: true, applyImportance: false })
+  );
+  let themeScope = hasLower
+    ? collectTags(card =>
+        cardMatchesUpstream(card, { applyTheme: false, applyNotion: true, applyImportance: true })
+      )
+    : present;
+
+  document.querySelectorAll('.chip[data-group="notion"]').forEach(btn => {
+    if (selected.notion.has(btn.dataset.value) && !notionScope.notions.has(btn.dataset.value)) {
+      selected.notion.delete(btn.dataset.value);
+      btn.setAttribute("aria-pressed", "false");
+    }
+  });
+  starScope = collectTags(card =>
+    cardMatchesUpstream(card, { applyTheme: true, applyNotion: true, applyImportance: false })
+  );
+  document.querySelectorAll('.chip[data-group="importance"]').forEach(btn => {
+    if (selected.importance.has(btn.dataset.value) && !starScope.importance.has(btn.dataset.value)) {
+      selected.importance.delete(btn.dataset.value);
+      btn.setAttribute("aria-pressed", "false");
+    }
+  });
+  if (hasLower) {
+    themeScope = collectTags(card =>
+      cardMatchesUpstream(card, { applyTheme: false, applyNotion: true, applyImportance: true })
+    );
+  }
+
+  document.querySelectorAll(".chip[data-group]").forEach(btn => {
+    const group = btn.dataset.group;
+    const value = btn.dataset.value;
+    const isSelected = selected[group].has(value);
+    let ok = true;
+    let exclusiveDim = false;
+    if (group === "theme") {
+      ok = themeScope.themes.has(value);
+      exclusiveDim = themeExclusive && !isSelected && ok;
+    } else if (group === "notion") {
+      ok = notionScope.notions.has(value);
+    } else if (group === "importance") {
+      ok = starScope.importance.has(value);
+    }
+    setChipState(btn, ok, exclusiveDim);
+  });
+}
+
+function updateHomeCount() {
+  updateChipAvailability();
+  const n = filteredIndexes().length;
+  homeCount.textContent = String(n);
+  homeHint.textContent = selectionHint();
+  const need = Math.min(seriesSize, n);
+  btnStart.disabled = need < 2;
+}
+
+function randInt(max) {
+  // Entier uniforme dans [0, max)
+  if (max <= 1) return 0;
+  if (window.crypto && crypto.getRandomValues) {
+    const buf = new Uint32Array(1);
+    const limit = Math.floor(0x100000000 / max) * max;
+    let x;
+    do {
+      crypto.getRandomValues(buf);
+      x = buf[0];
+    } while (x >= limit);
+    return x % max;
+  }
+  return Math.floor(Math.random() * max);
+}
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let k = a.length - 1; k > 0; k--) {
+    const j = randInt(k + 1);
+    const tmp = a[k];
+    a[k] = a[j];
+    a[j] = tmp;
+  }
+  return a;
+}
+
+/** Colonne de droite : dérangement garanti (algo de Sattolo = cycle, 0 point fixe). */
+function shuffleTargetsForSources(sources, targetPayload) {
+  const n = sources.length;
+  const items = sources.map(targetPayload);
+  if (n <= 1) return items;
+  // Sattolo : pour i de n-1 à 1, échange avec j uniformément dans [0, i)
+  // → permutation circulaire aléatoire, donc aucun item face à sa source.
+  for (let i = n - 1; i > 0; i--) {
+    const j = randInt(i);
+    const tmp = items[i];
+    items[i] = items[j];
+    items[j] = tmp;
+  }
+  return items;
+}
+
+function pairId(card) {
+  return String(card.id || card.recto);
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function clearResultClasses() {
+  document.querySelectorAll(".pair-item").forEach(el => {
+    el.classList.remove("is-correct", "is-incorrect");
+  });
+  verified = false;
+  scoreBanner.hidden = true;
+  scoreBanner.classList.remove("is-perfect");
+  scoreBanner.textContent = "";
+}
+
+function setLink(sourceId, targetId) {
+  // Libérer la cible si déjà prise
+  for (const [sid, tid] of [...links.entries()]) {
+    if (tid === targetId && sid !== sourceId) links.delete(sid);
+  }
+  // Remplacer le lien existant du source
+  links.set(sourceId, targetId);
+  clearResultClasses();
+  syncLinkedClasses();
+  drawLinks();
+}
+
+function syncLinkedClasses() {
+  const linkedSources = new Set(links.keys());
+  const linkedTargets = new Set(links.values());
+  sourceItems().forEach(el => {
+    el.classList.toggle("is-linked", linkedSources.has(el.dataset.id));
+  });
+  targetItems().forEach(el => {
+    el.classList.toggle("is-linked", linkedTargets.has(el.dataset.id));
+  });
+}
+
+function boardPoint(clientX, clientY) {
+  const r = boardWrap.getBoundingClientRect();
+  return { x: clientX - r.left, y: clientY - r.top };
+}
+
+function anchorPoint(el, side) {
+  const br = boardWrap.getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  const y = r.top + r.height / 2 - br.top;
+  const x = side === "right" ? r.right - br.left : r.left - br.left;
+  return { x, y };
+}
+
+function drawLinks(provisional) {
+  const ns = "http://www.w3.org/2000/svg";
+  while (svgLayer.firstChild) svgLayer.removeChild(svgLayer.firstChild);
+  const rect = boardWrap.getBoundingClientRect();
+  svgLayer.setAttribute("viewBox", "0 0 " + rect.width + " " + rect.height);
+  svgLayer.setAttribute("width", String(rect.width));
+  svgLayer.setAttribute("height", String(rect.height));
+
+  for (const [sid, tid] of links.entries()) {
+    const sEl = findSource(sid);
+    const tEl = findTarget(tid);
+    if (!sEl || !tEl) continue;
+    const a = anchorPoint(sEl, "right");
+    const b = anchorPoint(tEl, "left");
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", a.x); line.setAttribute("y1", a.y);
+    line.setAttribute("x2", b.x); line.setAttribute("y2", b.y);
+    line.classList.add("is-link");
+    if (verified) {
+      // Cible porte l’id de la décision propriétaire de l’objet → sid === tid
+      line.classList.add(sid === tid ? "is-correct" : "is-incorrect");
+    }
+    svgLayer.appendChild(line);
+  }
+
+  if (provisional) {
+    const line = document.createElementNS(ns, "line");
+    line.setAttribute("x1", provisional.x1);
+    line.setAttribute("y1", provisional.y1);
+    line.setAttribute("x2", provisional.x2);
+    line.setAttribute("y2", provisional.y2);
+    line.classList.add("is-provisional");
+    svgLayer.appendChild(line);
+  }
+}
+
+function makeSourceBtn(c) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pair-item is-source";
+  btn.dataset.id = pairId(c);
+  btn.dataset.recto = c.recto;
+  btn.innerHTML = '<span class="pair-label">' + escHtml(c.recto) + "</span>";
+  btn.setAttribute("aria-label", LEFT_LABEL + " : " + c.recto);
+  return btn;
+}
+
+function makeTargetBtn(t) {
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.className = "pair-item is-target";
+  btn.dataset.id = t.id;
+  btn.dataset.objet = t.objet;
+  btn.innerHTML = '<span class="pair-label">' + escHtml(t.objet) + "</span>";
+  btn.setAttribute("aria-label", RIGHT_LABEL + " : " + t.objet);
+  if (SHOW_PORTEE) {
+    btn.addEventListener("pointerenter", () => showPorteeTip(btn));
+    btn.addEventListener("pointerleave", () => {
+      if (porteeTipId === t.id) scheduleHidePorteeTip();
+    });
+    btn.addEventListener("focus", () => showPorteeTip(btn));
+    btn.addEventListener("blur", () => {
+      if (porteeTipId === t.id) scheduleHidePorteeTip();
+    });
+  }
+  return btn;
+}
+
+function renderBoard() {
+  boardRows.innerHTML = "";
+  links = new Map();
+  clearResultClasses();
+  hidePorteeTip();
+
+  // Gauche : ordre alphabétique stable ; droite : dérangement systématique
+  const cards = series.map(idx => DATA[idx]);
+  const sources = cards.slice().sort((a, b) =>
+    String(a.recto || "").localeCompare(String(b.recto || ""), "fr", { sensitivity: "base" })
+  );
+  const targets = shuffleTargetsForSources(sources, c => ({
+    id: pairId(c),
+    objet: c.objet,
+    portee: c.portee || "",
+  }));
+
+  for (let i = 0; i < sources.length; i++) {
+    const row = document.createElement("div");
+    row.className = "board-row";
+    row.appendChild(makeSourceBtn(sources[i]));
+    row.appendChild(makeTargetBtn(targets[i]));
+    boardRows.appendChild(row);
+  }
+
+  requestAnimationFrame(() => drawLinks());
+}
+
+function enterGame() {
+  const pool = filteredIndexes();
+  if (pool.length < 2) {
+    emptyFilter.hidden = false;
+    boardWrap.hidden = true;
+    return;
+  }
+  emptyFilter.hidden = true;
+  boardWrap.hidden = false;
+  const size = Math.min(seriesSize, pool.length);
+  series = shuffleArray(pool).slice(0, size);
+  const themes = selectedList("theme");
+  const notions = selectedList("notion");
+  const levels = selectedList("importance");
+  const bits = [];
+  if (themes.length) bits.push(themes.length + " thème(s)");
+  if (notions.length) bits.push(notions.length + " notion(s)");
+  if (levels.length) bits.push(levels.length + " ★");
+  bits.push(series.length + " paire(s)");
+  gameSummary.textContent = bits.join(" · ");
+  home.hidden = true;
+  game.hidden = false;
+  renderBoard();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function leaveGame() {
+  drag = null;
+  home.hidden = false;
+  game.hidden = true;
+  updateHomeCount();
+}
+
+function verify() {
+  if (!series.length) return;
+  let correct = 0;
+  const total = series.length;
+  sourceItems().forEach(sEl => {
+    const sid = sEl.dataset.id;
+    const tid = links.get(sid);
+    sEl.classList.remove("is-correct", "is-incorrect");
+    if (!tid) {
+      sEl.classList.add("is-incorrect");
+      return;
+    }
+    const tEl = findTarget(tid);
+    const ok = sid === tid;
+    sEl.classList.add(ok ? "is-correct" : "is-incorrect");
+    if (tEl) {
+      tEl.classList.remove("is-correct", "is-incorrect");
+      tEl.classList.add(ok ? "is-correct" : "is-incorrect");
+    }
+    if (ok) correct += 1;
+  });
+  targetItems().forEach(tEl => {
+    const taken = [...links.values()].includes(tEl.dataset.id);
+    if (!taken) {
+      tEl.classList.remove("is-correct");
+      tEl.classList.add("is-incorrect");
+    }
+  });
+  verified = true;
+  drawLinks();
+  scoreBanner.hidden = false;
+  scoreBanner.classList.toggle("is-perfect", correct === total && total > 0);
+  scoreBanner.innerHTML = "Score : <strong>" + correct + " / " + total + "</strong>"
+    + (correct === total
+      ? " — Bravo, toutes les associations sont justes."
+      : " — Reliez à nouveau ou réinitialisez pour corriger.");
+}
+
+function showAnswers() {
+  if (!series.length) return;
+  hidePorteeTip();
+  // Garde l’ordre mélangé du plateau ; trace seulement les associations correctes.
+  links = new Map();
+  sourceItems().forEach(el => {
+    const id = el.dataset.id;
+    if (id) links.set(id, id);
+  });
+
+  verified = true;
+  clearResultClasses();
+  syncLinkedClasses();
+  sourceItems().forEach(el => {
+    el.classList.remove("is-incorrect");
+    el.classList.add("is-correct", "is-linked");
+  });
+  targetItems().forEach(el => {
+    el.classList.remove("is-incorrect");
+    el.classList.add("is-correct", "is-linked");
+  });
+  drawLinks();
+  scoreBanner.hidden = false;
+  scoreBanner.classList.add("is-perfect");
+  scoreBanner.innerHTML = "Réponses : <strong>" + links.size + " / " + links.size + "</strong>"
+    + " — Associations correctes affichées (ordre du plateau inchangé).";
+}
+
+function resetLinks() {
+  // Reconstruit le plateau (même série, colonne de droite remélangée).
+  renderBoard();
+}
+
+function newSeries() {
+  enterGame();
+}
+
+/* —— Pointer Events DnD —— */
+function targetUnderPoint(clientX, clientY) {
+  const els = document.elementsFromPoint(clientX, clientY);
+  for (const el of els) {
+    const item = el.closest && el.closest(".pair-item.is-target");
+    if (item && boardRows.contains(item)) return item;
+  }
+  return null;
+}
+
+function onPointerDown(e) {
+  const src = e.target.closest && e.target.closest(".pair-item.is-source");
+  if (!src || !boardRows.contains(src)) return;
+  if (e.button != null && e.button !== 0) return;
+  e.preventDefault();
+  hidePorteeTip();
+  src.setPointerCapture(e.pointerId);
+  const a = anchorPoint(src, "right");
+  const p = boardPoint(e.clientX, e.clientY);
+  drag = {
+    sourceId: src.dataset.id,
+    pointerId: e.pointerId,
+    el: src,
+    x1: a.x, y1: a.y,
+  };
+  src.classList.add("is-dragging");
+  drawLinks({ x1: a.x, y1: a.y, x2: p.x, y2: p.y });
+}
+
+function onPointerMove(e) {
+  if (!drag || e.pointerId !== drag.pointerId) return;
+  e.preventDefault();
+  const a = anchorPoint(drag.el, "right");
+  const p = boardPoint(e.clientX, e.clientY);
+  drag.x1 = a.x; drag.y1 = a.y;
+  document.querySelectorAll(".pair-item.is-drop-hover").forEach(el => el.classList.remove("is-drop-hover"));
+  const over = targetUnderPoint(e.clientX, e.clientY);
+  if (over) over.classList.add("is-drop-hover");
+  drawLinks({ x1: a.x, y1: a.y, x2: p.x, y2: p.y });
+}
+
+function endDrag(e, commit) {
+  if (!drag || e.pointerId !== drag.pointerId) return;
+  const src = drag.el;
+  try { src.releasePointerCapture(e.pointerId); } catch (_) {}
+  src.classList.remove("is-dragging");
+  document.querySelectorAll(".pair-item.is-drop-hover").forEach(el => el.classList.remove("is-drop-hover"));
+  if (commit) {
+    const over = targetUnderPoint(e.clientX, e.clientY);
+    if (over) setLink(drag.sourceId, over.dataset.id);
+    else drawLinks();
+  } else {
+    drawLinks();
+  }
+  drag = null;
+}
+
+function onPointerUp(e) { endDrag(e, true); }
+function onPointerCancel(e) { endDrag(e, false); }
+
+boardRows.addEventListener("pointerdown", onPointerDown);
+if (SHOW_PORTEE && porteeTip) {
+  porteeTip.addEventListener("pointerenter", cancelHidePorteeTip);
+  porteeTip.addEventListener("pointerleave", scheduleHidePorteeTip);
+}
+window.addEventListener("pointermove", onPointerMove, { passive: false });
+window.addEventListener("pointerup", onPointerUp);
+window.addEventListener("pointercancel", onPointerCancel);
+window.addEventListener("resize", () => drawLinks());
+
+/* —— Filtres / UI accueil —— */
+document.querySelectorAll(".classifier-toggle").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const panel = btn.closest(".classifier");
+    const open = !panel.classList.contains("is-open");
+    panel.classList.toggle("is-open", open);
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    const slide = panel.querySelector(".classifier-slide");
+    if (!slide) return;
+    if (open) {
+      const inner = slide.querySelector(".classifier-slide-inner");
+      slide.style.height = (inner ? inner.scrollHeight : 0) + "px";
+      const done = () => { slide.style.height = "auto"; slide.removeEventListener("transitionend", done); };
+      slide.addEventListener("transitionend", done);
+    } else {
+      slide.style.height = slide.scrollHeight + "px";
+      requestAnimationFrame(() => { slide.style.height = "0px"; });
+    }
+  });
+});
+
+document.querySelectorAll(".classifier-clear").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const group = btn.getAttribute("data-clear");
+    selected[group].clear();
+    document.querySelectorAll('.chip[data-group="' + group + '"]').forEach(c => {
+      c.setAttribute("aria-pressed", "false");
+    });
+    updateHomeCount();
+  });
+});
+
+document.querySelectorAll(".chip[data-group]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.disabled) return;
+    const group = btn.dataset.group;
+    const value = btn.dataset.value;
+    const on = btn.getAttribute("aria-pressed") === "true";
+    if (group === "theme") {
+      selected.theme.clear();
+      document.querySelectorAll('.chip[data-group="theme"]').forEach(c => c.setAttribute("aria-pressed", "false"));
+      if (!on) {
+        selected.theme.add(value);
+        btn.setAttribute("aria-pressed", "true");
+      }
+    } else {
+      if (on) {
+        selected[group].delete(value);
+        btn.setAttribute("aria-pressed", "false");
+      } else {
+        selected[group].add(value);
+        btn.setAttribute("aria-pressed", "true");
+      }
+    }
+    updateHomeCount();
+  });
+});
+
+document.querySelectorAll(".chip-size").forEach(btn => {
+  btn.addEventListener("click", () => {
+    seriesSize = Number(btn.dataset.size) || 3;
+    document.querySelectorAll(".chip-size").forEach(c => {
+      c.setAttribute("aria-pressed", c === btn ? "true" : "false");
+    });
+    updateHomeCount();
+  });
+});
+
+btnStart.addEventListener("click", enterGame);
+btnBack.addEventListener("click", leaveGame);
+btnCheck.addEventListener("click", verify);
+btnAnswers.addEventListener("click", showAnswers);
+btnReset.addEventListener("click", resetLinks);
+btnNew.addEventListener("click", newSeries);
+
+updateHomeCount();
+</script>
+<script src="../auth.js?v=4"></script>
+<script src="../site-nav.js?v=19"></script>
+</body>
+</html>

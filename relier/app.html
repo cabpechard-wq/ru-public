@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Chargement — espace membres</title>
+<style>
+  body { margin: 0; font-family: system-ui, sans-serif; background: #0e1419; color: #e8ebe6;
+    display: grid; place-items: center; min-height: 100vh; }
+  p { opacity: .75; }
+</style>
+</head>
+<body>
+<p id="msg">Vérification de la session…</p>
+<script src="../auth.js?v=5"></script>
+<script>
+(async function () {
+  var API = "https://flipcards-auth.cab-pechard.workers.dev";
+  var PACK = "relier";
+  var msg = document.getElementById("msg");
+  function deny(reason) {
+    try { sessionStorage.removeItem("flipcards_ok"); } catch (_) {}
+    location.replace("../membre/" + (reason ? ("?err=" + encodeURIComponent(reason)) : ""));
+  }
+  var base = (window.FLIPCARDS_AUTH && FLIPCARDS_AUTH.baseUrl) || API || "";
+  base = String(base).replace(/\/$/, "");
+  if (!base || /EXAMPLE/i.test(base)) {
+    deny("api");
+    return;
+  }
+  var token = "";
+  try {
+    token = (window.FLIPCARDS_AUTH && FLIPCARDS_AUTH.getToken && FLIPCARDS_AUTH.getToken()) || "";
+  } catch (_) {}
+  if (!token) {
+    deny();
+    return;
+  }
+  try {
+    var me = await fetch(base + "/api/me", {
+      headers: { Authorization: "Bearer " + token }
+    });
+    if (!me.ok) throw new Error("session");
+    msg.textContent = "Chargement du contenu…";
+    var r = await fetch(base + "/api/content/" + encodeURIComponent(PACK), {
+      headers: { Authorization: "Bearer " + token }
+    });
+    if (!r.ok) {
+      var errTxt = "";
+      try { errTxt = (await r.json()).error || ""; } catch (_) {}
+      throw new Error(errTxt || ("http " + r.status));
+    }
+    var html = await r.text();
+    if (!html || html.length < 200) throw new Error("contenu vide");
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    deny((e && e.message) || "contenu");
+  }
+})();
+</script>
+</body>
+</html>

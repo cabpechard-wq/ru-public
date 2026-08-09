@@ -20,15 +20,26 @@
   <h1 class="site-title">Travaux dirigés</h1>
   <p class="site-lead">Formats interactifs pour réviser et entraîner la méthode.</p>
 
-  <div class="ex-list">
-    <a class="ex-item" data-flipcards-entry href="../demo/">
-      <div>
-        <p class="ex-item-type" data-fc-type>Démo</p>
-        <p class="ex-item-title">Flipcards (Grands arrêts)</p>
-        <p class="ex-item-desc" data-fc-desc>Cartes recto / verso sur la jurisprudence essentielle. Thèmes, notions clés, règles de droit et portée des arrêts.</p>
+  <div class="ex-list ex-list-rubriques">
+    <div class="ex-rubrique">
+      <p class="ex-item-type">Exercice<span class="ex-item-access"> · <span data-ex-access>Démo</span></span></p>
+      <h2 class="ex-rubrique-title">Flipcards</h2>
+      <p class="ex-rubrique-lead">Cartes recto / verso pour mémoriser arrêts et notions.</p>
+      <div class="ex-rubrique-actions">
+        <a class="btn outline-accent" data-flipcards-entry href="../demo/">Grands arrêts</a>
+        <a class="btn outline-accent" data-flipcards-dico-entry href="../demo-flipcards-dico/">Grandes notions</a>
       </div>
-      <span class="ex-item-cta" data-fc-cta>Essayer la démo →</span>
-    </a>
+    </div>
+
+    <div class="ex-rubrique">
+      <p class="ex-item-type">Exercice<span class="ex-item-access"> · <span data-ex-access>Démo</span></span></p>
+      <h2 class="ex-rubrique-title">Relations</h2>
+      <p class="ex-rubrique-lead">Reliez chaque élément à sa correspondance par glisser-déposer.</p>
+      <div class="ex-rubrique-actions">
+        <a class="btn outline-accent" data-relier-entry href="../demo-relier/">Grands arrêts</a>
+        <a class="btn outline-accent" data-relier-dico-entry href="../demo-relier-dico/">Grandes notions</a>
+      </div>
+    </div>
 
     <div class="ex-item is-soon" aria-disabled="true">
       <div>
@@ -50,6 +61,6 @@
   </div>
 </main>
 <script src="../auth.js?v=4"></script>
-<script src="../site-nav.js?v=12"></script>
+<script src="../site-nav.js?v=21"></script>
 </body>
 </html>
