@@ -117,6 +117,9 @@
   }
 
   function applyHomeAuth(isMember) {
+    const panel = document.getElementById("espace-membre");
+    if (panel) panel.hidden = Boolean(isMember);
+
     const btn = document.querySelector("[data-home-auth-btn]");
     if (!btn) return;
     if (isMember) {

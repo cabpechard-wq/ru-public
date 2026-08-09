@@ -470,6 +470,10 @@ a:hover { color: var(--accent-hover); }
   margin-bottom: 1.75rem;
 }
 
+.home-hero:has(.home-hero-access[hidden]) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .home-hero-copy {
   min-width: 0;
 }
