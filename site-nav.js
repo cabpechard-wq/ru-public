@@ -23,7 +23,7 @@
   header.innerHTML =
     '<a class="site-nav-brand" href="' + abs("index.html") + '">' +
       '<span class="site-nav-kicker">Éditions Particulières</span>' +
-      '<span class="site-nav-product">Droit public et administratif</span>' +
+      '<span class="site-nav-product"><em>Droit</em> public et administratif</span>' +
     "</a>" +
     '<nav class="site-nav-links" aria-label="Navigation">' +
       '<a data-nav="home" href="' + abs("index.html") + '">Accueil</a>' +

@@ -95,10 +95,16 @@ a:hover { color: var(--accent-hover); }
 .site-nav-product {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: .01em;
+  font-weight: 500;
+  letter-spacing: -.01em;
   line-height: 1.15;
   color: var(--ink);
+}
+
+.site-nav-product em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .site-nav-links {
@@ -2863,7 +2869,7 @@ input:focus {
   letter-spacing: .2em;
   font-weight: 500;
 }
-.site-nav-product { font-weight: 600; letter-spacing: -.01em; color: #fff; }
+.site-nav-product { font-weight: 500; letter-spacing: -.01em; color: #fff; }
 .site-nav-links > a { color: var(--muted); }
 .site-nav-links > a:hover,
 .site-nav-links > a.is-active {
