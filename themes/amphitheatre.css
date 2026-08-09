@@ -2896,10 +2896,10 @@ input:focus {
 }
 .site-title-hero em {
   font-style: italic;
-  color: var(--accent);
+  color: var(--secondary);
 }
 .site-nav-product em {
-  color: var(--accent);
+  color: var(--secondary);
   font-style: italic;
 }
 .home-amphitheatre .home-hero {
@@ -2907,7 +2907,7 @@ input:focus {
 }
 .home-rule {
   height: 2px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent) 12%, var(--accent) 42%, var(--secondary) 42%, var(--secondary) 72%, transparent 100%);
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
   opacity: .9;
   position: relative;
 }
@@ -2919,9 +2919,10 @@ input:focus {
   transform: translateY(-50%);
   font-size: .55rem;
   opacity: .85;
+  color: var(--accent);
 }
-.home-rule::before { left: 0; color: var(--accent); }
-.home-rule::after { right: 0; color: var(--secondary); }
+.home-rule::before { left: 0; }
+.home-rule::after { right: 0; }
 .ex-item {
   background: linear-gradient(160deg, rgba(19, 42, 28, .95), rgba(12, 31, 20, .7));
   border: 1px solid rgba(212, 168, 75, .22);
@@ -2960,9 +2961,9 @@ input:focus {
   border-radius: 2px;
 }
 .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #0c1f14;
-  border-color: var(--accent);
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .manuel-nav-side {
   border-right: 1px solid rgba(212, 168, 75, .2);
@@ -2999,7 +3000,7 @@ blockquote, .manuel-prose blockquote {
 
 /* —— Dualité or / bordeaux (manuel, dict, arrêts, TD) —— */
 .site-nav-user svg { color: var(--secondary); }
-.ex-rubrique-title { color: var(--secondary); }
+.ex-rubrique-title { color: var(--accent); }
 .ex-rubrique .ex-item-type { color: var(--secondary); }
 .manuel-content .legal-prose > h3 { color: var(--accent); }
 .manuel-content .legal-prose > h4 { color: var(--secondary); }
@@ -3030,12 +3031,12 @@ blockquote, .manuel-prose blockquote {
 
 /* —— Hubs Amphithéâtre / TD / Bibliothèque (+ colonnes accueil) —— */
 .home-col .site-hero-kicker { color: var(--accent); }
-.home-col-title { color: var(--accent); }
-.home-col-title:hover { color: var(--secondary); }
+.home-col-title { color: var(--secondary); }
+.home-col-title:hover { color: var(--accent); }
 .home-col .ex-item-type,
 .home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
 .home-col .ex-item-title,
-.home-col .ex-rubrique-title { color: var(--secondary); }
+.home-col .ex-rubrique-title { color: var(--accent); }
 .home-col .ex-item-cta { color: var(--accent); }
 .home-col .ex-item:hover .ex-item-cta { color: var(--secondary); }
 .home-col .btn.outline-accent {
@@ -3043,12 +3044,12 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .home-col .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #0c1f14;
-  border-color: var(--accent);
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .site-main.hub-wide > .site-hero-kicker { color: var(--accent); }
-.site-main.hub-wide > .site-title { color: var(--accent); }
+.site-main.hub-wide > .site-title { color: var(--secondary); }
 .site-main.hub-wide > .site-title::after {
   content: "";
   display: block;
@@ -3059,7 +3060,7 @@ blockquote, .manuel-prose blockquote {
 }
 .site-main.hub-wide .ex-item-type { color: var(--secondary); }
 .site-main.hub-wide .ex-item-title,
-.site-main.hub-wide .ex-rubrique-title { color: var(--secondary); }
+.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
 .site-main.hub-wide .ex-item-cta { color: var(--accent); }
 .site-main.hub-wide .ex-item:hover .ex-item-cta { color: var(--secondary); }
 .site-main.hub-wide .btn.outline-accent {
@@ -3067,8 +3068,8 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .site-main.hub-wide .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #0c1f14;
-  border-color: var(--accent);
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .site-crumb strong { color: var(--secondary); }

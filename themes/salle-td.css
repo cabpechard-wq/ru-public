@@ -2883,9 +2883,12 @@ input:focus {
 }
 .site-hero-kicker { color: var(--accent); font-weight: 700; }
 .site-title { font-weight: 700; }
-.site-title-hero { color: var(--accent); }
-.site-title-hero em { color: var(--accent); font-style: italic; }
-.site-nav-product em { color: var(--accent); font-style: italic; font-weight: 500; }
+.site-title-hero {
+  color: var(--accent);
+  font-weight: 500;
+}
+.site-title-hero em { color: var(--secondary); font-style: italic; font-weight: 500; }
+.site-nav-product em { color: var(--secondary); font-style: italic; font-weight: 500; }
 .home-rule {
   height: 4px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #c8102e 28%, #c8102e 55%, transparent 100%);
@@ -2926,8 +2929,9 @@ input:focus {
   color: var(--accent);
 }
 .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .manuel-nav-side {
   border-right: 1px solid var(--border);
@@ -2963,7 +2967,7 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .ex-rubrique-title {
-  color: var(--secondary);
+  color: var(--accent);
 }
 .ex-rubrique .ex-item-type {
   color: var(--secondary);
@@ -2973,8 +2977,9 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .ex-rubrique-actions .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .manuel-content .legal-prose > h3 {
   color: var(--accent);
@@ -3036,10 +3041,10 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .home-col-title {
-  color: var(--accent);
+  color: var(--secondary);
 }
 .home-col-title:hover {
-  color: var(--secondary);
+  color: var(--accent);
 }
 .home-col .ex-item-type,
 .home-col .ex-rubrique .ex-item-type {
@@ -3047,7 +3052,7 @@ blockquote, .manuel-prose blockquote {
 }
 .home-col .ex-item-title,
 .home-col .ex-rubrique-title {
-  color: var(--secondary);
+  color: var(--accent);
 }
 .home-col .ex-item-cta {
   color: var(--accent);
@@ -3060,14 +3065,15 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .home-col .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .site-main.hub-wide > .site-hero-kicker {
   color: var(--accent);
 }
 .site-main.hub-wide > .site-title {
-  color: var(--accent);
+  color: var(--secondary);
 }
 .site-main.hub-wide > .site-title::after {
   content: "";
@@ -3082,7 +3088,7 @@ blockquote, .manuel-prose blockquote {
 }
 .site-main.hub-wide .ex-item-title,
 .site-main.hub-wide .ex-rubrique-title {
-  color: var(--secondary);
+  color: var(--accent);
 }
 .site-main.hub-wide .ex-item-cta {
   color: var(--accent);
@@ -3095,8 +3101,9 @@ blockquote, .manuel-prose blockquote {
   color: var(--accent);
 }
 .site-main.hub-wide .btn.outline-accent:hover {
-  background: var(--accent);
-  color: #fff;
+  background: transparent;
+  border-color: var(--secondary);
+  color: var(--secondary);
 }
 .site-crumb strong {
   color: var(--secondary);
