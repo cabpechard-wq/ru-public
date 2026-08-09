@@ -2896,10 +2896,10 @@ input:focus {
 }
 .site-title-hero em {
   font-style: italic;
-  color: var(--secondary);
+  color: var(--accent);
 }
 .site-nav-product em {
-  color: var(--secondary);
+  color: var(--accent);
   font-style: italic;
 }
 .home-amphitheatre .home-hero {
@@ -2955,14 +2955,14 @@ input:focus {
   border-radius: 2px;
 }
 .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
   border-radius: 2px;
 }
 .btn.outline-accent:hover {
-  background: var(--secondary);
-  color: #e8e2d4;
-  border-color: var(--secondary);
+  background: var(--accent);
+  color: #0c1f14;
+  border-color: var(--accent);
 }
 .manuel-nav-side {
   border-right: 1px solid rgba(212, 168, 75, .2);
@@ -2999,7 +2999,7 @@ blockquote, .manuel-prose blockquote {
 
 /* —— Dualité or / bordeaux (manuel, dict, arrêts, TD) —— */
 .site-nav-user svg { color: var(--secondary); }
-.ex-rubrique-title { color: var(--accent); }
+.ex-rubrique-title { color: var(--secondary); }
 .ex-rubrique .ex-item-type { color: var(--secondary); }
 .manuel-content .legal-prose > h3 { color: var(--accent); }
 .manuel-content .legal-prose > h4 { color: var(--secondary); }
@@ -3034,16 +3034,18 @@ blockquote, .manuel-prose blockquote {
 .home-col-title:hover { color: var(--secondary); }
 .home-col .ex-item-type,
 .home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
+.home-col .ex-item-title,
+.home-col .ex-rubrique-title { color: var(--secondary); }
 .home-col .ex-item-cta { color: var(--accent); }
 .home-col .ex-item:hover .ex-item-cta { color: var(--secondary); }
 .home-col .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .home-col .btn.outline-accent:hover {
-  background: var(--secondary);
-  color: #e8e2d4;
-  border-color: var(--secondary);
+  background: var(--accent);
+  color: #0c1f14;
+  border-color: var(--accent);
 }
 .site-main.hub-wide > .site-hero-kicker { color: var(--accent); }
 .site-main.hub-wide > .site-title { color: var(--accent); }
@@ -3056,16 +3058,17 @@ blockquote, .manuel-prose blockquote {
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 45%, var(--secondary) 45%, var(--secondary) 100%);
 }
 .site-main.hub-wide .ex-item-type { color: var(--secondary); }
+.site-main.hub-wide .ex-item-title,
+.site-main.hub-wide .ex-rubrique-title { color: var(--secondary); }
 .site-main.hub-wide .ex-item-cta { color: var(--accent); }
 .site-main.hub-wide .ex-item:hover .ex-item-cta { color: var(--secondary); }
-.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
 .site-main.hub-wide .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .site-main.hub-wide .btn.outline-accent:hover {
-  background: var(--secondary);
-  color: #e8e2d4;
-  border-color: var(--secondary);
+  background: var(--accent);
+  color: #0c1f14;
+  border-color: var(--accent);
 }
 .site-crumb strong { color: var(--secondary); }

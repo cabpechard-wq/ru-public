@@ -2884,8 +2884,8 @@ input:focus {
 .site-hero-kicker { color: var(--accent); font-weight: 700; }
 .site-title { font-weight: 700; }
 .site-title-hero { color: var(--accent); }
-.site-title-hero em { color: var(--secondary); font-style: italic; }
-.site-nav-product em { color: var(--secondary); font-style: italic; font-weight: 500; }
+.site-title-hero em { color: var(--accent); font-style: italic; }
+.site-nav-product em { color: var(--accent); font-style: italic; font-weight: 500; }
 .home-rule {
   height: 4px;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #c8102e 28%, #c8102e 55%, transparent 100%);
@@ -2922,11 +2922,11 @@ input:focus {
   font-weight: 700;
 }
 .btn.outline-accent {
-  border-color: #c8102e;
-  color: #c8102e;
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .btn.outline-accent:hover {
-  background: #c8102e;
+  background: var(--accent);
   color: #fff;
 }
 .manuel-nav-side {
@@ -2963,17 +2963,17 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .ex-rubrique-title {
-  color: var(--accent);
+  color: var(--secondary);
 }
 .ex-rubrique .ex-item-type {
   color: var(--secondary);
 }
 .ex-rubrique-actions .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .ex-rubrique-actions .btn.outline-accent:hover {
-  background: var(--secondary);
+  background: var(--accent);
   color: #fff;
 }
 .manuel-content .legal-prose > h3 {
@@ -3045,6 +3045,10 @@ blockquote, .manuel-prose blockquote {
 .home-col .ex-rubrique .ex-item-type {
   color: var(--secondary);
 }
+.home-col .ex-item-title,
+.home-col .ex-rubrique-title {
+  color: var(--secondary);
+}
 .home-col .ex-item-cta {
   color: var(--accent);
 }
@@ -3052,11 +3056,11 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .home-col .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 .home-col .btn.outline-accent:hover {
-  background: var(--secondary);
+  background: var(--accent);
   color: #fff;
 }
 .site-main.hub-wide > .site-hero-kicker {
@@ -3076,21 +3080,22 @@ blockquote, .manuel-prose blockquote {
 .site-main.hub-wide .ex-item-type {
   color: var(--secondary);
 }
+.site-main.hub-wide .ex-item-title,
+.site-main.hub-wide .ex-rubrique-title {
+  color: var(--secondary);
+}
 .site-main.hub-wide .ex-item-cta {
   color: var(--accent);
 }
 .site-main.hub-wide .ex-item:hover .ex-item-cta {
   color: var(--secondary);
 }
-.site-main.hub-wide .ex-rubrique-title {
+.site-main.hub-wide .btn.outline-accent {
+  border-color: var(--accent);
   color: var(--accent);
 }
-.site-main.hub-wide .btn.outline-accent {
-  border-color: var(--secondary);
-  color: var(--secondary);
-}
 .site-main.hub-wide .btn.outline-accent:hover {
-  background: var(--secondary);
+  background: var(--accent);
   color: #fff;
 }
 .site-crumb strong {
