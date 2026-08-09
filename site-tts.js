@@ -706,17 +706,6 @@
   }
 
   function initDictionaryEntries() {
-    const dictToolbar = document.querySelector(".dict-toolbar");
-    if (dictToolbar && !dictToolbar.querySelector(".site-tts-voice")) {
-      dictToolbar.appendChild(
-        buildVoiceSelect(() => {
-          if (window.speechSynthesis.speaking && activeEntry && activeEntryUi) {
-            speakEntry(activeEntry, activeEntryUi);
-          }
-        })
-      );
-    }
-
     document.querySelectorAll(".dict-entry").forEach((entry) => {
       const termEl = entry.querySelector(".dict-term");
       if (!termEl || termEl.querySelector(".site-tts--entry")) return;
