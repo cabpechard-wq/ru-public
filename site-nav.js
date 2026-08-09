@@ -10,6 +10,14 @@
   // Exposé pour site-search.js (même racine d'assets)
   window.SiteNavAbs = abs;
 
+  if (!document.querySelector('link[rel="icon"]')) {
+    const fav = document.createElement("link");
+    fav.rel = "icon";
+    fav.type = "image/svg+xml";
+    fav.href = abs("favicon.svg");
+    document.head.appendChild(fav);
+  }
+
   const header = document.createElement("header");
   header.className = "site-nav";
   header.innerHTML =
