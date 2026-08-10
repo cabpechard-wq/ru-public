@@ -10,6 +10,22 @@
     { id: "laurier-c", label: "Laurier · aéré" },
   ];
 
+  /** Titre H1 d'accueil par thème (Campus = formulaire HTML spécial). */
+  const HOME_TITLES = {
+    amphitheatre: "Amphithéâtre",
+    "salle-td": "Salle de TD",
+    "salle-lecture-access-jour": "Salle de lecture",
+    "salle-lecture-access-nuit": "Salle de lecture",
+    "salle-lecture-jour": "Salle de lecture",
+    "salle-lecture-nuit": "Salle de lecture",
+    "restaurant-universitaire": "Restau' U",
+    cafeteria: "Cafétéria",
+    "chambre-etudiant": "Résidence universitaire",
+  };
+
+  const CAMPUS_HOME_TITLE_HTML = "<em>Droit</em> public et administratif";
+  const HOME_EYEBROW = "Droit public et administratif";
+
   function scriptBase() {
     const el =
       document.currentScript ||
@@ -187,6 +203,28 @@
     }
   }
 
+  function applyHomeHeroTitle(theme) {
+    const h1 =
+      document.querySelector("[data-home-title]") ||
+      document.querySelector(".home-hero-copy .site-title-hero");
+    if (!h1) return;
+    const eyebrow =
+      document.querySelector("[data-home-eyebrow]") ||
+      document.querySelector(".home-hero-eyebrow");
+    if (theme.id === "campus") {
+      h1.innerHTML = CAMPUS_HOME_TITLE_HTML;
+      h1.classList.add("is-campus-hero");
+      if (eyebrow) eyebrow.hidden = true;
+      return;
+    }
+    h1.textContent = HOME_TITLES[theme.id] || theme.label || theme.id;
+    h1.classList.remove("is-campus-hero");
+    if (eyebrow) {
+      eyebrow.hidden = false;
+      eyebrow.textContent = HOME_EYEBROW;
+    }
+  }
+
   function applyTheme(theme, manifest) {
     const cssLink = findCssLink();
     if (!cssLink) return;
@@ -206,6 +244,7 @@
       } else {
         delete document.documentElement.dataset.amphiFond;
       }
+      applyHomeHeroTitle(theme);
       try {
         document.dispatchEvent(
           new CustomEvent("ep-theme-change", { detail: { theme: theme } })

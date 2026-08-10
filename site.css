@@ -2923,6 +2923,9 @@ input:focus {
   font-size: clamp(2.6rem, 6vw, 4.2rem);
   line-height: 1.02;
 }
+.home-architecture .home-hero-copy .site-title-hero.is-campus-hero {
+  max-width: 18ch;
+}
 .home-pillars {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2993,9 +2996,15 @@ input:focus {
 }
 .home-pillar-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
   gap: .4rem;
   margin: .15rem 0 .25rem;
+}
+.home-pillar-actions-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
 }
 .home-pillar-actions .btn {
   font-size: .72rem;
