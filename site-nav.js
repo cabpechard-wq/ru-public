@@ -28,7 +28,7 @@
     '<nav class="site-nav-links" aria-label="Navigation">' +
       '<a data-nav="home" href="' + abs("index.html") + '">Accueil</a>' +
       '<a data-nav="bibliotheque" href="' + abs("bibliotheque/") + '">BU</a>' +
-      '<a data-nav="ressources" href="' + abs("ressources/") + '">Amphi\'</a>' +
+      '<a data-nav="ressources" href="' + abs("ressources/") + '">Cours</a>' +
       '<a data-nav="exercices" href="' + abs("exercices/") + '">Salles de TD</a>' +
       '<a data-nav="checkout" href="' + abs("checkout/") + '">Inscriptions</a>' +
       '<span class="site-nav-guest">' +

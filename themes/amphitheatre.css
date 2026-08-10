@@ -88,10 +88,11 @@ html, body {
   background-color: transparent;
 }
 
-/* Propositions motifs laurier — calque flouté (dilue le motif, texte lisible) */
+/* Propositions motifs laurier — fond net (répétable), jamais flouté */
 html[data-amphi-fond="laurier-a"],
 html[data-amphi-fond="laurier-b"],
 html[data-amphi-fond="laurier-c"] {
+  background-color: #102619;
   background-image: none;
 }
 html[data-amphi-fond="laurier-a"]::before,
@@ -102,34 +103,23 @@ html[data-amphi-fond="laurier-c"]::before,
 html[data-amphi-fond="laurier-c"]::after {
   display: none;
 }
-html[data-amphi-fond^="laurier"] body {
+html[data-amphi-fond="laurier-a"] body {
   background-color: #102619;
-  background-image: none;
-}
-html[data-amphi-fond^="laurier"] body::before {
-  content: "";
-  position: fixed;
-  inset: -32px;
-  z-index: -1;
-  pointer-events: none;
-  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=44");
+  background-size: 240px 260px;
   background-repeat: repeat;
-  background-position: center;
-  filter: blur(9px);
-  opacity: .92;
-  transform: translateZ(0);
 }
-html[data-amphi-fond="laurier-a"] body::before {
-  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=43");
+html[data-amphi-fond="laurier-b"] body {
+  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=44");
   background-size: 240px 260px;
+  background-repeat: repeat;
 }
-html[data-amphi-fond="laurier-b"] body::before {
-  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=43");
-  background-size: 240px 260px;
-}
-html[data-amphi-fond="laurier-c"] body::before {
-  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=43");
+html[data-amphi-fond="laurier-c"] body {
+  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=44");
   background-size: 280px 300px;
+  background-repeat: repeat;
 }
 
 body.site-body {
@@ -3301,57 +3291,90 @@ blockquote, .manuel-prose blockquote {
   }
 }
 
-/* —— Amphithéâtre · lisibilité : voile givré sous le texte —— */
+/* —— Amphithéâtre · lisibilité (idée Gemini) ——
+   Motif net partout. Voile flouté uniquement sous les blocs de texte. */
+.home-architecture .home-pillars {
+  align-items: start;
+  gap: .85rem;
+}
+
 .home-architecture .home-hero-copy,
 .home-architecture .home-pillar,
-.home-amphitheatre .home-col {
-  position: relative;
-  z-index: 0;
-  padding: 1rem 1.15rem 1.2rem;
-  border-radius: var(--radius, 2px);
-  background: rgba(16, 38, 25, .64);
-  backdrop-filter: blur(16px) saturate(.9);
-  -webkit-backdrop-filter: blur(16px) saturate(.9);
-  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .1);
+.home-architecture .home-hero-access {
+  background: rgba(12, 31, 20, .38);
+  backdrop-filter: blur(12px) saturate(.92);
+  -webkit-backdrop-filter: blur(12px) saturate(.92);
+  box-shadow: none;
+  border-radius: 2px;
+}
+
+.home-architecture .home-hero-copy {
+  padding: .55rem .75rem .7rem;
+  margin: -.15rem -.35rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .home-architecture .home-pillar {
-  padding: 1.15rem 1.25rem 1.35rem;
+  /* hauteur = contenu (pas de colonnes étirées qui floutent tout l’écran) */
+  height: auto;
+  border-left: 0;
+  padding: .85rem 1rem 1rem;
 }
 
 .home-architecture .home-pillar + .home-pillar {
-  border-left-color: rgba(212, 168, 75, .22);
+  border-left: 0;
 }
 
-.home-architecture .home-pillars {
-  gap: .85rem;
+.home-architecture .home-hero-access {
+  border: 0;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
+  background: rgba(12, 31, 20, .4);
+}
+
+.home-architecture .home-access-card,
+.home-architecture .home-access-card.is-accent {
+  background: transparent;
+  border-color: color-mix(in srgb, var(--secondary) 22%, transparent);
+  box-shadow: none;
 }
 
 @media (max-width: 900px) {
   .home-architecture .home-pillar + .home-pillar {
-    border-left: 0;
+    border-top: 0;
+    padding-top: .85rem;
   }
 }
 
-/* Pages internes Amphithéâtre */
-.site-body > .site-main:not(.home-amphitheatre) {
-  position: relative;
-  z-index: 0;
-  padding-left: clamp(1rem, 2.5vw, 1.75rem);
-  padding-right: clamp(1rem, 2.5vw, 1.75rem);
-  border-radius: var(--radius, 2px);
-  background: rgba(16, 38, 25, .6);
-  backdrop-filter: blur(18px) saturate(.9);
-  -webkit-backdrop-filter: blur(18px) saturate(.9);
-  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .1);
+/* Pages internes : blocs de lecture (pas toute la page) */
+.site-body > .site-main:not(.home-amphitheatre) .manuel-prose,
+.site-body > .site-main:not(.home-amphitheatre) .dict-entry,
+.site-body > .site-main:not(.home-amphitheatre) .arrets-fiche-layout,
+.site-body > .site-main:not(.home-amphitheatre) > .site-title,
+.site-body > .site-main:not(.home-amphitheatre) > .site-lead {
+  background: rgba(12, 31, 20, .4);
+  backdrop-filter: blur(12px) saturate(.92);
+  -webkit-backdrop-filter: blur(12px) saturate(.92);
+  border-radius: 2px;
+}
+
+.site-body > .site-main:not(.home-amphitheatre) > .site-title,
+.site-body > .site-main:not(.home-amphitheatre) > .site-lead {
+  padding: .35rem .55rem;
+  width: fit-content;
+  max-width: 100%;
 }
 
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .home-architecture .home-hero-copy,
   .home-architecture .home-pillar,
-  .home-amphitheatre .home-col,
-  .site-body > .site-main:not(.home-amphitheatre) {
-    background: rgba(16, 38, 25, .88);
+  .home-architecture .home-hero-access,
+  .site-body > .site-main:not(.home-amphitheatre) .manuel-prose,
+  .site-body > .site-main:not(.home-amphitheatre) .dict-entry,
+  .site-body > .site-main:not(.home-amphitheatre) .arrets-fiche-layout,
+  .site-body > .site-main:not(.home-amphitheatre) > .site-title,
+  .site-body > .site-main:not(.home-amphitheatre) > .site-lead {
+    background: rgba(12, 31, 20, .84);
   }
 }
 
