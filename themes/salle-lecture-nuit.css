@@ -1,21 +1,21 @@
-﻿/* Thème universitaire — Salle de lecture · Nuit (Lot 1 · accessibilité) */
+/* Thème universitaire — Salle de lecture · Nuit (Lot 1 · accessibilité) */
 :root {
   --bg: #000000;
   --bg-elevated: #0a0a0a;
   --ink: #ffffff;
   --muted: #b0b0b0;
-  --accent: #c0c4cc;
-  --accent-hover: #e4e7ec;
-  --accent-soft: rgba(192, 196, 204, .12);
-  --manuel-quote-border: rgba(192, 196, 204, .5);
-  --manuel-h3: #e4e7ec;
-  --manuel-h4: #9aa3b2;
+  --accent: #9aa3b2;
+  --accent-hover: #b8c0cc;
+  --accent-soft: rgba(154, 163, 178, .12);
+  --manuel-quote-border: rgba(154, 163, 178, .5);
+  --manuel-h3: #b8c0cc;
+  --manuel-h4: #c0c4cc;
   --manuel-h5: #b0b0b0;
-  --manuel-encadre-border: #8a93a3;
-  --secondary-soft: rgba(154, 163, 178, .12);
-  --secondary: #9aa3b2;
-  --launch-stamp: #c0c4cc;
-  --launch-stamp-bg: rgba(192, 196, 204, 0.12);
+  --manuel-encadre-border: #c0c4cc;
+  --secondary-soft: rgba(192, 196, 204, .12);
+  --secondary: #c0c4cc;
+  --launch-stamp: #9aa3b2;
+  --launch-stamp-bg: rgba(154, 163, 178, 0.12);
   --border: rgba(255, 255, 255, .22);
   --card: #0a0a0a;
   --radius: 0;
@@ -2915,7 +2915,7 @@ input:focus {
 }
 .ex-item-type {
   letter-spacing: .14em;
-  color: var(--secondary);
+  color: var(--accent);
   font-weight: 500;
 }
 .ex-item-title { color: #fff; }
@@ -3006,9 +3006,9 @@ blockquote, .manuel-prose blockquote {
 .home-col-title { color: var(--secondary); }
 .home-col-title:hover { color: var(--accent); }
 .home-col .ex-item-type,
-.home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
+.home-col .ex-rubrique .ex-item-type { color: var(--accent); }
 .home-col .ex-item-title,
-.home-col .ex-rubrique-title { color: var(--accent); }
+.home-col .ex-rubrique-title { color: var(--secondary); }
 .home-col .ex-item-cta { color: var(--accent); }
 .home-col .btn.outline-accent {
   border-color: var(--accent);
@@ -3020,9 +3020,9 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .site-main.hub-wide > .site-title { color: var(--secondary); }
-.site-main.hub-wide .ex-item-type { color: var(--secondary); }
+.site-main.hub-wide .ex-item-type { color: var(--accent); }
 .site-main.hub-wide .ex-item-title,
-.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
+.site-main.hub-wide .ex-rubrique-title { color: var(--secondary); }
 .site-main.hub-wide .ex-item-cta { color: var(--accent); }
 .site-main.hub-wide .btn.outline-accent {
   border-color: var(--accent);

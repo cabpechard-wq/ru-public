@@ -1,21 +1,21 @@
-﻿/* Thème universitaire — Salle de lecture - Jour (Lot 1 · sobre) */
+/* Thème universitaire — Salle de lecture - Jour (Lot 1 · sobre) */
 :root {
   --bg: #faf8f4;
   --bg-elevated: #ffffff;
   --ink: #1a1a1a;
   --muted: #6b6b6b;
-  --accent: #c4a35a;
-  --accent-hover: #a8893f;
-  --accent-soft: rgba(196, 163, 90, .12);
-  --manuel-quote-border: rgba(196, 163, 90, .55);
-  --manuel-h3: #8a7030;
-  --manuel-h4: #3f5168;
+  --accent: #3f5168;
+  --accent-hover: #2f3d4f;
+  --accent-soft: rgba(63, 81, 104, .12);
+  --manuel-quote-border: rgba(63, 81, 104, .55);
+  --manuel-h3: #3f5168;
+  --manuel-h4: #c4a35a;
   --manuel-h5: #5a5a5a;
-  --manuel-encadre-border: #3f5168;
-  --secondary-soft: rgba(63, 81, 104, .12);
-  --secondary: #3f5168;
-  --launch-stamp: #c4a35a;
-  --launch-stamp-bg: rgba(196, 163, 90, 0.12);
+  --manuel-encadre-border: #c4a35a;
+  --secondary-soft: rgba(196, 163, 90, .12);
+  --secondary: #c4a35a;
+  --launch-stamp: #3f5168;
+  --launch-stamp-bg: rgba(63, 81, 104, 0.12);
   --border: rgba(26, 26, 26, .1);
   --card: #ffffff;
   --radius: 0;
@@ -2914,7 +2914,7 @@ input:focus {
 }
 .ex-item-type {
   letter-spacing: .14em;
-  color: var(--secondary);
+  color: var(--accent);
   font-weight: 600;
 }
 .ex-item-cta { color: var(--accent); font-weight: 500; }
@@ -2978,8 +2978,8 @@ blockquote, .manuel-prose blockquote {
 .site-nav-user svg { color: var(--secondary); }
 
 /* —— Dualité laiton / ardoise (manuel, dict, arrêts, TD) —— */
-.ex-rubrique-title { color: var(--accent); }
-.ex-rubrique .ex-item-type { color: var(--secondary); }
+.ex-rubrique-title { color: var(--secondary); }
+.ex-rubrique .ex-item-type { color: var(--accent); }
 .manuel-content .legal-prose > h3 { color: var(--accent); }
 .manuel-content .legal-prose > h4 { color: var(--secondary); }
 .manuel-content .legal-prose a:is(.dict-link, .manuel-link, .arret-link):hover {
@@ -3012,9 +3012,9 @@ blockquote, .manuel-prose blockquote {
 .home-col-title { color: var(--secondary); }
 .home-col-title:hover { color: var(--accent); }
 .home-col .ex-item-type,
-.home-col .ex-rubrique .ex-item-type { color: var(--secondary); }
+.home-col .ex-rubrique .ex-item-type { color: var(--accent); }
 .home-col .ex-item-title,
-.home-col .ex-rubrique-title { color: var(--accent); }
+.home-col .ex-rubrique-title { color: var(--secondary); }
 .home-col .ex-item-cta { color: var(--accent); }
 .home-col .ex-item:hover .ex-item-cta { color: var(--secondary); }
 .home-col .btn.outline-accent {
@@ -3036,9 +3036,9 @@ blockquote, .manuel-prose blockquote {
   margin-top: .55rem;
   background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 45%, var(--secondary) 45%, var(--secondary) 100%);
 }
-.site-main.hub-wide .ex-item-type { color: var(--secondary); }
+.site-main.hub-wide .ex-item-type { color: var(--accent); }
 .site-main.hub-wide .ex-item-title,
-.site-main.hub-wide .ex-rubrique-title { color: var(--accent); }
+.site-main.hub-wide .ex-rubrique-title { color: var(--secondary); }
 .site-main.hub-wide .ex-item-cta { color: var(--accent); }
 .site-main.hub-wide .ex-item:hover .ex-item-cta { color: var(--secondary); }
 .site-main.hub-wide .btn.outline-accent {

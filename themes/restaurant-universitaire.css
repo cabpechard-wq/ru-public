@@ -1,32 +1,32 @@
-﻿/* Thème universitaire — Salle de TD (Lot 2 · dynamique) */
+/* Thème universitaire — Restaurant universitaire (CROUS) */
 :root {
-  --bg: #f7f5f2;
+  --bg: #f0f4f3;
   --bg-elevated: #ffffff;
-  --ink: #1a2332;
-  --muted: #5c6575;
-  --accent: #1e3a5f;
-  --accent-hover: #152a45;
-  --accent-soft: rgba(30, 58, 95, .1);
-  --manuel-quote-border: rgba(30, 58, 95, .65);
-  --manuel-h3: #1e3a5f;
-  --manuel-h4: #c8102e;
-  --manuel-h5: #5c6575;
-  --manuel-encadre-border: #c8102e;
-  --secondary-soft: rgba(200, 16, 46, .1);
-  --secondary: #c8102e;
-  --launch-stamp: #c8102e;
-  --launch-stamp-bg: rgba(200, 16, 46, 0.08);
-  --border: rgba(26, 35, 50, .12);
+  --ink: #1a2e2b;
+  --muted: #5a6e6a;
+  --accent: #0d766e;
+  --accent-hover: #0a5c56;
+  --accent-soft: rgba(13, 118, 110, .12);
+  --manuel-quote-border: rgba(13, 118, 110, .65);
+  --manuel-h3: #0d766e;
+  --manuel-h4: #e85d04;
+  --manuel-h5: #5a6e6a;
+  --manuel-encadre-border: #e85d04;
+  --secondary-soft: rgba(232, 93, 4, .12);
+  --secondary: #e85d04;
+  --launch-stamp: #e85d04;
+  --launch-stamp-bg: rgba(232, 93, 4, 0.1);
+  --border: rgba(26, 46, 43, .12);
   --card: #ffffff;
-  --radius: 4px;
+  --radius: 8px;
   --read-column: 46rem;
-  --font-ui: "DM Sans", system-ui, sans-serif;
-  --font-display: "Libre Baskerville", Georgia, serif;
+  --font-ui: "Nunito Sans", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
   --nav-h: 3.5rem;
   --ok: #6ee7b7;
   --danger: #f87171;
-  --link-dict: #1e5a8a;
-  --link-arret: #166534;
+  --link-dict: #0e7490;
+  --link-arret: #15803d;
   --link-manuel: var(--accent);
 }
 
@@ -46,9 +46,9 @@ html, body {
   font-family: var(--font-ui);
   background-color: var(--bg);
   background-image:
-    linear-gradient(180deg, #ffffff 0%, transparent 18%),
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(30, 58, 95, .1) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(200, 16, 46, .06) 0%, transparent 50%);
+    linear-gradient(180deg, #ffffff 0%, transparent 22%),
+    radial-gradient(ellipse 75% 50% at 0% 0%, rgba(13, 118, 110, .09) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 8%, rgba(232, 93, 4, .07) 0%, transparent 50%),
 }
 
 body.site-body {
@@ -2864,11 +2864,11 @@ input:focus {
   }
 }
 
-/* —— Salle de TD (lot 2 · dynamique) —— */
+/* —— Restaurant universitaire (CROUS) —— */
 .site-nav {
   background: rgba(255, 255, 255, .95);
   border-bottom: 3px solid var(--accent);
-  box-shadow: 0 1px 0 rgba(30, 58, 95, .06);
+  box-shadow: 0 1px 0 rgba(13, 118, 110, .06);
 }
 .site-nav-kicker {
   color: var(--accent);
@@ -2877,32 +2877,33 @@ input:focus {
 }
 .site-nav-links > a.is-active {
   color: var(--accent);
-  background: rgba(30, 58, 95, .08);
+  background: rgba(13, 118, 110, .08);
   padding: .35rem .55rem;
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 .site-hero-kicker { color: var(--accent); font-weight: 700; }
 .site-title { font-weight: 700; }
 .site-title-hero {
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
 }
 .site-title-hero em { color: var(--secondary); font-style: italic; font-weight: 500; }
 .site-nav-product em { color: var(--secondary); font-style: italic; font-weight: 500; }
 .home-rule {
   height: 4px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #c8102e 28%, #c8102e 55%, transparent 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--secondary) 28%, var(--secondary) 55%, transparent 100%);
   opacity: 1;
 }
 .ex-item {
   background: var(--card);
   border: 1px solid var(--border);
   border-left: 3px solid transparent;
+  border-radius: var(--radius);
   transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 .ex-item:hover {
   border-left-color: var(--accent);
-  box-shadow: 0 10px 28px rgba(30, 58, 95, .1);
+  box-shadow: 0 10px 28px rgba(13, 118, 110, .1);
   transform: translateX(2px);
 }
 .ex-item-type { color: var(--accent); font-weight: 700; letter-spacing: .1em; }
@@ -2912,8 +2913,8 @@ input:focus {
   background: #fff;
 }
 .home-access-card.is-accent {
-  border-color: rgba(30, 58, 95, .35);
-  background: linear-gradient(160deg, rgba(30, 58, 95, .07), #fff 55%);
+  border-color: rgba(13, 118, 110, .35);
+  background: linear-gradient(160deg, rgba(13, 118, 110, .07), #fff 55%);
 }
 .home-access-card,
 .home-access-card.is-accent {
@@ -2935,7 +2936,7 @@ input:focus {
 }
 .manuel-nav-side {
   border-right: 1px solid var(--border);
-  background: rgba(30, 58, 95, .03);
+  background: rgba(13, 118, 110, .03);
 }
 .manuel-nav-side a.is-current {
   color: var(--accent);
@@ -2945,20 +2946,20 @@ input:focus {
 }
 blockquote, .manuel-prose blockquote {
   border-color: var(--accent);
-  background: rgba(30, 58, 95, .05);
+  background: rgba(13, 118, 110, .05);
   border-width: 0 0 0 4px;
 }
 .encadre {
-  border: 1px solid rgba(200, 16, 46, .25);
-  border-left: 3px solid #c8102e;
-  background: rgba(200, 16, 46, .04);
+  border: 1px solid rgba(232, 93, 4, .25);
+  border-left: 3px solid var(--secondary);
+  background: rgba(232, 93, 4, .04);
 }
 .site-footer {
   border-top: 3px solid var(--accent);
   background: #fff;
 }
 
-/* —— Dualité accent / secondaire (pages + TD) —— */
+/* —— Dualité teal / orange (pages + apps) —— */
 .site-nav {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 62%, var(--secondary) 62%, var(--secondary) 100%) 1;

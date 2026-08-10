@@ -1,32 +1,32 @@
-﻿/* Thème universitaire — Salle de TD (Lot 2 · dynamique) */
+﻿/* Thème universitaire — Cafétéria */
 :root {
-  --bg: #f7f5f2;
+  --bg: #faf7f2;
   --bg-elevated: #ffffff;
-  --ink: #1a2332;
-  --muted: #5c6575;
-  --accent: #1e3a5f;
-  --accent-hover: #152a45;
-  --accent-soft: rgba(30, 58, 95, .1);
-  --manuel-quote-border: rgba(30, 58, 95, .65);
-  --manuel-h3: #1e3a5f;
-  --manuel-h4: #c8102e;
-  --manuel-h5: #5c6575;
-  --manuel-encadre-border: #c8102e;
-  --secondary-soft: rgba(200, 16, 46, .1);
-  --secondary: #c8102e;
-  --launch-stamp: #c8102e;
-  --launch-stamp-bg: rgba(200, 16, 46, 0.08);
-  --border: rgba(26, 35, 50, .12);
+  --ink: #2c241c;
+  --muted: #7a6e62;
+  --accent: #5c4033;
+  --accent-hover: #463126;
+  --accent-soft: rgba(92, 64, 51, .12);
+  --manuel-quote-border: rgba(92, 64, 51, .55);
+  --manuel-h3: #5c4033;
+  --manuel-h4: #6b8f71;
+  --manuel-h5: #7a6e62;
+  --manuel-encadre-border: #6b8f71;
+  --secondary-soft: rgba(107, 143, 113, .14);
+  --secondary: #6b8f71;
+  --launch-stamp: #6b8f71;
+  --launch-stamp-bg: rgba(107, 143, 113, 0.12);
+  --border: rgba(44, 36, 28, .12);
   --card: #ffffff;
-  --radius: 4px;
+  --radius: 10px;
   --read-column: 46rem;
-  --font-ui: "DM Sans", system-ui, sans-serif;
-  --font-display: "Libre Baskerville", Georgia, serif;
+  --font-ui: "Karla", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
   --nav-h: 3.5rem;
   --ok: #6ee7b7;
   --danger: #f87171;
-  --link-dict: #1e5a8a;
-  --link-arret: #166534;
+  --link-dict: #3d6b8a;
+  --link-arret: #3f6b4a;
   --link-manuel: var(--accent);
 }
 
@@ -46,9 +46,9 @@ html, body {
   font-family: var(--font-ui);
   background-color: var(--bg);
   background-image:
-    linear-gradient(180deg, #ffffff 0%, transparent 18%),
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(30, 58, 95, .1) 0%, transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(200, 16, 46, .06) 0%, transparent 50%);
+    linear-gradient(180deg, #fffdf9 0%, transparent 24%),
+    radial-gradient(ellipse 70% 48% at 8% 0%, rgba(92, 64, 51, .08) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 38% at 100% 10%, rgba(107, 143, 113, .1) 0%, transparent 52%),
 }
 
 body.site-body {
@@ -2864,11 +2864,11 @@ input:focus {
   }
 }
 
-/* —— Salle de TD (lot 2 · dynamique) —— */
+/* —— Cafétéria —— */
 .site-nav {
   background: rgba(255, 255, 255, .95);
   border-bottom: 3px solid var(--accent);
-  box-shadow: 0 1px 0 rgba(30, 58, 95, .06);
+  box-shadow: 0 1px 0 rgba(92, 64, 51, .06);
 }
 .site-nav-kicker {
   color: var(--accent);
@@ -2877,32 +2877,33 @@ input:focus {
 }
 .site-nav-links > a.is-active {
   color: var(--accent);
-  background: rgba(30, 58, 95, .08);
+  background: rgba(92, 64, 51, .08);
   padding: .35rem .55rem;
-  border-radius: 4px;
+  border-radius: var(--radius);
 }
 .site-hero-kicker { color: var(--accent); font-weight: 700; }
 .site-title { font-weight: 700; }
 .site-title-hero {
   color: var(--accent);
-  font-weight: 500;
+  font-weight: 600;
 }
 .site-title-hero em { color: var(--secondary); font-style: italic; font-weight: 500; }
 .site-nav-product em { color: var(--secondary); font-style: italic; font-weight: 500; }
 .home-rule {
   height: 4px;
-  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, #c8102e 28%, #c8102e 55%, transparent 100%);
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--secondary) 28%, var(--secondary) 55%, transparent 100%);
   opacity: 1;
 }
 .ex-item {
   background: var(--card);
   border: 1px solid var(--border);
   border-left: 3px solid transparent;
+  border-radius: var(--radius);
   transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
 }
 .ex-item:hover {
   border-left-color: var(--accent);
-  box-shadow: 0 10px 28px rgba(30, 58, 95, .1);
+  box-shadow: 0 10px 28px rgba(92, 64, 51, .1);
   transform: translateX(2px);
 }
 .ex-item-type { color: var(--accent); font-weight: 700; letter-spacing: .1em; }
@@ -2912,8 +2913,8 @@ input:focus {
   background: #fff;
 }
 .home-access-card.is-accent {
-  border-color: rgba(30, 58, 95, .35);
-  background: linear-gradient(160deg, rgba(30, 58, 95, .07), #fff 55%);
+  border-color: rgba(92, 64, 51, .35);
+  background: linear-gradient(160deg, rgba(92, 64, 51, .07), #fff 55%);
 }
 .home-access-card,
 .home-access-card.is-accent {
@@ -2935,7 +2936,7 @@ input:focus {
 }
 .manuel-nav-side {
   border-right: 1px solid var(--border);
-  background: rgba(30, 58, 95, .03);
+  background: rgba(92, 64, 51, .03);
 }
 .manuel-nav-side a.is-current {
   color: var(--accent);
@@ -2945,20 +2946,20 @@ input:focus {
 }
 blockquote, .manuel-prose blockquote {
   border-color: var(--accent);
-  background: rgba(30, 58, 95, .05);
+  background: rgba(92, 64, 51, .05);
   border-width: 0 0 0 4px;
 }
 .encadre {
-  border: 1px solid rgba(200, 16, 46, .25);
-  border-left: 3px solid #c8102e;
-  background: rgba(200, 16, 46, .04);
+  border: 1px solid rgba(107, 143, 113, .25);
+  border-left: 3px solid var(--secondary);
+  background: rgba(107, 143, 113, .04);
 }
 .site-footer {
   border-top: 3px solid var(--accent);
   background: #fff;
 }
 
-/* —— Dualité accent / secondaire (pages + TD) —— */
+/* —— Dualité café / pistache (pages + apps) —— */
 .site-nav {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 62%, var(--secondary) 62%, var(--secondary) 100%) 1;
