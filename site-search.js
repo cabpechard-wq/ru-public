@@ -109,7 +109,7 @@
       '<div class="site-nav-search-panel" hidden role="listbox" aria-label="Résultats de recherche"></div>';
 
     const links = nav.querySelector(".site-nav-links");
-    if (links) nav.insertBefore(wrap, links);
+    if (links) links.insertBefore(wrap, links.firstChild);
     else nav.appendChild(wrap);
     return wrap;
   }

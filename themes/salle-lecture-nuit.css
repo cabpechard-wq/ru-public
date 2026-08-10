@@ -121,7 +121,7 @@ a:hover { color: var(--accent-hover); }
   font-weight: 500;
   position: relative;
   z-index: 3;
-  margin-left: 0;
+  margin-left: auto;
 }
 
 .site-nav-links > a {
@@ -137,15 +137,15 @@ a:hover { color: var(--accent-hover); }
   background: transparent;
 }
 
-/* —— Recherche globale (aligné Campus) —— */
+/* —— Recherche globale (1er élément du groupe de liens, avant Accueil) —— */
 .site-nav-search {
   position: relative;
   z-index: 2;
-  flex: none;
-  width: min(18rem, calc(100vw - 2rem));
-  max-width: 18rem;
-  min-width: 9rem;
-  margin: 0 0 0 auto;
+  flex: 0 1 14rem;
+  width: 14rem;
+  max-width: min(14rem, 42vw);
+  min-width: 8rem;
+  margin: 0;
 }
 
 .site-nav-search-label {
@@ -282,13 +282,12 @@ a:hover { color: var(--accent-hover); }
     flex-wrap: wrap;
   }
   .site-nav-search {
-    position: static;
-    order: 3;
     flex: 1 1 100%;
     width: 100%;
     max-width: none;
     min-width: 0;
-    margin: .25rem 0 0;
+    order: -1;
+    margin: 0 0 .15rem;
   }
 }
 

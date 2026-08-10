@@ -96,10 +96,9 @@ a:hover { color: var(--accent-hover); }
   line-height: 1.2;
 }
 
-/* Marque : « Les Ressources » primaire · « Universitaires » secondaire
-   (désactivé sur thèmes accessibilité — voir overrides). */
-.brand-part-primary { color: var(--accent); }
-.brand-part-secondary { color: var(--secondary); }
+/* Campus : « Les Ressources » = encre (blanc) · « Universitaires » = or (comme Droit) */
+.brand-part-primary { color: var(--ink); }
+.brand-part-secondary { color: var(--accent); }
 
 .site-nav-product {
   font-family: var(--font-display);
@@ -126,7 +125,7 @@ a:hover { color: var(--accent-hover); }
   font-weight: 500;
   position: relative;
   z-index: 3;
-  margin-left: 0;
+  margin-left: auto;
 }
 
 .site-nav-links > a {
@@ -142,15 +141,15 @@ a:hover { color: var(--accent-hover); }
   background: transparent;
 }
 
-/* —— Recherche globale (juste à gauche d’Accueil) —— */
+/* —— Recherche globale (1er élément du groupe de liens, avant Accueil) —— */
 .site-nav-search {
   position: relative;
   z-index: 2;
-  flex: none;
-  width: min(18rem, calc(100vw - 2rem));
-  max-width: 18rem;
-  min-width: 9rem;
-  margin: 0 0 0 auto;
+  flex: 0 1 14rem;
+  width: 14rem;
+  max-width: min(14rem, 42vw);
+  min-width: 8rem;
+  margin: 0;
 }
 
 .site-nav-search-label {
@@ -287,13 +286,12 @@ a:hover { color: var(--accent-hover); }
     flex-wrap: wrap;
   }
   .site-nav-search {
-    position: static;
-    order: 3;
     flex: 1 1 100%;
     width: 100%;
     max-width: none;
     min-width: 0;
-    margin: .25rem 0 0;
+    order: -1;
+    margin: 0 0 .15rem;
   }
 }
 
