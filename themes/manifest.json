@@ -1,6 +1,6 @@
 {
   "default": "campus",
-  "assetsVersion": 44,
+  "assetsVersion": 61,
   "themes": [
     {
       "id": "campus",
@@ -12,7 +12,7 @@
       "id": "amphitheatre",
       "label": "Amphithéâtre",
       "css": "themes/amphitheatre.css",
-      "fonts": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Commissioner:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      "fonts": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
     },
     {
       "id": "salle-td",

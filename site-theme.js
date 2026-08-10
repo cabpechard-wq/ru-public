@@ -2,13 +2,6 @@
    Campus = site.css par défaut. Persistance localStorage. */
 (function () {
   const STORAGE_KEY = "ep-site-theme";
-  const AMPI_FOND_KEY = "ep-amphi-fond";
-  const AMPI_FONDS = [
-    { id: "academique", label: "Cadre académique" },
-    { id: "laurier-a", label: "Laurier · trait" },
-    { id: "laurier-b", label: "Laurier · léger" },
-    { id: "laurier-c", label: "Laurier · aéré" },
-  ];
 
   /** Titre H1 d'accueil par thème (Campus = formulaire HTML spécial). */
   const HOME_TITLES = {
@@ -56,7 +49,7 @@
         label: "Amphithéâtre",
         css: "themes/amphitheatre.css",
         fonts:
-          "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Commissioner:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap",
+          "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap",
       },
       {
         id: "salle-td",
@@ -128,11 +121,8 @@
       "background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23888' d='M1 1l4 4 4-4'/%3E%3C/svg%3E\");" +
       "background-repeat:no-repeat;background-position:right .55rem center;}" +
       ".site-theme-picker select:focus{outline:2px solid var(--accent,#c4a35a);outline-offset:2px;}" +
-      ".site-amphi-fond-picker{display:none;align-items:center;gap:.35rem;margin-left:.25rem;}" +
-      "html[data-theme='amphitheatre'] .site-amphi-fond-picker{display:inline-flex;}" +
-      ".site-amphi-fond-picker label{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.55;}" +
-      ".site-amphi-fond-picker select{font:inherit;font-size:.72rem;font-weight:600;color:var(--ink,#111);background:var(--bg-elevated,#fff);border:1px solid var(--border,rgba(0,0,0,.15));border-radius:var(--radius,2px);padding:.28rem 1.4rem .28rem .5rem;max-width:11rem;cursor:pointer;}" +
-      "@media (max-width:720px){.site-theme-picker label,.site-amphi-fond-picker label{display:none;}.site-theme-picker select{max-width:11rem;font-size:.72rem;}.site-amphi-fond-picker select{max-width:8.5rem;}}";
+      ".site-amphi-fond-picker{display:none!important;}" +
+      "@media (max-width:720px){.site-theme-picker label{display:none;}.site-theme-picker select{max-width:11rem;font-size:.72rem;}}";
     document.head.appendChild(style);
   }
 
@@ -157,50 +147,12 @@
     return el;
   }
 
-  function resolveAmphiFond() {
+  function purgeAmphiFondUi() {
+    document.querySelectorAll(".site-amphi-fond-picker").forEach((el) => el.remove());
+    delete document.documentElement.dataset.amphiFond;
     try {
-      const stored = localStorage.getItem(AMPI_FOND_KEY);
-      if (AMPI_FONDS.some((f) => f.id === stored)) return stored;
+      localStorage.removeItem("ep-amphi-fond");
     } catch (_) {}
-    return "academique";
-  }
-
-  function applyAmphiFond(fondId) {
-    const id = AMPI_FONDS.some((f) => f.id === fondId) ? fondId : "academique";
-    if (id === "academique") {
-      delete document.documentElement.dataset.amphiFond;
-    } else {
-      document.documentElement.dataset.amphiFond = id;
-    }
-    try {
-      localStorage.setItem(AMPI_FOND_KEY, id);
-    } catch (_) {}
-    const select = document.getElementById("site-amphi-fond-select");
-    if (select && select.value !== id) select.value = id;
-  }
-
-  function ensureAmphiFondPicker(nav) {
-    if (document.getElementById("site-amphi-fond-select")) return;
-    const wrap = document.createElement("div");
-    wrap.className = "site-amphi-fond-picker";
-    wrap.innerHTML =
-      '<label for="site-amphi-fond-select">Fond</label>' +
-      '<select id="site-amphi-fond-select" aria-label="Choisir un fond Amphithéâtre"></select>';
-    const select = wrap.querySelector("select");
-    AMPI_FONDS.forEach((f) => {
-      const opt = document.createElement("option");
-      opt.value = f.id;
-      opt.textContent = f.label;
-      select.appendChild(opt);
-    });
-    select.value = resolveAmphiFond();
-    select.addEventListener("change", () => applyAmphiFond(select.value));
-    const themePicker = nav.querySelector(".site-theme-picker");
-    if (themePicker && themePicker.nextSibling) {
-      nav.insertBefore(wrap, themePicker.nextSibling);
-    } else {
-      nav.appendChild(wrap);
-    }
   }
 
   function applyHomeHeroTitle(theme) {
@@ -239,11 +191,7 @@
       } catch (_) {}
       const select = document.getElementById("site-theme-select");
       if (select && select.value !== theme.id) select.value = theme.id;
-      if (theme.id === "amphitheatre") {
-        applyAmphiFond(resolveAmphiFond());
-      } else {
-        delete document.documentElement.dataset.amphiFond;
-      }
+      purgeAmphiFondUi();
       applyHomeHeroTitle(theme);
       try {
         document.dispatchEvent(
@@ -268,6 +216,7 @@
   function mountPicker(manifest, attempt) {
     attempt = attempt || 0;
     ensureUiStyles();
+    purgeAmphiFondUi();
     const nav = document.querySelector(".site-nav-links");
     if (!nav) {
       if (attempt < 40) {
@@ -275,8 +224,8 @@
       }
       return;
     }
+    purgeAmphiFondUi();
     if (document.getElementById("site-theme-select")) {
-      ensureAmphiFondPicker(nav);
       return;
     }
 
@@ -308,7 +257,6 @@
       const theme = manifest.themes.find((t) => t.id === select.value);
       if (theme) applyTheme(theme, manifest);
     });
-    ensureAmphiFondPicker(nav);
   }
 
   function resolveInitial(manifest) {

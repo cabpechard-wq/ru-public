@@ -1,32 +1,35 @@
-/* Thème universitaire — Amphithéâtre (Lot 3 · carte blanche) */
+/* Thème universitaire — Amphithéâtre
+   Inspiration : Grand Amphithéâtre de la Sorbonne.
+   Vert de la connaissance, ivoire, or antique, lumière de coupole.
+   Règle : simplicité — pas de motif répété. */
 :root {
-  --bg: #102619;
-  --bg-elevated: #132a1c;
-  --ink: #e8e2d4;
-  --muted: #9aaf9e;
-  --accent: #8a424c;
-  --accent-hover: #a3525d;
-  --accent-soft: rgba(138, 66, 76, .22);
-  --manuel-quote-border: rgba(138, 66, 76, .75);
-  --manuel-h3: #8a424c;
-  --manuel-h4: #d4a84b;
-  --manuel-h5: #9aaf9e;
-  --manuel-encadre-border: #d4a84b;
-  --secondary-soft: rgba(212, 168, 75, .14);
-  --secondary: #d4a84b;
-  --launch-stamp: #8a424c;
-  --launch-stamp-bg: rgba(138, 66, 76, 0.14);
-  --border: rgba(232, 226, 212, .14);
-  --card: #132a1c;
+  --bg: #101c16;
+  --bg-elevated: #1a2c22;
+  --ink: #f3eee4;
+  --muted: #9aafa0;
+  --accent: #c9a227;
+  --accent-hover: #dbb84a;
+  --accent-soft: rgba(201, 162, 39, .14);
+  --manuel-quote-border: rgba(201, 162, 39, .7);
+  --manuel-h3: #c9a227;
+  --manuel-h4: #f3eee4;
+  --manuel-h5: #9aafa0;
+  --manuel-encadre-border: #c9a227;
+  --secondary: #7a3d45;
+  --secondary-soft: rgba(122, 61, 69, .16);
+  --launch-stamp: #7a3d45;
+  --launch-stamp-bg: rgba(122, 61, 69, 0.14);
+  --border: rgba(243, 238, 228, .12);
+  --card: #1a2c22;
   --radius: 2px;
   --read-column: 46rem;
-  --font-ui: "Commissioner", system-ui, sans-serif;
-  --font-display: "Bodoni Moda", "Times New Roman", serif;
+  --font-ui: "DM Sans", system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
   --nav-h: 3.5rem;
   --ok: #6ee7b7;
   --danger: #f87171;
-  --link-dict: #6eb3e8;
-  --link-arret: #5ecf8f;
+  --link-dict: #8ec0e0;
+  --link-arret: #7ed4a8;
   --link-manuel: var(--accent);
 }
 
@@ -36,48 +39,8 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 106.25%; /* ~17px — légère hausse globale */
-  /* Cadre académique: fond vert + filets dorés prolongés dans l'espace médian */
-  --amphi-frame-green: #102619;
-  --amphi-frame-gold: #d4a84b;
-  --amphi-frame-inset: 1.125%; /* ~18/1600 */
-  --amphi-frame-line: max(1px, 0.1vw);
-  --amphi-natural-h: calc(100vw * 1160 / 1600);
-  --amphi-half-h: calc(min(var(--amphi-natural-h), 100vh) / 2);
-  background-color: var(--amphi-frame-green);
-  background-image:
-    linear-gradient(var(--amphi-frame-gold), var(--amphi-frame-gold)),
-    linear-gradient(var(--amphi-frame-gold), var(--amphi-frame-gold));
-  background-size: var(--amphi-frame-line) 100%, var(--amphi-frame-line) 100%;
-  background-position:
-    left var(--amphi-frame-inset) top,
-    right var(--amphi-frame-inset) top;
-  background-repeat: no-repeat;
-}
-
-/* Moitié haute / basse: coins toujours visibles; milieu tronqué ou écarté */
-html::before,
-html::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: var(--amphi-half-h);
-  background-image: url("../media/motif-amphitheatre-academique.svg?v=38");
-  background-size: 100% auto;
-  background-repeat: no-repeat;
-  pointer-events: none;
-  z-index: -1;
-}
-
-html::before {
-  top: 0;
-  background-position: center top;
-}
-
-html::after {
-  bottom: 0;
-  background-position: center bottom;
+  font-size: 106.25%;
+  background-color: var(--bg);
 }
 
 html, body {
@@ -85,41 +48,13 @@ html, body {
   min-height: 100%;
   color: var(--ink);
   font-family: var(--font-ui);
-  background-color: transparent;
-}
-
-/* Propositions motifs laurier — fond net (répétable), jamais flouté */
-html[data-amphi-fond="laurier-a"],
-html[data-amphi-fond="laurier-b"],
-html[data-amphi-fond="laurier-c"] {
-  background-color: #102619;
-  background-image: none;
-}
-html[data-amphi-fond="laurier-a"]::before,
-html[data-amphi-fond="laurier-a"]::after,
-html[data-amphi-fond="laurier-b"]::before,
-html[data-amphi-fond="laurier-b"]::after,
-html[data-amphi-fond="laurier-c"]::before,
-html[data-amphi-fond="laurier-c"]::after {
-  display: none;
-}
-html[data-amphi-fond="laurier-a"] body {
-  background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=44");
-  background-size: 240px 260px;
-  background-repeat: repeat;
-}
-html[data-amphi-fond="laurier-b"] body {
-  background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=44");
-  background-size: 240px 260px;
-  background-repeat: repeat;
-}
-html[data-amphi-fond="laurier-c"] body {
-  background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=44");
-  background-size: 280px 300px;
-  background-repeat: repeat;
+  background-color: var(--bg);
+  /* Coupole + profondeur — ambiance seule, sans décor répété */
+  background-image:
+    radial-gradient(ellipse 90% 55% at 50% -18%, rgba(201, 162, 39, .13) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 40% at 50% 108%, rgba(20, 40, 30, .95) 0%, transparent 55%),
+    linear-gradient(180deg, #15261d 0%, #101c16 45%, #0e1914 100%);
+  background-attachment: fixed;
 }
 
 body.site-body {
@@ -140,8 +75,9 @@ a:hover { color: var(--accent-hover); }
   gap: 1rem;
   min-height: var(--nav-h);
   padding: .75rem clamp(1.25rem, 4vw, 3rem);
-  background: var(--bg-elevated);
-  backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
 }
 
@@ -168,7 +104,7 @@ a:hover { color: var(--accent-hover); }
 
 /* Marque : « Les Ressources » primaire · « Universitaires » secondaire */
 .brand-part-primary { color: var(--accent); }
-.brand-part-secondary { color: var(--secondary); }
+.brand-part-secondary { color: var(--ink); }
 
 .site-nav-product {
   font-family: var(--font-display);
@@ -560,9 +496,9 @@ a:hover { color: var(--accent-hover); }
   overflow: visible;
   scroll-margin-top: 4.5rem;
   padding: 1rem 1.15rem 1.15rem;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(212, 168, 75, .28);
   border-left: 2px solid var(--accent);
-  background: var(--bg-elevated);
+  background: color-mix(in srgb, var(--bg-elevated) 92%, #000);
   border-radius: var(--radius);
 }
 
@@ -715,6 +651,7 @@ a:hover { color: var(--accent-hover); }
   margin: 0 0 2rem;
   background: linear-gradient(90deg, var(--accent), transparent 70%);
   opacity: .55;
+  border: 0;
 }
 
 .site-subnav {
@@ -831,7 +768,6 @@ a:hover { color: var(--accent-hover); }
   color: var(--secondary);
 }
 
-
 .site-panel {
   background: var(--card);
   border: 1px solid var(--border);
@@ -915,7 +851,6 @@ a:hover { color: var(--accent-hover); }
   margin: 0 0 1.75rem;
 }
 
-
 .ex-list-rubriques {
   grid-template-columns: 1fr;
 }
@@ -959,7 +894,6 @@ a:hover { color: var(--accent-hover); }
   width: auto;
   text-align: center;
 }
-
 
 .home-col-stack .ex-item {
   display: block;
@@ -1563,7 +1497,7 @@ input:focus {
 .manuel-nav.manuel-toc-grid > ul > li > ul ul {
   margin: .25rem 0 .35rem .7rem;
   padding-left: .65rem;
-  border-left: 1px solid rgba(196, 163, 90, .22);
+  border-left: 1px solid rgba(212, 168, 75, .22);
 }
 
 @media (max-width: 1100px) {
@@ -1588,12 +1522,12 @@ input:focus {
   margin-top: 0;
   padding: .15rem 1.35rem 2.5rem 0;
   border: 0;
-  border-right: 1px solid rgba(196, 163, 90, .14);
+  border-right: 1px solid rgba(212, 168, 75, .14);
   background: transparent;
   font-size: .76rem;
   min-width: 0;
   scrollbar-width: thin;
-  scrollbar-color: rgba(196, 163, 90, .28) transparent;
+  scrollbar-color: rgba(212, 168, 75, .28) transparent;
 }
 
 .manuel-nav-side .manuel-nav-heading {
@@ -1644,14 +1578,14 @@ input:focus {
 .manuel-nav-side li.is-current > a .nav-title {
   color: var(--accent);
   font-weight: 650;
-  box-shadow: inset 0 -1px 0 rgba(196, 163, 90, .55);
+  box-shadow: inset 0 -1px 0 rgba(212, 168, 75, .55);
 }
 
 .manuel-nav-side li ul {
   margin: .2rem 0 .55rem;
   padding: 0 0 0 .85rem;
   border: 0;
-  border-left: 1px solid rgba(196, 163, 90, .12);
+  border-left: 1px solid rgba(212, 168, 75, .12);
   min-width: 0;
 }
 
@@ -1735,7 +1669,7 @@ input:focus {
   margin: 0 0 1.35rem;
   padding-bottom: 0.55rem;
   color: var(--accent);
-  border-bottom: 2px solid rgba(196, 163, 90, .45);
+  border-bottom: 2px solid rgba(212, 168, 75, .45);
 }
 
 .manuel-content .legal-prose {
@@ -1755,7 +1689,7 @@ input:focus {
   margin: 2.15rem 0 0.7rem;
   padding-top: 1.15rem;
   color: var(--accent);
-  border-top: 1px solid rgba(196, 163, 90, .28);
+  border-top: 1px solid rgba(212, 168, 75, .28);
 }
 
 .manuel-content .legal-prose > h2:first-child {
@@ -2023,7 +1957,7 @@ input:focus {
   border-radius: 999px;
   background: var(--accent-soft);
   color: var(--accent);
-  border: 1px solid rgba(196, 163, 90, .45);
+  border: 1px solid rgba(212, 168, 75, .45);
   font-family: var(--font-ui);
   font-size: .88rem;
   font-weight: 650;
@@ -2121,7 +2055,7 @@ input:focus {
 }
 
 .site-tts--capsules .site-tts-play {
-  border-color: rgba(196, 163, 90, .4);
+  border-color: rgba(212, 168, 75, .4);
   color: var(--accent);
 }
 
@@ -2237,7 +2171,7 @@ input:focus {
   border-radius: 50%;
   border: 2px solid var(--bg);
   background: var(--accent);
-  box-shadow: 0 0 0 1px rgba(196, 163, 90, .35);
+  box-shadow: 0 0 0 1px rgba(212, 168, 75, .35);
 }
 
 .site-tts-seek::-moz-range-track {
@@ -2378,7 +2312,7 @@ input:focus {
 
 .dict-index a:hover {
   color: var(--accent);
-  border-bottom-color: rgba(196, 163, 90, .45);
+  border-bottom-color: rgba(212, 168, 75, .45);
 }
 
 .dict-toolbar {
@@ -2423,7 +2357,6 @@ input:focus {
     width: auto;
   }
 }
-
 
 .dict-letter {
   margin: 0 0 2.25rem;
@@ -2507,8 +2440,6 @@ input:focus {
   line-height: 1.45;
   color: var(--muted);
 }
-
-
 
 /* Ressources liées — pied de page Manuel / fiches arrêt */
 .site-linked-resources {
@@ -2802,7 +2733,6 @@ input:focus {
   white-space: nowrap;
 }
 
-
 /* Fiche arrêt — même colonne de lecture que le manuel */
 .site-main.arrets-fiche-page {
   --arrets-read-width: var(--read-column);
@@ -2836,9 +2766,9 @@ input:focus {
 .arrets-prose .fiche-decision {
   margin: 2rem 0 0;
   padding: 1.1rem 1.2rem;
-  border: 1px solid rgba(196, 163, 90, .35);
+  border: 1px solid rgba(212, 168, 75, .35);
   border-radius: var(--radius);
-  background: rgba(196, 163, 90, .06);
+  background: rgba(212, 168, 75, .06);
 }
 
 .arrets-prose .fiche-decision-title {
@@ -2939,15 +2869,14 @@ input:focus {
   }
 }
 
-/* —— Amphithéâtre (lot 3 · carte blanche) —— */
+/* —— Amphithéâtre · prestige sobre —— */
 .site-nav {
-  background: rgba(12, 31, 20, .92);
-  border-bottom: 1px solid rgba(212, 168, 75, .35);
-  box-shadow: inset 0 -1px 0 rgba(212, 168, 75, .15);
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 28%, var(--border));
 }
 .site-nav-kicker {
   color: var(--accent);
-  letter-spacing: .2em;
+  letter-spacing: .18em;
   font-weight: 600;
 }
 .site-nav-product {
@@ -2960,7 +2889,7 @@ input:focus {
 }
 .site-hero-kicker {
   color: var(--accent);
-  letter-spacing: .18em;
+  letter-spacing: .16em;
 }
 .site-title {
   font-weight: 500;
@@ -2968,69 +2897,62 @@ input:focus {
 }
 .site-title-hero em {
   font-style: italic;
-  color: var(--secondary);
+  color: var(--accent);
 }
 .site-nav-product em {
-  color: var(--secondary);
+  color: var(--accent);
   font-style: italic;
 }
 .home-amphitheatre .home-hero {
   gap: 2rem;
 }
 .home-rule {
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
-  opacity: .9;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), transparent 72%);
+  opacity: .5;
   position: relative;
 }
 .home-rule::before,
 .home-rule::after {
-  content: "◆";
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: .55rem;
-  opacity: .85;
-  color: var(--secondary);
+  content: none;
 }
-.home-rule::before { left: 0; }
-.home-rule::after { right: 0; }
 .ex-item {
-  background: linear-gradient(160deg, rgba(19, 42, 28, .95), rgba(12, 31, 20, .7));
-  border: 1px solid rgba(212, 168, 75, .22);
-  border-radius: 2px;
-  transition: border-color .18s ease, box-shadow .18s ease;
+  background: color-mix(in srgb, var(--bg-elevated) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border));
+  border-radius: var(--radius);
+  transition: border-color .18s ease, background-color .18s ease;
 }
 .ex-item:hover {
-  border-color: rgba(138, 66, 76, .55);
-  box-shadow: 0 0 0 1px rgba(138, 66, 76, .18), 0 12px 36px rgba(0, 0, 0, .3);
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  background: var(--bg-elevated);
   transform: none;
+  box-shadow: none;
 }
 .ex-item-type {
   color: var(--accent);
-  letter-spacing: .14em;
+  letter-spacing: .12em;
   font-weight: 600;
 }
 .ex-item-cta { color: var(--accent); }
 .home-access-card {
-  background: var(--card);
-  border: 1px solid rgba(212, 168, 75, .3);
+  background: transparent;
+  border: 0;
 }
 .home-access-card.is-accent {
-  background: linear-gradient(145deg, rgba(212, 168, 75, .1), rgba(19, 42, 28, .9));
-  border-color: rgba(212, 168, 75, .5);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg-elevated));
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--border));
   box-shadow: inset 0 -2px 0 var(--secondary);
 }
 .btn.fill-secondary {
   background: var(--accent);
-  color: #0c1f14;
+  color: var(--bg);
   font-weight: 700;
-  border-radius: 2px;
+  border-radius: var(--radius);
 }
 .btn.outline-accent {
   border-color: var(--accent);
   color: var(--accent);
-  border-radius: 2px;
+  border-radius: var(--radius);
 }
 .btn.outline-accent:hover {
   background: transparent;
@@ -3038,8 +2960,8 @@ input:focus {
   color: var(--secondary);
 }
 .manuel-nav-side {
-  border-right: 1px solid rgba(212, 168, 75, .2);
-  background: rgba(0, 0, 0, .15);
+  border-right: 1px solid color-mix(in srgb, var(--accent) 16%, var(--border));
+  background: rgba(0, 0, 0, .12);
 }
 .manuel-nav-side a.is-current {
   color: var(--accent);
@@ -3048,27 +2970,23 @@ input:focus {
 }
 blockquote, .manuel-prose blockquote {
   border-color: var(--accent);
-  background: rgba(212, 168, 75, .06);
+  background: var(--accent-soft);
   font-family: var(--font-display);
   font-style: italic;
 }
 .encadre {
-  border: 1px solid rgba(138, 66, 76, .35);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
   border-left: 3px solid var(--secondary);
-  background: rgba(138, 66, 76, .06);
-  box-shadow: inset 0 0 0 4px rgba(12, 31, 20, .45);
+  background: var(--accent-soft);
+  box-shadow: none;
 }
 .site-footer {
-  border-top: 2px solid transparent;
-  border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 58%, var(--secondary) 58%, var(--secondary) 100%) 1;
-  background: #0a1a11;
+  border-top: 1px solid var(--border);
+  border-image: none;
+  background: transparent;
 }
 .site-footer-brand { color: var(--ink); }
-@keyframes amphitheatre-glow {
-  0%, 100% { opacity: .65; }
-  50% { opacity: 1; }
-}
-.site-nav-kicker { animation: amphitheatre-glow 5s ease-in-out infinite; }
+.site-nav-kicker { animation: none; }
 
 /* —— Dualité or / bordeaux (manuel, dict, arrêts, TD) —— */
 .site-nav-user svg { color: var(--secondary); }
@@ -3094,7 +3012,7 @@ blockquote, .manuel-prose blockquote {
 .chip[aria-pressed="true"] {
   background: var(--secondary);
   border-color: var(--secondary);
-  color: #e8e2d4;
+  color: var(--ink);
 }
 .site-tts--capsules.is-active .site-tts-play,
 .site-tts-progress-fill {
@@ -3166,7 +3084,7 @@ blockquote, .manuel-prose blockquote {
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--secondary);
+  color: var(--accent);
 }
 .home-architecture .home-hero-copy .site-title-hero {
   max-width: 14ch;
@@ -3191,7 +3109,7 @@ blockquote, .manuel-prose blockquote {
   min-width: 0;
 }
 .home-pillar + .home-pillar {
-  border-left: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+  border-left: 1px solid var(--border);
 }
 .home-pillar-head {
   display: flex;
@@ -3210,9 +3128,9 @@ blockquote, .manuel-prose blockquote {
   width: 3rem;
   height: 3rem;
   margin-bottom: 0;
-  border: 1px solid color-mix(in srgb, var(--secondary) 55%, var(--border));
+  border: 1px solid color-mix(in srgb, var(--accent) 55%, var(--border));
   border-radius: 999px;
-  color: var(--secondary);
+  color: var(--accent);
 }
 .home-pillar-title {
   margin: 0;
@@ -3288,93 +3206,6 @@ blockquote, .manuel-prose blockquote {
     border-left: 0;
     border-top: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
     padding-top: 1.35rem;
-  }
-}
-
-/* —— Amphithéâtre · lisibilité (idée Gemini) ——
-   Motif net partout. Voile flouté uniquement sous les blocs de texte. */
-.home-architecture .home-pillars {
-  align-items: start;
-  gap: .85rem;
-}
-
-.home-architecture .home-hero-copy,
-.home-architecture .home-pillar,
-.home-architecture .home-hero-access {
-  background: rgba(12, 31, 20, .38);
-  backdrop-filter: blur(12px) saturate(.92);
-  -webkit-backdrop-filter: blur(12px) saturate(.92);
-  box-shadow: none;
-  border-radius: 2px;
-}
-
-.home-architecture .home-hero-copy {
-  padding: .55rem .75rem .7rem;
-  margin: -.15rem -.35rem;
-  width: fit-content;
-  max-width: 100%;
-}
-
-.home-architecture .home-pillar {
-  /* hauteur = contenu (pas de colonnes étirées qui floutent tout l’écran) */
-  height: auto;
-  border-left: 0;
-  padding: .85rem 1rem 1rem;
-}
-
-.home-architecture .home-pillar + .home-pillar {
-  border-left: 0;
-}
-
-.home-architecture .home-hero-access {
-  border: 0;
-  border-left: 2px solid color-mix(in srgb, var(--accent) 65%, transparent);
-  background: rgba(12, 31, 20, .4);
-}
-
-.home-architecture .home-access-card,
-.home-architecture .home-access-card.is-accent {
-  background: transparent;
-  border-color: color-mix(in srgb, var(--secondary) 22%, transparent);
-  box-shadow: none;
-}
-
-@media (max-width: 900px) {
-  .home-architecture .home-pillar + .home-pillar {
-    border-top: 0;
-    padding-top: .85rem;
-  }
-}
-
-/* Pages internes : blocs de lecture (pas toute la page) */
-.site-body > .site-main:not(.home-amphitheatre) .manuel-prose,
-.site-body > .site-main:not(.home-amphitheatre) .dict-entry,
-.site-body > .site-main:not(.home-amphitheatre) .arrets-fiche-layout,
-.site-body > .site-main:not(.home-amphitheatre) > .site-title,
-.site-body > .site-main:not(.home-amphitheatre) > .site-lead {
-  background: rgba(12, 31, 20, .4);
-  backdrop-filter: blur(12px) saturate(.92);
-  -webkit-backdrop-filter: blur(12px) saturate(.92);
-  border-radius: 2px;
-}
-
-.site-body > .site-main:not(.home-amphitheatre) > .site-title,
-.site-body > .site-main:not(.home-amphitheatre) > .site-lead {
-  padding: .35rem .55rem;
-  width: fit-content;
-  max-width: 100%;
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .home-architecture .home-hero-copy,
-  .home-architecture .home-pillar,
-  .home-architecture .home-hero-access,
-  .site-body > .site-main:not(.home-amphitheatre) .manuel-prose,
-  .site-body > .site-main:not(.home-amphitheatre) .dict-entry,
-  .site-body > .site-main:not(.home-amphitheatre) .arrets-fiche-layout,
-  .site-body > .site-main:not(.home-amphitheatre) > .site-title,
-  .site-body > .site-main:not(.home-amphitheatre) > .site-lead {
-    background: rgba(12, 31, 20, .84);
   }
 }
 
