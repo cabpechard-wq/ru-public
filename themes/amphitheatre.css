@@ -39,10 +39,10 @@ html {
   font-size: 106.25%; /* ~17px — légère hausse globale */
   /* Cadre académique: fond vert + filets dorés prolongés dans l'espace médian */
   --amphi-frame-green: #102619;
-  --amphi-frame-gold: #9a8b4e;
-  --amphi-frame-inset: 1.123%; /* ~46/4096 */
-  --amphi-frame-line: max(1px, 0.12vw);
-  --amphi-natural-h: calc(100vw * 2980 / 4096);
+  --amphi-frame-gold: #d4a84b;
+  --amphi-frame-inset: 1.125%; /* ~18/1600 */
+  --amphi-frame-line: max(1px, 0.1vw);
+  --amphi-natural-h: calc(100vw * 1160 / 1600);
   --amphi-half-h: calc(min(var(--amphi-natural-h), 100vh) / 2);
   background-color: var(--amphi-frame-green);
   background-image:
@@ -63,10 +63,7 @@ html::after {
   left: 0;
   right: 0;
   height: var(--amphi-half-h);
-  background-image: image-set(
-    url("../media/motif-amphitheatre-academique.webp?v=36") type("image/webp"),
-    url("../media/motif-amphitheatre-academique.png?v=36") type("image/png")
-  );
+  background-image: url("../media/motif-amphitheatre-academique.svg?v=38");
   background-size: 100% auto;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -92,29 +89,40 @@ html, body {
 }
 
 /* Propositions motifs (remplacent le cadre académique) */
-html[data-amphi-fond="livres"],
-html[data-amphi-fond="hiboux"] {
+html[data-amphi-fond="laurier-a"],
+html[data-amphi-fond="laurier-b"],
+html[data-amphi-fond="laurier-c"] {
   background-image: none;
 }
-html[data-amphi-fond="livres"]::before,
-html[data-amphi-fond="livres"]::after,
-html[data-amphi-fond="hiboux"]::before,
-html[data-amphi-fond="hiboux"]::after {
+html[data-amphi-fond="laurier-a"]::before,
+html[data-amphi-fond="laurier-a"]::after,
+html[data-amphi-fond="laurier-b"]::before,
+html[data-amphi-fond="laurier-b"]::after,
+html[data-amphi-fond="laurier-c"]::before,
+html[data-amphi-fond="laurier-c"]::after {
   display: none;
 }
-html[data-amphi-fond="livres"],
-html[data-amphi-fond="livres"] body {
-  background-color: #0c1f14;
-  background-image: url("../media/motif-amphitheatre-prop-livres.png?v=35");
-  background-size: 420px auto;
+html[data-amphi-fond="laurier-a"],
+html[data-amphi-fond="laurier-a"] body {
+  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=37");
+  background-size: 240px 260px;
   background-repeat: repeat;
   background-attachment: fixed;
 }
-html[data-amphi-fond="hiboux"],
-html[data-amphi-fond="hiboux"] body {
-  background-color: #0c1f14;
-  background-image: url("../media/motif-amphitheatre-prop-hiboux.png?v=35");
-  background-size: 380px auto;
+html[data-amphi-fond="laurier-b"],
+html[data-amphi-fond="laurier-b"] body {
+  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=37");
+  background-size: 240px 260px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+html[data-amphi-fond="laurier-c"],
+html[data-amphi-fond="laurier-c"] body {
+  background-color: #102619;
+  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=37");
+  background-size: 280px 300px;
   background-repeat: repeat;
   background-attachment: fixed;
 }
@@ -3148,4 +3156,202 @@ blockquote, .manuel-prose blockquote {
   margin-top: .65rem;
   background: linear-gradient(90deg, transparent, var(--secondary), transparent);
   opacity: .85;
+}
+
+/* —— Amphithéâtre · lisibilité (idée Gemini) : voile + flou derrière le contenu —— */
+.site-nav {
+  background: rgba(19, 42, 28, .72);
+  backdrop-filter: blur(12px) saturate(.92);
+  -webkit-backdrop-filter: blur(12px) saturate(.92);
+}
+
+.site-main {
+  background: rgba(16, 38, 25, .52);
+  backdrop-filter: blur(11px) saturate(.9);
+  -webkit-backdrop-filter: blur(11px) saturate(.9);
+  border: 1px solid rgba(212, 168, 75, .12);
+  border-radius: 2px;
+  padding-left: clamp(.85rem, 2vw, 1.35rem);
+  padding-right: clamp(.85rem, 2vw, 1.35rem);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
+}
+
+.site-main.home-amphitheatre {
+  background: rgba(16, 38, 25, .48);
+}
+
+.home-architecture .home-hero-copy {
+  padding: .85rem 1rem 1rem;
+  background: rgba(16, 38, 25, .42);
+  backdrop-filter: blur(8px) saturate(.92);
+  -webkit-backdrop-filter: blur(8px) saturate(.92);
+  border: 1px solid rgba(212, 168, 75, .1);
+  border-radius: 2px;
+}
+
+.home-hero-access {
+  background: rgba(19, 42, 28, .62);
+  backdrop-filter: blur(10px) saturate(.92);
+  -webkit-backdrop-filter: blur(10px) saturate(.92);
+}
+
+.home-access-card {
+  background: rgba(16, 38, 25, .45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.home-pillar {
+  padding-top: .85rem;
+  padding-bottom: 1rem;
+  background: rgba(16, 38, 25, .38);
+  backdrop-filter: blur(9px) saturate(.9);
+  -webkit-backdrop-filter: blur(9px) saturate(.9);
+  border-radius: 2px;
+}
+
+.home-pillar + .home-pillar {
+  border-left-color: rgba(212, 168, 75, .22);
+}
+
+.home-col-stack .ex-item,
+.ex-item,
+.ex-rubrique {
+  background: rgba(16, 38, 25, .55);
+  backdrop-filter: blur(8px) saturate(.92);
+  -webkit-backdrop-filter: blur(8px) saturate(.92);
+}
+
+.site-footer {
+  background: rgba(19, 42, 28, .78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-main,
+  .site-main.home-amphitheatre,
+  .home-architecture .home-hero-copy,
+  .home-hero-access,
+  .home-access-card,
+  .home-pillar,
+  .home-col-stack .ex-item,
+  .ex-item,
+  .ex-rubrique {
+    background: rgba(16, 38, 25, .88);
+  }
+}
+
+/* —— Accueil · architecture piliers (maquette Grand Amphithéâtre) —— */
+.home-architecture .home-hero-eyebrow {
+  margin: 0 0 .35rem;
+  font-family: var(--font-ui);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+.home-architecture .home-hero-copy .site-title-hero {
+  max-width: 14ch;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1.02;
+}
+.home-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin: 0 0 2.5rem;
+  align-items: stretch;
+}
+.home-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: .25rem clamp(1rem, 2.2vw, 1.75rem);
+  min-width: 0;
+}
+.home-pillar + .home-pillar {
+  border-left: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+}
+.home-pillar-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: .35rem;
+  border: 1px solid color-mix(in srgb, var(--secondary) 55%, var(--border));
+  border-radius: 999px;
+  color: var(--secondary);
+}
+.home-pillar-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+}
+.home-pillar-title a {
+  color: inherit;
+  text-decoration: none;
+}
+.home-pillar-title a:hover {
+  color: var(--accent);
+}
+.home-pillar-lead {
+  margin: 0;
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.45;
+}
+.home-pillar-list {
+  margin: .15rem 0 .35rem;
+  padding: 0;
+  list-style: none;
+}
+.home-pillar-list li {
+  margin: 0 0 .35rem;
+  font-size: .9rem;
+  line-height: 1.35;
+}
+.home-pillar-list a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--secondary) 35%, transparent);
+}
+.home-pillar-list a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.home-pillar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .15rem 0 .25rem;
+}
+.home-pillar-actions .btn {
+  font-size: .72rem;
+  padding: .28rem .65rem;
+}
+.home-pillar-cta {
+  margin-top: auto;
+  align-self: flex-start;
+  margin-top: .85rem;
+}
+.home-pillar .home-soon-note {
+  margin: .55rem 0 0;
+  font-size: .78rem;
+}
+@media (max-width: 900px) {
+  .home-pillars {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .home-pillar + .home-pillar {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+    padding-top: 1.35rem;
+  }
 }

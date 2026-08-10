@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="300" viewBox="0 0 280 300">
+  <!-- Laurier C: simpler, more spaced quinconce -->
+  <rect width="280" height="300" fill="#102619"/>
+  <defs>
+    <g id="leaf-c" fill="none" stroke="#d4a84b" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 0 C1.8 -2.8 4.6 -3.6 7 -1.8 C4.8 -0.2 2.2 0.5 0 0 Z"/>
+    </g>
+    <g id="arm-c">
+      <use href="#leaf-c" transform="translate(-3 -30) rotate(-14)"/>
+      <use href="#leaf-c" transform="translate(-9 -22) rotate(-2)"/>
+      <use href="#leaf-c" transform="translate(-12 -13) rotate(12)"/>
+      <use href="#leaf-c" transform="translate(-13 -3) rotate(26)"/>
+      <use href="#leaf-c" transform="translate(-11 6) rotate(40)"/>
+      <use href="#leaf-c" transform="translate(-7 14) rotate(52)"/>
+    </g>
+    <g id="wreath-c" opacity=".36">
+      <use href="#arm-c"/>
+      <use href="#arm-c" transform="scale(-1 1)"/>
+      <path d="M-4 20 Q0 24 4 20" fill="none" stroke="#d4a84b" stroke-width="1.35" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <use href="#wreath-c" transform="translate(70 62)"/>
+  <use href="#wreath-c" transform="translate(210 62)"/>
+  <use href="#wreath-c" transform="translate(140 162)"/>
+  <use href="#wreath-c" transform="translate(70 262)"/>
+  <use href="#wreath-c" transform="translate(210 262)"/>
+</svg>

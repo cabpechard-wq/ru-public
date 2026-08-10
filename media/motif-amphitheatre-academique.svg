@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1160" viewBox="0 0 1600 1160">
+  <!-- Cadre academique: vecteur net, vert + or -->
+  <rect width="1600" height="1160" fill="#102619"/>
+
+  <!-- filigrane amphitheatre (tres leger) -->
+  <g fill="none" stroke="#d4a84b" stroke-width="1.2" opacity=".07" transform="translate(800 580)">
+    <path d="M-220 -40 H220"/>
+    <path d="M-200 0 H200"/>
+    <path d="M-180 40 H180"/>
+    <path d="M-160 80 H160"/>
+    <path d="M-140 120 H140"/>
+    <path d="M-120 -80 Q0 -160 120 -80"/>
+    <path d="M-90 -80 V-20 M-30 -80 V-20 M30 -80 V-20 M90 -80 V-20"/>
+    <path d="M-70 0 v40 M-20 0 v40 M20 0 v40 M70 0 v40"/>
+    <path d="M-50 40 v40 M0 40 v40 M50 40 v40"/>
+  </g>
+
+  <!-- cadre double filet -->
+  <g fill="none" stroke="#d4a84b" stroke-linejoin="miter">
+    <rect x="18" y="18" width="1564" height="1124" stroke-width="1.5"/>
+    <rect x="26" y="26" width="1548" height="1108" stroke-width="1"/>
+  </g>
+  <!-- diamants milieu haut/bas -->
+  <g fill="#d4a84b">
+    <path d="M800 14 l6 6 -6 6 -6 -6 z"/>
+    <path d="M800 1134 l6 6 -6 6 -6 -6 z"/>
+  </g>
+
+  <defs>
+    <!-- hibou line-art -->
+    <g id="hibou">
+      <circle cx="0" cy="0" r="28" fill="none" stroke="#d4a84b" stroke-width="1.6"/>
+      <circle cx="0" cy="0" r="24" fill="none" stroke="#d4a84b" stroke-width=".7" opacity=".55"/>
+      <!-- body -->
+      <ellipse cx="0" cy="4" rx="12" ry="15" fill="none" stroke="#d4a84b" stroke-width="1.35"/>
+      <!-- head tufts -->
+      <path d="M-10 -12 L-16 -22 M10 -12 L16 -22" fill="none" stroke="#d4a84b" stroke-width="1.35" stroke-linecap="round"/>
+      <!-- eyes -->
+      <circle cx="-5.5" cy="-2" r="4.2" fill="none" stroke="#d4a84b" stroke-width="1.2"/>
+      <circle cx="5.5" cy="-2" r="4.2" fill="none" stroke="#d4a84b" stroke-width="1.2"/>
+      <circle cx="-5.5" cy="-2" r="1.3" fill="#d4a84b"/>
+      <circle cx="5.5" cy="-2" r="1.3" fill="#d4a84b"/>
+      <!-- beak -->
+      <path d="M0 2 L-2.5 6 L2.5 6 Z" fill="#d4a84b"/>
+      <!-- wing folds -->
+      <path d="M-8 6 Q-11 12 -7 18 M8 6 Q11 12 7 18" fill="none" stroke="#d4a84b" stroke-width="1.1"/>
+      <!-- feet -->
+      <path d="M-4 18 L-6 23 M0 18 L0 23 M4 18 L6 23" fill="none" stroke="#d4a84b" stroke-width="1.1" stroke-linecap="round"/>
+    </g>
+
+    <!-- branche de laurier -->
+    <g id="laurier" fill="none" stroke="#d4a84b" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M0 0 C18 -6 36 -4 54 6"/>
+      <path d="M10 -2 C12 -10 16 -14 22 -16"/>
+      <path d="M10 -2 C14 4 18 8 24 10"/>
+      <path d="M24 2 C26 -6 30 -10 36 -12"/>
+      <path d="M24 2 C28 8 32 12 38 14"/>
+      <path d="M38 4 C40 -2 44 -6 50 -7"/>
+      <path d="M38 4 C42 10 46 13 52 14"/>
+      <ellipse cx="22" cy="-16" rx="5" ry="2.4" transform="rotate(-25 22 -16)" fill="#d4a84b" stroke="none" opacity=".92"/>
+      <ellipse cx="24" cy="10" rx="5" ry="2.4" transform="rotate(28 24 10)" fill="#d4a84b" stroke="none" opacity=".92"/>
+      <ellipse cx="36" cy="-12" rx="5" ry="2.4" transform="rotate(-20 36 -12)" fill="#d4a84b" stroke="none" opacity=".92"/>
+      <ellipse cx="38" cy="14" rx="5" ry="2.4" transform="rotate(30 38 14)" fill="#d4a84b" stroke="none" opacity=".92"/>
+      <ellipse cx="50" cy="-7" rx="4.5" ry="2.2" transform="rotate(-12 50 -7)" fill="#d4a84b" stroke="none" opacity=".92"/>
+      <ellipse cx="52" cy="14" rx="4.5" ry="2.2" transform="rotate(22 52 14)" fill="#d4a84b" stroke="none" opacity=".92"/>
+    </g>
+
+    <!-- coin: hibou + lauriers -->
+    <g id="coin">
+      <use href="#hibou" transform="translate(78 78)"/>
+      <use href="#laurier" transform="translate(110 42) rotate(8)"/>
+      <use href="#laurier" transform="translate(42 110) rotate(82)"/>
+      <use href="#laurier" transform="translate(118 95) rotate(38) scale(.85)"/>
+    </g>
+  </defs>
+
+  <!-- 4 coins -->
+  <use href="#coin" transform="translate(8 8)"/>
+  <use href="#coin" transform="translate(1592 8) scale(-1 1)"/>
+  <use href="#coin" transform="translate(8 1152) scale(1 -1)"/>
+  <use href="#coin" transform="translate(1592 1152) scale(-1 -1)"/>
+</svg>

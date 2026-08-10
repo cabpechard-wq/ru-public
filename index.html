@@ -11,12 +11,13 @@
 <link id="theme-css" rel="stylesheet" href="./site.css?v=24">
 </head>
 <body>
-<main class="site-main home-amphitheatre">
+<main class="site-main home-amphitheatre home-architecture">
   <div class="home-hero">
     <div class="home-hero-copy">
       <p class="site-hero-kicker"><span class="brand-part-primary">Les Ressources</span> <span class="brand-part-secondary">Universitaires</span></p>
-      <h1 class="site-title site-title-hero"><em>Droit</em> public<br>et administratif</h1>
-      <p class="site-lead">Ressources pédagogiques et juridiques pour étudiants et juristes.</p>
+      <p class="home-hero-eyebrow">Droit public et administratif</p>
+      <h1 class="site-title site-title-hero">Amphithéâtre</h1>
+      <p class="site-lead">Ressources pédagogiques et juridiques pour étudiants et juristes — cours, entraînements et fonds documentaires.</p>
     </div>
 
     <aside id="espace-membre" class="home-hero-access" aria-labelledby="espace-pedagogique-title">
@@ -40,83 +41,66 @@
       </div>
     </aside>
   </div>
+
   <div class="home-rule" aria-hidden="true"></div>
 
-  <div class="home-columns">
-    <!-- Colonne 1 : Amphithéâtre -->
-    <section id="ressources" class="home-col">
-      <div class="site-section-header">
-        <p class="site-hero-kicker">Savoirs &amp; références</p>
-        <h2><a class="home-col-title" href="./ressources/">Amphithéâtre</a></h2>
+  <div class="home-pillars" role="navigation" aria-label="Piliers pédagogiques">
+    <section id="ressources" class="home-pillar">
+      <div class="home-pillar-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 36V18l16-8 16 8v18"/>
+          <path d="M16 36V22h16v14"/>
+          <path d="M8 36h32"/>
+        </svg>
       </div>
-      <div class="home-col-stack">
-        <a class="ex-item" href="./manuel/">
-          <div>
-            <p class="ex-item-type">Cours<span class="ex-item-access"> · Accès membres</span></p>
-            <p class="ex-item-title">Cours de Droit public et administratif</p>
-            <p class="ex-item-desc">Un cours synthétique, structuré et rigoureux suivant le programme universitaire de droit public.</p>
-          </div>
-          <span class="ex-item-cta">Consulter le cours →</span>
-        </a>
-
-        <a class="ex-item" href="./arrets/">
-          <div>
-            <p class="ex-item-type">Ressource<span class="ex-item-access"> · Accès membres</span></p>
-            <p class="ex-item-title">Fiches d'arrêts et de décisions</p>
-            <p class="ex-item-desc">Fiches sur les décisions importantes : faits, solution et portée, pour les avoir sous la main.</p>
-          </div>
-          <span class="ex-item-cta">Consulter les fiches →</span>
-        </a>
-        <p class="home-soon-note">Plus de contenu à venir prochainement (fiches thématiques)</p>
-      </div>
+      <p class="site-hero-kicker">Savoirs &amp; références</p>
+      <h2 class="home-pillar-title"><a href="./ressources/">Amphithéâtre</a></h2>
+      <p class="home-pillar-lead">Cours synthétique et fiches d'arrêts pour suivre le programme universitaire de droit public.</p>
+      <ul class="home-pillar-list">
+        <li><a href="./manuel/">Cours de Droit public et administratif</a></li>
+        <li><a href="./arrets/">Fiches d'arrêts et de décisions</a></li>
+      </ul>
+      <a class="btn outline-accent home-pillar-cta" href="./ressources/">Entrer dans l'amphi</a>
+      <p class="home-soon-note">Bientôt : fiches thématiques</p>
     </section>
 
-    <!-- Colonne 2 : Travaux dirigés -->
-    <section id="exercices" class="home-col">
-      <div class="site-section-header">
-        <p class="site-hero-kicker">Entraînements &amp; Méthode</p>
-        <h2><a class="home-col-title" href="./exercices/">Travaux dirigés</a></h2>
+    <section id="exercices" class="home-pillar">
+      <div class="home-pillar-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="10" y="12" width="18" height="24" rx="2"/>
+          <rect x="20" y="16" width="18" height="24" rx="2"/>
+          <path d="M24 24h8M24 30h6"/>
+        </svg>
       </div>
-      <div class="home-col-stack">
-        <div class="ex-rubrique">
-          <p class="ex-item-type">Exercice<span class="ex-item-access"> · <span data-ex-access>Démo</span></span></p>
-          <h3 class="ex-rubrique-title">Flipcards</h3>
-          <p class="ex-rubrique-lead">Cartes recto / verso pour mémoriser arrêts et notions.</p>
-          <div class="ex-rubrique-actions">
-            <a class="btn outline-accent" data-flipcards-entry href="./demo/">Grands arrêts</a>
-            <a class="btn outline-accent" data-flipcards-dico-entry href="./demo-flipcards-dico/">Grandes notions</a>
-          </div>
-        </div>
-        <div class="ex-rubrique">
-          <p class="ex-item-type">Exercice<span class="ex-item-access"> · <span data-ex-access>Démo</span></span></p>
-          <h3 class="ex-rubrique-title">Relations</h3>
-          <p class="ex-rubrique-lead">Reliez chaque élément à sa correspondance par glisser-déposer.</p>
-          <div class="ex-rubrique-actions">
-            <a class="btn outline-accent" data-relier-entry href="./demo-relier/">Grands arrêts</a>
-            <a class="btn outline-accent" data-relier-dico-entry href="./demo-relier-dico/">Grandes notions</a>
-          </div>
-        </div>
-        <p class="home-soon-note">Plus de contenu à venir prochainement (QCM, cas pratiques, chronologies…)</p>
+      <p class="site-hero-kicker">Entraînements &amp; Méthode</p>
+      <h2 class="home-pillar-title"><a href="./exercices/">Travaux dirigés</a></h2>
+      <p class="home-pillar-lead">Flipcards et relations pour mémoriser arrêts et notions, en démo libre.</p>
+      <div class="home-pillar-actions">
+        <a class="btn outline-accent" data-flipcards-entry href="./demo/">Flipcards · Arrêts</a>
+        <a class="btn outline-accent" data-flipcards-dico-entry href="./demo-flipcards-dico/">Flipcards · Notions</a>
+        <a class="btn outline-accent" data-relier-entry href="./demo-relier/">Relations · Arrêts</a>
+        <a class="btn outline-accent" data-relier-dico-entry href="./demo-relier-dico/">Relations · Notions</a>
       </div>
+      <a class="btn outline-accent home-pillar-cta" href="./exercices/">S'entraîner</a>
+      <p class="home-soon-note">Bientôt : QCM, cas pratiques, chronologies</p>
     </section>
 
-    <!-- Colonne 3 : Bibliothèque -->
-    <section id="bibliotheque" class="home-col">
-      <div class="site-section-header">
-        <p class="site-hero-kicker">Fonds &amp; veille</p>
-        <h2><a class="home-col-title" href="./bibliotheque/">Bibliothèque</a></h2>
+    <section id="bibliotheque" class="home-pillar">
+      <div class="home-pillar-icon" aria-hidden="true">
+        <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M14 12h16c4 0 6 2 6 6v18H20c-4 0-6-2-6-6V12z"/>
+          <path d="M14 12v18c0 4 2 6 6 6h16"/>
+          <path d="M20 18h10M20 24h8"/>
+        </svg>
       </div>
-      <div class="home-col-stack">
-        <a class="ex-item" href="./dictionnaire/">
-          <div>
-            <p class="ex-item-type">Ressource<span class="ex-item-access"> · Accès public</span></p>
-            <p class="ex-item-title">Dictionnaire juridique</p>
-            <p class="ex-item-desc">Définitions des notions essentielles du droit public et administratif, classées de A à Z.</p>
-          </div>
-          <span class="ex-item-cta">Ouvrir le dictionnaire →</span>
-        </a>
-        <p class="home-soon-note">Plus de contenu à venir prochainement (veille juridique, manuel…)</p>
-      </div>
+      <p class="site-hero-kicker">Fonds &amp; veille</p>
+      <h2 class="home-pillar-title"><a href="./bibliotheque/">Bibliothèque</a></h2>
+      <p class="home-pillar-lead">Dictionnaire des notions essentielles du droit public et administratif, en accès public.</p>
+      <ul class="home-pillar-list">
+        <li><a href="./dictionnaire/">Dictionnaire juridique</a></li>
+      </ul>
+      <a class="btn outline-accent home-pillar-cta" href="./bibliotheque/">Ouvrir la BU</a>
+      <p class="home-soon-note">Bientôt : veille juridique, manuel</p>
     </section>
   </div>
 </main>
