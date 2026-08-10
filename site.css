@@ -1238,6 +1238,11 @@ input:focus {
   line-height: 1.4;
 }
 
+.site-footer .brand-part-primary,
+.site-footer .brand-part-secondary {
+  color: inherit;
+}
+
 .site-footer-copy {
   margin: 0;
   font-size: .72rem;
@@ -2943,13 +2948,23 @@ input:focus {
 .home-pillar + .home-pillar {
   border-left: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
 }
+.home-pillar-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-width: 0;
+}
+.home-pillar-head .site-hero-kicker {
+  margin: 0;
+}
 .home-pillar-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   width: 3rem;
   height: 3rem;
-  margin-bottom: .35rem;
+  margin-bottom: 0;
   border: 1px solid color-mix(in srgb, var(--secondary) 55%, var(--border));
   border-radius: 999px;
   color: var(--secondary);

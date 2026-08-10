@@ -88,7 +88,7 @@ html, body {
   background-color: transparent;
 }
 
-/* Propositions motifs (remplacent le cadre académique) */
+/* Propositions motifs laurier — calque flouté (dilue le motif, texte lisible) */
 html[data-amphi-fond="laurier-a"],
 html[data-amphi-fond="laurier-b"],
 html[data-amphi-fond="laurier-c"] {
@@ -102,29 +102,34 @@ html[data-amphi-fond="laurier-c"]::before,
 html[data-amphi-fond="laurier-c"]::after {
   display: none;
 }
-html[data-amphi-fond="laurier-a"],
-html[data-amphi-fond="laurier-a"] body {
+html[data-amphi-fond^="laurier"] body {
   background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=37");
-  background-size: 240px 260px;
-  background-repeat: repeat;
-  background-attachment: fixed;
+  background-image: none;
 }
-html[data-amphi-fond="laurier-b"],
-html[data-amphi-fond="laurier-b"] body {
+html[data-amphi-fond^="laurier"] body::before {
+  content: "";
+  position: fixed;
+  inset: -32px;
+  z-index: -1;
+  pointer-events: none;
   background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=37");
-  background-size: 240px 260px;
   background-repeat: repeat;
-  background-attachment: fixed;
+  background-position: center;
+  filter: blur(9px);
+  opacity: .92;
+  transform: translateZ(0);
 }
-html[data-amphi-fond="laurier-c"],
-html[data-amphi-fond="laurier-c"] body {
-  background-color: #102619;
-  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=37");
+html[data-amphi-fond="laurier-a"] body::before {
+  background-image: url("../media/motif-amphitheatre-laurier-a.svg?v=43");
+  background-size: 240px 260px;
+}
+html[data-amphi-fond="laurier-b"] body::before {
+  background-image: url("../media/motif-amphitheatre-laurier-b.svg?v=43");
+  background-size: 240px 260px;
+}
+html[data-amphi-fond="laurier-c"] body::before {
+  background-image: url("../media/motif-amphitheatre-laurier-c.svg?v=43");
   background-size: 280px 300px;
-  background-repeat: repeat;
-  background-attachment: fixed;
 }
 
 body.site-body {
@@ -1274,6 +1279,11 @@ input:focus {
   color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
+}
+
+.site-footer .brand-part-primary,
+.site-footer .brand-part-secondary {
+  color: inherit;
 }
 
 .site-footer-copy {
@@ -3193,13 +3203,23 @@ blockquote, .manuel-prose blockquote {
 .home-pillar + .home-pillar {
   border-left: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
 }
+.home-pillar-head {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  min-width: 0;
+}
+.home-pillar-head .site-hero-kicker {
+  margin: 0;
+}
 .home-pillar-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
   width: 3rem;
   height: 3rem;
-  margin-bottom: .35rem;
+  margin-bottom: 0;
   border: 1px solid color-mix(in srgb, var(--secondary) 55%, var(--border));
   border-radius: 999px;
   color: var(--secondary);
@@ -3281,7 +3301,7 @@ blockquote, .manuel-prose blockquote {
   }
 }
 
-/* —— Lisibilité Amphithéâtre : voile flouté (dilue les motifs de fond) —— */
+/* —— Amphithéâtre · lisibilité : voile givré sous le texte —— */
 .home-architecture .home-hero-copy,
 .home-architecture .home-pillar,
 .home-amphitheatre .home-col {
@@ -3289,10 +3309,10 @@ blockquote, .manuel-prose blockquote {
   z-index: 0;
   padding: 1rem 1.15rem 1.2rem;
   border-radius: var(--radius, 2px);
-  background: rgba(12, 31, 20, .52);
-  backdrop-filter: blur(12px) saturate(.92);
-  -webkit-backdrop-filter: blur(12px) saturate(.92);
-  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .08);
+  background: rgba(16, 38, 25, .64);
+  backdrop-filter: blur(16px) saturate(.9);
+  -webkit-backdrop-filter: blur(16px) saturate(.9);
+  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .1);
 }
 
 .home-architecture .home-pillar {
@@ -3313,16 +3333,16 @@ blockquote, .manuel-prose blockquote {
   }
 }
 
-/* Pages internes : panneau de lecture flouté */
+/* Pages internes Amphithéâtre */
 .site-body > .site-main:not(.home-amphitheatre) {
   position: relative;
   z-index: 0;
   padding-left: clamp(1rem, 2.5vw, 1.75rem);
   padding-right: clamp(1rem, 2.5vw, 1.75rem);
   border-radius: var(--radius, 2px);
-  background: rgba(12, 31, 20, .5);
-  backdrop-filter: blur(14px) saturate(.92);
-  -webkit-backdrop-filter: blur(14px) saturate(.92);
+  background: rgba(16, 38, 25, .6);
+  backdrop-filter: blur(18px) saturate(.9);
+  -webkit-backdrop-filter: blur(18px) saturate(.9);
   box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .1);
 }
 
@@ -3331,7 +3351,7 @@ blockquote, .manuel-prose blockquote {
   .home-architecture .home-pillar,
   .home-amphitheatre .home-col,
   .site-body > .site-main:not(.home-amphitheatre) {
-    background: rgba(12, 31, 20, .82);
+    background: rgba(16, 38, 25, .88);
   }
 }
 
