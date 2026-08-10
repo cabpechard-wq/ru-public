@@ -212,23 +212,15 @@
         );
       } catch (_) {}
     };
-    const ensureSheet = (attempt) => {
-      attempt = attempt || 0;
-      try {
-        if (cssLink.sheet && cssLink.sheet.cssRules.length > 0) {
-          finish();
-          return;
-        }
-      } catch (_) {}
-      if (attempt < 2) {
-        cssLink.href = next + "&r=" + Date.now();
-        cssLink.onload = () => ensureSheet(attempt + 1);
-        return;
-      }
+    // Ne pas recharger l'URL en boucle : un retry trop tôt (cssRules encore
+    // vide / inaccessible) annulait le <link> et laissait la page sans styles.
+    if (cssLink.getAttribute("href") === next) {
       finish();
-    };
-    cssLink.onload = () => ensureSheet(0);
-    cssLink.href = next;
+    } else {
+      cssLink.onload = () => finish();
+      cssLink.onerror = () => finish();
+      cssLink.href = next;
+    }
     const fonts = ensureFontsLink();
     if (theme.fonts) fonts.href = theme.fonts;
     void manifest;

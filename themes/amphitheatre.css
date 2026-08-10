@@ -3158,90 +3158,6 @@ blockquote, .manuel-prose blockquote {
   opacity: .85;
 }
 
-/* —— Amphithéâtre · lisibilité (idée Gemini) : voile + flou derrière le contenu —— */
-.site-nav {
-  background: rgba(19, 42, 28, .72);
-  backdrop-filter: blur(12px) saturate(.92);
-  -webkit-backdrop-filter: blur(12px) saturate(.92);
-}
-
-.site-main {
-  background: rgba(16, 38, 25, .52);
-  backdrop-filter: blur(11px) saturate(.9);
-  -webkit-backdrop-filter: blur(11px) saturate(.9);
-  border: 1px solid rgba(212, 168, 75, .12);
-  border-radius: 2px;
-  padding-left: clamp(.85rem, 2vw, 1.35rem);
-  padding-right: clamp(.85rem, 2vw, 1.35rem);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
-}
-
-.site-main.home-amphitheatre {
-  background: rgba(16, 38, 25, .48);
-}
-
-.home-architecture .home-hero-copy {
-  padding: .85rem 1rem 1rem;
-  background: rgba(16, 38, 25, .42);
-  backdrop-filter: blur(8px) saturate(.92);
-  -webkit-backdrop-filter: blur(8px) saturate(.92);
-  border: 1px solid rgba(212, 168, 75, .1);
-  border-radius: 2px;
-}
-
-.home-hero-access {
-  background: rgba(19, 42, 28, .62);
-  backdrop-filter: blur(10px) saturate(.92);
-  -webkit-backdrop-filter: blur(10px) saturate(.92);
-}
-
-.home-access-card {
-  background: rgba(16, 38, 25, .45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-}
-
-.home-pillar {
-  padding-top: .85rem;
-  padding-bottom: 1rem;
-  background: rgba(16, 38, 25, .38);
-  backdrop-filter: blur(9px) saturate(.9);
-  -webkit-backdrop-filter: blur(9px) saturate(.9);
-  border-radius: 2px;
-}
-
-.home-pillar + .home-pillar {
-  border-left-color: rgba(212, 168, 75, .22);
-}
-
-.home-col-stack .ex-item,
-.ex-item,
-.ex-rubrique {
-  background: rgba(16, 38, 25, .55);
-  backdrop-filter: blur(8px) saturate(.92);
-  -webkit-backdrop-filter: blur(8px) saturate(.92);
-}
-
-.site-footer {
-  background: rgba(19, 42, 28, .78);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .site-main,
-  .site-main.home-amphitheatre,
-  .home-architecture .home-hero-copy,
-  .home-hero-access,
-  .home-access-card,
-  .home-pillar,
-  .home-col-stack .ex-item,
-  .ex-item,
-  .ex-rubrique {
-    background: rgba(16, 38, 25, .88);
-  }
-}
-
 /* —— Accueil · architecture piliers (maquette Grand Amphithéâtre) —— */
 .home-architecture .home-hero-eyebrow {
   margin: 0 0 .35rem;
@@ -3355,3 +3271,58 @@ blockquote, .manuel-prose blockquote {
     padding-top: 1.35rem;
   }
 }
+
+/* —— Lisibilité Amphithéâtre : voile flouté (dilue les motifs de fond) —— */
+.home-architecture .home-hero-copy,
+.home-architecture .home-pillar,
+.home-amphitheatre .home-col {
+  position: relative;
+  z-index: 0;
+  padding: 1rem 1.15rem 1.2rem;
+  border-radius: var(--radius, 2px);
+  background: rgba(12, 31, 20, .52);
+  backdrop-filter: blur(12px) saturate(.92);
+  -webkit-backdrop-filter: blur(12px) saturate(.92);
+  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .08);
+}
+
+.home-architecture .home-pillar {
+  padding: 1.15rem 1.25rem 1.35rem;
+}
+
+.home-architecture .home-pillar + .home-pillar {
+  border-left-color: rgba(212, 168, 75, .22);
+}
+
+.home-architecture .home-pillars {
+  gap: .85rem;
+}
+
+@media (max-width: 900px) {
+  .home-architecture .home-pillar + .home-pillar {
+    border-left: 0;
+  }
+}
+
+/* Pages internes : panneau de lecture flouté */
+.site-body > .site-main:not(.home-amphitheatre) {
+  position: relative;
+  z-index: 0;
+  padding-left: clamp(1rem, 2.5vw, 1.75rem);
+  padding-right: clamp(1rem, 2.5vw, 1.75rem);
+  border-radius: var(--radius, 2px);
+  background: rgba(12, 31, 20, .5);
+  backdrop-filter: blur(14px) saturate(.92);
+  -webkit-backdrop-filter: blur(14px) saturate(.92);
+  box-shadow: inset 0 0 0 1px rgba(212, 168, 75, .1);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .home-architecture .home-hero-copy,
+  .home-architecture .home-pillar,
+  .home-amphitheatre .home-col,
+  .site-body > .site-main:not(.home-amphitheatre) {
+    background: rgba(12, 31, 20, .82);
+  }
+}
+
