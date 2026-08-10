@@ -1194,7 +1194,7 @@ input:focus {
 .site-footer-brand {
   margin: 0;
   font-size: .78rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
 }
@@ -1202,7 +1202,7 @@ input:focus {
 .site-footer-copy {
   margin: 0;
   font-size: .72rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 400;
   line-height: 1.45;
   max-width: 36rem;
@@ -3068,13 +3068,13 @@ blockquote, .manuel-prose blockquote {
 .site-footer {
   border-top: 3px solid #ffe03d;
   background: #000;
-  color: #ffe03d;
+  color: var(--ink);
 }
 .site-footer-brand,
 .site-footer a {
-  color: #ffe03d;
+  color: var(--ink);
 }
-.site-crumb, .site-footer-copy, .muted, .preview-label {
+.site-crumb, .muted, .preview-label {
   color: #e6c820 !important;
 }
 .site-crumb a { color: #ffe03d; }

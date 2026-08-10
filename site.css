@@ -1233,7 +1233,7 @@ input:focus {
 .site-footer-brand {
   margin: 0;
   font-size: .78rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
 }
@@ -1241,7 +1241,7 @@ input:focus {
 .site-footer-copy {
   margin: 0;
   font-size: .72rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 400;
   line-height: 1.45;
   max-width: 36rem;

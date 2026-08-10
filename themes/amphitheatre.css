@@ -40,9 +40,9 @@ html {
   /* Cadre académique: fond vert + filets dorés prolongés dans l'espace médian */
   --amphi-frame-green: #102619;
   --amphi-frame-gold: #9a8b4e;
-  --amphi-frame-inset: 1.074%; /* 11/1024 */
+  --amphi-frame-inset: 1.123%; /* ~46/4096 */
   --amphi-frame-line: max(1px, 0.12vw);
-  --amphi-natural-h: calc(100vw * 745 / 1024);
+  --amphi-natural-h: calc(100vw * 2980 / 4096);
   --amphi-half-h: calc(min(var(--amphi-natural-h), 100vh) / 2);
   background-color: var(--amphi-frame-green);
   background-image:
@@ -63,7 +63,10 @@ html::after {
   left: 0;
   right: 0;
   height: var(--amphi-half-h);
-  background-image: url("../media/motif-amphitheatre-academique.png?v=35");
+  background-image: image-set(
+    url("../media/motif-amphitheatre-academique.webp?v=36") type("image/webp"),
+    url("../media/motif-amphitheatre-academique.png?v=36") type("image/png")
+  );
   background-size: 100% auto;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -86,6 +89,34 @@ html, body {
   color: var(--ink);
   font-family: var(--font-ui);
   background-color: transparent;
+}
+
+/* Propositions motifs (remplacent le cadre académique) */
+html[data-amphi-fond="livres"],
+html[data-amphi-fond="hiboux"] {
+  background-image: none;
+}
+html[data-amphi-fond="livres"]::before,
+html[data-amphi-fond="livres"]::after,
+html[data-amphi-fond="hiboux"]::before,
+html[data-amphi-fond="hiboux"]::after {
+  display: none;
+}
+html[data-amphi-fond="livres"],
+html[data-amphi-fond="livres"] body {
+  background-color: #0c1f14;
+  background-image: url("../media/motif-amphitheatre-prop-livres.png?v=35");
+  background-size: 420px auto;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+html[data-amphi-fond="hiboux"],
+html[data-amphi-fond="hiboux"] body {
+  background-color: #0c1f14;
+  background-image: url("../media/motif-amphitheatre-prop-hiboux.png?v=35");
+  background-size: 380px auto;
+  background-repeat: repeat;
+  background-attachment: fixed;
 }
 
 body.site-body {
@@ -1232,7 +1263,7 @@ input:focus {
 .site-footer-brand {
   margin: 0;
   font-size: .78rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 500;
   line-height: 1.4;
 }
@@ -1240,7 +1271,7 @@ input:focus {
 .site-footer-copy {
   margin: 0;
   font-size: .72rem;
-  color: var(--muted);
+  color: var(--ink);
   font-weight: 400;
   line-height: 1.45;
   max-width: 36rem;
@@ -3024,7 +3055,7 @@ blockquote, .manuel-prose blockquote {
   border-image: linear-gradient(90deg, var(--accent) 0%, var(--accent) 58%, var(--secondary) 58%, var(--secondary) 100%) 1;
   background: #0a1a11;
 }
-.site-footer-brand { color: var(--accent); }
+.site-footer-brand { color: var(--ink); }
 @keyframes amphitheatre-glow {
   0%, 100% { opacity: .65; }
   50% { opacity: 1; }
