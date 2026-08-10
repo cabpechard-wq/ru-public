@@ -1,6 +1,6 @@
 /* Thème universitaire — Amphithéâtre (Lot 3 · carte blanche) */
 :root {
-  --bg: #0c1f14;
+  --bg: #102619;
   --bg-elevated: #132a1c;
   --ink: #e8e2d4;
   --muted: #9aaf9e;
@@ -37,6 +37,47 @@
 html {
   scroll-behavior: smooth;
   font-size: 106.25%; /* ~17px — légère hausse globale */
+  /* Cadre académique: fond vert + filets dorés prolongés dans l'espace médian */
+  --amphi-frame-green: #102619;
+  --amphi-frame-gold: #9a8b4e;
+  --amphi-frame-inset: 1.074%; /* 11/1024 */
+  --amphi-frame-line: max(1px, 0.12vw);
+  --amphi-natural-h: calc(100vw * 745 / 1024);
+  --amphi-half-h: calc(min(var(--amphi-natural-h), 100vh) / 2);
+  background-color: var(--amphi-frame-green);
+  background-image:
+    linear-gradient(var(--amphi-frame-gold), var(--amphi-frame-gold)),
+    linear-gradient(var(--amphi-frame-gold), var(--amphi-frame-gold));
+  background-size: var(--amphi-frame-line) 100%, var(--amphi-frame-line) 100%;
+  background-position:
+    left var(--amphi-frame-inset) top,
+    right var(--amphi-frame-inset) top;
+  background-repeat: no-repeat;
+}
+
+/* Moitié haute / basse: coins toujours visibles; milieu tronqué ou écarté */
+html::before,
+html::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: var(--amphi-half-h);
+  background-image: url("../media/motif-amphitheatre-academique.png?v=35");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: -1;
+}
+
+html::before {
+  top: 0;
+  background-position: center top;
+}
+
+html::after {
+  bottom: 0;
+  background-position: center bottom;
 }
 
 html, body {
@@ -44,11 +85,7 @@ html, body {
   min-height: 100%;
   color: var(--ink);
   font-family: var(--font-ui);
-  background-color: #143524;
-  background-image: url("../media/motif-amphitheatre-laurier.svg?v=30");
-  background-size: 180px 200px;
-  background-repeat: repeat;
-  background-attachment: fixed;
+  background-color: transparent;
 }
 
 body.site-body {
@@ -851,7 +888,7 @@ a:hover { color: var(--accent-hover); }
 
 .ex-rubrique {
   padding: .9rem 0 .85rem;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .ex-list > .ex-rubrique {
