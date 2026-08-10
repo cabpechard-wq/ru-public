@@ -166,60 +166,9 @@
       .replace(/"/g, "&quot;");
   }
 
-  function pickReadAnchor(main) {
-    return (
-      main.querySelector(".manuel-content > .site-title") ||
-      main.querySelector(".manuel-content > .legal-prose") ||
-      main.querySelector(".arrets-fiche-layout") ||
-      main.querySelector(".home-hero-copy") ||
-      main.querySelector(".dict-controls") ||
-      main.querySelector(".dict-toolbar") ||
-      main.querySelector(".site-panel") ||
-      main.querySelector(".page-title") ||
-      main.querySelector(".home-card") ||
-      main.querySelector(".site-title") ||
-      main
-    );
-  }
-
-  function alignNavSearch() {
-    const nav = document.querySelector(".site-nav");
-    const search = nav && nav.querySelector(".site-nav-search");
-    // Flipcards / démo : colonne .wrap (pas de .site-main)
-    const main =
-      document.querySelector(".site-main") ||
-      document.querySelector(".wrap") ||
-      document.querySelector("main");
-    if (!nav || !search || !main) return;
-    if (window.matchMedia("(max-width: 720px)").matches) {
-      search.style.left = "";
-      return;
-    }
-    const navRect = nav.getBoundingClientRect();
-    const readLeft = pickReadAnchor(main).getBoundingClientRect().left - navRect.left;
-    const brand = nav.querySelector(".site-nav-brand");
-    const brandRight = brand
-      ? brand.getBoundingClientRect().right - navRect.left + 8
-      : 0;
-    const left = Math.max(readLeft, brandRight, 0);
-    search.style.left = left + "px";
-  }
-
-  let alignTimer = null;
-  function scheduleAlign() {
-    clearTimeout(alignTimer);
-    alignTimer = setTimeout(alignNavSearch, 50);
-  }
-
   function init() {
     const wrap = ensureUI();
     if (!wrap) return;
-    alignNavSearch();
-    window.addEventListener("resize", scheduleAlign);
-    window.addEventListener("ep-theme-change", scheduleAlign);
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(alignNavSearch).catch(() => {});
-    }
     const input = wrap.querySelector(".site-nav-search-input");
     const panel = wrap.querySelector(".site-nav-search-panel");
     let timer = null;

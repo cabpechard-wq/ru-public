@@ -22,7 +22,7 @@
   header.className = "site-nav";
   header.innerHTML =
     '<a class="site-nav-brand" href="' + abs("index.html") + '">' +
-      '<span class="site-nav-kicker">Les Ressources Universitaires</span>' +
+      '<span class="site-nav-kicker"><span class="brand-part-primary">Les Ressources</span> <span class="brand-part-secondary">Universitaires</span></span>' +
       '<span class="site-nav-product"><em>Droit</em> public et administratif</span>' +
     "</a>" +
     '<nav class="site-nav-links" aria-label="Navigation">' +
@@ -425,8 +425,8 @@
   footer.innerHTML =
     '<div class="site-footer-inner">' +
       '<div class="site-footer-meta">' +
-        '<p class="site-footer-brand">Les Ressources Universitaires — Droit public et administratif</p>' +
-        '<p class="site-footer-copy">© Les Ressources Universitaires · Tous droits réservés · Reproductions / exportations interdites</p>' +
+        '<p class="site-footer-brand"><span class="brand-part-primary">Les Ressources</span> <span class="brand-part-secondary">Universitaires</span> — Droit public et administratif</p>' +
+        '<p class="site-footer-copy">© <span class="brand-part-primary">Les Ressources</span> <span class="brand-part-secondary">Universitaires</span> · Tous droits réservés · Reproductions / exportations interdites</p>' +
       "</div>" +
       '<nav class="site-footer-links" aria-label="Informations légales">' +
         '<a href="' + abs("mentions-legales/") + '">Mentions légales</a>' +
@@ -446,7 +446,7 @@
 
   // Recherche full-text (Cours + Dictionnaire + Arrêts)
   const searchJs = document.createElement("script");
-  searchJs.src = new URL("site-search.js?v=4", script.src).href;
+  searchJs.src = new URL("site-search.js?v=5", script.src).href;
   searchJs.onerror = function () {
     console.warn("[site-search] Impossible de charger site-search.js — rebuild du site requis.");
   };

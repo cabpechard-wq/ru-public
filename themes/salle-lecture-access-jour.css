@@ -1,4 +1,4 @@
-﻿/* Thème universitaire — Salle de lecture (accessibilité) - Jour (Lot 1 · accessibilité) */
+/* Thème universitaire — Salle de lecture (accessibilité) - Jour (Lot 1 · accessibilité) */
 :root {
   --bg: #ffe03d;
   --bg-elevated: #ffe03d;
@@ -94,6 +94,10 @@ a:hover { color: var(--accent-hover); }
   line-height: 1.2;
 }
 
+/* Accessibilité : marque mono-couleur (pas de dual primaire/secondaire) */
+.brand-part-primary,
+.brand-part-secondary { color: var(--accent); }
+
 .site-nav-product {
   font-family: var(--font-display);
   font-size: 1.15rem;
@@ -119,7 +123,7 @@ a:hover { color: var(--accent-hover); }
   font-weight: 500;
   position: relative;
   z-index: 3;
-  margin-left: auto;
+  margin-left: 0;
 }
 
 .site-nav-links > a {
@@ -137,16 +141,13 @@ a:hover { color: var(--accent-hover); }
 
 /* —— Recherche globale (aligné Campus) —— */
 .site-nav-search {
-  position: absolute;
-  top: 50%;
-  left: 0;
+  position: relative;
   z-index: 2;
   flex: none;
   width: min(18rem, calc(100vw - 2rem));
   max-width: 18rem;
   min-width: 9rem;
-  margin: 0;
-  transform: translateY(-50%);
+  margin: 0 0 0 auto;
 }
 
 .site-nav-search-label {
@@ -290,7 +291,6 @@ a:hover { color: var(--accent-hover); }
     max-width: none;
     min-width: 0;
     margin: .25rem 0 0;
-    transform: none;
   }
 }
 
