@@ -4,18 +4,18 @@
   --bg-elevated: #132a1c;
   --ink: #e8e2d4;
   --muted: #9aaf9e;
-  --accent: #722f37;
-  --accent-hover: #8b3d47;
-  --accent-soft: rgba(114, 47, 55, .22);
-  --manuel-quote-border: rgba(114, 47, 55, .75);
-  --manuel-h3: #722f37;
+  --accent: #8a424c;
+  --accent-hover: #a3525d;
+  --accent-soft: rgba(138, 66, 76, .22);
+  --manuel-quote-border: rgba(138, 66, 76, .75);
+  --manuel-h3: #8a424c;
   --manuel-h4: #d4a84b;
   --manuel-h5: #9aaf9e;
   --manuel-encadre-border: #d4a84b;
   --secondary-soft: rgba(212, 168, 75, .14);
   --secondary: #d4a84b;
-  --launch-stamp: #722f37;
-  --launch-stamp-bg: rgba(114, 47, 55, 0.14);
+  --launch-stamp: #8a424c;
+  --launch-stamp-bg: rgba(138, 66, 76, 0.14);
   --border: rgba(232, 226, 212, .14);
   --card: #132a1c;
   --radius: 2px;
@@ -44,13 +44,10 @@ html, body {
   min-height: 100%;
   color: var(--ink);
   font-family: var(--font-ui);
-  background-color: var(--bg);
-  background-image:
-    url("../media/cabinet-ornament.svg"),
-    radial-gradient(ellipse 90% 55% at 85% -5%, rgba(212, 168, 75, .1) 0%, transparent 58%),
-    radial-gradient(ellipse 70% 45% at -5% 105%, rgba(26, 61, 40, .55) 0%, transparent 55%),
-    linear-gradient(180deg, #0f2618 0%, #0c1f14 100%);
-  background-size: 200px 200px, auto, auto, auto;
+  background-color: #143524;
+  background-image: url("../media/motif-amphitheatre-tapisserie.png?v=27");
+  background-size: 300px 244px;
+  background-repeat: repeat;
   background-attachment: fixed;
 }
 
@@ -898,7 +895,7 @@ a:hover { color: var(--accent-hover); }
   display: block;
   padding: .9rem 0;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: transparent;
   transition: background .2s, padding-left .2s;
@@ -2907,7 +2904,7 @@ input:focus {
 }
 .home-rule {
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
   opacity: .9;
   position: relative;
 }
@@ -2919,7 +2916,7 @@ input:focus {
   transform: translateY(-50%);
   font-size: .55rem;
   opacity: .85;
-  color: var(--accent);
+  color: var(--secondary);
 }
 .home-rule::before { left: 0; }
 .home-rule::after { right: 0; }
@@ -2930,8 +2927,8 @@ input:focus {
   transition: border-color .18s ease, box-shadow .18s ease;
 }
 .ex-item:hover {
-  border-color: rgba(114, 47, 55, .55);
-  box-shadow: 0 0 0 1px rgba(114, 47, 55, .18), 0 12px 36px rgba(0, 0, 0, .3);
+  border-color: rgba(138, 66, 76, .55);
+  box-shadow: 0 0 0 1px rgba(138, 66, 76, .18), 0 12px 36px rgba(0, 0, 0, .3);
   transform: none;
 }
 .ex-item-type {
@@ -2981,9 +2978,9 @@ blockquote, .manuel-prose blockquote {
   font-style: italic;
 }
 .encadre {
-  border: 1px solid rgba(114, 47, 55, .35);
+  border: 1px solid rgba(138, 66, 76, .35);
   border-left: 3px solid var(--secondary);
-  background: rgba(114, 47, 55, .06);
+  background: rgba(138, 66, 76, .06);
   box-shadow: inset 0 0 0 4px rgba(12, 31, 20, .45);
 }
 .site-footer {
@@ -3073,3 +3070,15 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .site-crumb strong { color: var(--secondary); }
+/* —— Filet sous titres de colonnes (accueil) —— */
+.home-col .site-section-header {
+  margin-bottom: 1rem;
+}
+.home-col .site-section-header::after {
+  content: "";
+  display: block;
+  height: 1.5px;
+  margin-top: .65rem;
+  background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+  opacity: .85;
+}

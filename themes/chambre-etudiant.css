@@ -46,9 +46,9 @@ html, body {
   font-family: var(--font-ui);
   background-color: var(--bg);
   background-image:
-    linear-gradient(180deg, #fffcf7 0%, transparent 20%),
-    radial-gradient(ellipse 55% 42% at 92% 0%, rgba(212, 146, 42, .14) 0%, transparent 58%),
-    radial-gradient(ellipse 65% 50% at 0% 100%, rgba(61, 74, 102, .07) 0%, transparent 55%),
+    linear-gradient(180deg, #fffcf7 0%, transparent 22%),
+    radial-gradient(ellipse 50% 38% at 90% 0%, rgba(212, 146, 42, .07) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 42% at 0% 100%, rgba(61, 74, 102, .05) 0%, transparent 55%);
 }
 
 body.site-body {
@@ -895,7 +895,7 @@ a:hover { color: var(--accent-hover); }
   display: block;
   padding: .9rem 0;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: transparent;
   transition: background .2s, padding-left .2s;
@@ -3108,4 +3108,16 @@ blockquote, .manuel-prose blockquote {
 }
 .site-crumb strong {
   color: var(--secondary);
+}
+/* —— Filet sous titres de colonnes (accueil) —— */
+.home-col .site-section-header {
+  margin-bottom: 1rem;
+}
+.home-col .site-section-header::after {
+  content: "";
+  display: block;
+  height: 3px;
+  margin-top: .65rem;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 28%, var(--secondary) 28%, var(--secondary) 55%, transparent 100%);
+  opacity: 1;
 }

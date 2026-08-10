@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="184" viewBox="0 0 160 184">
+  <!-- Cafeteria tapestry: cup emblem, staggered like Amphi fleurs -->
+  <defs>
+    <g id="tasse">
+      <path d="M8 22 h28 c0 16 -5.5 28 -14 28 S8 38 8 22 z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <path d="M36 30 c9 0 13 4.5 13 10 s-4 10 -13 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M6 22 h32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- steam -->
+      <path d="M16 14 c3 -6 0 -9 3 -14 M26 12 c3 -5 0 -8 2 -12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity=".75"/>
+      <!-- pistache dot -->
+      <circle cx="44" cy="18" r="2.3" fill="#6b8f71"/>
+    </g>
+    <filter id="emboss" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0.8" dy="1" stdDeviation="0.5" flood-color="#3a281c" flood-opacity=".3"/>
+    </filter>
+  </defs>
+
+  <rect width="160" height="184" fill="#f0e6da"/>
+
+  <g transform="translate(22 18)" filter="url(#emboss)" color="#5c4033" opacity=".36">
+    <use href="#tasse"/>
+  </g>
+  <g transform="translate(94 18)" filter="url(#emboss)" color="#5c4033" opacity=".36">
+    <use href="#tasse"/>
+  </g>
+
+  <g transform="translate(58 80)" filter="url(#emboss)" color="#5c4033" opacity=".36">
+    <use href="#tasse"/>
+  </g>
+
+  <g transform="translate(22 142)" filter="url(#emboss)" color="#5c4033" opacity=".36">
+    <use href="#tasse"/>
+  </g>
+  <g transform="translate(94 142)" filter="url(#emboss)" color="#5c4033" opacity=".36">
+    <use href="#tasse"/>
+  </g>
+</svg>

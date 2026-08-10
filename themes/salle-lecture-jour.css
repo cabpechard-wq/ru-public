@@ -892,7 +892,7 @@ a:hover { color: var(--accent-hover); }
   display: block;
   padding: .9rem 0;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: transparent;
   transition: background .2s, padding-left .2s;
@@ -3051,3 +3051,15 @@ blockquote, .manuel-prose blockquote {
   color: var(--secondary);
 }
 .site-crumb strong { color: var(--secondary); }
+/* —— Filet sous titres de colonnes (accueil) —— */
+.home-col .site-section-header {
+  margin-bottom: 1rem;
+}
+.home-col .site-section-header::after {
+  content: "";
+  display: block;
+  height: 1.5px;
+  margin-top: .65rem;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 36%, var(--secondary) 36%, var(--secondary) 68%, transparent 100%);
+  opacity: 1;
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="184" viewBox="0 0 160 184">
+  <!-- Residence tapestry: desk lamp emblem, staggered like Amphi fleurs -->
+  <defs>
+    <g id="lampe">
+      <!-- shade -->
+      <path d="M8 28 L48 28 L40 12 H16 Z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+      <!-- stem -->
+      <path d="M28 28 v26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- base -->
+      <path d="M14 54 h28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M18 54 c0 6 4 10 10 10 s10 -4 10 -10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <!-- warm glow dot -->
+      <circle cx="28" cy="22" r="2.5" fill="#d4922a"/>
+    </g>
+    <filter id="emboss" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0.8" dy="1" stdDeviation="0.5" flood-color="#2a3348" flood-opacity=".32"/>
+    </filter>
+  </defs>
+
+  <rect width="160" height="184" fill="#e8e2d6"/>
+
+  <g transform="translate(18 14)" filter="url(#emboss)" color="#3d4a66" opacity=".34">
+    <use href="#lampe"/>
+  </g>
+  <g transform="translate(90 14)" filter="url(#emboss)" color="#3d4a66" opacity=".34">
+    <use href="#lampe"/>
+  </g>
+
+  <g transform="translate(54 76)" filter="url(#emboss)" color="#3d4a66" opacity=".34">
+    <use href="#lampe"/>
+  </g>
+
+  <g transform="translate(18 138)" filter="url(#emboss)" color="#3d4a66" opacity=".34">
+    <use href="#lampe"/>
+  </g>
+  <g transform="translate(90 138)" filter="url(#emboss)" color="#3d4a66" opacity=".34">
+    <use href="#lampe"/>
+  </g>
+</svg>

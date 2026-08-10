@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="184" viewBox="0 0 160 184">
+  <!-- Restau' U tapestry: tray emblem, staggered like Amphi fleurs -->
+  <defs>
+    <g id="plateau">
+      <!-- tray -->
+      <rect x="2" y="18" width="52" height="38" rx="8" fill="none" stroke="currentColor" stroke-width="2.2"/>
+      <!-- plates -->
+      <circle cx="20" cy="37" r="11" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="20" cy="37" r="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <circle cx="40" cy="37" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <!-- orange dot -->
+      <circle cx="48" cy="24" r="2.4" fill="#e85d04"/>
+    </g>
+    <filter id="emboss" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0.8" dy="1" stdDeviation="0.5" flood-color="#0a3d38" flood-opacity=".35"/>
+    </filter>
+  </defs>
+
+  <rect width="160" height="184" fill="#e4eeeb"/>
+
+  <!-- row 1 -->
+  <g transform="translate(18 16)" filter="url(#emboss)" color="#0d766e" opacity=".34">
+    <use href="#plateau"/>
+  </g>
+  <g transform="translate(90 16)" filter="url(#emboss)" color="#0d766e" opacity=".34">
+    <use href="#plateau"/>
+  </g>
+
+  <!-- row 2 offset -->
+  <g transform="translate(54 78)" filter="url(#emboss)" color="#0d766e" opacity=".34">
+    <use href="#plateau"/>
+  </g>
+
+  <!-- row 3 -->
+  <g transform="translate(18 140)" filter="url(#emboss)" color="#0d766e" opacity=".34">
+    <use href="#plateau"/>
+  </g>
+  <g transform="translate(90 140)" filter="url(#emboss)" color="#0d766e" opacity=".34">
+    <use href="#plateau"/>
+  </g>
+</svg>

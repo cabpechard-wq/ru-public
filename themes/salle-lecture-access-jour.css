@@ -894,7 +894,7 @@ a:hover { color: var(--accent-hover); }
   display: block;
   padding: .9rem 0;
   border: 0;
-  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   border-radius: 0;
   background: transparent;
   transition: background .2s, padding-left .2s;
@@ -3064,3 +3064,15 @@ blockquote, .manuel-prose blockquote {
 .site-nav-user { border-radius: 0; border: 2px solid #000; background: #ffe03d; }
 
 .reading-lamp { display: none !important; }
+/* —— Filet sous titres de colonnes (accueil) —— */
+.home-col .site-section-header {
+  margin-bottom: 1rem;
+}
+.home-col .site-section-header::after {
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: .65rem;
+  background: #000;
+  opacity: 1;
+}

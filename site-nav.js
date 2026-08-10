@@ -22,7 +22,7 @@
   header.className = "site-nav";
   header.innerHTML =
     '<a class="site-nav-brand" href="' + abs("index.html") + '">' +
-      '<span class="site-nav-kicker">Éditions Particulières</span>' +
+      '<span class="site-nav-kicker">Les Ressources Universitaires</span>' +
       '<span class="site-nav-product"><em>Droit</em> public et administratif</span>' +
     "</a>" +
     '<nav class="site-nav-links" aria-label="Navigation">' +
@@ -425,8 +425,8 @@
   footer.innerHTML =
     '<div class="site-footer-inner">' +
       '<div class="site-footer-meta">' +
-        '<p class="site-footer-brand">Éditions Particulières — Droit public et administratif</p>' +
-        '<p class="site-footer-copy">© Éditions Particulières · Tous droits réservés · Reproductions / exportations interdites</p>' +
+        '<p class="site-footer-brand">Les Ressources Universitaires — Droit public et administratif</p>' +
+        '<p class="site-footer-copy">© Les Ressources Universitaires · Tous droits réservés · Reproductions / exportations interdites</p>' +
       "</div>" +
       '<nav class="site-footer-links" aria-label="Informations légales">' +
         '<a href="' + abs("mentions-legales/") + '">Mentions légales</a>' +
@@ -438,7 +438,7 @@
 
   // Sélecteur de charte (Campus par défaut) — chargé après le bandeau
   const themeJs = document.createElement("script");
-  themeJs.src = new URL("site-theme.js?v=6", script.src).href;
+  themeJs.src = new URL("site-theme.js?v=8", script.src).href;
   themeJs.onerror = function () {
     console.warn("[site-theme] Impossible de charger site-theme.js — rebuild du site requis.");
   };

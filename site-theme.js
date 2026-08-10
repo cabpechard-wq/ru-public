@@ -136,21 +136,40 @@
     const href = abs(theme.css);
     const ver = (manifest.assetsVersion || "1") + "-" + theme.id;
     const bust = "v=" + encodeURIComponent(ver);
-    cssLink.href = href + (href.indexOf("?") >= 0 ? "&" : "?") + bust;
+    const next = href + (href.indexOf("?") >= 0 ? "&" : "?") + bust;
+    const finish = () => {
+      document.documentElement.dataset.theme = theme.id;
+      try {
+        localStorage.setItem(STORAGE_KEY, theme.id);
+      } catch (_) {}
+      const select = document.getElementById("site-theme-select");
+      if (select && select.value !== theme.id) select.value = theme.id;
+      try {
+        document.dispatchEvent(
+          new CustomEvent("ep-theme-change", { detail: { theme: theme } })
+        );
+      } catch (_) {}
+    };
+    const ensureSheet = (attempt) => {
+      attempt = attempt || 0;
+      try {
+        if (cssLink.sheet && cssLink.sheet.cssRules.length > 0) {
+          finish();
+          return;
+        }
+      } catch (_) {}
+      if (attempt < 2) {
+        cssLink.href = next + "&r=" + Date.now();
+        cssLink.onload = () => ensureSheet(attempt + 1);
+        return;
+      }
+      finish();
+    };
+    cssLink.onload = () => ensureSheet(0);
+    cssLink.href = next;
     const fonts = ensureFontsLink();
     if (theme.fonts) fonts.href = theme.fonts;
-    document.documentElement.dataset.theme = theme.id;
-    try {
-      localStorage.setItem(STORAGE_KEY, theme.id);
-    } catch (_) {}
-    const select = document.getElementById("site-theme-select");
-    if (select && select.value !== theme.id) select.value = theme.id;
     void manifest;
-    try {
-      document.dispatchEvent(
-        new CustomEvent("ep-theme-change", { detail: { theme: theme } })
-      );
-    } catch (_) {}
   }
 
   function mountPicker(manifest, attempt) {

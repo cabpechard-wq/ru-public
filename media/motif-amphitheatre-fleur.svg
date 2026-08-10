@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="184" viewBox="0 0 160 184">
+  <!-- Tapisserie : fleurs de lys dor?es emboss?es sur vert for?t (tuile d?cal?e) -->
+  <defs>
+    <pattern id="grain" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#143524"/>
+      <circle cx="1" cy="2" r="0.6" fill="#0f2a1c" opacity=".55"/>
+      <circle cx="3" cy="0" r="0.45" fill="#1a3d2a" opacity=".4"/>
+    </pattern>
+    <!-- Fleur de lys h?raldique -->
+    <path id="lys" d="M20 2
+      C20 14 28 20 34 24
+      C26 22 22 26 20 34
+      C18 26 14 22 6 24
+      C12 20 20 14 20 2 Z
+      M20 30
+      C10 40 2 52 1 66
+      C8 60 15 56 20 56
+      C25 56 32 60 39 66
+      C38 52 30 40 20 30 Z
+      M17.5 56 H22.5 L21.5 72 H18.5 Z
+      M10 72 H30
+      C28 80 24 84 20 84
+      C16 84 12 80 10 72 Z"/>
+    <filter id="emboss" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1.2" dy="1.4" stdDeviation="0.6" flood-color="#07140e" flood-opacity=".65"/>
+    </filter>
+  </defs>
+
+  <rect width="160" height="184" fill="#143524"/>
+  <rect width="160" height="184" fill="url(#grain)" opacity=".85"/>
+
+  <!-- Rang?e 1 -->
+  <g transform="translate(18 12)" filter="url(#emboss)">
+    <use href="#lys" fill="#8a7340" opacity=".55"/>
+    <use href="#lys" fill="#c5b38a" opacity=".9" transform="translate(-0.7 -0.8)"/>
+    <use href="#lys" fill="#e8d9b0" opacity=".25" transform="translate(-1.2 -1.3)"/>
+  </g>
+  <g transform="translate(102 12)" filter="url(#emboss)">
+    <use href="#lys" fill="#8a7340" opacity=".55"/>
+    <use href="#lys" fill="#c5b38a" opacity=".9" transform="translate(-0.7 -0.8)"/>
+    <use href="#lys" fill="#e8d9b0" opacity=".25" transform="translate(-1.2 -1.3)"/>
+  </g>
+
+  <!-- Rang?e 2 d?cal?e (demi-pas) -->
+  <g transform="translate(60 80)" filter="url(#emboss)">
+    <use href="#lys" fill="#8a7340" opacity=".55"/>
+    <use href="#lys" fill="#c5b38a" opacity=".9" transform="translate(-0.7 -0.8)"/>
+    <use href="#lys" fill="#e8d9b0" opacity=".25" transform="translate(-1.2 -1.3)"/>
+  </g>
+
+  <!-- Rang?e 3 -->
+  <g transform="translate(18 148)" filter="url(#emboss)">
+    <use href="#lys" fill="#8a7340" opacity=".55"/>
+    <use href="#lys" fill="#c5b38a" opacity=".9" transform="translate(-0.7 -0.8)"/>
+    <use href="#lys" fill="#e8d9b0" opacity=".25" transform="translate(-1.2 -1.3)"/>
+  </g>
+  <g transform="translate(102 148)" filter="url(#emboss)">
+    <use href="#lys" fill="#8a7340" opacity=".55"/>
+    <use href="#lys" fill="#c5b38a" opacity=".9" transform="translate(-0.7 -0.8)"/>
+    <use href="#lys" fill="#e8d9b0" opacity=".25" transform="translate(-1.2 -1.3)"/>
+  </g>
+</svg>
