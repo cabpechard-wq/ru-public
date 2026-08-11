@@ -146,6 +146,10 @@
         el.textContent = "Accès public";
         return;
       }
+      if (mode === "demo") {
+        el.textContent = isMember ? "Ouvrir →" : "Démo";
+        return;
+      }
       el.textContent = isMember ? "Ouvrir →" : "Aperçu (accès membre)";
     });
   }
