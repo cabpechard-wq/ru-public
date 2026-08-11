@@ -15,6 +15,23 @@ au routage réel du site).
 lors du build (`scripts/build_site.ps1`) ; seul `data/chronology-decisions.json`
 est destiné à être régénéré par l'export Notion.
 
+### Origine des données actuelles (provisoire)
+
+`data/chronology-decisions.json` contient actuellement les **995 décisions**
+reconstruites par extraction des fiches HTML publiées
+(`ru-public/arrets/<slug>/index.html`), et non un export direct de la base
+Notion Jurisprudence (celle-ci vit sur Google Drive / Notion, hors du dépôt
+Git — `data/` et `flipcards/matrices/` sont vides ici, cf. `config/paths.json`
+pointant vers `G:/Mon Drive/…`). Champs dérivables du HTML : `nom`, `date`,
+`annee`, `juridiction`, `formation`, `importance`, `objet`, `portee`,
+`slugFiche`. Le champ `verso` reprend le paragraphe « Solution. » de la fiche
+(à défaut, `portee` puis `objet`). **`theme` et `notions` sont vides et
+`liees`/`urlOfficielle` sont nuls pour les 995 entrées** : ces propriétés
+Notion (Thème, Notions, Décisions liées, Décision officielle) ne sont pas
+exportées dans le HTML statique et ne peuvent donc pas être reconstituées
+sans brancher le véritable export Notion (`extract/pull/jurisprudence.py`)
+décrit plus haut.
+
 ## Arborescence cible sur le site
 
 ```text
