@@ -57,21 +57,6 @@
     </header>
 
     <main class="main is-detail-closed" id="chrono-main">
-      <div class="intro">
-        <p>
-          Vue d’ensemble datée du fonds jurisprudentiel. Filtrez par thème, notions ou
-          importance ; ouvrez une décision pour sa synthèse et ses liens. Les données sont
-          régénérées depuis la base Notion — cette page ne se modifie pas à la main.
-        </p>
-        <div class="status-bar" aria-live="polite">
-          <span class="pill"
-            ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
-            décisions</span
-          >
-          <span class="pill">Export&nbsp;: <span id="meta-generated">—</span></span>
-        </div>
-      </div>
-
       <div id="chrono-alert" class="alert" hidden></div>
 
       <section class="filters" aria-label="Filtres">
@@ -81,7 +66,7 @@
             <input
               id="filter-search"
               type="search"
-              placeholder="Nom, objet, verso, notion…"
+              placeholder="Mots clés (recherche générale)"
               autocomplete="off"
             />
           </label>
@@ -109,14 +94,28 @@
           </div>
         </div>
 
-        <div class="filters__row filters__row--period">
-          <fieldset class="field field--importance" style="border: 0; margin: 0; padding: 0">
+        <div class="filters__row">
+          <fieldset class="field field--importance">
             <span>Importance</span>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 8px">
-              <label><input type="checkbox" name="importance" value="1" checked /> ★</label>
-              <label><input type="checkbox" name="importance" value="2" checked /> ★★</label>
-              <label><input type="checkbox" name="importance" value="3" checked /> ★★★</label>
-              <label><input type="checkbox" name="importance" value="4" checked /> ★★★★</label>
+            <div class="chip-group" role="group" aria-label="Importance">
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="1" checked /><span>★</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="2" checked /><span
+                  >★★</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="3" checked /><span
+                  >★★★</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="4" checked /><span
+                  >★★★★</span
+                ></label
+              >
             </div>
           </fieldset>
 
@@ -157,7 +156,7 @@
           </div>
 
           <div class="field field--reset">
-            <span>&nbsp;</span>
+            <span aria-hidden="true">&nbsp;</span>
             <button type="button" id="filter-reset">Réinitialiser les filtres</button>
           </div>
         </div>
@@ -167,6 +166,10 @@
             <strong>Filtres actifs :</strong>
             <span class="active-filters__list" id="active-filters-list">aucun</span>
           </p>
+          <span class="pill"
+            ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
+            décisions</span
+          >
         </div>
       </section>
 

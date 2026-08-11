@@ -966,11 +966,8 @@
     els.main.classList.toggle("is-detail-closed", !d);
 
     if (!d) {
-      wrap.innerHTML =
-        '<div class="detail-placeholder">' +
-        "Sélectionnez une décision sur la frise ou dans la liste pour afficher sa fiche synthétique et ses liens." +
-        "</div>";
-      wrap.hidden = false;
+      wrap.innerHTML = "";
+      wrap.hidden = true;
       return;
     }
 

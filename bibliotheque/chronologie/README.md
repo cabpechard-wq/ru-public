@@ -15,22 +15,31 @@ au routage réel du site).
 lors du build (`scripts/build_site.ps1`) ; seul `data/chronology-decisions.json`
 est destiné à être régénéré par l'export Notion.
 
-### Origine des données actuelles (provisoire)
+### Origine des données actuelles
 
-`data/chronology-decisions.json` contient actuellement les **995 décisions**
-reconstruites par extraction des fiches HTML publiées
-(`ru-public/arrets/<slug>/index.html`), et non un export direct de la base
-Notion Jurisprudence (celle-ci vit sur Google Drive / Notion, hors du dépôt
-Git — `data/` et `flipcards/matrices/` sont vides ici, cf. `config/paths.json`
-pointant vers `G:/Mon Drive/…`). Champs dérivables du HTML : `nom`, `date`,
-`annee`, `juridiction`, `formation`, `importance`, `objet`, `portee`,
-`slugFiche`. Le champ `verso` reprend le paragraphe « Solution. » de la fiche
-(à défaut, `portee` puis `objet`). **`theme` et `notions` sont vides et
-`liees`/`urlOfficielle` sont nuls pour les 995 entrées** : ces propriétés
-Notion (Thème, Notions, Décisions liées, Décision officielle) ne sont pas
-exportées dans le HTML statique et ne peuvent donc pas être reconstituées
-sans brancher le véritable export Notion (`extract/pull/jurisprudence.py`)
-décrit plus haut.
+`data/chronology-decisions.json` contient les **995 décisions** de la base
+Notion « Jurisprudence », interrogée directement (SQL en lecture seule sur
+la data source `collection://39ba29ad-9f78-8045-a847-000b0f864cb6`) plutôt
+que reconstruites par extraction des fiches HTML — `nom`, `date`,
+`juridiction`, `formation`, `importance`, `theme`, `notions`, `objet`,
+`verso`, `portee` et `urlOfficielle` (804/995) viennent tous directement des
+propriétés Notion correspondantes (Nom, Date, Juridiction, Formation de
+jugement, Importance, Thème, Notions, Objet, Verso, Portée, Décision
+officielle). `slugFiche`/`id` sont obtenus en associant chaque ligne à sa
+fiche réelle sous `ru-public/arrets/<slug>/` (désambiguïsation par
+correspondance du paragraphe Objet pour les deux homonymes `TC, 1978, Sté
+Le Profil`).
+
+**`liees` reste vide pour les 995 entrées** : la propriété Notion
+« Décisions liées… » est une relation « lecture seule à ce stade… à
+alimenter seulement sur instruction expresse » — elle n'est pas encore
+renseignée côté Notion, indépendamment de l'export.
+
+Ce paquet n'a pas encore d'étape automatisée dans le pipeline CI
+(`.github/workflows/deploy-pages.yml`) : la requête ci-dessus a été
+exécutée manuellement via les outils Notion MCP. Un prochain chantier
+consiste à ajouter un script équivalent à `extract/pull/jurisprudence.py`
+pour régénérer ce fichier à chaque run, comme `/arrets/` l'est déjà.
 
 ## Arborescence cible sur le site
 
