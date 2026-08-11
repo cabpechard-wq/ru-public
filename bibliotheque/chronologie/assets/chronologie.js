@@ -43,9 +43,6 @@
       notions: [],
       importance: [],
       juridictions: [],
-      periodMode: "year",
-      yearFrom: null,
-      yearTo: null,
       dateFrom: null,
       dateTo: null,
     },
@@ -88,23 +85,28 @@
     return s;
   }
 
-  // Cinq lignes fixes de la frise, dans cet ordre d'affichage.
+  // Cinq lignes fixes de la frise.
+  // Ligne « hautes cours » : Cons. constit. + CE (couleurs distinctes).
+  // Ligne civile : Cass. + CA/TJ. Ligne int'le : CIJ + CEDH + CJUE.
   var JURIDICTION_ROWS = [
     { key: "tc", label: "Tribunal des conflits" },
-    { key: "adm", label: "Juridictions adm. (CE, CAA, TA)" },
-    { key: "cons-constit", label: "Conseil constitutionnel" },
-    { key: "civ", label: "Juridictions civ. (Cass., CA, TJ…)" },
-    { key: "intl", label: "Juridictions int'les (CIJ/CEDH/CJUE)" },
+    { key: "hautes", label: "Cons. constit. / Conseil d'État" },
+    { key: "adm", label: "CAA / TA" },
+    { key: "civ", label: "Cass. / CA / TJ" },
+    { key: "intl", label: "CIJ / CEDH / CJUE" },
   ];
 
   function juridictionRowKey(j) {
     var k = juridictionKey(j);
     if (k === "tc") return "tc";
-    if (k === "ce" || k === "caa" || k === "ta") return "adm";
-    if (k === "cons-constit") return "cons-constit";
+    if (k === "cons-constit" || k === "ce") return "hautes";
+    if (k === "caa" || k === "ta") return "adm";
     if (k === "cass" || k === "ca" || k === "tj") return "civ";
     if (k === "cedh" || k === "cjue" || k === "cij") return "intl";
-    return "adm";
+    // Paris / Nantes / TA Limoges etc. → juridictions adm. locales
+    if (k.indexOf("tribunal-administratif") === 0 || k.indexOf("ta-") === 0) return "adm";
+    if (k.indexOf("cour-administrative") === 0) return "adm";
+    return "civ";
   }
 
   function formatDateFr(iso) {
@@ -310,22 +312,6 @@
     fillSelect(els.theme, themes, true);
     buildMultiSelect(els.juridictions, juridictions, state.filters.juridictions, "Toutes les juridictions");
     buildMultiSelect(els.notions, notions, state.filters.notions, "Toutes les notions");
-
-    var years = decisions
-      .map(function (d) {
-        return d.annee;
-      })
-      .filter(function (y) {
-        return typeof y === "number";
-      });
-    var minY = years.length ? Math.min.apply(null, years) : 1800;
-    var maxY = years.length ? Math.max.apply(null, years) : new Date().getFullYear();
-    els.yearFrom.min = minY;
-    els.yearFrom.max = maxY;
-    els.yearTo.min = minY;
-    els.yearTo.max = maxY;
-    els.yearFrom.placeholder = String(minY);
-    els.yearTo.placeholder = String(maxY);
   }
 
   function fillSelect(select, values, withEmpty) {
@@ -358,15 +344,6 @@
     state.filters.notions = getMsSelected(els.notions);
     state.filters.juridictions = getMsSelected(els.juridictions);
     state.filters.importance = selectedImportance();
-
-    var modeEl = document.querySelector('input[name="period-mode"]:checked');
-    state.filters.periodMode = modeEl ? modeEl.value : "year";
-
-    var yf = els.yearFrom.value !== "" ? Number(els.yearFrom.value) : null;
-    var yt = els.yearTo.value !== "" ? Number(els.yearTo.value) : null;
-    state.filters.yearFrom = Number.isFinite(yf) ? yf : null;
-    state.filters.yearTo = Number.isFinite(yt) ? yt : null;
-
     state.filters.dateFrom = els.dateFrom.value || null;
     state.filters.dateTo = els.dateTo.value || null;
 
@@ -376,12 +353,6 @@
 
     if (els.notions._msRefreshLabel) els.notions._msRefreshLabel();
     if (els.juridictions._msRefreshLabel) els.juridictions._msRefreshLabel();
-  }
-
-  function syncPeriodModeUi() {
-    var mode = state.filters.periodMode || "year";
-    if (els.periodYear) els.periodYear.hidden = mode !== "year";
-    if (els.periodDate) els.periodDate.hidden = mode !== "date";
   }
 
   function applyFilters() {
@@ -399,14 +370,9 @@
         if (!ok) return false;
       }
 
-      if (f.periodMode === "date") {
-        var ds = String(d.date || "").slice(0, 10);
-        if (f.dateFrom && ds < f.dateFrom) return false;
-        if (f.dateTo && ds > f.dateTo) return false;
-      } else {
-        if (f.yearFrom != null && d.annee < f.yearFrom) return false;
-        if (f.yearTo != null && d.annee > f.yearTo) return false;
-      }
+      var ds = String(d.date || "").slice(0, 10);
+      if (f.dateFrom && ds < f.dateFrom) return false;
+      if (f.dateTo && ds > f.dateTo) return false;
 
       if (f.q) {
         var hay = [d.nom, d.objet, d.verso, d.portee, d.theme]
@@ -472,21 +438,12 @@
     if (f.importance.length && f.importance.length < 4) {
       parts.push("importance : " + f.importance.map(stars).join(" "));
     }
-    if (f.periodMode === "date") {
-      if (f.dateFrom || f.dateTo) {
-        parts.push(
-          "période : " +
-            (f.dateFrom ? formatDateFr(f.dateFrom) : "…") +
-            " → " +
-            (f.dateTo ? formatDateFr(f.dateTo) : "…")
-        );
-      }
-    } else if (f.yearFrom != null || f.yearTo != null) {
+    if (f.dateFrom || f.dateTo) {
       parts.push(
-        "années : " +
-          (f.yearFrom != null ? f.yearFrom : "…") +
+        "période : " +
+          (f.dateFrom ? formatDateFr(f.dateFrom) : "…") +
           " → " +
-          (f.yearTo != null ? f.yearTo : "…")
+          (f.dateTo ? formatDateFr(f.dateTo) : "…")
       );
     }
     if (state.relatedOnly && state.selectedId && selectedHasLinks()) {
@@ -795,6 +752,7 @@
     btn.addEventListener("click", function () {
       focus(d.id);
     });
+    bindFicheTip(btn, d);
     return btn;
   }
 
@@ -878,13 +836,11 @@
       var x2 = b.x - (dx / dist) * pad;
       var y2 = b.y - (dy / dist) * pad;
 
-      // Arc lisible : hauteur proportionnelle à la distance horizontale
+      // Arc toujours sous la ligne (descend puis remonte), jamais au-dessus.
       var mx = (x1 + x2) / 2;
       var my = (y1 + y2) / 2;
       var arch = Math.max(36, Math.min(90, Math.abs(dx) * 0.28 + 28));
-      // alterne au-dessus / en-dessous pour chaînes multi-liens
-      var sign = i % 2 === 0 ? -1 : 1;
-      my = my + sign * arch;
+      my = my + arch;
 
       var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
       path.setAttribute(
@@ -959,6 +915,8 @@
         "</span>" +
         "</span>";
 
+      bindFicheTip(btn, d);
+
       li.appendChild(arrowSlot);
       li.appendChild(btn);
       ul.appendChild(li);
@@ -1023,6 +981,8 @@
         html +=
           "<li><button type=\"button\" data-focus=\"" +
           escapeHtml(r.id) +
+          "\" data-tip-id=\"" +
+          escapeHtml(r.id) +
           "\">" +
           escapeHtml(r.nom) +
           " <span class=\"tag\">" +
@@ -1056,9 +1016,108 @@
     }
     wrap.querySelectorAll("[data-focus]").forEach(function (btn) {
       btn.addEventListener("click", function () {
+        hideFicheTip();
         focus(btn.getAttribute("data-focus"));
       });
+      var tipId = btn.getAttribute("data-tip-id");
+      if (tipId && state.byId.has(tipId)) {
+        bindFicheTip(btn, state.byId.get(tipId));
+      }
     });
+  }
+
+  /* —— Bulle fiche (style Flipcards game-summary-tip) —— */
+
+  var ficheTipTimer = null;
+  var ficheTipId = null;
+
+  function ficheTipEls() {
+    return {
+      root: $("fiche-tip"),
+      nom: $("fiche-tip-nom"),
+      meta: $("fiche-tip-meta"),
+      objet: $("fiche-tip-objet"),
+      verso: $("fiche-tip-verso"),
+    };
+  }
+
+  function hideFicheTip() {
+    if (ficheTipTimer) {
+      clearTimeout(ficheTipTimer);
+      ficheTipTimer = null;
+    }
+    ficheTipId = null;
+    var tip = ficheTipEls().root;
+    if (!tip) return;
+    tip.hidden = true;
+    tip.setAttribute("aria-hidden", "true");
+    tip.classList.remove("is-open");
+  }
+
+  function scheduleHideFicheTip() {
+    if (ficheTipTimer) clearTimeout(ficheTipTimer);
+    ficheTipTimer = setTimeout(hideFicheTip, 120);
+  }
+
+  function cancelHideFicheTip() {
+    if (ficheTipTimer) {
+      clearTimeout(ficheTipTimer);
+      ficheTipTimer = null;
+    }
+  }
+
+  function showFicheTip(anchorEl, d) {
+    var tip = ficheTipEls();
+    if (!tip.root || !d) return;
+    cancelHideFicheTip();
+    ficheTipId = d.id;
+
+    tip.nom.textContent = d.nom || "";
+    tip.meta.textContent =
+      (formatDateFr(d.date) || "") +
+      (d.importance ? " · " + stars(d.importance) : "") +
+      (d.juridiction ? " · " + d.juridiction : "");
+    tip.objet.textContent = d.objet || "";
+    tip.objet.hidden = !d.objet;
+    tip.verso.textContent = d.verso || "";
+    tip.verso.hidden = !d.verso;
+
+    tip.root.hidden = false;
+    tip.root.setAttribute("aria-hidden", "false");
+    tip.root.classList.add("is-open");
+
+    var rect = anchorEl.getBoundingClientRect();
+    var tipW = Math.min(320, Math.max(220, window.innerWidth * 0.42));
+    tip.root.style.width = tipW + "px";
+
+    var left = rect.left + rect.width / 2 - tipW / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - tipW - 8));
+    var top = rect.bottom + 10;
+    tip.root.style.left = left + "px";
+    tip.root.style.top = top + "px";
+
+    requestAnimationFrame(function () {
+      if (ficheTipId !== d.id) return;
+      var tipH = tip.root.offsetHeight || 120;
+      if (top + tipH > window.innerHeight - 8) {
+        tip.root.style.top = Math.max(8, rect.top - tipH - 10) + "px";
+        tip.root.classList.add("is-above");
+      } else {
+        tip.root.classList.remove("is-above");
+      }
+    });
+  }
+
+  function bindFicheTip(el, d) {
+    if (!el || !d) return;
+    el.addEventListener("pointerenter", function () {
+      showFicheTip(el, d);
+    });
+    el.addEventListener("pointerleave", scheduleHideFicheTip);
+    el.addEventListener("focus", function () {
+      showFicheTip(el, d);
+    });
+    el.addEventListener("blur", scheduleHideFicheTip);
   }
 
   function focus(id) {
@@ -1082,16 +1141,10 @@
     document.querySelectorAll('input[name="importance"]').forEach(function (el) {
       el.checked = Number(el.value) >= config.defaultMinImportance;
     });
-    var modeYear = document.querySelector('input[name="period-mode"][value="year"]');
-    if (modeYear) modeYear.checked = true;
-    els.yearFrom.value = "";
-    els.yearTo.value = "";
     els.dateFrom.value = "";
     els.dateTo.value = "";
     if (els.relatedOnly) els.relatedOnly.checked = false;
     state.relatedOnly = false;
-    state.filters.periodMode = "year";
-    syncPeriodModeUi();
     readFiltersFromDom();
     applyFilters();
   }
@@ -1103,12 +1156,8 @@
     els.theme = $("filter-theme");
     els.notions = $("filter-notions");
     els.juridictions = $("filter-juridictions");
-    els.yearFrom = $("filter-year-from");
-    els.yearTo = $("filter-year-to");
     els.dateFrom = $("filter-date-from");
     els.dateTo = $("filter-date-to");
-    els.periodYear = $("period-year-fields");
-    els.periodDate = $("period-date-fields");
     els.relatedOnly = $("filter-related-only");
     els.relatedOnlyWrap = $("related-only-wrap");
     els.activeFiltersList = $("active-filters-list");
@@ -1127,22 +1176,12 @@
     ["input", "change"].forEach(function (evt) {
       els.search.addEventListener(evt, onFilterChange);
       els.theme.addEventListener(evt, onFilterChange);
-      els.yearFrom.addEventListener(evt, onFilterChange);
-      els.yearTo.addEventListener(evt, onFilterChange);
       els.dateFrom.addEventListener(evt, onFilterChange);
       els.dateTo.addEventListener(evt, onFilterChange);
     });
 
     document.querySelectorAll('input[name="importance"]').forEach(function (el) {
       el.addEventListener("change", onFilterChange);
-    });
-
-    document.querySelectorAll('input[name="period-mode"]').forEach(function (el) {
-      el.addEventListener("change", function () {
-        readFiltersFromDom();
-        syncPeriodModeUi();
-        applyFilters();
-      });
     });
 
     if (els.relatedOnly) {
@@ -1171,15 +1210,27 @@
 
     if (els.timelineScroll) {
       els.timelineScroll.addEventListener("scroll", function () {
+        hideFicheTip();
         scheduleDrawChainLinks();
       });
     }
+    if (els.list) {
+      els.list.addEventListener("scroll", hideFicheTip);
+    }
     window.addEventListener("resize", function () {
+      hideFicheTip();
       scheduleDrawChainLinks();
     });
 
+    var tipRoot = $("fiche-tip");
+    if (tipRoot) {
+      tipRoot.addEventListener("pointerenter", cancelHideFicheTip);
+      tipRoot.addEventListener("pointerleave", scheduleHideFicheTip);
+    }
+
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
+        hideFicheTip();
         if (openMsId) {
           closeAllMs();
           return;
@@ -1200,7 +1251,6 @@
 
   function onFilterChange() {
     readFiltersFromDom();
-    syncPeriodModeUi();
     applyFilters();
   }
 
@@ -1232,7 +1282,6 @@
       el.checked = Number(el.value) >= config.defaultMinImportance;
     });
 
-    syncPeriodModeUi();
     readFiltersFromDom();
     applyFilters();
   }

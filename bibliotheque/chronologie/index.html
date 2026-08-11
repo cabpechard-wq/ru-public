@@ -25,8 +25,8 @@
       rel="stylesheet"
     />
     <link id="theme-css" rel="stylesheet" href="../../site.css?v=24" />
-    <link rel="stylesheet" href="./assets/chronologie.css" />
-    <script src="./assets/chronologie.js" defer></script>
+    <link rel="stylesheet" href="./assets/chronologie.css?v=7" />
+    <script src="./assets/chronologie.js?v=7" defer></script>
   </head>
   <body>
     <p class="site-crumb">
@@ -62,22 +62,16 @@
 
       <section class="filters" aria-label="Filtres">
         <div class="filters__row">
-          <label class="field">
-            <span>Recherche</span>
+          <div class="field">
+            <span class="field-label" id="label-search">Recherche</span>
             <input
               id="filter-search"
               type="search"
               placeholder="Mots clés (recherche générale)"
               autocomplete="off"
+              aria-labelledby="label-search"
             />
-          </label>
-
-          <label class="field">
-            <span>Thème</span>
-            <select id="filter-theme">
-              <option value="">Tous les thèmes</option>
-            </select>
-          </label>
+          </div>
 
           <div class="field">
             <span class="field-label" id="label-juridictions">Juridictions</span>
@@ -90,6 +84,13 @@
           </div>
 
           <div class="field">
+            <span class="field-label" id="label-themes">Thèmes</span>
+            <select id="filter-theme" aria-labelledby="label-themes">
+              <option value="">Tous les thèmes</option>
+            </select>
+          </div>
+
+          <div class="field">
             <span class="field-label" id="label-notions">Notions</span>
             <div id="filter-notions" class="ms" role="group" aria-labelledby="label-notions"></div>
           </div>
@@ -97,7 +98,7 @@
 
         <div class="filters__row">
           <fieldset class="field field--importance">
-            <span>Importance</span>
+            <span class="field-label">Importance</span>
             <div class="chip-group" role="group" aria-label="Importance">
               <label class="chip"
                 ><input type="checkbox" name="importance" value="1" /><span>★</span></label
@@ -121,35 +122,16 @@
           </fieldset>
 
           <div class="field field--period">
-            <span>Période</span>
-            <div class="period-mode">
-              <label
-                ><input type="radio" name="period-mode" value="year" checked /> Par
-                année</label
-              >
-              <label
-                ><input type="radio" name="period-mode" value="date" /> Par date
-                exacte</label
-              >
-            </div>
-            <div class="period-fields" id="period-year-fields">
-              <div class="year-range">
-                <input id="filter-year-from" type="number" inputmode="numeric" placeholder="De" />
-                <span>→</span>
-                <input id="filter-year-to" type="number" inputmode="numeric" placeholder="À" />
-              </div>
-            </div>
-            <div class="period-fields" id="period-date-fields" hidden>
-              <div class="date-range">
-                <input id="filter-date-from" type="date" aria-label="Date de début" />
-                <span>→</span>
-                <input id="filter-date-to" type="date" aria-label="Date de fin" />
-              </div>
+            <span class="field-label">Période</span>
+            <div class="date-range">
+              <input id="filter-date-from" type="date" aria-label="Date de début" />
+              <span>→</span>
+              <input id="filter-date-to" type="date" aria-label="Date de fin" />
             </div>
           </div>
 
           <div class="field field--related">
-            <span>Décisions liées…</span>
+            <span class="field-label">Décisions liées…</span>
             <label class="related-only-wrap is-visible" id="related-only-wrap">
               <input id="filter-related-only" type="checkbox" disabled />
               <span id="related-only-label">Afficher uniquement les décisions liées</span>
@@ -157,8 +139,8 @@
           </div>
 
           <div class="field field--reset">
-            <span aria-hidden="true">&nbsp;</span>
-            <button type="button" id="filter-reset">Réinitialiser les filtres</button>
+            <span class="field-label" aria-hidden="true">&nbsp;</span>
+            <button type="button" id="filter-reset" class="btn-reset">Réinitialiser les filtres</button>
           </div>
         </div>
 
@@ -184,27 +166,36 @@
           </div>
           <div class="legend" aria-hidden="true">
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> Conseil
-              d’État</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> CAA / TA</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> Tribunal des
+              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> 1 Tribunal des
               conflits</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> Conseil
+              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> 2 Conseil
               constitutionnel</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> Cass. / CA /
-              TJ</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> 3 Conseil
+              d’État</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-intl)"></span> CIJ / CEDH /
-              CJUE</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> 4 CAA / TA</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cass)"></span> 5 Cour de
+              cassation</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> 6 CA / TJ et
+              autres</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cij)"></span> 7 CIJ</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cedh)"></span> 8 CEDH</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cjue)"></span> 9 CJUE</span
             >
           </div>
         </section>
@@ -219,6 +210,13 @@
 
       <aside class="detail" id="detail" aria-live="polite"></aside>
     </main>
+    <div id="fiche-tip" class="fiche-tip" hidden role="tooltip" aria-hidden="true">
+      <p class="fiche-tip__label">Fiche</p>
+      <p class="fiche-tip__nom" id="fiche-tip-nom"></p>
+      <p class="fiche-tip__meta" id="fiche-tip-meta"></p>
+      <p class="fiche-tip__objet" id="fiche-tip-objet"></p>
+      <p class="fiche-tip__verso" id="fiche-tip-verso"></p>
+    </div>
     <script src="../../auth.js?v=4"></script>
     <script src="../../site-nav.js?v=26"></script>
   </body>
