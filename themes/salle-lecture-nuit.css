@@ -361,7 +361,7 @@ a:hover { color: var(--accent-hover); }
 }
 
 .site-main.home-amphitheatre {
-  width: min(92rem, calc(100% - 2rem));
+  width: min(78rem, calc(100% - 2rem));
   max-width: 100%;
 }
 
@@ -3308,6 +3308,72 @@ blockquote, .manuel-prose blockquote {
   margin: .55rem 0 0;
   font-size: .78rem;
 }
+
+/* Accueil layout A : BU + Cours empilés | TD 50% */
+.home-pillars.home-pillars--stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: stretch;
+}
+.home-pillars--stack .home-pillars-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+.home-pillars--stack .home-pillars-stack > .home-pillar {
+  border-left: 0;
+}
+.home-pillars--stack .home-pillars-stack > .home-pillar + .home-pillar {
+  border-left: 0;
+  border-top: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+  margin-top: .85rem;
+  padding-top: 1.15rem;
+}
+.home-pillars--stack > .home-pillar#exercices {
+  border-left: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+}
+.home-pillars--stack #ressources .home-pillar-actions,
+.home-pillars--stack #bibliotheque .home-pillar-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .45rem;
+}
+.home-pillars--stack #ressources .home-pillar-entry,
+.home-pillars--stack #bibliotheque .home-pillar-entry,
+.home-pillars--stack #exercices .home-pillar-entry {
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .35rem;
+}
+.home-pillars--stack #ressources .home-pillar-entry__access,
+.home-pillars--stack #bibliotheque .home-pillar-entry__access,
+.home-pillars--stack #exercices .home-pillar-entry__access {
+  max-width: none;
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+  text-align: left;
+}
+.home-pillars--stack #exercices .home-pillar-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: .55rem;
+}
+.home-pillars--stack #exercices .home-pillar-actions > .home-pillar-entry {
+  grid-column: 1 / -1;
+}
+.home-pillars--stack #exercices .home-pillar-group {
+  min-width: 0;
+}
+.btn.outline-accent.home-pillar-entry.is-soon {
+  cursor: default;
+  pointer-events: none;
+  opacity: .88;
+}
+
 @media (max-width: 900px) {
   .home-pillars {
     grid-template-columns: 1fr;
@@ -3317,5 +3383,22 @@ blockquote, .manuel-prose blockquote {
     border-left: 0;
     border-top: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
     padding-top: 1.35rem;
+  }
+
+  .home-pillars.home-pillars--stack {
+    grid-template-columns: 1fr;
+  }
+  .home-pillars--stack > .home-pillar#exercices {
+    border-left: 0;
+    border-top: 1px solid color-mix(in srgb, var(--secondary) 45%, var(--border));
+    padding-top: 1.35rem;
+  }
+  .home-pillars--stack .home-pillars-stack > .home-pillar + .home-pillar {
+    margin-top: .55rem;
+  }
+  .home-pillars--stack #ressources .home-pillar-actions,
+  .home-pillars--stack #bibliotheque .home-pillar-actions,
+  .home-pillars--stack #exercices .home-pillar-actions {
+    grid-template-columns: 1fr;
   }
 }

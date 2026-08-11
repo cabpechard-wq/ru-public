@@ -30,7 +30,7 @@
       <div class="home-hero-access-stack" role="group" aria-label="Connexion et inscriptions">
         <div class="home-access-card">
           <h3>Connexion</h3>
-          <p>Accès à la BU, au cours magistral et aux TD avec e-mail et mot de passe.</p>
+          <p>Accès à la BU, aux cours et aux TD avec e-mail et mot de passe.</p>
           <a class="btn fill-secondary" data-home-auth-btn href="./membre/">Se connecter</a>
         </div>
         <div class="home-access-card is-accent">
@@ -44,32 +44,60 @@
 
   <div class="home-rule" aria-hidden="true"></div>
 
-  <div class="home-pillars" role="navigation" aria-label="Piliers pédagogiques">
-    <section id="ressources" class="home-pillar">
-      <div class="home-pillar-head">
-        <div class="home-pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M8 36V18l16-8 16 8v18"/>
-            <path d="M16 36V22h16v14"/>
-            <path d="M8 36h32"/>
-          </svg>
+  <div class="home-pillars home-pillars--stack" role="navigation" aria-label="Piliers pédagogiques">
+    <div class="home-pillars-stack">
+      <section id="bibliotheque" class="home-pillar">
+        <div class="home-pillar-head">
+          <div class="home-pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M14 12h16c4 0 6 2 6 6v18H20c-4 0-6-2-6-6V12z"/>
+              <path d="M14 12v18c0 4 2 6 6 6h16"/>
+              <path d="M20 18h10M20 24h8"/>
+            </svg>
+          </div>
+          <p class="site-hero-kicker">Fonds &amp; veille</p>
         </div>
-        <p class="site-hero-kicker">Savoirs &amp; références</p>
-      </div>
-      <h2 class="home-pillar-title"><a href="./ressources/">Cours magistral</a></h2>
-      <p class="home-pillar-lead">Cours synthétique et chronologie pour suivre le programme universitaire de droit public.</p>
-      <div class="home-pillar-actions">
-        <a class="btn outline-accent home-pillar-entry" href="./manuel/">
-          <span class="home-pillar-entry__title">Cours de Droit public et administratif</span>
-          <span class="home-pillar-entry__access" data-home-access="member">Aperçu (accès membres)</span>
-        </a>
-        <a class="btn outline-accent home-pillar-entry" data-chronologie-entry href="./bibliotheque/chronologie/" title="Chronologie de la jurisprudence administrative (démo)">
-          <span class="home-pillar-entry__title">Chronologie de la jurisprudence administrative</span>
-          <span class="home-pillar-entry__access" data-home-access="demo">Démonstration</span>
-        </a>
-      </div>
-      <p class="home-soon-note">Bientôt : fiches thématiques</p>
-    </section>
+        <h2 class="home-pillar-title"><a href="./bibliotheque/">Bibliothèque universitaire</a></h2>
+        <p class="home-pillar-lead">Dictionnaire en accès public, fiches d'arrêts pour le fonds documentaire.</p>
+        <div class="home-pillar-actions">
+          <a class="btn outline-accent home-pillar-entry" href="./dictionnaire/">
+            <span class="home-pillar-entry__title">Dictionnaire juridique</span>
+            <span class="home-pillar-entry__access" data-home-access="public">Libre d'accès</span>
+          </a>
+          <a class="btn outline-accent home-pillar-entry" href="./arrets/">
+            <span class="home-pillar-entry__title">Fiches d'arrêts et de décisions</span>
+            <span class="home-pillar-entry__access" data-home-access="member">Aperçu (accès membres)</span>
+          </a>
+        </div>
+        <p class="home-soon-note">Bientôt : veille juridique</p>
+      </section>
+
+      <section id="ressources" class="home-pillar">
+        <div class="home-pillar-head">
+          <div class="home-pillar-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M8 36V18l16-8 16 8v18"/>
+              <path d="M16 36V22h16v14"/>
+              <path d="M8 36h32"/>
+            </svg>
+          </div>
+          <p class="site-hero-kicker">Savoirs &amp; références</p>
+        </div>
+        <h2 class="home-pillar-title"><a href="./ressources/">Cours magistral</a></h2>
+        <p class="home-pillar-lead">Cours synthétique et chronologie pour suivre le programme universitaire de droit public.</p>
+        <div class="home-pillar-actions">
+          <a class="btn outline-accent home-pillar-entry" href="./manuel/">
+            <span class="home-pillar-entry__title">Cours de Droit public et administratif</span>
+            <span class="home-pillar-entry__access" data-home-access="member">Aperçu (accès membres)</span>
+          </a>
+          <a class="btn outline-accent home-pillar-entry" data-chronologie-entry href="./bibliotheque/chronologie/" title="Chronologie de la jurisprudence administrative (démo)">
+            <span class="home-pillar-entry__title">Chronologie de la jurisprudence administrative</span>
+            <span class="home-pillar-entry__access" data-home-access="demo">Démonstration</span>
+          </a>
+        </div>
+        <p class="home-soon-note">Bientôt : fiches thématiques</p>
+      </section>
+    </div>
 
     <section id="exercices" class="home-pillar">
       <div class="home-pillar-head">
@@ -111,34 +139,12 @@
             </a>
           </div>
         </div>
+        <div class="btn outline-accent home-pillar-entry is-soon" role="note" aria-label="Enchaînements chronologiques — arrive incessamment">
+          <span class="home-pillar-entry__title">Enchaînements chronologiques</span>
+          <span class="home-pillar-entry__access">Arrive incessamment</span>
+        </div>
       </div>
       <p class="home-soon-note">Bientôt : QCM, cas pratiques</p>
-    </section>
-
-    <section id="bibliotheque" class="home-pillar">
-      <div class="home-pillar-head">
-        <div class="home-pillar-icon" aria-hidden="true">
-          <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M14 12h16c4 0 6 2 6 6v18H20c-4 0-6-2-6-6V12z"/>
-            <path d="M14 12v18c0 4 2 6 6 6h16"/>
-            <path d="M20 18h10M20 24h8"/>
-          </svg>
-        </div>
-        <p class="site-hero-kicker">Fonds &amp; veille</p>
-      </div>
-      <h2 class="home-pillar-title"><a href="./bibliotheque/">Bibliothèque universitaire</a></h2>
-      <p class="home-pillar-lead">Dictionnaire en accès public · fiches d'arrêts pour le fonds documentaire.</p>
-      <div class="home-pillar-actions">
-        <a class="btn outline-accent home-pillar-entry" href="./dictionnaire/">
-          <span class="home-pillar-entry__title">Dictionnaire juridique</span>
-          <span class="home-pillar-entry__access" data-home-access="public">Libre d'accès</span>
-        </a>
-        <a class="btn outline-accent home-pillar-entry" href="./arrets/">
-          <span class="home-pillar-entry__title">Fiches d'arrêts et de décisions</span>
-          <span class="home-pillar-entry__access" data-home-access="member">Aperçu (accès membres)</span>
-        </a>
-      </div>
-      <p class="home-soon-note">Bientôt : veille juridique</p>
     </section>
   </div>
 </main>
