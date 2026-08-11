@@ -41,7 +41,7 @@
     relatedOnly: false,
     filters: {
       q: "",
-      theme: "",
+      themes: [],
       notions: [],
       importance: [],
       juridictions: [],
@@ -328,25 +328,9 @@
       })
     );
 
-    fillSelect(els.theme, themes, true);
+    buildMultiSelect(els.themes, themes, state.filters.themes, "Tous les thèmes");
     buildMultiSelect(els.juridictions, juridictions, state.filters.juridictions, "Toutes les juridictions");
     buildMultiSelect(els.notions, notions, state.filters.notions, "Toutes les notions");
-  }
-
-  function fillSelect(select, values, withEmpty) {
-    select.innerHTML = "";
-    if (withEmpty) {
-      var opt0 = document.createElement("option");
-      opt0.value = "";
-      opt0.textContent = "Tous les thèmes";
-      select.appendChild(opt0);
-    }
-    values.forEach(function (v) {
-      var opt = document.createElement("option");
-      opt.value = v;
-      opt.textContent = v;
-      select.appendChild(opt);
-    });
   }
 
   function selectedImportance() {
@@ -359,7 +343,7 @@
 
   function readFiltersFromDom() {
     state.filters.q = (els.search.value || "").trim().toLowerCase();
-    state.filters.theme = els.theme.value || "";
+    state.filters.themes = getMsSelected(els.themes);
     state.filters.notions = getMsSelected(els.notions);
     state.filters.juridictions = getMsSelected(els.juridictions);
     state.filters.importance = selectedImportance();
@@ -370,6 +354,7 @@
       state.relatedOnly = !!els.relatedOnly.checked;
     }
 
+    if (els.themes && els.themes._msRefreshLabel) els.themes._msRefreshLabel();
     if (els.notions._msRefreshLabel) els.notions._msRefreshLabel();
     if (els.juridictions._msRefreshLabel) els.juridictions._msRefreshLabel();
   }
@@ -379,7 +364,7 @@
     var list = (state.raw && state.raw.decisions) || [];
 
     state.filtered = list.filter(function (d) {
-      if (f.theme && d.theme !== f.theme) return false;
+      if (f.themes.length && f.themes.indexOf(d.theme) === -1) return false;
       if (f.importance.length && f.importance.indexOf(d.importance) === -1) return false;
       if (f.juridictions.length && f.juridictions.indexOf(d.juridiction) === -1) return false;
       if (f.notions.length) {
@@ -442,7 +427,9 @@
     var f = state.filters;
 
     if (f.q) parts.push('recherche « ' + f.q + ' »');
-    if (f.theme) parts.push("thème : " + f.theme);
+    if (f.themes.length) {
+      parts.push("thème" + (f.themes.length > 1 ? "s" : "") + " : " + f.themes.join(", "));
+    }
     if (f.juridictions.length) {
       parts.push(
         "juridiction" +
@@ -949,6 +936,8 @@
     els.main.classList.toggle("is-detail-closed", !d);
 
     if (!d) {
+      hideDetailFicheTip();
+      detailTipDecision = null;
       wrap.innerHTML = "";
       wrap.hidden = true;
       return;
@@ -1023,10 +1012,14 @@
 
     wrap.innerHTML = html;
     wrap.hidden = false;
+    detailTipDecision = decisionHasFicheBody(d) ? d : null;
+    hideDetailFicheTip();
 
     var closeBtn = $("detail-close");
     if (closeBtn) {
       closeBtn.addEventListener("click", function () {
+        hideDetailFicheTip();
+        hideFicheTip();
         state.selectedId = null;
         state.relatedOnly = false;
         if (els.relatedOnly) els.relatedOnly.checked = false;
@@ -1036,6 +1029,7 @@
     wrap.querySelectorAll("[data-focus]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         hideFicheTip();
+        hideDetailFicheTip();
         focus(btn.getAttribute("data-focus"));
       });
       var tipId = btn.getAttribute("data-tip-id");
@@ -1049,6 +1043,105 @@
 
   var ficheTipTimer = null;
   var ficheTipId = null;
+  var detailTipTimer = null;
+  var detailTipDecision = null;
+  var detailTipId = null;
+
+  function decisionHasFicheBody(d) {
+    if (!d) return false;
+    return !!(d.faits || d.enjeu || d.solution || d.perspective);
+  }
+
+  function detailFicheTipRoot() {
+    return $("detail-fiche-tip");
+  }
+
+  function setDetailFicheLine(rowId, text) {
+    var row = $(rowId);
+    if (!row) return;
+    var textEl = row.querySelector(".fiche-text");
+    var value = (text || "").trim();
+    if (textEl) textEl.textContent = value || "—";
+    row.classList.toggle("is-empty", !value);
+    row.hidden = false;
+  }
+
+  function hideDetailFicheTip() {
+    if (detailTipTimer) {
+      clearTimeout(detailTipTimer);
+      detailTipTimer = null;
+    }
+    detailTipId = null;
+    var tip = detailFicheTipRoot();
+    if (!tip) return;
+    tip.hidden = true;
+    tip.setAttribute("aria-hidden", "true");
+    tip.classList.remove("is-open", "is-above", "is-right");
+  }
+
+  function scheduleHideDetailFicheTip() {
+    if (detailTipTimer) clearTimeout(detailTipTimer);
+    detailTipTimer = setTimeout(hideDetailFicheTip, 140);
+  }
+
+  function cancelHideDetailFicheTip() {
+    if (detailTipTimer) {
+      clearTimeout(detailTipTimer);
+      detailTipTimer = null;
+    }
+  }
+
+  function showDetailFicheTip(anchorEl, d) {
+    var tip = detailFicheTipRoot();
+    if (!tip || !d || !decisionHasFicheBody(d)) return;
+    cancelHideDetailFicheTip();
+    detailTipId = d.id;
+
+    setDetailFicheLine("dft-faits", d.faits);
+    setDetailFicheLine("dft-enjeu", d.enjeu);
+    setDetailFicheLine("dft-solution", d.solution);
+    setDetailFicheLine("dft-perspective", d.perspective);
+
+    tip.hidden = false;
+    tip.setAttribute("aria-hidden", "false");
+    tip.classList.add("is-open");
+
+    var rect = anchorEl.getBoundingClientRect();
+    var tipW = Math.min(380, Math.max(260, window.innerWidth * 0.38));
+    tip.style.width = tipW + "px";
+    tip.style.maxHeight = Math.min(window.innerHeight - 24, 440) + "px";
+
+    var gap = 12;
+    var left = rect.left - tipW - gap;
+    var placeRight = false;
+    if (left < 8) {
+      left = Math.min(rect.right + gap, window.innerWidth - tipW - 8);
+      placeRight = true;
+    }
+    left = Math.max(8, Math.min(left, window.innerWidth - tipW - 8));
+    tip.classList.toggle("is-right", placeRight);
+
+    var top = Math.max(8, Math.min(rect.top, window.innerHeight - 120));
+    tip.style.left = left + "px";
+    tip.style.top = top + "px";
+
+    requestAnimationFrame(function () {
+      if (detailTipId !== d.id) return;
+      var tipH = tip.offsetHeight || 160;
+      var nextTop = Math.max(8, Math.min(rect.top, window.innerHeight - tipH - 8));
+      tip.style.top = nextTop + "px";
+    });
+  }
+
+  function bindDetailPanelTip() {
+    if (!els.detail || els.detail._detailTipBound) return;
+    els.detail._detailTipBound = true;
+    els.detail.addEventListener("pointerenter", function () {
+      if (!detailTipDecision) return;
+      showDetailFicheTip(els.detail, detailTipDecision);
+    });
+    els.detail.addEventListener("pointerleave", scheduleHideDetailFicheTip);
+  }
 
   function ficheTipEls() {
     return {
@@ -1155,7 +1248,6 @@
 
   function resetFilters() {
     els.search.value = "";
-    els.theme.value = "";
     if (state.raw) populateFilterOptions(state.raw);
     document.querySelectorAll('input[name="importance"]').forEach(function (el) {
       el.checked = Number(el.value) >= config.defaultMinImportance;
@@ -1172,7 +1264,7 @@
     els.alert = $("chrono-alert");
     els.main = $("chrono-main");
     els.search = $("filter-search");
-    els.theme = $("filter-theme");
+    els.themes = $("filter-themes");
     els.notions = $("filter-notions");
     els.juridictions = $("filter-juridictions");
     els.dateFrom = $("filter-date-from");
@@ -1194,7 +1286,6 @@
 
     ["input", "change"].forEach(function (evt) {
       els.search.addEventListener(evt, onFilterChange);
-      els.theme.addEventListener(evt, onFilterChange);
       els.dateFrom.addEventListener(evt, onFilterChange);
       els.dateTo.addEventListener(evt, onFilterChange);
     });
@@ -1227,9 +1318,12 @@
 
     if (els.resetBtn) els.resetBtn.addEventListener("click", resetFilters);
 
+    bindDetailPanelTip();
+
     if (els.timelineScroll) {
       els.timelineScroll.addEventListener("scroll", function () {
         hideFicheTip();
+        hideDetailFicheTip();
         scheduleDrawChainLinks();
       });
     }
@@ -1238,6 +1332,7 @@
     }
     window.addEventListener("resize", function () {
       hideFicheTip();
+      hideDetailFicheTip();
       scheduleDrawChainLinks();
     });
 
@@ -1246,10 +1341,16 @@
       tipRoot.addEventListener("pointerenter", cancelHideFicheTip);
       tipRoot.addEventListener("pointerleave", scheduleHideFicheTip);
     }
+    var detailTipRoot = detailFicheTipRoot();
+    if (detailTipRoot) {
+      detailTipRoot.addEventListener("pointerenter", cancelHideDetailFicheTip);
+      detailTipRoot.addEventListener("pointerleave", scheduleHideDetailFicheTip);
+    }
 
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") {
         hideFicheTip();
+        hideDetailFicheTip();
         if (openMsId) {
           closeAllMs();
           return;
@@ -1354,7 +1455,14 @@
     load: load,
     filter: function (partial) {
       Object.assign(state.filters, partial || {});
-      if (partial && partial.theme != null) els.theme.value = partial.theme;
+      if (partial && partial.themes != null && els.themes) {
+        state.filters.themes = [].concat(partial.themes);
+        if (state.raw) populateFilterOptions(state.raw);
+      }
+      if (partial && partial.theme != null && els.themes) {
+        state.filters.themes = partial.theme ? [partial.theme] : [];
+        if (state.raw) populateFilterOptions(state.raw);
+      }
       if (partial && partial.q != null) els.search.value = partial.q;
       applyFilters();
     },

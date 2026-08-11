@@ -28,8 +28,8 @@
       rel="stylesheet"
     />
     <link id="theme-css" rel="stylesheet" href="../site.css?v=24" />
-    <link rel="stylesheet" href="./assets/chronologie.css?v=8" />
-    <script src="./assets/chronologie.js?v=8" defer></script>
+    <link rel="stylesheet" href="./assets/chronologie.css?v=10" />
+    <script src="./assets/chronologie.js?v=10" defer></script>
   <script>
 (function(){
   var API = "https://flipcards-auth.cab-pechard.workers.dev";
@@ -112,9 +112,7 @@
 
           <div class="field">
             <span class="field-label" id="label-themes">Thèmes</span>
-            <select id="filter-theme" aria-labelledby="label-themes">
-              <option value="">Tous les thèmes</option>
-            </select>
+            <div id="filter-themes" class="ms" role="group" aria-labelledby="label-themes"></div>
           </div>
 
           <div class="field">
@@ -150,10 +148,15 @@
 
           <div class="field field--period">
             <span class="field-label">Période</span>
-            <div class="date-range">
-              <input id="filter-date-from" type="date" aria-label="Date de début" />
-              <span>→</span>
-              <input id="filter-date-to" type="date" aria-label="Date de fin" />
+            <div class="period-stack">
+              <div class="period-row">
+                <input id="filter-date-from" type="date" aria-label="Date de début" />
+                <span class="period-row__label">Début</span>
+              </div>
+              <div class="period-row">
+                <input id="filter-date-to" type="date" aria-label="Date de fin" />
+                <span class="period-row__label">Fin</span>
+              </div>
             </div>
           </div>
 
@@ -193,36 +196,36 @@
           </div>
           <div class="legend" aria-hidden="true">
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> 1 Tribunal des
+              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> Tribunal des
               conflits</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> 2 Conseil
+              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> Conseil
               constitutionnel</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> 3 Conseil
+              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> Conseil
               d’État</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> 4 CAA / TA</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> CAA / TA</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cass)"></span> 5 Cour de
+              ><span class="legend__swatch" style="--swatch: var(--marker-cass)"></span> Cour de
               cassation</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> 6 CA / TJ et
+              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> CA / TJ et
               autres</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cij)"></span> 7 CIJ</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-cij)"></span> CIJ</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cedh)"></span> 8 CEDH</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-cedh)"></span> CEDH</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cjue)"></span> 9 CJUE</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-cjue)"></span> CJUE</span
             >
           </div>
         </section>
@@ -243,6 +246,22 @@
       <p class="fiche-tip__meta" id="fiche-tip-meta"></p>
       <p class="fiche-tip__objet" id="fiche-tip-objet"></p>
       <p class="fiche-tip__verso" id="fiche-tip-verso"></p>
+    </div>
+    <div id="detail-fiche-tip" class="fiche-tip fiche-tip--detail" hidden role="tooltip" aria-hidden="true">
+      <div class="fiche-tip__scroll">
+        <p class="fiche-line" id="dft-faits">
+          <span class="fiche-label">Faits.</span> <span class="fiche-text"></span>
+        </p>
+        <p class="fiche-line" id="dft-enjeu">
+          <span class="fiche-label">Enjeu juridique.</span> <span class="fiche-text"></span>
+        </p>
+        <p class="fiche-line" id="dft-solution">
+          <span class="fiche-label">Solution.</span> <span class="fiche-text"></span>
+        </p>
+        <p class="fiche-line" id="dft-perspective">
+          <span class="fiche-label">Perspective.</span> <span class="fiche-text"></span>
+        </p>
+      </div>
     </div>
     <script src="../auth.js?v=4"></script>
     <script src="../site-nav.js?v=26"></script>

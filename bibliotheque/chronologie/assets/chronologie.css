@@ -17,18 +17,17 @@
   --header-h: 64px;
   --col-w: 168px;
 
-  /* Couleurs par juridiction : dérivées de la palette du thème actif.
-     Au sein d'une même ligne, teintes plus claires pour les juridictions
-     « satellites » (Cons. constit. vs CE ; CA/TJ vs Cass. ; CEDH/CJUE vs CIJ). */
+  /* Couleurs par juridiction : même teinte par famille, plus claire pour les
+     satellites (CAA/TA vs CE ; CA/TJ vs Cass. ; CEDH/CJUE vs CIJ). */
   --marker-tc: var(--secondary, var(--accent));
-  --marker-cons-constit: color-mix(in srgb, var(--link-arret, var(--secondary, var(--accent))) 62%, var(--bg));
+  --marker-cons-constit: color-mix(in srgb, var(--accent) 58%, var(--bg));
   --marker-ce: var(--accent);
-  --marker-adm: var(--link-dict, var(--accent));
+  --marker-adm: color-mix(in srgb, var(--accent) 48%, var(--bg));
   --marker-cass: var(--danger);
-  --marker-civ: color-mix(in srgb, var(--danger) 58%, var(--bg));
+  --marker-civ: color-mix(in srgb, var(--danger) 52%, var(--bg));
   --marker-cij: var(--ok);
-  --marker-cedh: color-mix(in srgb, var(--ok) 72%, var(--bg));
-  --marker-cjue: color-mix(in srgb, var(--ok) 48%, var(--bg));
+  --marker-cedh: color-mix(in srgb, var(--ok) 68%, var(--bg));
+  --marker-cjue: color-mix(in srgb, var(--ok) 42%, var(--bg));
   --marker-intl: var(--marker-cij);
   /* Arc des décisions liées : teinte claire lisible sur tous les thèmes */
   --chain-link: color-mix(in srgb, var(--ok, var(--secondary, var(--accent))) 72%, var(--ink));
@@ -375,18 +374,27 @@ a {
   outline-offset: 2px;
 }
 
-.date-range {
+.period-stack {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 8px;
+  min-width: 0;
+}
+
+.period-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 8px;
   align-items: center;
   min-width: 0;
 }
 
-.date-range span {
+.period-row__label {
   color: var(--text-secondary);
-  font-size: 14px;
-  flex: 0 0 auto;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  min-width: 3.2em;
 }
 
 .date-range input[type="date"] {
@@ -1223,6 +1231,71 @@ a {
 .fiche-tip__verso {
   margin-bottom: 0;
   color: var(--muted);
+}
+
+/* Bulle détail — Faits / Enjeu / Solution / Perspective (Flipcards) */
+.fiche-tip--detail {
+  z-index: 85;
+  max-width: min(24rem, 92vw);
+  padding: 0.7rem 0.55rem 0.7rem 0.85rem;
+  pointer-events: none;
+}
+
+.fiche-tip--detail.is-open {
+  pointer-events: auto;
+}
+
+.fiche-tip--detail::before {
+  display: none;
+}
+
+.fiche-tip__scroll {
+  max-height: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-right: 0.55rem;
+  scrollbar-width: thin;
+}
+
+.fiche-line {
+  margin: 0;
+  font-family: var(--font-ui, inherit);
+  font-size: 0.8rem;
+  font-weight: 500;
+  line-height: 1.42;
+  color: var(--ink);
+  text-align: justify;
+}
+
+.fiche-label {
+  font-family: var(--font-display, inherit);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--secondary, var(--accent));
+}
+
+.fiche-text {
+  font: inherit;
+  color: inherit;
+}
+
+.fiche-line.is-empty .fiche-text {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.fiche-line + .fiche-line {
+  margin-top: 0.5rem;
+  padding-top: 0.45rem;
+  border-top: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+}
+
+.period-row input[type="date"] {
+  min-width: 0;
+  width: 100%;
 }
 
 /* —— Responsive —— */

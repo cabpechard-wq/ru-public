@@ -2,7 +2,7 @@
   "meta": {
     "version": 1,
     "count": 15,
-    "generatedAt": "2026-08-11T17:38:33Z",
+    "generatedAt": "2026-08-11T17:45:16Z",
     "demo": true,
     "sourceCount": 995
   },
@@ -28,7 +28,11 @@
       "liees": [
         "ce-1875-prince-napoleon"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Le banquier Laffitte, cessionnaire d'une créance d'arrérages de rente détenue par la princesse Borghèse, sœur de Napoléon, se heurte au refus du ministre des Finances de verser ces arrérages, la loi du 12 janvier 1816 bannissant la famille Bonaparte et frappant ses biens. Il saisit le Conseil d'État.",
+      "enjeu": "Le juge administratif peut-il connaître d'une réclamation pécuniaire qui trouve sa source dans une mesure prise à l'encontre de la famille Bonaparte, c'est-à-dire dans un acte inspiré par des considérations politiques ?",
+      "solution": "Le Conseil d'État rejette la requête comme non recevable au motif que la réclamation tient à une question politique dont la décision appartient exclusivement au gouvernement. L'arrêt consacre le critère du mobile politique : toute décision prise pour des motifs politiques constitue un acte de gouvernement insusceptible de recours contentieux.",
+      "perspective": "Laffitte fonde la théorie extensive des actes de gouvernement : le mobile politique suffit à exclure le contrôle juridictionnel. Ce critère, qui laisse à l'administration la maîtrise de l'étendue de son immunité, sera abandonné par CE, 19 février 1875, Prince Napoléon : la catégorie subsiste mais recentrée sur une liste finie d'actes touchant aux rapports entre pouvoirs constitutionnels et aux relations internationales."
     },
     {
       "id": "tc-1873-blanco",
@@ -49,7 +53,11 @@
       "slugFiche": "tc-1873-blanco",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1873-02-08/00012",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "La jeune Agnès Y..., âgée de cinq ans et demi, est blessée et amputée d'une cuisse après avoir été renversée par un wagonnet poussé par des ouvriers de la manufacture des tabacs de Bordeaux, établissement public. Son père assigne l'État devant le tribunal civil de Bordeaux en réparation du dommage, sur le fondement des articles 1382 à 1384 du code civil. Le préfet de la Gironde élève le conflit d'attributions.",
+      "enjeu": "La responsabilité de l'État pour les dommages causés aux particuliers par le fait des personnes qu'il emploie dans le service public est-elle régie par les principes du code civil applicables aux rapports entre particuliers, et quelle juridiction est compétente pour en connaître ?",
+      "solution": "Le Tribunal des conflits juge que la responsabilité de l'État pour les dommages causés par le fait des personnes qu'il emploie dans le service public ne peut être régie par les principes du code civil, propres aux rapports entre particuliers ; cette responsabilité n'est ni générale ni absolue et obéit à des règles spéciales qui varient selon les besoins du service et la nécessité de concilier les droits de l'État avec les droits privés. Il en déduit que l'autorité administrative est seule compétente pour en connaître, et confirme l'arrêté de conflit.",
+      "perspective": "Cette décision consacre à la fois la responsabilité de l'État à raison des dommages causés par les services publics, mettant fin à une tradition d'irresponsabilité, et la compétence de la juridiction administrative pour en connaître, en reconnaissant le service public comme critère de cette compétence ; elle a pour arrêt jumeau, rendu le même jour, la décision Dugave et Bransiet, dont les motifs, plus explicites encore, expriment la même logique."
     },
     {
       "id": "ce-1875-prince-napoleon",
@@ -72,7 +80,11 @@
       "liees": [
         "ce-1822-laffitte"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Le prince Napoléon-Joseph Bonaparte, nommé général de division par décret du 9 mars 1854 en vertu des pouvoirs conférés à l'Empereur par le sénatus-consulte du 7 novembre 1852, voit son nom cesser de figurer sur la liste de l'état-major général de l'armée publiée dans l'annuaire militaire de 1873, après la chute du Second Empire. Le ministre de la Guerre refuse de rétablir son nom par décision du 17 juin 1873. Le prince conteste cette décision devant le Conseil d'État, invoquant la garantie du grade que lui confère l'article 1er de la loi du 19 mai 1834.",
+      "enjeu": "Le seul mobile politique d'une décision administrative suffit-il, comme l'admettait la jurisprudence antérieure (CE, 1822, Laffitte ; CE, 1867, Duc d'Aumale), à la qualifier d'acte de gouvernement insusceptible de tout recours pour excès de pouvoir ?",
+      "solution": "Le Conseil d'État accepte d'examiner la requête au fond, se reconnaissant ainsi compétent pour apprécier la légalité d'un acte pris pour des considérations politiques. Il juge que la situation faite au prince par le décret du 9 mars 1854, prise en vertu de l'article 6 du sénatus-consulte du 7 novembre 1852 qui donnait à l'Empereur pleine autorité sur les membres de sa famille, demeurait subordonnée à la volonté impériale et ne constituait pas le grade irrévocable garanti par la loi du 19 mai 1834. Le prince n'est donc pas fondé à se plaindre de la radiation de son nom, mais le contrôle juridictionnel s'est effectivement exercé sur le fond.",
+      "perspective": "Cet arrêt marque l'abandon de la théorie du « mobile politique » qui prévalait depuis CE, 1822, Laffitte et CE, 1867, Duc d'Aumale : désormais, le seul fait qu'un acte procède de considérations politiques ne suffit plus à le soustraire au contrôle du juge administratif. La catégorie de l'acte de gouvernement n'est pas supprimée mais son champ se réduit à deux séries d'actes : ceux relatifs aux rapports entre l'exécutif et le Parlement (par ex. CE, sect., 1933, Sieur Desreumeaux, décret de promulgation d'une loi) et ceux mettant en cause la conduite des relations internationales de la France."
     },
     {
       "id": "ce-1889-cadot",
@@ -94,7 +106,11 @@
       "liees": [
         "ce-1903-terrier"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Le sieur Cadot, ingénieur directeur de la voirie et des eaux de la ville de Marseille, voit son emploi supprimé par arrêté du maire du 2 mars 1877. Ayant vainement saisi l'autorité judiciaire puis le conseil de préfecture des Bouches-du-Rhône, tous deux déclarés incompétents, il saisit le ministre de l'Intérieur d'une demande d'indemnité de 158 000 francs, que ce dernier rejette par décision du 17 octobre 1885. Cadot demande alors au Conseil d'État d'annuler cette décision pour incompétence, soutenant qu'il n'appartiendrait ni au ministre ni à aucune juridiction administrative de connaître de sa réclamation.",
+      "enjeu": "Il s'agit de déterminer quelle autorité est compétente, en premier ressort, pour connaître d'un litige administratif lorsqu'aucun texte n'attribue expressément cette compétence à une juridiction déterminée : le ministre, statuant en application de la théorie du ministre-juge, ou directement le Conseil d'État en tant que juge administratif de droit commun.",
+      "solution": "Le Conseil d'État statue directement sur la demande du sieur Cadot sans renvoyer à une exigence de décision juridictionnelle préalable du ministre, admettant ainsi implicitement sa compétence directe ; il rejette néanmoins la requête au fond, le maire disposant d'un pouvoir discrétionnaire pour révoquer l'agent communal qu'il a nommé.",
+      "perspective": "Cadot est regardé par la doctrine comme l'un des grands arrêts fondateurs de la justice administrative : il parachève le passage de la justice retenue à la justice déléguée amorcé par la loi du 24 mai 1872 et fait du Conseil d'État le juge administratif de droit commun de premier ressort, aux côtés des arrêts Bougard (CE, 24 juin 1881) et Ville de Cannes (CE, 28 avril 1882) déjà cités par la doctrine contemporaine de l'arrêt. Il prépare l'affirmation ultérieure de l'autonomie du droit administratif consacrée par TC, 1873, Blanco, et sera suivi, plus d'un siècle après, par la consécration constitutionnelle de l'indépendance de la juridiction administrative (Cons. const., 1980, Loi de validation) puis de la compétence du juge administratif (Cons. const., 1987, Conseil de la concurrence)."
     },
     {
       "id": "ce-1903-terrier",
@@ -117,7 +133,11 @@
       "liees": [
         "ce-1889-cadot"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Le département de Saône-et-Loire alloue par délibération du conseil général une prime de 0,25 franc pour la destruction de vipères et inscrit un crédit de 200 francs au budget de l'exercice 1900. Le sieur Terrier capture des vipères et produit les certificats du maire, mais le préfet refuse le paiement au motif que le crédit est épuisé. Terrier saisit le conseil de préfecture, qui se déclare incompétent, puis forme un recours devant le Conseil d'État.",
+      "enjeu": "Un litige né de l'exécution d'une mesure prise par un département pour la destruction d'animaux nuisibles, activité d'intérêt général menée par les moyens ordinaires de l'administration, relève-t-il du juge administratif ou du juge judiciaire, alors que les engagements des départements et communes étaient traditionnellement soumis au juge civil ?",
+      "solution": "Le Conseil d'État se reconnaît compétent : du refus du préfet d'admettre la réclamation de Terrier est né entre les parties un litige dont il lui appartient de connaître. Il juge que, eu égard aux termes de la délibération du conseil général et du crédit inscrit au budget, le sieur Terrier peut être fondé à réclamer l'allocation d'une somme à ce titre, et le renvoie devant le préfet pour qu'il soit procédé à la liquidation de la somme à laquelle il peut avoir droit.",
+      "perspective": "Terrier prolonge et étend au niveau départemental la logique inaugurée par TC, 1873, Blanco : le service public devient le critère fédérateur de la compétence administrative, unifiant le contentieux de l'État et des collectivités territoriales. Les conclusions du commissaire du gouvernement Romieu distinguent la gestion publique, qui appelle le droit administratif, de la gestion privée relevant du juge judiciaire. Cette construction sera précisée par CE, 1910, Thérond, qui applique le même raisonnement aux communes, et nuancée par TC, 1921, Société commerciale de l'Ouest africain (Bac d'Eloka), qui reconnaîtra les services publics industriels et commerciaux soumis au juge judiciaire. L'arrêt participe à l'affirmation du Conseil d'État comme juge de droit commun du contentieux administratif, amorcée par CE, 1889, Cadot."
     },
     {
       "id": "ce-1918-heyries",
@@ -139,7 +159,11 @@
       "slugFiche": "ce-1918-heyries",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1918-06-28/63412",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "Par décret du 10 septembre 1914, pris peu après le déclenchement de la Première Guerre mondiale, le Président de la République suspend, pour la durée des hostilités, l'application de l'article 65 de la loi du 22 avril 1905, qui garantissait à tout fonctionnaire la communication de son dossier avant toute sanction disciplinaire. Le sieur Heyriès, dessinateur civil de deuxième classe du génie militaire, est révoqué le 22 octobre 1916 sans que son dossier lui ait été communiqué. Il demande l'annulation pour excès de pouvoir de cette révocation, en soutenant, d'une part, que le décret du 10 septembre 1914 ne pouvait légalement suspendre l'application d'une garantie instituée par la loi, d'autre part, que les formalités prévues par un second décret du 16 septembre 1914 n'avaient pas été respectées.",
+      "enjeu": "Le Président de la République peut-il, sur le seul fondement de l'article 3 de la loi constitutionnelle du 25 février 1875 et sans habilitation législative expresse, suspendre par décret l'application d'une garantie légale accordée aux fonctionnaires, au motif que son maintien entraverait, en temps de guerre, le fonctionnement des services publics nécessaires à la vie nationale ?",
+      "solution": "Le Conseil d'État rejette la requête. Il juge que le Président de la République, placé à la tête de l'Administration française par l'article 3 de la loi constitutionnelle du 25 février 1875 et chargé d'assurer l'exécution des lois, a pour mission de veiller à ce qu'à toute époque les services publics soient en état de fonctionner et à ce que les difficultés résultant de la guerre n'en paralysent pas la marche. Il pouvait ainsi apprécier que la communication du dossier prescrite par l'article 65 de la loi du 22 avril 1905 était, pendant la période des hostilités, de nature à empêcher l'action disciplinaire de s'exercer et à entraver le fonctionnement des administrations nécessaires à la vie nationale ; il avait dès lors la mission d'édicter lui-même les mesures indispensables à l'exécution des services publics placés sous son autorité. En suspendant provisoirement, par le décret du 10 septembre 1914, l'application de l'article 65 pendant la durée de la guerre, avec faculté pour les intéressés de se pourvoir en révision après la cessation des hostilités, le Président de la République n'a fait qu'user légalement des pouvoirs qu'il tient de l'article 3 de la loi constitutionnelle du 25 février 1875. Le Conseil d'État constate en outre que les formalités du décret du 16 septembre 1914 (rapport du chef de service, interrogatoire permettant au fonctionnaire de présenter ses explications) ont été respectées.",
+      "perspective": "Heyriès fonde la théorie jurisprudentielle des circonstances exceptionnelles, qui élargit temporairement la légalité pour permettre à l’administration de faire face à des situations de crise grave. Le Conseil d’État reconnaît au pouvoir exécutif, en interprétant l’article 3 de la loi constitutionnelle de 1875, un pouvoir de suspendre provisoirement l’application de certaines lois lorsque leur respect paralyserait la marche des services publics en temps de guerre ; cette interprétation constructive distingue la mission d’assurer la marche de l’administration de celle d’exécuter les lois, la première pouvant, en temps de crise, l’emporter sur la seconde. Cette construction sera prolongée par CE, 1919, Dames Dol et Laurent, relatif aux mesures de police en temps de guerre, et par CE, Ass., 1969, CCI de Saint-Étienne, qui admet les circonstances exceptionnelles hors état de guerre tout en maintenant les règles de compétence. La théorie inspire l’encadrement ultérieur des régimes d’exception constitutionnels et législatifs, notamment l’état de siège, l’état d’urgence et l’article 16 de la Constitution de 1958."
     },
     {
       "id": "ce-1933-benjamin",
@@ -159,7 +183,11 @@
       "slugFiche": "ce-1933-benjamin",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1933-05-19/17413",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "M. René Benjamin, conférencier connu pour ses positions controversées sur l'école, doit donner une conférence littéraire à Nevers. Craignant que sa venue ne provoque des troubles à l'ordre public, en raison notamment d'une manifestation annoncée par des syndicats d'instituteurs, le maire de Nevers prend deux arrêtés, les 24 février et 11 mars 1930, interdisant la tenue de la conférence. M. Benjamin forme un recours pour excès de pouvoir contre ces arrêtés, en invoquant une atteinte à la liberté de réunion garantie par les lois du 30 juin 1881 et du 28 mars 1907.",
+      "enjeu": "Une autorité de police peut-elle interdire totalement une réunion pour prévenir un trouble à l'ordre public, ou une telle interdiction constitue-t-elle une atteinte excessive à la liberté de réunion lorsque des mesures moins contraignantes permettraient de maintenir l'ordre ?",
+      "solution": "Le Conseil d'État annule les arrêtés du maire de Nevers. Il juge qu'il incombe au maire, en vertu de l'article 97 de la loi du 5 avril 1884, de concilier l'exercice de son pouvoir de maintien de l'ordre avec le respect de la liberté de réunion garantie par les lois du 30 juin 1881 et du 28 mars 1907. En l'espèce, l'éventualité de troubles alléguée par le maire ne présentait pas un degré de gravité tel qu'il n'ait pu, sans interdire la conférence, maintenir l'ordre en édictant d'autres mesures de police qu'il lui appartenait de prendre. Le Conseil d'État consacre ainsi l'exigence de proportionnalité des mesures de police : une mesure restrictive n'est légale que si aucune mesure moins contraignante ne permettait d'atteindre le même objectif de maintien de l'ordre public.",
+      "perspective": "L'arrêt Benjamin fonde le contrôle de proportionnalité des mesures de police administrative à l'égard des libertés publiques et demeure la décision de référence en la matière. Le maire aurait pu, en faisant appel à la gendarmerie et à la garde mobile, éviter tout désordre tout en laissant la conférence se tenir, ce qui illustre concrètement l'exigence de la mesure la moins attentatoire aux libertés. La jurisprudence Benjamin a été précisée par CE, Ass., 26 octobre 2011, Association pour la promotion de l'image, qui consacre un « triple test de proportionnalité » (mesures adaptées, nécessaires et proportionnées), depuis constamment repris (CE, 17 juillet 2023, n° 475636 sur l'accès aux plages ; CE, 8 novembre 2024, n° 475734 sur la liberté de manifester ; CE, 20 février 2025, n° 462981 sur la dissolution d'association). Elle s'inscrit dans la lignée des arrêts Abbé Olivier (1909) et Baldy (1917)."
     },
     {
       "id": "ce-1942-monpeurt",
@@ -182,7 +210,11 @@
       "slugFiche": "ce-1942-monpeurt",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1942-07-31/71398",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "Le comité d'organisation des industries du verre refuse la mise à feu du four des établissements Boralex et impose aux entreprises autorisées à poursuivre leur activité, dont celle du sieur Montpeurt, de livrer mensuellement du verre à cette usine à titre de compensation. Le secrétaire d'État à la production industrielle confirme cette décision. M. Montpeurt forme un recours pour excès de pouvoir.",
+      "enjeu": "Les décisions prises par un comité d’organisation créé pour administrer provisoirement la production industrielle, sans être qualifié d’établissement public, peuvent-elles être regardées comme des actes administratifs susceptibles d’un recours devant le Conseil d’État ?",
+      "solution": "Le Conseil d’État juge que la loi du 16 août 1940 a institué un service public destiné à organiser la production industrielle dans les circonstances économiques de l’époque. Les comités d’organisation participent à l’exécution de ce service sous l’autorité du secrétaire d’État et leurs décisions, réglementaires ou individuelles, constituent des actes administratifs. Le Conseil d’État se reconnaît compétent, puis rejette la requête au fond.",
+      "perspective": "La décision dissocie la nature privée de l'organisme et le régime administratif de ses actes : la participation à un service public suffit à qualifier d'administratives les décisions prises dans la sphère des attributions, même sans qualité d'établissement public. Elle s'inscrit dans la lignée de CE, ass., 1938, Caisse primaire Aide et Protection, et précède CE, ass., 1943, Bouguen sur les ordres professionnels."
     },
     {
       "id": "ce-1950-dehaene",
@@ -203,7 +235,11 @@
       "slugFiche": "ce-1950-dehaene",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1950-07-07/1645",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "Le sieur Dehaene, chef de bureau de préfecture en Indre-et-Loire, participe à la grève de juillet 1948 malgré l'interdiction gouvernementale adressée aux agents d'autorité. Le préfet le suspend puis lui inflige un blâme. Dehaene conteste cette sanction en invoquant le droit de grève reconnu par le Préambule de 1946.",
+      "enjeu": "À défaut de loi réglementant le droit de grève dans les services publics, le Gouvernement peut-il apporter des limitations à ce droit pour assurer la continuité du service public ?",
+      "solution": "Le Conseil d'État juge qu'en l'absence de la réglementation annoncée par le constituant, la reconnaissance du droit de grève n'exclut pas les limitations nécessaires pour éviter un usage abusif ou contraire à l'ordre public. Il appartient au Gouvernement, sous le contrôle du juge, de fixer ces limitations. Une grève compromettant l'exercice de la fonction préfectorale porte une atteinte grave à l'ordre public ; le blâme est légal.",
+      "perspective": "L'arrêt concilie le droit de grève reconnu par le Préambule de 1946 et les exigences de continuité du service public, en reconnaissant au Gouvernement un pouvoir d'encadrement sous contrôle du juge."
     },
     {
       "id": "ce-1954-barel",
@@ -224,7 +260,11 @@
       "slugFiche": "ce-1954-barel",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1954-05-28/28238",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "Le secrétaire d'État à la présidence du Conseil refuse d'inscrire plusieurs candidats, dont M. Barel, sur la liste des candidats admis à concourir au concours d'entrée à l'École nationale d'administration en 1953. Les intéressés soutiennent qu'ils n'ont été éliminés qu'en raison des opinions politiques qui leur ont été imputées et se prévalent de circonstances précises constituant des présomptions sérieuses. Le secrétaire d'État s'abstient de faire connaître le motif de ses décisions et ne produit pas les dossiers demandés par le juge.",
+      "enjeu": "L'autorité chargée d'arrêter la liste des candidats à un concours d'accès à la fonction publique peut-elle écarter un candidat en se fondant exclusivement sur ses opinions politiques, et que peut tirer le juge de l'abstention de l'administration de produire les dossiers qu'il lui a demandés ?",
+      "solution": "Le Conseil d'État juge que, s'il appartient à l'autorité compétente d'apprécier si les candidats présentent les garanties requises et de tenir compte de faits contraires à la réserve qu'ils doivent observer, elle ne saurait, sans méconnaître le principe d'égalité d'accès aux emplois publics, écarter un candidat en se fondant exclusivement sur ses opinions politiques. Tirant de l'abstention de l'administration de produire les dossiers demandés la preuve du motif allégué par les requérants, il annule les décisions de refus.",
+      "perspective": "Selon le Conseil d'État, cette décision figure parmi les grandes décisions depuis 1873 ; elle consacre à la fois l'interdiction d'écarter un candidat à un concours de la fonction publique en raison de ses seules opinions politiques et les pouvoirs d'instruction du juge administratif, qui peut tirer les conséquences de l'abstention de l'administration de produire les pièces qu'il lui a demandées."
     },
     {
       "id": "cjce-1964-costa-c-enel",
@@ -248,7 +288,11 @@
         "ce-1968-synd-general-des-fabricants-de-semoules-de-fr",
         "cass-1975-ste-des-cafes-jacques-vabre"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "M. Flaminio Costa, actionnaire d'une société d'électricité nationalisée et consommateur, conteste devant le Giudice conciliatore de Milan le paiement d'une facture de l'ENEL en invoquant l'incompatibilité de la loi italienne de nationalisation du 6 décembre 1962, postérieure au traité CEE, avec plusieurs stipulations de ce traité. Le juge italien saisit la Cour à titre préjudiciel sur le fondement de l'article 177 du traité.",
+      "enjeu": "Un État membre peut-il, par une loi interne postérieure au traité, faire échec aux obligations résultant du traité CEE, et le juge national, tenu d'appliquer cette loi, peut-il néanmoins saisir la Cour d'une demande d'interprétation du traité ?",
+      "solution": "La Cour juge que, à la différence des traités internationaux ordinaires, le traité CEE a institué un ordre juridique propre, intégré au système juridique des États membres et qui s'impose à leurs juridictions. Les États ont limité, dans des domaines restreints, leurs droits souverains et créé un corps de droit applicable à leurs ressortissants et à eux-mêmes. Issu d'une source autonome, le droit né du traité ne peut se voir judiciairement opposer un texte interne quel qu'il soit sans perdre son caractère communautaire. Il y a donc lieu de faire application de l'article 177, nonobstant toute loi nationale.",
+      "perspective": "Selon la Cour de justice elle-même, qui range cet arrêt parmi les affaires fondamentales, Costa établit le principe de primauté (ou de « suprématie ») du droit de l'Union, pierre angulaire de l'ordre juridique européen avec l'effet direct ; l'arrêt Simmenthal en tirera la conséquence que tout juge national doit laisser inappliquée la norme interne contraire."
     },
     {
       "id": "ce-1968-synd-general-des-fabricants-de-semoules-de-fr",
@@ -273,7 +317,11 @@
         "cass-1975-ste-des-cafes-jacques-vabre",
         "ce-1990-boisdet"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Le Syndicat général des fabricants de semoules de France conteste les décisions du ministre de l'Agriculture autorisant l'importation en franchise de prélèvement communautaire de 400 000 quintaux de semoules en provenance d'Algérie. L'ordonnance du 19 septembre 1962, qui a valeur législative en vertu de la loi du 15 janvier 1963, maintient à titre transitoire l'ancien régime douanier applicable aux marchandises algériennes, dispensant ces importations du prélèvement institué par le règlement n° 19 de la CEE.",
+      "enjeu": "Le juge administratif est-il compétent pour écarter l'application d'une disposition législative postérieure au traité de Rome et à un règlement communautaire antérieur, lorsque cette disposition fait obstacle à l'application de ce règlement, ou la loi postérieure fait-elle écran entre le traité et l'acte administratif d'application ?",
+      "solution": "Le Conseil d'État juge que les dispositions de l'ordonnance du 19 septembre 1962, qui ont valeur législative, ont maintenu à titre transitoire l'ancien régime douanier et font obstacle à ce que le prélèvement communautaire institué par le règlement n° 19 soit opéré et à ce que le certificat d'importation requis puisse être exigé. Il en déduit, implicitement mais nécessairement, qu'il n'est pas compétent pour apprécier la conformité de cette loi postérieure au traité de Rome et au règlement communautaire antérieur, et rejette le recours du syndicat.",
+      "perspective": "L'arrêt consacre le refus du Conseil d'État d'exercer le contrôle de conventionnalité des lois postérieures aux traités, par application de la théorie de la loi-écran, contemporain de l'affirmation de la primauté du droit communautaire par CJCE, 1964, Costa c/ Enel. Il distingue durablement le juge administratif du juge judiciaire, qui admet ce contrôle dès CE, 1975, Sté des cafés Jacques Vabre. Le Conseil d'État abandonne cette jurisprudence par le revirement CE, ass., 1989, Nicolo, étendu ensuite au droit communautaire dérivé (CE, 1990, Boisdet ; CE, ass., 1992, Rothmans Int'l Fr.)."
     },
     {
       "id": "cass-1975-ste-des-cafes-jacques-vabre",
@@ -297,7 +345,11 @@
         "cjce-1964-costa-c-enel",
         "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "La société des cafés Jacques Vabre importe du café soluble des Pays-Bas entre 1967 et 1971 ; son commissionnaire en douane acquitte la taxe intérieure de consommation prévue par l'article 265 du code des douanes, issu d'une loi du 14 décembre 1966. Les deux sociétés assignent l'administration en restitution, invoquant la violation de l'article 95 du traité CEE du 25 mars 1957, qui prohibe toute imposition frappant plus lourdement les produits importés que les produits nationaux similaires ou concurrents.",
+      "enjeu": "Le juge judiciaire peut-il écarter l'application d'une loi interne postérieure au traité CEE lorsqu'elle est incompatible avec les stipulations de ce traité, en l'occurrence l'article 95 relatif aux impositions intérieures discriminatoires ?",
+      "solution": "La Cour de cassation juge que le traité du 25 mars 1957, qui a une autorité supérieure à celle des lois en vertu de l'article 55 de la Constitution et institue un ordre juridique propre intégré à celui des États membres, est directement applicable aux ressortissants de ces États et s'impose à leurs juridictions. Elle approuve la cour d'appel d'avoir appliqué l'article 95 du traité à l'exclusion de l'article 265 du code des douanes, bien que postérieur, et écarte l'exception de défaut de réciprocité, les manquements d'un État membre relevant du seul recours prévu par l'article 170 du traité.",
+      "perspective": "Première mise en œuvre du contrôle de conventionnalité par le juge judiciaire, dans le prolongement de la décision Cons. constit., 1975, IVG qui refuse cette compétence au Conseil constitutionnel. Le Conseil d'État s'y ralliera quinze ans plus tard par CE, ass., 1989, Nicolo, abandonnant la jurisprudence des semoules (CE, sect., 1968). L'arrêt s'inscrit dans la logique de la primauté du droit communautaire affirmée par CJCE, 1964, Costa c/ Enel."
     },
     {
       "id": "ce-1989-nicolo",
@@ -318,7 +370,11 @@
       "slugFiche": "ce-1989-nicolo",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1989-10-20/108243",
       "liees": [],
-      "complete": true
+      "complete": true,
+      "faits": "M. Nicolo conteste les opérations électorales du 18 juin 1989 relatives à l'élection des représentants au Parlement européen, en soutenant que la loi du 7 juillet 1977, qui inclut les départements et territoires d'outre-mer dans la circonscription unique, est incompatible avec l'article 227-1 du traité de Rome, lequel limite l'application du traité CEE à la République française.",
+      "enjeu": "Le juge administratif peut-il examiner, et le cas échéant écarter, l'application d'une loi postérieure à un traité international lorsque cette loi est incompatible avec les stipulations claires du traité, alors que la jurisprudence antérieure lui refusait cette compétence ?",
+      "solution": "Le Conseil d'État juge que les dispositions de la loi du 7 juillet 1977, qui incluent nécessairement les départements et territoires d'outre-mer dans la circonscription unique en vertu des articles 2 et 72 de la Constitution, ne sont pas incompatibles avec les stipulations claires de l'article 227-1 du traité de Rome, lequel applique le traité à la République française dans son ensemble. En procédant à cet examen de compatibilité avant de rejeter la requête au fond, il abandonne le refus de contrôle opposé depuis 1968.",
+      "perspective": "L'arrêt abandonne la jurisprudence CE, sect., 1968, Synd. général des fabricants de semoules de Fr. et aligne le Conseil d'État sur la position adoptée par la Cour de cassation dans Cass., ch. mixte, 1975, Sté des cafés Jacques Vabre. Il ouvre la voie au contrôle de conventionnalité des règlements (CE, 1990, Boisdet) puis des directives communautaires (CE, ass., 1992, Rothmans Int'l Fr.), et fonde le développement ultérieur du contrôle de conventionnalité par le juge administratif à l'égard de l'ensemble du droit international et de l'Union européenne."
     },
     {
       "id": "ce-1990-boisdet",
@@ -341,7 +397,11 @@
       "liees": [
         "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
       ],
-      "complete": true
+      "complete": true,
+      "faits": "Un administré conteste un arrêté ministériel prorogeant l'extension de règles édictées par un comité économique agricole en matière de production et de commercialisation de pommes de table, ainsi qu'une délibération fixant les cotisations dues par les producteurs non adhérents. La Cour de justice des Communautés européennes, saisie à titre préjudiciel, juge que le règlement communautaire portant organisation commune des marchés ne donne pas compétence aux autorités nationales pour étendre à l'ensemble des producteurs les règles édictées par des groupements de producteurs.",
+      "enjeu": "Le juge administratif peut-il écarter l'application d'une loi incompatible avec un règlement communautaire et en tirer les conséquences sur la légalité d'un acte réglementaire pris sur son fondement ?",
+      "solution": "Le Conseil d'État écarte l'application des dispositions législatives incompatibles avec le règlement communautaire et juge que l'arrêté pris sur leur fondement est dépourvu de base légale. Il déclare également illicite la délibération fixant les cotisations, celle-ci reposant sur l'arrêté illicite, tirant ainsi toutes les conséquences de l'incompatibilité constatée par la Cour de justice des Communautés européennes.",
+      "perspective": "L'arrêt étend aux règlements communautaires la solution retenue par CE, ass., 1989, Nicolo pour les traités, et constitue la première décision par laquelle le juge administratif accepte de contrôler la conformité d'une loi nationale à un règlement communautaire."
     }
   ]
 }

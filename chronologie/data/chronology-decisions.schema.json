@@ -112,6 +112,22 @@
         "portee": {
           "type": "string"
         },
+        "faits": {
+          "type": "string",
+          "description": "Texte long de fiche (optionnel) — bulle détail Chronologie."
+        },
+        "enjeu": {
+          "type": "string",
+          "description": "Enjeu juridique (optionnel)."
+        },
+        "solution": {
+          "type": "string",
+          "description": "Solution (optionnel)."
+        },
+        "perspective": {
+          "type": "string",
+          "description": "Perspective (optionnel)."
+        },
         "slugFiche": {
           "type": ["string", "null"],
           "description": "Slug de la fiche HTML du cours, ou null."
