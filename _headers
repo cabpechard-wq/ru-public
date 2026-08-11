@@ -13,3 +13,6 @@
 /chronologie/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+/enchainements-logiques/*
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store

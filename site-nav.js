@@ -83,7 +83,9 @@
         const onRelierDico = cur.indexOf("/relier-dico/") !== -1 || cur.endsWith("/relier-dico");
         const onDemoFlipDico = cur.indexOf("/demo-flipcards-dico/") !== -1 || cur.endsWith("/demo-flipcards-dico");
         const onFlipDico = cur.indexOf("/flipcards-dico/") !== -1 || cur.endsWith("/flipcards-dico");
-        if (cur === p || onDemo || onFlip || onDemoRelier || onRelier || onDemoRelierDico || onRelierDico || onDemoFlipDico || onFlipDico) {
+        const onDemoEnch = cur.indexOf("/demo-enchainements-logiques/") !== -1 || cur.endsWith("/demo-enchainements-logiques");
+        const onEnch = cur.indexOf("/enchainements-logiques/") !== -1 || cur.endsWith("/enchainements-logiques");
+        if (cur === p || onDemo || onFlip || onDemoRelier || onRelier || onDemoRelierDico || onRelierDico || onDemoFlipDico || onFlipDico || onDemoEnch || onEnch) {
           a.classList.add("is-active");
         }
       } else if (cur === p || (p !== "/" && cur.startsWith(p + "/"))) {
@@ -349,6 +351,18 @@
     });
   }
 
+  function applyEnchainementsEntry(isMember) {
+    document.querySelectorAll("[data-enchainements-entry]").forEach((el) => {
+      if (isMember) {
+        el.setAttribute("href", abs("enchainements-logiques/"));
+        el.setAttribute("title", "Enchaînements logiques (accès membre)");
+      } else {
+        el.setAttribute("href", abs("demo-enchainements-logiques/"));
+        el.setAttribute("title", "Enchaînements logiques (démo)");
+      }
+    });
+  }
+
   function applyChronologieEntry(isMember) {
     document.querySelectorAll("[data-chronologie-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-chrono-type]");
@@ -428,6 +442,7 @@
       applyRelierEntry(ok);
       applyRelierDicoEntry(ok);
       applyChronologieEntry(ok);
+      applyEnchainementsEntry(ok);
       if (window.SiteTTS) window.SiteTTS.init(ok);
     });
   });
@@ -447,6 +462,8 @@
     if (cur.indexOf("/relier/") !== -1 || cur.endsWith("/relier")) return true;
     if (cur.indexOf("/bibliotheque/chronologie/") !== -1) return true;
     if (cur.indexOf("/chronologie/") !== -1 || cur.endsWith("/chronologie")) return true;
+    if (cur.indexOf("/demo-enchainements-logiques/") !== -1 || cur.endsWith("/demo-enchainements-logiques")) return true;
+    if (cur.indexOf("/enchainements-logiques/") !== -1 || cur.endsWith("/enchainements-logiques")) return true;
     return false;
   }
 

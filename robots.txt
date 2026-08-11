@@ -4,8 +4,10 @@ Disallow: /relier/
 Disallow: /relier-dico/
 Disallow: /flipcards-dico/
 Disallow: /chronologie/
+Disallow: /enchainements-logiques/
 Allow: /demo/
 Allow: /demo-relier/
 Allow: /demo-relier-dico/
 Allow: /demo-flipcards-dico/
 Allow: /bibliotheque/chronologie/
+Allow: /demo-enchainements-logiques/

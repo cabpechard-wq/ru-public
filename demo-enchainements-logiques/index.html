@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Enchaînements logiques — Démo</title>
+    <meta
+      name="description"
+      content="Remettez dans l’ordre chronologique un enchaînement de décisions de droit public (dates cachées)."
+    />
+    <script>
+      window.__ENCHAINEMENTS_CONFIG__ = {
+        dataUrl: "./data/chronology-decisions-demo.json",
+        ficheBaseUrl: "../arrets/",
+        checkoutUrl: "../checkout/",
+        demo: true,
+        defaultMinImportance: null,
+      };
+    </script>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      id="theme-fonts"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+    <link id="theme-css" rel="stylesheet" href="../site.css?v=24" />
+    <link rel="stylesheet" href="./assets/enchainements.css?v=17" />
+    <script src="./assets/enchainements.js?v=17" defer></script>
+  </head>
+  <body>
+    <p class="site-crumb">
+      <a href="../">Droit public et administratif</a>
+      <span class="sep">›</span>
+      <a href="../exercices/">Travaux dirigés</a>
+      <span class="sep">›</span>
+      <strong>Enchaînements logiques</strong>
+    </p>
+
+    <header class="page-header">
+      <div class="page-header__inner">
+        <div class="brand">
+          <span class="brand__kicker">Travaux dirigés · Démo</span>
+          <h1 class="brand__title">Enchaînements logiques</h1>
+        </div>
+        <div class="header-actions">
+          <p class="demo-upsell" id="ench-demo-upsell">
+            <a class="demo-upsell-link" href="../checkout/">Accès à toutes les ressources…</a>
+          </p>
+        </div>
+      </div>
+      <p class="page-lead" id="ench-lead">
+        Affinez le lot avec les filtres (comme en Chronologie), puis lancez l’exercice&nbsp;:
+        remettre les décisions dans l’ordre chronologique — les dates restent cachées.
+      </p>
+    </header>
+
+    <!-- ——— Sélection / filtres ——— -->
+    <section class="ench-setup" id="screen-home" aria-label="Sélection du lot">
+      <div id="ench-alert" class="alert" hidden></div>
+
+      <section class="filters" aria-label="Filtres">
+        <div class="filters__row filters__row--primary">
+          <div class="field">
+            <span class="field-label" id="label-search">Recherche</span>
+            <input
+              id="filter-search"
+              type="search"
+              placeholder="Mots clés (recherche générale)"
+              autocomplete="off"
+              aria-labelledby="label-search"
+            />
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-juridictions">Juridictions</span>
+            <div
+              id="filter-juridictions"
+              class="ms"
+              role="group"
+              aria-labelledby="label-juridictions"
+            ></div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-themes">Thèmes</span>
+            <div id="filter-themes" class="ms" role="group" aria-labelledby="label-themes"></div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-notions">Notions</span>
+            <div id="filter-notions" class="ms" role="group" aria-labelledby="label-notions"></div>
+          </div>
+        </div>
+
+        <div class="filters__row filters__row--secondary">
+          <fieldset class="field field--importance">
+            <span class="field-label">Importance</span>
+            <div class="chip-group" role="group" aria-label="Importance">
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="1" /><span>★</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="2" /><span>★★</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="3" /><span>★★★</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="4" /><span>★★★★</span></label
+              >
+            </div>
+          </fieldset>
+
+          <div class="field field--period">
+            <span class="field-label">Période</span>
+            <div class="period-stack">
+              <label class="period-row" for="filter-date-from">
+                <span class="period-row__label">Début</span>
+                <input id="filter-date-from" type="date" aria-label="Date de début" />
+              </label>
+              <label class="period-row" for="filter-date-to">
+                <span class="period-row__label">Fin</span>
+                <input id="filter-date-to" type="date" aria-label="Date de fin" />
+              </label>
+            </div>
+          </div>
+
+          <div class="field field--related">
+            <span class="field-label">Décisions liées</span>
+            <div class="related-panel">
+              <label class="related-only-wrap is-visible" id="related-only-wrap">
+                <input id="filter-related-only" type="checkbox" disabled />
+                <span id="related-only-label">Uniquement les décisions liées</span>
+              </label>
+
+              <label class="related-only-wrap is-visible" id="object-links-wrap">
+                <input id="filter-object-links" type="checkbox" />
+                <span>Décisions liées par leur objet</span>
+              </label>
+
+              <div class="object-links-panel" id="object-links-panel" hidden>
+                <div class="object-links-top" id="object-links-top">
+                  <div
+                    class="object-links-modes"
+                    id="object-links-modes"
+                    role="radiogroup"
+                    aria-label="Mode de sélection du set"
+                  >
+                    <label class="object-links-mode">
+                      <input type="radio" name="object-link-mode" value="random" />
+                      <span>Set au hasard (selon filtres)</span>
+                    </label>
+                    <label class="object-links-mode">
+                      <input type="radio" name="object-link-mode" value="pick" />
+                      <span>Choisir une décision</span>
+                    </label>
+                  </div>
+                  <div class="object-links-depth" id="object-links-depth">
+                    <label class="object-links-depth__label" for="filter-relation-depth"
+                      >Niveaux</label
+                    >
+                    <select id="filter-relation-depth" aria-label="Nombre de niveaux de relations">
+                      <option value="1">1</option>
+                      <option value="2" selected>2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7" disabled title="Niveau bientôt disponible">7</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="object-links-random" id="object-links-random" hidden>
+                  <button type="button" class="btn outline-accent" id="btn-random-set">
+                    Tirer un set
+                  </button>
+                  <p class="object-links-random__status" id="random-set-status"></p>
+                </div>
+
+                <div class="object-links-pick" id="object-links-pick" hidden>
+                  <label class="field-label" for="object-link-search">Recherche par nom</label>
+                  <input
+                    id="object-link-search"
+                    type="search"
+                    placeholder="Recherche par nom"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filters__row filters__row--footer">
+          <div class="filters__status">
+            <div class="active-filters-wrap">
+              <p class="active-filters" id="active-filters">
+                <strong>Filtres actifs :</strong>
+                <span class="active-filters__list" id="active-filters-list">aucun</span>
+              </p>
+            </div>
+            <span class="pill"
+              ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
+              décisions</span
+            >
+          </div>
+          <button type="button" id="filter-reset" class="btn-reset">
+            Réinitialiser les filtres
+          </button>
+        </div>
+      </section>
+
+      <div class="ench-setup__body">
+        <p class="ench-setup__hint" id="setup-hint">
+          Affinez les filtres, puis lancez l’exercice — ou activez «&nbsp;Décisions liées par leur
+          objet&nbsp;» pour constituer un enchaînement (au hasard ou en choisissant une décision).
+        </p>
+        <ol
+          class="ench-pick-list"
+          id="pick-list"
+          hidden
+          aria-label="Sélection d’une décision"
+        ></ol>
+        <div class="ench-setup__actions">
+          <button type="button" class="btn outline-accent" id="btn-start" disabled>
+            Lancer l’exercice
+          </button>
+          <p class="ench-setup__start-hint" id="start-hint">
+            Sélectionnez au moins 2 décisions via les filtres.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ——— Exercice ——— -->
+    <main class="ench-main" id="screen-game" hidden>
+      <div class="ench-toolbar">
+        <p class="ench-hint">Glissez les cartes pour les réordonner, ou utilisez ↑ ↓.</p>
+        <div class="ench-actions">
+          <button type="button" class="btn outline-accent" id="ench-back">Filtres</button>
+          <button type="button" class="btn outline-accent" id="ench-check">Vérifier</button>
+          <button type="button" class="btn outline-accent" id="ench-reveal" hidden>
+            Afficher la solution
+          </button>
+          <button type="button" class="btn outline-accent" id="ench-reset">Recommencer</button>
+        </div>
+      </div>
+
+      <ol class="ench-list" id="ench-list" aria-label="Décisions à ordonner"></ol>
+
+      <div class="score-banner" id="score-banner" hidden role="status" aria-live="polite"></div>
+
+      <p class="ench-status" id="ench-status" hidden></p>
+    </main>
+
+    <div id="fiche-tip" class="fiche-tip" hidden role="tooltip" aria-hidden="true">
+      <p class="fiche-tip__label">Fiche</p>
+      <p class="fiche-tip__nom" id="fiche-tip-nom"></p>
+      <p class="fiche-tip__meta" id="fiche-tip-meta"></p>
+      <p class="fiche-tip__objet" id="fiche-tip-objet"></p>
+      <p class="fiche-tip__verso" id="fiche-tip-verso"></p>
+    </div>
+
+    <script src="../auth.js?v=4"></script>
+    <script src="../site-nav.js?v=26"></script>
+    <script src="../site-theme.js?v=13"></script>
+  </body>
+</html>
