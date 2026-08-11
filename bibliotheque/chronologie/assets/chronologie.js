@@ -574,9 +574,20 @@
     });
   }
 
-  function appendMarkers(dots, items, chainActive, chainMap) {
+  function appendMarkers(dots, items, chainActive, chainMap, showNomLabel) {
     sortDecisions(items, chainActive, chainMap).forEach(function (d) {
-      dots.appendChild(makeMarker(d, chainActive, chainMap));
+      if (showNomLabel) {
+        var wrap = document.createElement("div");
+        wrap.className = "marker-with-label";
+        var lab = document.createElement("div");
+        lab.className = "marker-with-label__nom";
+        lab.textContent = d.nom;
+        wrap.appendChild(lab);
+        wrap.appendChild(makeMarker(d, chainActive, chainMap));
+        dots.appendChild(wrap);
+      } else {
+        dots.appendChild(makeMarker(d, chainActive, chainMap));
+      }
     });
   }
 
@@ -622,6 +633,9 @@
 
     var chainMap = chainIndexMap();
     var chainActive = chainMap.size > 1;
+    // Décisions liées, filtrées à l'affichage : le nom de chaque décision
+    // remplace l'étiquette d'unité (année / mois / jour) au-dessus du marqueur.
+    var relatedNomMode = chainActive && state.relatedOnly;
     var scale = state.scale || "year";
 
     // segments: [{ label, units: [{ label, items }] }], du plus ancien au plus récent.
@@ -741,12 +755,14 @@
       grid.appendChild(head);
 
       seg.units.forEach(function (unit) {
-        var unitLabel = document.createElement("div");
-        unitLabel.className = "tunit-head";
-        unitLabel.textContent = unit.label;
-        unitLabel.style.gridColumn = String(col);
-        unitLabel.style.gridRow = "2";
-        grid.appendChild(unitLabel);
+        if (!relatedNomMode) {
+          var unitLabel = document.createElement("div");
+          unitLabel.className = "tunit-head";
+          unitLabel.textContent = unit.label;
+          unitLabel.style.gridColumn = String(col);
+          unitLabel.style.gridRow = "2";
+          grid.appendChild(unitLabel);
+        }
 
         var buckets = bucketByRow(unit.items);
         JURIDICTION_ROWS.forEach(function (row, i) {
@@ -756,7 +772,7 @@
           cell.className = "tcell";
           cell.style.gridColumn = String(col);
           cell.style.gridRow = String(i + 3);
-          appendMarkers(cell, items, chainActive, chainMap);
+          appendMarkers(cell, items, chainActive, chainMap, relatedNomMode);
           grid.appendChild(cell);
         });
 

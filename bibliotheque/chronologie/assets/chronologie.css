@@ -650,6 +650,23 @@ a {
   min-width: var(--unit-min-w, 44px);
 }
 
+/* Mode "décisions liées" : nom de la décision au-dessus du marqueur,
+   à la place de l'étiquette d'unité (année / mois / jour). */
+.marker-with-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.marker-with-label__nom {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
 /* Années : jalons = décennies ; unités = années (horizontal) */
 .timeline[data-scale="year"] {
   --unit-min-w: 52px;
