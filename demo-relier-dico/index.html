@@ -121,9 +121,9 @@ body { padding: 0 0 3.5rem; }
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
 .chip[aria-pressed="true"] {
-  background: var(--secondary, var(--accent));
-  border-color: var(--secondary, var(--accent));
-  color: var(--bg);
+  background: var(--selection-pressed-bg, var(--secondary, var(--accent)));
+  border-color: var(--selection-pressed-border, var(--secondary, var(--accent)));
+  color: var(--selection-pressed-fg, var(--ink));
 }
 .chip.is-disabled, .chip:disabled {
   opacity: .28; cursor: not-allowed; pointer-events: none;
@@ -138,10 +138,14 @@ body { padding: 0 0 3.5rem; }
 }
 .chip-importance[aria-pressed="true"],
 .chip-importance[aria-pressed="true"]:hover {
-  background: var(--brass); border-color: var(--brass); color: var(--bg);
+  background: var(--selection-pressed-bg, var(--brass));
+  border-color: var(--selection-pressed-border, var(--brass));
+  color: var(--selection-pressed-fg, var(--bg));
 }
 .chip-size[aria-pressed="true"] {
-  background: var(--accent); border-color: var(--accent); color: var(--bg);
+  background: var(--selection-pressed-bg, var(--secondary, var(--accent)));
+  border-color: var(--selection-pressed-border, var(--secondary, var(--accent)));
+  color: var(--selection-pressed-fg, var(--ink));
 }
 .chip[data-color="default"], .tag[data-color="default"] {
   --chip-border: #d1d5db; --chip-vivid: #4b5563;

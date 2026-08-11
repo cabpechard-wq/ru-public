@@ -1,6 +1,11 @@
 /* Enchaînements logiques — exercice TD (charte via site.css / thèmes) */
 
 :root {
+  --selection-pressed-bg: var(--secondary, var(--accent));
+  --selection-pressed-border: var(--secondary, var(--accent));
+  --selection-pressed-fg: var(--ink);
+  --selection-pressed-soft: color-mix(in srgb, var(--secondary, var(--accent)) 14%, var(--canvas, var(--bg)));
+
   --text: var(--ink);
   --text-secondary: var(--muted);
   --canvas: var(--bg, #ffffff);
@@ -647,9 +652,9 @@ body {
 }
 
 .filters .chip:has(input:checked) {
-  background: var(--accent-soft);
-  border-color: var(--accent);
-  color: var(--accent);
+  background: var(--selection-pressed-soft);
+  border-color: var(--selection-pressed-border);
+  color: var(--selection-pressed-bg);
 }
 
 .filters .chip:has(input:focus-visible) {
@@ -788,6 +793,11 @@ body {
 
 .filters .ms__option:hover {
   background: var(--surface);
+}
+.filters .ms__option:has(input:checked) {
+  background: var(--selection-pressed-soft);
+  color: var(--selection-pressed-bg);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--selection-pressed-border) 55%, transparent);
 }
 
 .filters .ms__option input {
@@ -947,14 +957,33 @@ body {
 }
 
 .filters .object-links-mode {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.55rem;
   margin: 0;
-  padding: 0.35rem 0;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--canvas);
   color: var(--ink);
   font-size: 0.9rem;
   cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.filters .object-links-mode input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.filters .object-links-mode:has(input:checked) {
+  background: var(--selection-pressed-soft);
+  border-color: var(--selection-pressed-border);
+  color: var(--selection-pressed-bg);
+}
+.filters .object-links-mode:has(input:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .filters .object-links-random {
@@ -1259,4 +1288,9 @@ body {
   .filters__row--secondary {
     grid-template-columns: 1fr;
   }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent);
 }

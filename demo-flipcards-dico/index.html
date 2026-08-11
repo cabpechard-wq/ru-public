@@ -129,9 +129,9 @@ body {
 }
 .chip:hover { border-color: var(--accent); color: var(--accent); }
 .chip[aria-pressed="true"] {
-  background: var(--secondary, var(--accent));
-  border-color: var(--secondary, var(--accent));
-  color: var(--bg);
+  background: var(--selection-pressed-bg, var(--secondary, var(--accent)));
+  border-color: var(--selection-pressed-border, var(--secondary, var(--accent)));
+  color: var(--selection-pressed-fg, var(--ink));
 }
 .chip.is-disabled, .chip:disabled {
   opacity: .28; cursor: not-allowed; pointer-events: none;
@@ -156,9 +156,9 @@ body {
 }
 .chip-importance[aria-pressed="true"],
 .chip-importance[aria-pressed="true"]:hover {
-  background: var(--brass);
-  border-color: var(--brass);
-  color: var(--bg);
+  background: var(--selection-pressed-bg, var(--brass));
+  border-color: var(--selection-pressed-border, var(--brass));
+  color: var(--selection-pressed-fg, var(--bg));
 }
 .chip[data-color="default"], .tag[data-color="default"] {
   --chip-border: #d1d5db; --chip-vivid: #4b5563;
@@ -732,7 +732,11 @@ body {
 .nav-btn:hover, .tool-btn:hover { background: var(--accent-soft); }
 .nav-btn:disabled { opacity: .28; cursor: default; }
 .nav-btn.is-primary { color: var(--accent); }
-.tool-btn.active { color: var(--accent); background: var(--accent-soft); }
+.tool-btn.active, .tool-btn[aria-pressed="true"] {
+  background: var(--selection-pressed-bg, var(--secondary, var(--accent)));
+  border-color: var(--selection-pressed-border, var(--secondary, var(--accent)));
+  color: var(--selection-pressed-fg, var(--ink));
+}
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0,0,0,0); border: 0;

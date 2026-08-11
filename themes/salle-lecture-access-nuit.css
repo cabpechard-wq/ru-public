@@ -3362,6 +3362,48 @@ blockquote, .manuel-prose blockquote {
   font-size: .78rem;
 }
 
+
+/* —— Boutons de sélection (radio / multi) —— */
+:root {
+  --selection-pressed-bg: var(--secondary);
+  --selection-pressed-border: var(--secondary);
+  --selection-pressed-fg: var(--ink);
+  --selection-pressed-soft: color-mix(in srgb, var(--secondary) 14%, var(--bg-elevated, var(--bg)));
+}
+.chip[aria-pressed="true"],
+.chip-size[aria-pressed="true"],
+.tool-btn[aria-pressed="true"],
+.tool-btn.active {
+  background: var(--selection-pressed-bg);
+  border-color: var(--selection-pressed-border);
+  color: var(--selection-pressed-fg);
+}
+.pair-item.is-linked {
+  border-color: color-mix(in srgb, var(--secondary) 45%, var(--border));
+  background: color-mix(in srgb, var(--secondary) 8%, var(--bg-elevated, var(--bg)));
+}
+.segmented button.is-active {
+  background: var(--selection-pressed-soft);
+  color: var(--selection-pressed-bg);
+}
+.filters .chip:has(input:checked),
+.filters .object-links-mode:has(input:checked),
+.filters .ms__option:has(input:checked),
+label.chip:has(input:checked) {
+  background: var(--selection-pressed-soft);
+  border-color: var(--selection-pressed-border);
+  color: var(--selection-pressed-bg);
+}
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--accent);
+}
+
+/* Accessibilité : contraste des sélections pressées */
+:root {
+  --selection-pressed-fg: var(--bg);
+}
+
 /* Accueil layout A : BU + Cours empilés | TD 50% */
 .home-pillars.home-pillars--stack {
   display: grid;
