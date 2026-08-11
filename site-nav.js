@@ -143,14 +143,14 @@
     document.querySelectorAll("[data-home-access]").forEach((el) => {
       const mode = el.getAttribute("data-home-access");
       if (mode === "public") {
-        el.textContent = "Accès public";
+        el.textContent = "Libre d'accès";
         return;
       }
       if (mode === "demo") {
-        el.textContent = isMember ? "Ouvrir →" : "Démo";
+        el.textContent = isMember ? "Ouvrir →" : "Démonstration";
         return;
       }
-      el.textContent = isMember ? "Ouvrir →" : "Aperçu (accès membre)";
+      el.textContent = isMember ? "Ouvrir →" : "Aperçu · espace membre";
     });
   }
 
@@ -487,7 +487,7 @@
 
   // Sélecteur de charte (Campus par défaut) — chargé après le bandeau
   const themeJs = document.createElement("script");
-  themeJs.src = new URL("site-theme.js?v=12", script.src).href;
+  themeJs.src = new URL("site-theme.js?v=13", script.src).href;
   themeJs.onerror = function () {
     console.warn("[site-theme] Impossible de charger site-theme.js — rebuild du site requis.");
   };

@@ -275,7 +275,7 @@
   let cachedManifest = null;
 
   function start() {
-    fetch(abs("themes/manifest.json"))
+    fetch(abs("themes/manifest.json?v=2"))
       .then((r) => (r.ok ? r.json() : FALLBACK))
       .catch(() => FALLBACK)
       .then((manifest) => {
