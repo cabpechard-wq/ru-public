@@ -3,7 +3,9 @@
     "generatedAt": "2026-08-11T00:00:00Z",
     "count": 995,
     "version": 1,
-    "source": "notion-jurisprudence"
+    "source": "notion-jurisprudence",
+    "lieesUpdatedAt": "2026-08-11T16:55:15Z",
+    "lieesSource": "notion-jurisprudence-relation"
   },
   "decisions": [
     {
@@ -24,7 +26,9 @@
       "portee": "Le Conseil d'État juge irrecevable une réclamation pouvant être rattachée à une question politique, dont la décision appartient exclusivement au gouvernement, consacrant ainsi le critère du mobile politique comme fondement de la théorie extensive de l'acte de gouvernement.",
       "slugFiche": "ce-1822-laffitte",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1875-prince-napoleon"
+      ],
       "complete": true
     },
     {
@@ -128,7 +132,10 @@
       "portee": "Le Conseil d'État accepte d'examiner au fond la légalité d'un acte pris pour des considérations exclusivement politiques, abandonnant le critère du mobile politique qui, depuis CE, 1822, Laffitte, soustrayait de tels actes à tout contrôle juridictionnel. La catégorie de l'acte de gouvernement n'est pas supprimée, mais son champ se réduit désormais à une liste circonscrite d'actes touchant aux rapports entre l'exécutif et le Parlement et à la conduite des relations internationales.",
       "slugFiche": "ce-1875-prince-napoleon",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1875-02-19/46707",
-      "liees": [],
+      "liees": [
+        "ce-1822-laffitte",
+        "ce-1970-de-malglaive"
+      ],
       "complete": true
     },
     {
@@ -235,7 +242,9 @@
       "portee": "La Cour de cassation admet, dans l’affaire dite des mariages de Montrouge, que des actes accomplis par une personne irrégulièrement investie peuvent être maintenus lorsqu’elle présente les apparences de la fonction. La solution fonde classiquement la théorie du fonctionnaire de fait, destinée à protéger la sécurité juridique des administrés et la continuité du service public.",
       "slugFiche": "cass-1883-engel-et-pelissier-aff-des-mariages-de-montrouge",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-2001-mtimet"
+      ],
       "complete": true
     },
     {
@@ -255,7 +264,9 @@
       "portee": "L'apport de l'arrêt Cadot n'est pas formulé dans un considérant de principe mais résulte de la manière dont le Conseil d'État traite le litige : il statue directement sur la demande de Cadot, sans que la décision ministérielle préalable soit traitée comme un jugement s'imposant en premier ressort, ce qui vaut abandon de la théorie du ministre-juge et auto-proclamation du Conseil d'État comme juge administratif de droit commun, sauf texte contraire attribuant compétence à une autre juridiction.",
       "slugFiche": "ce-1889-cadot",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1889-12-13/66145",
-      "liees": [],
+      "liees": [
+        "ce-1903-terrier"
+      ],
       "complete": true
     },
     {
@@ -339,7 +350,10 @@
       "portee": "Le contribuable communal justifie d'un intérêt lui donnant qualité pour contester une délibération qui inscrit une dépense au budget de la commune.",
       "slugFiche": "ce-1901-casanova",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1901-03-29/94580",
-      "liees": [],
+      "liees": [
+        "ce-2006-ordre-des-avocats-au-barreau-de-paris",
+        "ce-1906-synd-des-proprietaires-et-contribuables-du-quartier-croix-de-seguey-tivoli"
+      ],
       "complete": true
     },
     {
@@ -360,7 +374,9 @@
       "portee": "Lorsque le contrat de concession d’eclairage garde le silence sur un mode d’eclairage nouveau apparu depuis sa conclusion, le concessionnaire beneficie d’un droit de preference pour assurer ce nouveau mode d’eclairage. La commune ne peut le confier a un tiers qu’apres avoir regulierement mis en demeure le concessionnaire de s’en charger aux conditions proposees, et seulement en cas de refus de celui-ci.",
       "slugFiche": "ce-1902-cie-nouv-du-gaz-de-deville-les-rouen",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1902-01-10/94624",
-      "liees": [],
+      "liees": [
+        "ce-1938-caisse-primaire-aide-et-protection"
+      ],
       "complete": true
     },
     {
@@ -424,7 +440,9 @@
       "portee": "Le Conseil d'État se reconnaît compétent pour connaître des litiges nés de l'exécution d'un service public départemental : la décision étend aux collectivités territoriales la compétence administrative fondée sur le service public, posé comme critère fédérateur de la juridiction administrative et unifiant le contentieux de l'État et des collectivités locales.",
       "slugFiche": "ce-1903-terrier",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1903-02-06/7496",
-      "liees": [],
+      "liees": [
+        "ce-1889-cadot"
+      ],
       "complete": true
     },
     {
@@ -571,7 +589,9 @@
       "portee": "Une association regulièrement constituee et declaree conformement a la loi du 1er juillet 1901, en vue de defendre les interets collectifs d'un quartier (voirie, assainissement, embellissement), a qualite pour ester en justice devant le juge administratif afin de contester les decisions administratives affectant ces interets.",
       "slugFiche": "ce-1906-synd-des-proprietaires-et-contribuables-du-quartier-croix-de-seguey-tivoli",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1906-12-21/19167",
-      "liees": [],
+      "liees": [
+        "ce-1901-casanova"
+      ],
       "complete": true
     },
     {
@@ -653,7 +673,9 @@
       "portee": "Le maire conserve son pouvoir de réglementer les sonneries de cloches sur le fondement de l'article 27 de la loi du 9 décembre 1905, même en l'absence d'association cultuelle constituée dans la commune et alors que la procédure de communication préalable prévue par le décret du 16 mars 1906 n'a pu être suivie ; une interdiction des sonneries religieuses limitée à certaines heures (avant 6h, après 20h), fondée sur le pouvoir de police générale du maire (article 97 de la loi du 5 avril 1884), ne porte pas atteinte au libre exercice du culte et n'est pas entachée d'excès de pouvoir.",
       "slugFiche": "ce-1908-leclercq",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007633588",
-      "liees": [],
+      "liees": [
+        "ce-1933-benjamin"
+      ],
       "complete": true
     },
     {
@@ -739,7 +761,10 @@
       "portee": "Lorsqu’un dommage résulte à la fois d’un mauvais fonctionnement du service public et d’une faute personnelle des agents, la victime peut obtenir de l’État la réparation de l’ensemble du préjudice, quelle que soit la responsabilité personnelle encourue par les agents : consécration du cumul de fautes.",
       "slugFiche": "ce-1911-anguet",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1911-02-03/34922",
-      "liees": [],
+      "liees": [
+        "ce-1951-laruelle-et-delville",
+        "ce-1918-ep-lemonnier"
+      ],
       "complete": true
     },
     {
@@ -759,7 +784,9 @@
       "portee": "Le Conseil d'État juge que la nature d'un recours dirigé contre une décision administrative à objet pécuniaire ne dépend pas de cet objet mais des conclusions et moyens effectivement présentés par le requérant : dès lors que celui-ci se borne à contester la légalité de la décision qui l'a privé d'un avantage réglementairement dû, sans formuler de demande indemnitaire distincte, son recours relève du recours pour excès de pouvoir, dispensé du ministère d'avocat, quand bien même la décision contestée aurait un objet purement pécuniaire.",
       "slugFiche": "ce-1912-lafage",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1912-03-08/42612",
-      "liees": [],
+      "liees": [
+        "ce-2011-marcou"
+      ],
       "complete": true
     },
     {
@@ -781,7 +808,9 @@
       "portee": "Le ministre peut légalement refuser l'admission d'un prêtre au concours de l'agrégation, celle-ci ne conférant pas un grade universitaire mais un titre professionnel destiné au recrutement des professeurs de l'enseignement public, sans excès ni détournement de pouvoir ; solution renversée par l'avis d'Assemblée du 21 septembre 1972.",
       "slugFiche": "ce-1912-abbe-bouteyre",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1912-05-10/46027",
-      "liees": [],
+      "liees": [
+        "ce-2000-marteaux"
+      ],
       "complete": true
     },
     {
@@ -906,7 +935,10 @@
       "portee": "Le Conseil d'État pose que, lorsqu'un événement imprévisible et extérieur aux parties entraîne un bouleversement de l'économie d'un contrat de concession, excédant les limites extrêmes des aléas que les parties pouvaient envisager lors de sa conclusion, le concessionnaire n'est pas libéré de son obligation d'assurer le service, l'intérêt général exigeant sa continuation. Il n'est pas davantage tenu de l'exécuter aux seules conditions tarifaires initiales : la solution consiste à lui faire supporter seulement la part des conséquences onéreuses que l'interprétation raisonnable du contrat permet de laisser à sa charge, le surplus étant compensé par une indemnité à la charge de la collectivité concédante, pour la durée de la période extraordinaire.",
       "slugFiche": "ce-1916-cie-gale-d-eclairage-de-bordeaux",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1916-03-30/59928",
-      "liees": [],
+      "liees": [
+        "ce-2022-avis-imprevision-commande-publique",
+        "ce-1949-cne-d-elbeuf"
+      ],
       "complete": true
     },
     {
@@ -927,7 +959,10 @@
       "portee": "Le Conseil d'État refuse la qualification de service public ou d'entreprise d'utilité publique à l'exploitation théâtrale envisagée, alors même que la collectivité publique impose des prescriptions et se réserve la propriété finale de l'immeuble : la convention, qui attribue une jouissance moyennant redevance, demeure un contrat de droit commun relevant du juge judiciaire. Il illustre la conception restrictive du service public au début du XXe siècle, excluant par principe les activités de spectacle.",
       "slugFiche": "ce-1916-astruc-et-ste-du-theatre-des-champs-elysees",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1964-ville-de-nanterre",
+        "ce-1959-synd-des-exploitants-de-cinematographes-de-l-oranie"
+      ],
       "complete": true
     },
     {
@@ -992,7 +1027,9 @@
       "portee": "En vertu de l'article 3 de la loi constitutionnelle du 25 février 1875, le Président de la République, placé à la tête de l'Administration française, a la mission de veiller à ce qu'à toute époque les services publics soient en état de fonctionner ; lorsque les circonstances de guerre le rendent nécessaire, il peut apprécier qu'une garantie légale entrave le fonctionnement des administrations nécessaires à la vie nationale et suspendre provisoirement, par décret et sans habilitation législative expresse, l'application de cette garantie pour la durée des hostilités.",
       "slugFiche": "ce-1918-heyries",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1918-06-28/63412",
-      "liees": [],
+      "liees": [
+        "ce-1948-marion"
+      ],
       "complete": true
     },
     {
@@ -1014,7 +1051,10 @@
       "portee": "La victime d’un dommage causé par une faute personnelle d’un agent public, non dépourvue de tout lien avec le service, peut poursuivre directement la personne publique gestionnaire du service devant le juge administratif, même si l’agent a déjà été condamné personnellement par le juge judiciaire ; le juge administratif veille alors à empêcher toute réparation excédant le préjudice total, notamment par le jeu de la subrogation.",
       "slugFiche": "ce-1918-ep-lemonnier",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1918-07-26/49595",
-      "liees": [],
+      "liees": [
+        "ce-1911-anguet",
+        "tc-1953-delaitre"
+      ],
       "complete": true
     },
     {
@@ -1035,7 +1075,9 @@
       "portee": "Le Conseil d’État pose que le stockage et la manutention d’explosifs dans des conditions créant des risques excédant les limites normales du voisinage engagent, en cas d’accident hors fait de guerre, la responsabilité de l’État indépendamment de toute faute.",
       "slugFiche": "ce-1919-regnault-desroziers",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1919-03-28/62273",
-      "liees": [],
+      "liees": [
+        "ce-1956-thouzellier"
+      ],
       "complete": true
     },
     {
@@ -1140,7 +1182,9 @@
       "portee": "Le Conseil d'État juge que l'État, gestionnaire d'un service d'assurances maritimes contre les risques de guerre dans les mêmes conditions qu'un assureur privé, est valablement déchargé de sa garantie lorsque l'assuré n'a pas respecté les conditions posées par la loi du 10 avril 1915, notamment l'observation des instructions des autorités maritimes. Cette décision, rendue quelques mois après TC, 1921, Soc. commerciale de l'Ouest-africain, est citée comme l'une des premières à qualifier expressément un service étatique de nature industrielle et commerciale.",
       "slugFiche": "ce-1921-ste-gale-d-armement",
       "urlOfficielle": "https://fondamentaux.org/jurisprudence/ce-23-decembre-1921-societe-generale-darmement/",
-      "liees": [],
+      "liees": [
+        "tc-1991-pillard"
+      ],
       "complete": true
     },
     {
@@ -1204,7 +1248,9 @@
       "portee": "Le Conseil d'État pose que le contrat liant un agent à des fonctions de direction d'un service exploité par une personne publique relève de la compétence administrative, en raison de la nature même de ces fonctions, indépendamment du caractère administratif ou industriel et commercial du service. Cette décision fonde, avant la distinction SPA/SPIC issue de TC, 1921, Bac d'Eloka, l'exception de compétence administrative attachée aux fonctions de direction, qui sera reprise et systématisée pour les SPIC.",
       "slugFiche": "ce-1923-robert-lafregeyre",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1923-01-26/62529",
-      "liees": [],
+      "liees": [
+        "ce-1957-jalenques-de-labeau"
+      ],
       "complete": true
     },
     {
@@ -1268,7 +1314,10 @@
       "portee": "La décision pose le principe de la responsabilité sans faute de l’État pour rupture d’égalité devant les charges publiques lorsque le refus légal de prêter le concours de la force publique à l’exécution d’un jugement impose au bénéficiaire du titre une charge anormale et spéciale. Elle articule la légalité du refus, justifiée par le maintien de l’ordre public, avec l’obligation d’indemniser le préjudice excédant une certaine durée. Elle constitue le point de départ de la responsabilité sans faute pour rupture d’égalité devant les charges publiques.",
       "slugFiche": "ce-1923-couiteas",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1923-11-30/38284",
-      "liees": [],
+      "liees": [
+        "ce-1966-cie-gale-d-energie-radio-electrique",
+        "ce-1938-ste-la-cartonnerie-et-imprimerie-saint-charles"
+      ],
       "complete": true
     },
     {
@@ -1374,7 +1423,9 @@
       "portee": "Le maire peut, en vertu des pouvoirs de police qu'il tient de l'article 97 de la loi du 5 avril 1884, prescrire les mesures nécessaires au maintien du bon ordre et de la décence sur le rivage, y compris prohiber les tenues contraires à la décence (costume de bain sans peignoir). Il ne peut en revanche interdire, par une disposition générale et absolue, la circulation en costume de bain même avec peignoir, une telle prescription excédant ce qu'exige le maintien de l'ordre public.",
       "slugFiche": "ce-1930-beauge",
       "urlOfficielle": "https://fondamentaux.org/jurisprudence/ce-30-mai-1930-sieur-beauge/",
-      "liees": [],
+      "liees": [
+        "ce-1933-benjamin"
+      ],
       "complete": true
     },
     {
@@ -1395,7 +1446,9 @@
       "portee": "Le Conseil d'État pose le principe selon lequel les activités à caractère commercial demeurent en principe réservées à l'initiative privée, et subordonne l'intervention économique des communes en ce domaine à la double condition d'un intérêt public et de circonstances particulières de temps ou de lieu. Il juge que les décrets de 1926 sur les régies municipales n'ont pas étendu les attributions des conseils municipaux en la matière.",
       "slugFiche": "ce-1930-ch-synd-du-commerce-en-detail-de-nevers",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1930-05-30/6781",
-      "liees": [],
+      "liees": [
+        "ce-2006-ordre-des-avocats-au-barreau-de-paris"
+      ],
       "complete": true
     },
     {
@@ -1562,7 +1615,10 @@
       "portee": "Il incombe à l'autorité de police, en vertu de son pouvoir de maintien de l'ordre, de concilier l'exercice de ce pouvoir avec le respect des libertés publiques garanties par les lois ; une mesure de police ne peut légalement interdire l'exercice d'une liberté que si l'éventualité de troubles présente un degré de gravité tel qu'aucune mesure moins contraignante ne permettrait de maintenir l'ordre.",
       "slugFiche": "ce-1933-benjamin",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1933-05-19/17413",
-      "liees": [],
+      "liees": [
+        "ce-1930-beauge",
+        "ce-1908-leclercq"
+      ],
       "complete": true
     },
     {
@@ -1604,7 +1660,9 @@
       "portee": "Le Conseil d'État juge que les décrets de promulgation des lois sont des actes relatifs aux rapports entre le pouvoir exécutif et le Parlement, qui ne peuvent faire l'objet d'un recours contentieux devant lui, le juge administratif se déclarant incompétent pour en connaître.",
       "slugFiche": "ce-1933-desreumeaux",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1999-lemaire"
+      ],
       "complete": true
     },
     {
@@ -1727,7 +1785,9 @@
       "portee": "Est exorbitante du droit commun la clause conferant aux parties des droits ou mettant a leur charge des obligations etrangers par leur nature a ceux susceptibles d’etre librement consentis dans le cadre des lois civiles et commerciales. Sa presence dans un contrat conclu par une personne publique suffit a le qualifier d’administratif.",
       "slugFiche": "ce-1935-ste-fr-de-construction-mecanique",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-2014-ste-axa-france-iard"
+      ],
       "complete": true
     },
     {
@@ -1833,7 +1893,9 @@
       "portee": "Le Conseil d'État juge qu'en l'état du droit public français, le moyen tiré de l'inconstitutionnalité d'une loi n'est pas de nature à être discuté devant lui statuant au contentieux, posant ainsi le principe du refus du juge administratif de contrôler la constitutionnalité des lois.",
       "slugFiche": "ce-1936-arrighi-2",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-2002-cne-de-porta"
+      ],
       "complete": true
     },
     {
@@ -1896,7 +1958,10 @@
       "portee": "Le Conseil d'État consacre pour la première fois la responsabilité sans faute de l'État du fait des lois. Lorsqu'une loi régulière interdit, dans un intérêt général, une activité licite et non dangereuse sans exclure l'indemnisation ni manifester la volonté de faire supporter cette charge à la personne concernée, la charge ainsi créée doit être supportée par la collectivité : le préjudice grave et spécial qui en résulte pour la personne seule ou quasi seule touchée ouvre droit à réparation sur le fondement de la rupture de l'égalité devant les charges publiques.",
       "slugFiche": "ce-1938-ste-des-produits-laitiers-la-fleurette",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1938-01-14/51704",
-      "liees": [],
+      "liees": [
+        "ce-1963-cne-de-gavarnie",
+        "ce-1970-edf"
+      ],
       "complete": true
     },
     {
@@ -1938,7 +2003,10 @@
       "portee": "Les usagers placés dans une situation identique à l'égard d'un service public ont droit à un traitement égal ; une différence de traitement n'est licite que si elle repose sur une différence objective de situation entre les usagers ou sur une nécessité d'intérêt général en rapport avec l'objet du service.",
       "slugFiche": "ce-1938-ste-l-alcool-denature-de-coubert-et-legrand",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1951-ste-des-concerts-du-conservatoire",
+        "ce-1974-denoyez-et-chorques"
+      ],
       "complete": true
     },
     {
@@ -1959,7 +2027,10 @@
       "portee": "Le Conseil d’État reconnaît que les assurances sociales constituent un service public alors même que les caisses primaires chargées de leur gestion sont des organismes privés. Il admet ainsi l’application aux agents de ces caisses de la prohibition légale des cumuls d’emplois applicable aux organismes exécutant un service public.",
       "slugFiche": "ce-1938-caisse-primaire-aide-et-protection",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1938-05-13/57302",
-      "liees": [],
+      "liees": [
+        "ce-1902-cie-nouv-du-gaz-de-deville-les-rouen",
+        "ce-1963-narcy"
+      ],
       "complete": true
     },
     {
@@ -1981,7 +2052,9 @@
       "portee": "La décision précise la jurisprudence Couitéas en l’appliquant au refus temporaire du concours de la force publique pour expulser des grévistes occupant une usine. Elle distingue la période antérieure au titre exécutoire, pendant laquelle l’administration conserve une faculté d’appréciation, et la période postérieure, où elle est en principe tenue d’agir mais peut différer l’exécution pour prévenir des troubles graves. Elle conditionne l’indemnisation à la prolongation du refus au-delà du délai normalement nécessaire à l’administration pour exercer son action.",
       "slugFiche": "ce-1938-ste-la-cartonnerie-et-imprimerie-saint-charles",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1938-06-03/58698",
-      "liees": [],
+      "liees": [
+        "ce-1923-couiteas"
+      ],
       "complete": true
     },
     {
@@ -2043,7 +2116,9 @@
       "portee": "Le Tribunal des conflits pose que la sauvegarde de la liberté individuelle et la protection de la propriété privée relèvent essentiellement des attributions de l'autorité judiciaire, fondant ainsi la compétence judiciaire en matière de voie de fait sur ce double critère matériel, articulé au critère du non-rattachement de l'acte administratif à un pouvoir légalement conféré à l'administration. Cette formulation devient la référence constante pour définir la voie de fait pendant plus de sept décennies, jusqu'à son remplacement par le critère resserré de Bergoënd en 2013.",
       "slugFiche": "tc-1940-ste-schneider-et-cie",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -2087,7 +2162,9 @@
       "portee": "Les décisions, réglementaires ou individuelles, prises dans la sphère de leurs attributions par des comités d'organisation chargés de participer à un service public constituent des actes administratifs, alors même que le législateur n'en a pas fait des établissements publics ; le juge administratif est compétent pour connaître des recours dirigés contre elles.",
       "slugFiche": "ce-1942-monpeurt",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1942-07-31/71398",
-      "liees": [],
+      "liees": [
+        "ce-1943-bouguen"
+      ],
       "complete": true
     },
     {
@@ -2108,7 +2185,9 @@
       "portee": "Le Conseil d’État étend aux décisions des ordres professionnels prises dans l’exercice de leur mission de service public le régime des actes administratifs susceptibles de recours. Il reconnaît ainsi sa compétence pour connaître des recours dirigés contre les décisions du Conseil supérieur de l’Ordre des médecins.",
       "slugFiche": "ce-1943-bouguen",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1943-04-02/72210",
-      "liees": [],
+      "liees": [
+        "ce-1942-monpeurt"
+      ],
       "complete": true
     },
     {
@@ -2130,7 +2209,9 @@
       "portee": "La décision pose que le retrait d’une autorisation, lorsqu’il présente le caractère d’une sanction grave fondée sur une faute, ne peut légalement intervenir sans que l’intéressé ait été mis à même de discuter les griefs formulés contre lui. Elle impose ainsi le respect des droits de la défense à l’administration, même en l’absence de texte.",
       "slugFiche": "ce-1944-veuve-trompier-gravier",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1944-05-05/69751",
-      "liees": [],
+      "liees": [
+        "ce-1945-aramu"
+      ],
       "complete": true
     },
     {
@@ -2171,7 +2252,9 @@
       "portee": "Le Conseil d'État consacre le respect des droits de la défense comme principe général du droit, applicable même en l'absence de texte : aucune sanction ne peut être légalement prononcée sans que l'intéressé ait été mis en mesure de connaître l'essentiel des griefs retenus contre lui et de présenter utilement ses observations.",
       "slugFiche": "ce-1945-aramu",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1944-veuve-trompier-gravier"
+      ],
       "complete": true
     },
     {
@@ -2381,7 +2464,9 @@
       "portee": "L'arrêt fixe la règle d'évaluation des dommages aux biens : l'indemnité est déterminée à la date où la cause du dommage a pris fin, où son étendue est connue et où les travaux de réparation peuvent être entrepris, sauf preuve d'une impossibilité d'en assurer le financement ou de se procurer les matériaux nécessaires. Rendu le même jour que l'arrêt veuve Aubry, il s'inscrit dans la trilogie des arrêts du 21 mars 1947 relatifs à la réparation intégrale, en fixant la règle propre aux dommages aux biens, distincte de celle, retenant la date du jugement, applicable aux dommages corporels évolutifs.",
       "slugFiche": "ce-1947-veuve-pascal",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1947-03-21/77529",
-      "liees": [],
+      "liees": [
+        "ce-1972-castelli"
+      ],
       "complete": true
     },
     {
@@ -2464,7 +2549,9 @@
       "portee": "En période de circonstances exceptionnelles, la jurisprudence admet que des particuliers se substituent spontanément à l'administration défaillante et sont regardés comme fonctionnaires de fait. Cette reconnaissance permet de valider les actes administratifs accomplis par ces personnes, assurant ainsi la continuité du service public et la sécurité juridique. L'arrêt Marion illustre cette exception au principe de compétence administrative, en lien avec la gestion d'affaires en droit administratif.",
       "slugFiche": "ce-1948-marion",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1918-heyries"
+      ],
       "complete": true
     },
     {
@@ -2588,7 +2675,9 @@
       "portee": "Une activité économique exercée par l'État sous forme de monopole, telle que l'organisation d'une loterie nationale, peut être qualifiée de service public dès lors qu'elle est regardée comme satisfaisant un intérêt général, entraînant la soumission des opérations qui y concourent au régime du droit administratif.",
       "slugFiche": "ce-1948-angrand",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1999-rolin"
+      ],
       "complete": true
     },
     {
@@ -2650,7 +2739,10 @@
       "portee": "L'État engage sa responsabilité sans faute lorsque le personnel de police fait usage d'armes ou d'engins comportant des risques exceptionnels et que les dommages subis par un tiers à l'opération excèdent, par leur gravité, les charges normalement supportées en contrepartie de l'existence du service public.",
       "slugFiche": "ce-1949-lecomte",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1949-06-24/87335",
-      "liees": [],
+      "liees": [
+        "tc-1978-ste-le-profil",
+        "ce-1968-saulze"
+      ],
       "complete": true
     },
     {
@@ -2692,7 +2784,9 @@
       "portee": "Le Conseil d'État juge qu'une commune concédante, exposée à une demande d'indemnité de son concessionnaire au titre du bouleversement contractuel résultant d'une réglementation nationale des prix, ne peut, par la seule invocation de cette réglementation étatique d'intérêt général, obtenir de l'État qu'il la garantisse de toute condamnation éventuelle, faute d'établir une faute de l'État dans l'édiction ou l'application de cette réglementation ou un préjudice anormal et spécial distinct de celui résultant du seul jeu du contrat de concession.",
       "slugFiche": "ce-1949-cne-d-elbeuf",
       "urlOfficielle": "https://www.doctrine.fr/d/CE/1949/UD1BB615866F135360831",
-      "liees": [],
+      "liees": [
+        "ce-1916-cie-gale-d-eclairage-de-bordeaux"
+      ],
       "complete": true
     },
     {
@@ -2755,7 +2849,12 @@
       "portee": "Le Conseil d'État juge que la saisie de biens meubles, lorsqu'elle apparaît manifestement insusceptible d'être rattachée à l'exercice d'un pouvoir conféré à l'administration, constitue une voie de fait, indépendamment de la question de savoir si l'administration disposait par ailleurs d'un pouvoir général d'intervention dans le domaine concerné. Il en déduit que seuls les tribunaux judiciaires sont compétents pour statuer sur l'action en réparation des dommages causés par une telle saisie et sur la demande de restitution des objets saisis, le juge administratif devant se déclarer incompétent.",
       "slugFiche": "ce-1949-carlier",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-1986-eucat",
+        "tc-1997-prefet-de-police",
+        "ce-1961-klein",
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -2818,7 +2917,9 @@
       "portee": "Le brouillage d’émissions d’un poste de radiodiffusion situé en territoire étranger, ordonné par le gouvernement français en réaction à des protestations d’États et au regard de conventions internationales, constitue un acte de gouvernement échappant à tout contrôle juridictionnel.",
       "slugFiche": "tc-1950-ste-radio-andorre",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1950-02-02/01243",
-      "liees": [],
+      "liees": [
+        "ce-1952-geny"
+      ],
       "complete": true
     },
     {
@@ -3009,7 +3110,9 @@
       "portee": "Le principe d'égalité régit le fonctionnement des services publics. Une exclusion décidée sans motif d'intérêt général, alors que l'intéressé était traité comme les autres usagers comparables, constitue un détournement de pouvoir et viole ce principe.",
       "slugFiche": "ce-1951-ste-des-concerts-du-conservatoire",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1951-03-09/92004",
-      "liees": [],
+      "liees": [
+        "ce-1938-ste-l-alcool-denature-de-coubert-et-legrand"
+      ],
       "complete": true
     },
     {
@@ -3051,7 +3154,9 @@
       "portee": "La décision pose, conjointement avec CE, 1951, Consorts Baud, le critère finaliste de distinction entre police administrative et police judiciaire : une opération de police relève de la police judiciaire lorsqu'elle a pour objet la recherche d'une infraction déterminée, et de la police administrative dans le cas contraire. Elle en tire la conséquence sur la compétence juridictionnelle : les dommages causés par une opération de police administrative relèvent de la seule juridiction administrative, à l'exclusion des tribunaux judiciaires.",
       "slugFiche": "tc-1951-noualek",
       "urlOfficielle": "http://jurischrono.free.fr/textes/decisionTC-1951_6_7-Noualek.html",
-      "liees": [],
+      "liees": [
+        "tc-1978-ste-le-profil"
+      ],
       "complete": true
     },
     {
@@ -3137,7 +3242,9 @@
       "portee": "Les arrêts abandonnent l’immunité pécuniaire de fait de l’agent en consacrant les actions récursoires réciproques : l’administration peut se retourner contre l’agent pour les fautes personnelles détachables des fonctions (Laruelle) ; l’agent peut obtenir de l’administration le remboursement de la part imputable à la faute de service (Delville). Ils distinguent ainsi l’obligation à la dette envers la victime, qui peut rechercher l’intégralité du préjudice devant le juge administratif ou le juge judiciaire, et la contribution finale à la dette, réglée par le juge administratif selon l’existence et la gravité des fautes respectives.",
       "slugFiche": "ce-1951-laruelle-et-delville",
       "urlOfficielle": "https://www.conseil-etat.fr/decisions-de-justice/jurisprudence/les-grandes-decisions-depuis-1873/conseil-d-etat-28-juillet-1951-laruelle-et-delville",
-      "liees": [],
+      "liees": [
+        "ce-1911-anguet"
+      ],
       "complete": true
     },
     {
@@ -3179,7 +3286,9 @@
       "portee": "Le Conseil d'État juge irrecevables les conclusions dirigées contre le refus du Gouvernement de porter un différend devant une juridiction internationale, ces questions se rattachant à l'exercice des pouvoirs du Gouvernement dans les relations avec un organisme international et constituant un acte de gouvernement.",
       "slugFiche": "ce-1952-geny",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-1950-ste-radio-andorre"
+      ],
       "complete": true
     },
     {
@@ -3220,7 +3329,9 @@
       "portee": "Le Tribunal des conflits pose le principe selon lequel l'autorité judiciaire, gardienne de la liberté individuelle, connaît des conséquences de toute atteinte arbitraire à cette liberté, constitutive par elle-même d'une voie de fait, sauf lorsque des circonstances exceptionnelles empêchent de reconnaître ce caractère à l'atteinte. Il précise également que cette compétence judiciaire exclusive de l'article 112 du code d'instruction criminelle ne s'applique qu'aux actions dirigées contre les agents publics eux-mêmes, non contre l'État, dont la compétence se règle alors selon les principes généraux de la responsabilité de la puissance publique.",
       "slugFiche": "tc-1952-de-la-murette",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1952-03-27/01339",
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -3304,7 +3415,9 @@
       "portee": "Le Conseil d'État admet pour la première fois la recevabilité d'un moyen tiré de la violation d'une convention internationale à l'encontre d'un acte administratif, fondant cette invocabilité sur la force de loi conférée aux traités régulièrement introduits dans l'ordre interne par l'article 26 de la Constitution de 1946. Il réserve toutefois l'appréciation par l'autorité judiciaire des conditions de fond posées par la convention, qui échappe à son contrôle.",
       "slugFiche": "ce-1952-kirkwood",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1989-nicolo"
+      ],
       "complete": true
     },
     {
@@ -3492,7 +3605,9 @@
       "portee": "L'arrêt précise que des actes de violence graves commis par un agent public, même dans l'exercice de ses fonctions, se détachent du service en raison de leur gravité et constituent une faute personnelle relevant du juge judiciaire.",
       "slugFiche": "tc-1953-delaitre",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1918-ep-lemonnier"
+      ],
       "complete": true
     },
     {
@@ -3786,7 +3901,9 @@
       "portee": "Le Tribunal des conflits juge que les travaux exécutés par un établissement public investi par la loi d'une mission de service public de reconstruction constituent des travaux publics, quelle que soit la propriété, publique ou privée, des immeubles concernés. Il consacre ainsi une seconde définition des travaux publics, fondée sur le rattachement à une mission de service public, distincte de la définition classique fondée sur l'exécution pour le compte d'une personne publique dans un but d'utilité générale.",
       "slugFiche": "tc-1955-effimieff",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1955-03-28/01525",
-      "liees": [],
+      "liees": [
+        "tc-1965-martin"
+      ],
       "complete": true
     },
     {
@@ -3911,7 +4028,9 @@
       "portee": "Le Conseil d'État juge que la substitution, par le législateur de 1945, d'un régime d'internat surveillé plus libéral au régime antérieur d'incarcération crée, pour les tiers résidant à proximité des établissements d'éducation surveillée, un risque spécial dès lors qu'ils ne bénéficient plus des garanties de l'ancien régime disciplinaire. Il en déduit que la responsabilité du service public à leur égard découle des conditions mêmes de fonctionnement du service, sans que la preuve d'une faute de l'administration soit requise.",
       "slugFiche": "ce-1956-thouzellier",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1919-regnault-desroziers"
+      ],
       "complete": true
     },
     {
@@ -3932,7 +4051,9 @@
       "portee": "Le Tribunal des conflits pose le principe d'intangibilité de l'ouvrage public : quelle que soit l'irrégularité de son implantation sur une propriété privée, aucune juridiction judiciaire ne peut prescrire une mesure portant atteinte, sous quelque forme que ce soit, à son intégrité ou à son fonctionnement. Le propriétaire lésé ne peut alors obtenir qu'une réparation indemnitaire, la préservation de l'ouvrage affecté à l'intérêt général l'emportant sur la remise en état matérielle de la propriété privée.",
       "slugFiche": "tc-1956-cons-sauvy",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -4015,7 +4136,9 @@
       "portee": "La décision admet que l’aggravation du préjudice survenue entre les deux instances ne constitue pas une demande nouvelle en appel.",
       "slugFiche": "ce-1956-ville-de-paris-et-urbach",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1998-dpt-de-l-isere"
+      ],
       "complete": true
     },
     {
@@ -4119,7 +4242,9 @@
       "portee": "Le Conseil d'État retient trois critères cumulatifs — l'objet du service, l'origine de ses ressources, ses modalités d'organisation et de fonctionnement — pour distinguer, en l'absence de qualification législative, un établissement public administratif d'un établissement public à caractère industriel et commercial ; l'absence d'un seul de ces critères suffit à conserver au service son caractère administratif.",
       "slugFiche": "ce-1956-union-syndicale-des-indus-aeronautiques",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-1968-ste-d-approvisionnement-alimentaire"
+      ],
       "complete": true
     },
     {
@@ -4161,7 +4286,9 @@
       "portee": "Le Conseil d'État juge que les litiges individuels concernant les agents d'un service public industriel et commercial (l'Agence France-Presse) relèvent des tribunaux judiciaires, à l'exception de l'agent chargé de la direction de l'ensemble des services de l'établissement et du chef de la comptabilité ayant la qualité de comptable public, seuls soumis au droit public. En l'espèce, le requérant, chargé de la direction de l'administration mais placé sous l'autorité du directeur général, ne relève pas de cette exception : son propre litige est jugé relever de la compétence judiciaire.",
       "slugFiche": "ce-1957-jalenques-de-labeau",
       "urlOfficielle": "https://fondamentaux.org/jurisprudence/ce-8-mars-1957-n-15219-jalenques-de-labeau/",
-      "liees": [],
+      "liees": [
+        "ce-1923-robert-lafregeyre"
+      ],
       "complete": true
     },
     {
@@ -4537,7 +4664,10 @@
       "portee": "Le Conseil d'État admet qu'une activité culturelle de simple distraction, telle l'exploitation d'un théâtre ou d'un cinéma municipal, peut constituer un service public dès lors qu'elle est prise en charge par une collectivité publique et répond à un intérêt général, marquant l'abandon de la conception restrictive antérieure qui excluait par principe les activités de spectacle du champ du service public.",
       "slugFiche": "ce-1959-synd-des-exploitants-de-cinematographes-de-l-oranie",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1916-astruc-et-ste-du-theatre-des-champs-elysees",
+        "ce-1966-ville-de-royan"
+      ],
       "complete": true
     },
     {
@@ -4579,7 +4709,9 @@
       "portee": "La décision pose que le pouvoir réglementaire, même lorsqu’il statue par décret dans une matière législative, est tenu de respecter les principes généraux du droit, qui s’imposent à toute autorité réglementaire même en l’absence de dispositions législatives. Elle admet aussi la recevabilité du recours pour excès de pouvoir contre un décret non encore publié dans son territoire d’application, dès lors qu’il est susceptible d’y devenir opposable.",
       "slugFiche": "ce-1959-synd-general-des-ingenieurs-conseils",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1959-06-26/92099",
-      "liees": [],
+      "liees": [
+        "ce-1962-canal-robin-et-godot"
+      ],
       "complete": true
     },
     {
@@ -4641,7 +4773,9 @@
       "portee": "L'institution d'une police spéciale nationale (visa ministériel d'exploitation cinématographique) ne prive pas le maire de ses pouvoirs de police générale municipale. Le maire peut interdire localement la projection d'un film pourtant autorisé au niveau national dès lors que sa projection est susceptible d'entraîner des troubles sérieux ou d'être, en raison de son caractère immoral combiné à des circonstances locales, préjudiciable à l'ordre public. La moralité publique est ainsi reconnue comme composante de l'ordre public, aux côtés de la sécurité, la tranquillité et la salubrité.",
       "slugFiche": "ce-1959-ste-les-films-lutetia",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1959-12-18/36385",
-      "liees": [],
+      "liees": [
+        "ce-2011-cne-de-saint-denis"
+      ],
       "complete": true
     },
     {
@@ -4893,7 +5027,9 @@
       "portee": "Le Conseil d'État juge que le juge administratif est compétent pour connaître des conséquences dommageables d'une emprise régulière, c'est-à-dire prévue par un texte et exécutée conformément à celui-ci, ainsi que pour se prononcer, le cas échéant, sur la régularité même de l'emprise. Il précise que, lorsque l'emprise est jugée irrégulière, l'indemnisation des préjudices en résultant relève en principe du juge judiciaire, seul compétent pour protéger la propriété privée contre une dépossession sans titre légal.",
       "slugFiche": "ce-1961-werquin",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -4935,7 +5071,10 @@
       "portee": "Le Conseil d'État juge qu'une exécution d'office qui se borne à faire cesser un empiétement et à rétablir une limite de propriété telle que fixée par l'autorité judiciaire ne porte atteinte ni au droit de propriété ni à une liberté fondamentale, et ne constitue donc pas une voie de fait, quand bien même cette exécution serait irrégulière faute d'urgence légitimant le recours à l'exécution forcée plutôt qu'aux poursuites pénales normalement applicables. Une telle irrégularité, insuffisante à caractériser la voie de fait, constitue néanmoins une faute de nature à engager la responsabilité de la commune devant le juge administratif.",
       "slugFiche": "ce-1961-klein",
       "urlOfficielle": "https://www.revuegeneraledudroit.eu/blog/decisions/conseil-detat-section-8-avril-1961-dame-klein-requete-numero-46746-rec-p-216/",
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend",
+        "ce-1949-carlier"
+      ],
       "complete": true
     },
     {
@@ -5251,7 +5390,9 @@
       "portee": "La demande tendant à engager la responsabilité de l’État français à raison d’une prétendue carence de la police placée sous l’autorité du Résident général en Tunisie, dans le cadre des obligations résultant du traité du Bardo, se rattache aux rapports entre l’État français et un État placé sous protectorat et échappe, en tant qu’acte de gouvernement, au contrôle du juge administratif.",
       "slugFiche": "ce-1962-prince-sliman-bey",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1992-gisti"
+      ],
       "complete": true
     },
     {
@@ -5440,7 +5581,9 @@
       "portee": "Le Conseil d'État juge, d'une part, qu'une ordonnance prise sur habilitation référendaire, faute d'avoir eu pour objet de déléguer directement le pouvoir législatif, conserve le caractère d'un acte administratif susceptible d'être déférée au Conseil d'État par la voie du recours pour excès de pouvoir. Il juge, d'autre part, qu'une telle habilitation, même très large, ne saurait être interprétée comme autorisant une atteinte aux droits et garanties essentielles de la défense — élevés au rang de principes généraux du droit — au-delà de ce qui est strictement indispensable à la réalisation de son objet, apprécié au regard des circonstances de l'époque.",
       "slugFiche": "ce-1962-canal-robin-et-godot",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1962-10-19/58502",
-      "liees": [],
+      "liees": [
+        "ce-1959-synd-general-des-ingenieurs-conseils"
+      ],
       "complete": true
     },
     {
@@ -5566,7 +5709,9 @@
       "portee": "L'arrêt Commune de Gavarnie étend aux actes réglementaires légaux la responsabilité sans faute pour rupture d'égalité devant les charges publiques, jusqu'alors admise pour les décisions individuelles régulières (CE, sect., 1923, Couitéas) et pour les lois (CE, 1938, Société des produits laitiers La Fleurette). Il consacre l'autonomie de ce régime de responsabilité par rapport à la légalité de l'acte : un règlement de police parfaitement régulier, pris dans l'intérêt général de l'ordre public, peut ouvrir droit à indemnisation dès lors que le préjudice spécial et anormal qu'il cause à un administré rompt l'égalité devant les charges publiques.",
       "slugFiche": "ce-1963-cne-de-gavarnie",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1938-ste-des-produits-laitiers-la-fleurette"
+      ],
       "complete": true
     },
     {
@@ -5629,7 +5774,9 @@
       "portee": "Le Conseil d'État systématise trois critères cumulatifs permettant de reconnaître à une personne privée la gestion d'un service public : une mission d'intérêt général, des prérogatives de puissance publique conférées pour l'accomplir, et un contrôle de l'autorité de tutelle sur son activité. Réunis, ces critères emportent qualification de service public nonobstant le caractère privé de l'organisme.",
       "slugFiche": "ce-1963-narcy",
       "urlOfficielle": "https://www.revuegeneraledudroit.eu/blog/decisions/c-e-28-juin-1963-sieur-narcy/",
-      "liees": [],
+      "liees": [
+        "ce-1938-caisse-primaire-aide-et-protection"
+      ],
       "complete": true
     },
     {
@@ -5691,7 +5838,9 @@
       "portee": "La loi du 31 décembre 1957 s'applique lorsque l'agent chargé de la conduite ou de la surveillance d'un véhicule agit dans l'exercice de ses fonctions ou dans un comportement non dépourvu de lien avec celles-ci ; elle attribue alors compétence au juge judiciaire pour l'action en réparation, par dérogation au principe de compétence administrative applicable aux dommages causés par les agents publics.",
       "slugFiche": "tc-1963-caruelle",
       "urlOfficielle": null,
-      "liees": [],
+      "liees": [
+        "ce-1986-curtol"
+      ],
       "complete": true
     },
     {
@@ -5923,7 +6072,10 @@
       "portee": "La Cour de justice juge que le traité CEE a institué un ordre juridique propre, intégré aux systèmes juridiques des États membres, et que le droit né du traité, issu d'une source autonome, ne peut se voir judiciairement opposer un texte interne quel qu'il soit, le transfert opéré par les États entraînant une limitation définitive de leurs droits souverains.",
       "slugFiche": "cjce-1964-costa-c-enel",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=6/64",
-      "liees": [],
+      "liees": [
+        "ce-1968-synd-general-des-fabricants-de-semoules-de-fr",
+        "cass-1975-ste-des-cafes-jacques-vabre"
+      ],
       "complete": true
     },
     {
@@ -5986,7 +6138,10 @@
       "portee": "Le Conseil d'État juge qu'une commune peut créer un service public local à caractère sanitaire, ouvert à l'ensemble de la population et non aux seuls bénéficiaires de l'assistance médicale, lorsqu'un intérêt public local le justifie, tenant à la carence qualitative de l'initiative privée (insuffisance des praticiens, tarifs excessifs) et non à sa seule carence quantitative. Il précise que le principe d'égalité devant le service public interdit d'en exclure un usager au seul motif qu'il pourrait recourir à un praticien privé, tout en autorisant des tarifs modulés.",
       "slugFiche": "ce-1964-ville-de-nanterre",
       "urlOfficielle": "https://www.revuegeneraledudroit.eu/blog/decisions/xxx-ce-sect-20-novembre-1964-ville-de-nanterre-rec-p-562/",
-      "liees": [],
+      "liees": [
+        "ce-2006-ordre-des-avocats-au-barreau-de-paris",
+        "ce-1916-astruc-et-ste-du-theatre-des-champs-elysees"
+      ],
       "complete": true
     },
     {
@@ -6028,7 +6183,9 @@
       "portee": "Le Tribunal des conflits juge que les opérations de construction menées par les associations syndicales de reconstruction conservent le caractère de travaux publics et que la compétence administrative s'étend à tout litige mettant en cause les architectes et entrepreneurs, y compris pour la responsabilité décennale, indépendamment de la perte ultérieure de la qualité de maître d'ouvrage par l'association après la réception définitive des travaux.",
       "slugFiche": "tc-1965-martin",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/analyse/1965-02-08/01853",
-      "liees": [],
+      "liees": [
+        "tc-1955-effimieff"
+      ],
       "complete": true
     },
     {
@@ -6176,7 +6333,9 @@
       "portee": "Le Conseil d'État qualifie de concession de service public le contrat par lequel une commune confie à une société privée l'exploitation d'un casino municipal, dans la mesure où cette exploitation contribue à l'animation culturelle et au développement touristique de la station balnéaire, finalités d'intérêt général distinctes de l'activité de jeu elle-même. Cette qualification emporte l'application du régime administratif de la concession, notamment la faculté de placer sous séquestre l'exploitation d'un concessionnaire défaillant.",
       "slugFiche": "ce-1966-ville-de-royan",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007635413/",
-      "liees": [],
+      "liees": [
+        "ce-1959-synd-des-exploitants-de-cinematographes-de-l-oranie"
+      ],
       "complete": true
     },
     {
@@ -6197,7 +6356,9 @@
       "portee": "Le Conseil d'État étend au domaine des conventions internationales la responsabilité sans faute de l'État fondée sur la rupture de l'égalité devant les charges publiques, dégagée pour les lois par CE, 1938, La Fleurette. Cette responsabilité peut être engagée pour les préjudices nés de conventions régulièrement incorporées dans l'ordre juridique interne, à la double condition que ni la convention ni la loi de ratification n'excluent l'indemnisation et que le préjudice présente une gravité suffisante et un caractère spécial. En l'espèce, la généralité des accords en cause et le nombre de ressortissants placés dans une situation analogue privent le préjudice invoqué de tout caractère spécial.",
       "slugFiche": "ce-1966-cie-gale-d-energie-radio-electrique",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1966-03-30/50515",
-      "liees": [],
+      "liees": [
+        "ce-1923-couiteas"
+      ],
       "complete": true
     },
     {
@@ -6238,7 +6399,9 @@
       "portee": "Une décision administrative manifestement insusceptible de se rattacher à l'exercice d'un pouvoir de l'administration, constitutive d'une voie de fait, doit être regardée comme nulle et non avenue ; il appartient tant à la juridiction administrative qu'à l'autorité judiciaire de constater cette nullité, ce qui consacre une compétence partagée entre les deux ordres de juridiction.",
       "slugFiche": "tc-1966-guignon",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/analyse/1966-06-27/01889",
-      "liees": [],
+      "liees": [
+        "tc-1986-eucat"
+      ],
       "complete": true
     },
     {
@@ -6470,7 +6633,11 @@
       "portee": "Le Conseil d'État applique la théorie de la loi-écran en matière internationale : il se déclare incompétent pour apprécier la conformité d'un texte législatif postérieur au traité de Rome avec ce traité et avec un règlement communautaire lui-même antérieur, et fait produire plein effet à la loi postrieure incompatible. Cette solution, qui refuse au juge administratif le contrôle de conventionnalité des lois, sera abandonnée vingt et un ans plus tard par CE, ass., 1989, Nicolo.",
       "slugFiche": "ce-1968-synd-general-des-fabricants-de-semoules-de-fr",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1968-03-01/62814",
-      "liees": [],
+      "liees": [
+        "cjce-1964-costa-c-enel",
+        "cass-1975-ste-des-cafes-jacques-vabre",
+        "ce-1990-boisdet"
+      ],
       "complete": true
     },
     {
@@ -6533,7 +6700,9 @@
       "portee": "Le Tribunal des conflits juge que le juge n'est pas lié par la qualification réglementaire d'établissement public industriel et commercial lorsque l'activité réelle de l'organisme, dépourvue d'action propre et bornée à exécuter les buts déterminés par l'État avec des ressources exclusivement étatiques, est en réalité purement administrative. Il pose ainsi la théorie de l'établissement public à visage inversé : le pouvoir réglementaire ne peut, par une qualification erronée, modifier la répartition des compétences contentieuses fixée par la nature réelle de l'activité.",
       "slugFiche": "tc-1968-ste-d-approvisionnement-alimentaire",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007606798/",
-      "liees": [],
+      "liees": [
+        "ce-1956-union-syndicale-des-indus-aeronautiques"
+      ],
       "complete": true
     },
     {
@@ -6639,7 +6808,9 @@
       "portee": "Le Conseil d'État reconnaît que l'exposition permanente d'une institutrice enceinte aux risques de contagion, en période d'épidémie, fait courir à l'enfant à naître un risque spécial et anormal lié à l'exercice de ses fonctions. Il juge que la réalisation de ce risque, lorsqu'elle entraîne des dommages graves, engage la responsabilité sans faute de l'État au profit de la victime, sans qu'il soit besoin d'établir une faute de l'administration ni un manquement à une obligation de sécurité.",
       "slugFiche": "ce-1968-saulze",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1968-11-06/72636",
-      "liees": [],
+      "liees": [
+        "ce-1949-lecomte"
+      ],
       "complete": true
     },
     {
@@ -6787,7 +6958,9 @@
       "portee": "Une tondeuse à gazon utilisée par un employé municipal dans un square n'est pas traitée comme un véhicule au sens de la loi du 31 décembre 1957 ; le dommage causé par projection d'un gravier relevant du défaut d'entretien normal d'un engin participant à l'exécution d'un travail public relève du régime des dommages de travaux publics et de la compétence administrative.",
       "slugFiche": "ce-1969-ville-de-perpignan",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1969-03-14/72567",
-      "liees": [],
+      "liees": [
+        "tc-2001-cne-de-courdimanche"
+      ],
       "complete": true
     },
     {
@@ -7063,7 +7236,9 @@
       "portee": "Le Conseil d'État juge que la décision de publier ou non un accord international, se rattachant à la conduite des relations diplomatiques de la France, constitue un acte de gouvernement insusceptible d'engager la responsabilité de l'État envers le particulier qui s'en prévaudrait. Cette immunité contentieuse, propre aux actes touchant aux rapports entre États, demeure toutefois limitée aux actes non détachables de la conduite diplomatique proprement dite.",
       "slugFiche": "ce-1970-de-malglaive",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1970-11-04/68866",
-      "liees": [],
+      "liees": [
+        "ce-1875-prince-napoleon"
+      ],
       "complete": true
     },
     {
@@ -7084,7 +7259,9 @@
       "portee": "La Cour juge que l’obligation, faite à un État membre par une directive, d’éliminer une taxe d’effet équivalent avant une date déterminée produit un effet direct dans les rapports entre cet État et ses justiciables à l’expiration du délai fixé. Elle étend ainsi aux directives, sous réserve du caractère précis et inconditionnel de l’obligation en cause, l’effet direct déjà reconnu aux dispositions du traité lui-même.",
       "slugFiche": "cjce-1970-sace",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=33/70",
-      "liees": [],
+      "liees": [
+        "ce-2009-perreux"
+      ],
       "complete": true
     },
     {
@@ -7105,7 +7282,9 @@
       "portee": "Précise que l’usage régulier du droit d’expropriation par un établissement public, suivi de l’abandon du projet, n’engage pas sa responsabilité pour faute, mais ouvre droit à réparation du préjudice particulier subi dans un intérêt général lorsqu’il présente un caractère spécial et une gravité excédant les charges normales. Applique ainsi le régime de la rupture d’égalité devant les charges publiques à l’immobilisation d’un bien du fait d’une procédure d’expropriation abandonnée.",
       "slugFiche": "ce-1970-edf",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1970-12-23/73453",
-      "liees": [],
+      "liees": [
+        "ce-1938-ste-des-produits-laitiers-la-fleurette"
+      ],
       "complete": true
     },
     {
@@ -7211,7 +7390,10 @@
       "portee": "La décision pose le contrôle du bilan : une opération ne peut être légalement déclarée d'utilité publique que si les atteintes à la propriété privée, le coût financier et, le cas échéant, les inconvénients d'ordre social ne sont pas excessifs au regard de l'intérêt qu'elle présente. Le juge met ainsi en balance avantages et inconvénients de l'opération.",
       "slugFiche": "ce-1971-ville-nouvelle-est",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1971-05-28/78825",
-      "liees": [],
+      "liees": [
+        "ce-2006-asso-interdep-le-et-interco-pour-la-protection-du-lac-de-sainte-croix-des-lacs-et-sites-du-verdon",
+        "ce-1972-ste-civile-sainte-marie-de-l-assomption"
+      ],
       "complete": true
     },
     {
@@ -7400,7 +7582,9 @@
       "portee": "Le Conseil d’État pose la valeur vénale du bien endommagé comme plafond objectif de l’indemnisation, dans la ligne des arrêts « veuves » de 1947 sur l’évaluation des dommages aux biens.",
       "slugFiche": "ce-1972-castelli",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1972-07-10/82490",
-      "liees": [],
+      "liees": [
+        "ce-1947-veuve-pascal"
+      ],
       "complete": true
     },
     {
@@ -7442,7 +7626,9 @@
       "portee": "La décision étend le contrôle du bilan aux atteintes portées à d'autres intérêts publics. En l'espèce, malgré l'intérêt routier, la déclaration d'utilité publique de la bretelle et de l'échangeur est annulée en tant qu'elle porte une atteinte excessive au fonctionnement de l'hôpital psychiatrique départemental.",
       "slugFiche": "ce-1972-ste-civile-sainte-marie-de-l-assomption",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1972-10-20/78829",
-      "liees": [],
+      "liees": [
+        "ce-1971-ville-nouvelle-est"
+      ],
       "complete": true
     },
     {
@@ -7653,7 +7839,10 @@
       "portee": "Le pouvoir de police générale du Premier ministre, en vertu de ses pouvoirs propres et sans habilitation législative, s'exerce à l'échelle de l'ensemble du territoire national et n'exclut pas les compétences de police locale (ici, la police des abattoirs, en principe dévolue aux maires) ; les mesures nationales de police tendant à concilier ordre public, salubrité et respect des libertés publiques ne portent pas atteinte à ces libertés dès lors qu'elles se bornent à encadrer leur exercice.",
       "slugFiche": "ce-1973-asso-culturelle-des-israelites-nord-africains-de-paris",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1973-05-02/81861",
-      "liees": [],
+      "liees": [
+        "ce-1975-bouvet-de-la-maisonneuve",
+        "ce-1982-asso-auto-defense"
+      ],
       "complete": true
     },
     {
@@ -7843,7 +8032,9 @@
       "portee": "Le Tribunal des conflits juge qu'un arrêté municipal interdisant la circulation de véhicules d'un certain tonnage sur des chemins ruraux, et l'installation d'obstacles pour en assurer l'exécution, ne constituent pas une voie de fait, dès lors que cette mesure de police administrative se rattache à un pouvoir dont dispose l'administration. Il en résulte que l'impossibilité d'accès automobile qui en résulte pour un riverain ne caractérise pas davantage une emprise irrégulière, faute de dépossession portant directement sur la propriété privée elle-même. Sources : confirmation par la synthèse officielle Juricaf/Legifrance de l'analyse jurisprudentielle (« absence de voie de fait ») ; texte littéral du considérant non retrouvé cette session.",
       "slugFiche": "tc-1973-cne-de-rueil-malmaison",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/analyse/1973-11-26/01985",
-      "liees": [],
+      "liees": [
+        "ce-1978-lecoq"
+      ],
       "complete": true
     },
     {
@@ -8010,7 +8201,9 @@
       "portee": "Le Conseil d'État fixe les trois conditions alternatives auxquelles la différenciation tarifaire entre usagers d'un même service public est licite : conséquence nécessaire d'une loi, différence de situation appréciable entre les usagers, ou nécessité d'intérêt général liée aux conditions d'exploitation. À défaut de l'une de ces justifications, la différenciation tarifaire méconnaît le principe d'égalité devant le service public.",
       "slugFiche": "ce-1974-denoyez-et-chorques",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1974-05-10/88032",
-      "liees": [],
+      "liees": [
+        "ce-1938-ste-l-alcool-denature-de-coubert-et-legrand"
+      ],
       "complete": true
     },
     {
@@ -8155,7 +8348,11 @@
       "portee": "La Cour juge qu'une disposition de directive suffisamment claire, précise et inconditionnelle peut être invoquée par un particulier à l'encontre de l'État devant le juge national, l'effet contraignant reconnu à la directive par l'article 189 du traité interdisant d'exclure par principe une telle invocabilité. Elle précise que l'effet direct d'un acte communautaire s'apprécie, dans chaque cas, au regard de la nature, de l'économie et des termes de la disposition en cause, et non de la seule catégorie d'acte dont elle relève.",
       "slugFiche": "cjce-1974-van-duyn",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=41/74",
-      "liees": [],
+      "liees": [
+        "ce-2009-perreux",
+        "ce-1978-cohn-bendit",
+        "ce-2012-air-algerie"
+      ],
       "complete": true
     },
     {
@@ -8302,7 +8499,10 @@
       "portee": "La Cour de cassation juge que le traité CEE, en vertu de son autorité supérieure aux lois posée par l'article 55 de la Constitution et de la spécificité de l'ordre juridique qu'il institue, prime la loi interne même postérieure ; elle écarte en outre l'exception de réciprocité, les manquements d'un État membre étant soumis au seul recours en manquement prévu par le traité. Elle inaugure ainsi le contrôle de conventionnalité des lois par le juge judiciaire, quinze ans avant que le Conseil d'État ne s'y rallie.",
       "slugFiche": "cass-1975-ste-des-cafes-jacques-vabre",
       "urlOfficielle": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625",
-      "liees": [],
+      "liees": [
+        "cjce-1964-costa-c-enel",
+        "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
+      ],
       "complete": true
     },
     {
@@ -8322,7 +8522,9 @@
       "portee": "Le Premier ministre dispose, en vertu des articles 21 et 37 de la Constitution, du pouvoir de prendre les mesures de police applicables à l'ensemble du territoire national, y compris lorsque celles-ci restreignent la liberté individuelle dans un but de protection de la personne elle-même.",
       "slugFiche": "ce-1975-bouvet-de-la-maisonneuve",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1975-06-04/92161",
-      "liees": [],
+      "liees": [
+        "ce-1973-asso-culturelle-des-israelites-nord-africains-de-paris"
+      ],
       "complete": true
     },
     {
@@ -8593,7 +8795,9 @@
       "portee": "Le Conseil d'État juge que la responsabilité sans faute pour rupture d'égalité devant les charges publiques ne peut être engagée dès lors que le demandeur, informé par les réserves de l'accord préalable et ses contacts avec l'administration, ne pouvait ignorer que le permis de construire ne découlait pas nécessairement de cet accord et devait envisager l'éventualité d'un refus pour des motifs légitimes tirés de l'intérêt de la circulation et de l'insuffisance du stationnement. Ayant assumé ce risque en connaissance de cause, il ne peut faire supporter par l'État les conséquences onéreuses du refus.",
       "slugFiche": "ce-1977-ste-nvlle-du-palais-des-sports",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1977-07-22/95443",
-      "liees": [],
+      "liees": [
+        "ce-1998-sille"
+      ],
       "complete": true
     },
     {
@@ -8657,7 +8861,9 @@
       "portee": "Le juge administratif des referes est competent pour ordonner, en application de son pouvoir general de prendre toutes mesures utiles en cas d'urgence, l'expulsion d'un usager d'un etablissement public administratif dont le maintien dans les lieux compromet le fonctionnement normal du service, lorsque cette mesure est imposee par l'urgence et ne se heurte a aucune contestation serieuse.",
       "slugFiche": "ce-1978-lecoq",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1978-03-03/06079",
-      "liees": [],
+      "liees": [
+        "tc-1973-cne-de-rueil-malmaison"
+      ],
       "complete": true
     },
     {
@@ -8721,7 +8927,9 @@
       "portee": "Lorsqu'un dommage survenu au cours d'une opération de police tendant à assurer la protection des personnes et des biens trouve essentiellement son origine dans les conditions d'organisation de cette mission, celle-ci relève de la police administrative et les litiges en résultant relèvent de la compétence de la juridiction administrative, alors même que des fautes seraient également alléguées dans la réaction aux agissements des malfaiteurs.",
       "slugFiche": "tc-1978-ste-le-profil",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1978-03-10/02496",
-      "liees": [],
+      "liees": [
+        "tc-1951-noualek"
+      ],
       "complete": true
     },
     {
@@ -8762,7 +8970,9 @@
       "portee": "Le Conseil d'État juge que, lorsque le législateur institue un dispositif de réorganisation d'une profession comportant nécessairement l'éviction de certains opérateurs préexistants — ici par l'attribution de zones exclusives d'intervention — dans la poursuite d'un objectif d'intérêt général, cette éviction doit être regardée comme voulue par le législateur et exclut, par suite, toute indemnisation sur le fondement de la responsabilité sans faute pour rupture d'égalité devant les charges publiques.",
       "slugFiche": "ce-1978-perthuis",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007672789",
-      "liees": [],
+      "liees": [
+        "ce-2007-gardedieu"
+      ],
       "complete": true
     },
     {
@@ -8824,7 +9034,11 @@
       "portee": "La décision refuse l'invocabilité directe des directives communautaires par les particuliers à l'appui d'un recours dirigé contre un acte administratif individuel, alors même que le délai de transposition est expiré. Elle réserve la compétence des autorités nationales pour déterminer la forme et les moyens d'exécution des directives, sous le contrôle du juge national, et limite l'invocation du droit de l'Union à l'exception d'illégalité tirée de la contrariété de la réglementation nationale à ses objectifs. Cette solution sera abandonnée par le Conseil d'État en 2009.",
       "slugFiche": "ce-1978-cohn-bendit",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1978-12-22/11604",
-      "liees": [],
+      "liees": [
+        "cjce-1974-van-duyn",
+        "ce-1984-fede-fr-des-stes-de-protection-de-la-nature",
+        "ce-1998-tete"
+      ],
       "complete": true
     },
     {
@@ -8867,7 +9081,9 @@
       "portee": "La responsabilité de l'État peut être engagée pour faute lourde dans l'exercice de la fonction juridictionnelle administrative, mais l'autorité de la chose jugée s'oppose à une action fondée sur le contenu d'une décision définitive ; exception postérieure en cas de violation manifeste du droit de l'Union européenne (CE, 2008, Gestas).",
       "slugFiche": "ce-1978-darmont",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1978-12-29/96004",
-      "liees": [],
+      "liees": [
+        "ce-2004-popin"
+      ],
       "complete": true
     },
     {
@@ -8929,7 +9145,9 @@
       "portee": "La décision précise que le juge de l'excès de pouvoir exerce un contrôle restreint, limité à l'erreur manifeste d'appréciation, sur le classement de terrains dans un plan d'occupation des sols. Elle pose qu'aucune disposition n'impose la motivation des arrêtés rendant publics ces plans ni le report systématique des périmètres de zones d'aménagement différé sur les documents graphiques. Elle précise enfin que l'administration n'est pas tenue de réserver immédiatement des terrains destinés à une infrastructure dont la réalisation n'est prévue qu'à moyen terme.",
       "slugFiche": "ce-1979-cne-de-bouchemaine",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1979-03-23/09860",
-      "liees": [],
+      "liees": [
+        "ce-1981-asso-de-defense-du-site-de-sonchamp"
+      ],
       "complete": true
     },
     {
@@ -8950,7 +9168,10 @@
       "portee": "La Cour subordonne l'effet direct d'une directive, même précise et inconditionnelle, à l'expiration du délai imparti à l'État membre pour la transposer : avant ce terme, l'État reste libre et le particulier ne peut ni invoquer la directive ni se prévaloir d'une confiance légitime dans son application anticipée. Après l'expiration du délai, en revanche, l'État défaillant ne peut opposer aux particuliers le non-accomplissement de ses propres obligations, de sorte que le juge national doit écarter la disposition nationale incompatible à l'égard de qui s'est conformé à la directive.",
       "slugFiche": "cjce-1979-mp-c-ratti",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=148/78",
-      "liees": [],
+      "liees": [
+        "cjce-1986-marshall",
+        "ce-1989-nicolo"
+      ],
       "complete": true
     },
     {
@@ -8993,7 +9214,9 @@
       "portee": "Le Tribunal des conflits juge que le service d'enlèvement des ordures ménagères, exploité en régie et financé uniquement par le produit de la taxe communale, revêt un caractère administratif exclusif de toute qualification industrielle ou commerciale. Il pose ainsi le critère du mode de financement, par l'impôt ou par la redevance, comme déterminant de la qualification SPA/SPIC de ce service.",
       "slugFiche": "tc-1979-synd-d-amenagement-de-cergy-pontoise",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1979-05-28/02120",
-      "liees": [],
+      "liees": [
+        "ce-1992-ste-hofmiller"
+      ],
       "complete": true
     },
     {
@@ -9394,7 +9617,9 @@
       "portee": "La décision précise que les conclusions dirigées contre un décret approuvant un schéma directeur d'aménagement et d'urbanisme sont recevables, en dépit de l'expiration du délai de droit commun, lorsqu'elles sont fondées sur des illegalités que seule la consultation de documents graphiques non publiés permettait de connaître ; elles demeurent en revanche irrecevables pour les autres moyens. Elle pose par ailleurs que le contenu d'un tel schéma directeur n'est soumis qu'à un contrôle restreint, limité à l'erreur manifeste d'appréciation des besoins d'aménagement et des nécessités de protection de l'environnement.",
       "slugFiche": "ce-1981-asso-de-defense-du-site-de-sonchamp",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/analyse/1981-07-24/04816",
-      "liees": [],
+      "liees": [
+        "ce-1979-cne-de-bouchemaine"
+      ],
       "complete": true
     },
     {
@@ -9435,7 +9660,10 @@
       "portee": "L'article 34 de la Constitution, qui réserve au législateur les garanties fondamentales des libertés publiques, n'a pas retiré au Gouvernement le pouvoir de police générale nationale qu'il exerçait antérieurement en vertu de ses pouvoirs propres. Fondé sur les articles 21 et 37 de la Constitution, ce pouvoir permet au Gouvernement d'édicter des mesures de police applicables à l'ensemble du territoire apportant aux libertés des usagers des limitations nécessaires à la sauvegarde de la sécurité, sous réserve d'un contrôle de proportionnalité entre les inconvénients exceptionnels de la mesure et l'amélioration globale de sécurité attendue.",
       "slugFiche": "ce-1982-asso-auto-defense",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1982-01-22/20758",
-      "liees": [],
+      "liees": [
+        "ce-1973-asso-culturelle-des-israelites-nord-africains-de-paris",
+        "ce-2007-le-gac"
+      ],
       "complete": true
     },
     {
@@ -9898,7 +10126,9 @@
       "portee": "Le Conseil d'État juge qu'un chemin rural, appartenant au domaine privé de la commune en application de l'article 1er de l'ordonnance du 7 janvier 1959, ne relève pas du contentieux administratif pour ce qui concerne les litiges relatifs à sa gestion, tels que le refus de permission de voirie et la demande indemnitaire qui s'y attache. La juridiction administrative n'est dès lors pas compétente pour en connaître, ce contentieux relevant du juge judiciaire en tant que gestion ordinaire du domaine privé.",
       "slugFiche": "ce-1984-ste-civ-du-domaine-du-bernet",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1984-01-20/16615",
-      "liees": [],
+      "liees": [
+        "ce-1991-ste-endless-int-l"
+      ],
       "complete": true
     },
     {
@@ -10044,7 +10274,9 @@
       "portee": "La décision admet que si les autorités nationales demeurent seules compétentes pour déterminer la forme et les moyens d'exécution d'une directive, elles ne peuvent légalement édicter des dispositions réglementaires contraires aux objectifs qu'elle définit. Elle étend ainsi, avant même l'abandon de la jurisprudence Cohn-Bendit pour les actes non réglementaires, l'invocabilité des directives non transposées aux actes réglementaires pris en méconnaissance de leurs objectifs.",
       "slugFiche": "ce-1984-fede-fr-des-stes-de-protection-de-la-nature",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1984-12-07/41971",
-      "liees": [],
+      "liees": [
+        "ce-1978-cohn-bendit"
+      ],
       "complete": true
     },
     {
@@ -10105,7 +10337,9 @@
       "portee": "La décision précise que le silence gardé pendant plus de quatre mois sur une demande de communication des motifs d’une décision implicite de rejet ne fait pas naître une nouvelle décision implicite détachable, susceptible de recours. Ce silence permet seulement de contester sans condition de délai la décision implicite initiale, devenue illégale faute de communication de ses motifs.",
       "slugFiche": "ce-1985-testa",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1985-03-29/45311",
-      "liees": [],
+      "liees": [
+        "ce-2016-czabaj"
+      ],
       "complete": true
     },
     {
@@ -10376,7 +10610,9 @@
       "portee": "La Cour juge qu'une directive ne peut, par elle-même, créer d'obligations à la charge d'un particulier et ne peut être invoquée en tant que telle à son encontre, le caractère contraignant de la directive n'existant, selon l'article 189 du traité, qu'à l'égard de l'État membre destinataire. Elle précise cependant qu'une directive suffisamment précise et inconditionnelle peut être invoquée contre l'État quelle que soit la qualité en laquelle il agit, y compris comme employeur, afin d'éviter qu'il ne tire avantage de sa propre méconnaissance du droit communautaire.",
       "slugFiche": "cjce-1986-marshall",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=152/84",
-      "liees": [],
+      "liees": [
+        "cjce-1979-mp-c-ratti"
+      ],
       "complete": true
     },
     {
@@ -10481,7 +10717,11 @@
       "portee": "Le retrait du passeport d'un débiteur fiscal, décidé en dehors de toute poursuite pénale ou contrainte par corps, porte atteinte à la liberté fondamentale d'aller et venir et, étant manifestement insusceptible de se rattacher à l'exercice d'un pouvoir conféré par la loi à l'administration pour le recouvrement des impôts directs, constitue une voie de fait relevant de la compétence du juge judiciaire.",
       "slugFiche": "tc-1986-eucat",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1986-06-09/02434",
-      "liees": [],
+      "liees": [
+        "ce-1949-carlier",
+        "tc-1966-guignon",
+        "tc-1997-eprefet-de-paris"
+      ],
       "complete": true
     },
     {
@@ -10501,7 +10741,9 @@
       "portee": "Une charrette à bras utilisée par un service municipal de voirie a le caractère d'un véhicule au sens de l'article premier de la loi du 31 décembre 1957 ; les actions en responsabilité pour les dommages qu'elle cause relèvent par conséquent de la compétence exclusive du juge judiciaire.",
       "slugFiche": "ce-1986-curtol",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1986-06-25/60278",
-      "liees": [],
+      "liees": [
+        "tc-1963-caruelle"
+      ],
       "complete": true
     },
     {
@@ -10689,7 +10931,9 @@
       "portee": "Le litige oppossant une société usagère d'un service public d'assainissement géré en affermage à la société fermère chargée de la facturation des redevances concerne le prix d'un service et ne met en cause que les droits nés des rapports entre deux personnes privées ; il relève dès lors du juge judiciaire, la qualification législative du service d'assainissement comme SPIC emportant compétence judiciaire pour les rapports entre le fermier et l'usager.",
       "slugFiche": "tc-1987-lhoste",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1987-01-12/02432",
-      "liees": [],
+      "liees": [
+        "ce-2009-beaufils"
+      ],
       "complete": true
     },
     {
@@ -11069,7 +11313,9 @@
       "portee": "Le refus de renouveler un passeport à un débiteur fiscal, en dehors de poursuites pénales, d'une contrainte par corps ou de l'application du décret du 7 décembre 1792, porte atteinte à la liberté fondamentale d'aller et venir et, étant manifestement insusceptible de se rattacher à l'exercice d'un pouvoir conféré par la loi à l'administration, a le caractère d'une voie de fait entraînant la nullité de la mesure.",
       "slugFiche": "ce-1988-plante",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1988-05-04/60590",
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -11195,7 +11441,9 @@
       "portee": "Une condition sociale, telle que l’emploi de chomeurs de longue duree, peut etre imposee dans un marche public de travaux, a condition de ne produire aucun effet discriminatoire, direct ou indirect, a l’egard des soumissionnaires des autres Etats membres, et d’etre expressement mentionnee dans l’avis de marche. La verification de l’aptitude technique des candidats et l’attribution du marche a l’offre economiquement la plus avantageuse constituent deux operations distinctes, chacune soumise a ses propres exigences de publicite.",
       "slugFiche": "cjce-1988-beentjes",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=31/87",
-      "liees": [],
+      "liees": [
+        "cjce-2002-concordia-bus-finland"
+      ],
       "complete": true
     },
     {
@@ -11468,7 +11716,14 @@
       "portee": "En jugeant du bien-fondé du moyen tiré de l'incompatibilité d'une loi postérieure avec un traité, plutôt que de se déclarer incompétent comme il le faisait depuis CE, sect., 1968, Synd. général des fabricants de semoules de Fr., le Conseil d'État affirme implicitement mais nécessairement sa compétence pour contrôler la compatibilité d'une loi, même postérieure, avec un traité international, et pour écarter, le cas échéant, son application. Il tire ainsi les conséquences de l'article 55 de la Constitution et rejoint la position adoptée quatorze ans plus tôt par la Cour de cassation (Cass., ch. mixte, 1975, Sté des cafés Jacques Vabre).",
       "slugFiche": "ce-1989-nicolo",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1989-10-20/108243",
-      "liees": [],
+      "liees": [
+        "cjce-1979-mp-c-ratti",
+        "ce-2007-gardedieu",
+        "ce-1997-aquarone",
+        "ce-1990-gisti",
+        "ce-1952-kirkwood",
+        "ce-2012-gisti"
+      ],
       "complete": true
     },
     {
@@ -11678,7 +11933,10 @@
       "portee": "Le Conseil d'État interprète lui-même, sans mention d'un renvoi à l'avis du ministre des Affaires étrangères, une stipulation d'une convention franco-algérienne dont le sens était contesté, retenant qu'elle se rapporte aux enfants mineurs de 18 ans au sens du droit français et non de 19 ou 21 ans au sens du droit algérien. Il affirme ainsi implicitement mais nécessairement sa compétence pour interpréter directement les traités internationaux, mettant fin à la pratique du renvoi préjudiciel obligatoire.",
       "slugFiche": "ce-1990-gisti",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1990-06-29/78519",
-      "liees": [],
+      "liees": [
+        "ce-1989-nicolo",
+        "ce-1999-chevrol-benkeddach"
+      ],
       "complete": true
     },
     {
@@ -11699,7 +11957,9 @@
       "portee": "Le Conseil d'État juge qu'une association privée peut être regardée comme gérant un service public communal en l'absence même de toute prérogative de puissance publique, dès lors qu'un faisceau d'indices — création par la commune, financement majoritaire, aides indirectes, composition et présidence de son organe dirigeant par des élus municipaux — révèle l'emprise de la collectivité sur son activité d'intérêt général. Cette qualification emporte l'application de la loi du 17 juillet 1978 sur la communication des documents administratifs à ses comptes.",
       "slugFiche": "ce-1990-ville-de-melun-et-asso-melun-culture-loisirs",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1990-07-20/69867",
-      "liees": [],
+      "liees": [
+        "ce-2007-aprei"
+      ],
       "complete": true
     },
     {
@@ -11720,7 +11980,9 @@
       "portee": "La décision étend au règlement communautaire la solution retenue pour les traités : le juge administratif écarte l'application d'une loi incompatible avec un règlement communautaire et en tire les conséquences sur la légalité des actes réglementaires pris sur son fondement, faute de base légale.",
       "slugFiche": "ce-1990-boisdet",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1990-09-24/58657",
-      "liees": [],
+      "liees": [
+        "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
+      ],
       "complete": true
     },
     {
@@ -12058,7 +12320,9 @@
       "portee": "Le Tribunal des conflits juge que la résiliation d'une convention d'occupation du domaine public et l'expulsion consécutive de l'occupant, portant sur des locaux appartenant au domaine public, ne portent pas, par elles-mêmes, atteinte à la propriété ou à une liberté fondamentale, de sorte que ce contentieux relève du juge administratif. Il juge en revanche que la destruction, sans urgence, des biens mobiliers de l'occupant excède le cadre normal de l'expulsion domaniale et constitue une voie de fait dont la réparation relève du juge judiciaire.",
       "slugFiche": "tc-1991-asso-mjc-boris-vian",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1991-07-04/02662",
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -12079,7 +12343,9 @@
       "portee": "Les litiges relatifs a la situation individuelle des agents d'un service public industriel et commercial relevent de la competence judiciaire, a l'exception de ceux qui interessent les agents ayant la qualite de fonctionnaire, l'agent charge de la direction de l'ensemble du service et le chef de la comptabilite s'il a la qualite de comptable public.",
       "slugFiche": "tc-1991-pillard",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1991-07-04/02670",
-      "liees": [],
+      "liees": [
+        "ce-1921-ste-gale-d-armement"
+      ],
       "complete": true
     },
     {
@@ -12145,7 +12411,9 @@
       "portee": "Le Conseil d'État juge que, dès lors que les locaux occupés ne font pas partie du domaine public communal et que la commune, en autorisant leur occupation provisoire, n'a confié à l'occupant aucune mission de service public, le litige né de cette occupation échappe à la compétence de la juridiction administrative, y compris pour les actes qui s'y rattachent tels qu'un commandement de payer émis par le percepteur ou une demande indemnitaire consécutive à la mise en demeure de quitter les lieux.",
       "slugFiche": "ce-1991-ste-endless-int-l",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1991-10-09/80610",
-      "liees": [],
+      "liees": [
+        "ce-1984-ste-civ-du-domaine-du-bernet"
+      ],
       "complete": true
     },
     {
@@ -12290,7 +12558,9 @@
       "portee": "Le Conseil d'État juge qu'une loi incompatible avec les objectifs d'une directive communautaire rend illegales les décisions réglementaires et individuelles prises sur son fondement, et que cette illegalité est de nature à engager la responsabilité pour faute de l'État envers les opérateurs économiques ayant subi un préjudice direct de ce fait. Le préjudice réparable correspond à la différence entre les recettes perçues sur la base des prix illegalement fixés et celles qui auraient été perçues sur la base de prix légalement fixés selon la législation nationale de contrôle des prix.",
       "slugFiche": "ce-1992-ste-arizona-tobacco-products",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1992-02-28/87753",
-      "liees": [],
+      "liees": [
+        "ce-2007-gardedieu"
+      ],
       "complete": true
     },
     {
@@ -12352,7 +12622,9 @@
       "portee": "Le Conseil d'État, statuant en avis, juge que le mode de financement par redevance calculée en fonction de l'importance du service rendu, en substitution d'une recette fiscale, confie à un service d'enlèvement des ordures ménagères le caractère industriel et commercial, quel que soit son mode de gestion. Il en déduit que les litiges relatifs au paiement de cette redevance relèvent de la compétence judiciaire, faisant du mode de financement le critère déterminant de la qualification.",
       "slugFiche": "ce-1992-ste-hofmiller",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1992-04-10/132539",
-      "liees": [],
+      "liees": [
+        "tc-1979-synd-d-amenagement-de-cergy-pontoise"
+      ],
       "complete": true
     },
     {
@@ -12436,7 +12708,9 @@
       "portee": "Le Conseil d'État juge qu'une circulaire ministérielle suspendant la coopération scientifique et technique avec un État étranger et interdisant l'inscription de ses ressortissants dans les établissements d'enseignement supérieur n'est pas détachable de la conduite des relations diplomatiques de la France et échappe à tout contrôle juridictionnel.",
       "slugFiche": "ce-1992-gisti",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1992-09-23/120437",
-      "liees": [],
+      "liees": [
+        "ce-1962-prince-sliman-bey"
+      ],
       "complete": true
     },
     {
@@ -13150,7 +13424,9 @@
       "portee": "Le Conseil d'État juge que la décision présidentielle de reprendre les essais nucléaires en Polynésie française, prise en préalable à la négociation d'un traité international sur le désarmement nucléaire, n'est pas détachable de la conduite des relations internationales de la France et échappe, par suite, à tout contrôle juridictionnel, y compris en Assemblée du contentieux.",
       "slugFiche": "ce-1995-asso-greenpeace-fr",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1995-09-29/171277",
-      "liees": [],
+      "liees": [
+        "ce-1999-ste-heli-union"
+      ],
       "complete": true
     },
     {
@@ -13526,7 +13802,9 @@
       "portee": "Le Conseil d'État juge qu'un tiers à un contrat administratif est recevable à demander, par la voie du recours pour excès de pouvoir, l'annulation des clauses de ce contrat qui présentent un caractère réglementaire, c'est-à-dire qui édictent des règles générales et impersonnelles s'imposant à des personnes extérieures au contrat. Ces clauses réglementaires sont ainsi traitées comme divisibles du reste du contrat, ouvrant une voie de contestation directe distincte de celle, réservée aux parties et concurrents évincés, portant sur la validité du contrat dans son ensemble.",
       "slugFiche": "ce-1996-cayzeele",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1996-07-10/138536",
-      "liees": [],
+      "liees": [
+        "ce-2014-dpt-du-tarn-et-garonne"
+      ],
       "complete": true
     },
     {
@@ -13652,7 +13930,9 @@
       "portee": "L'arrêt réaffirme que le pouvoir d'adresser des injonctions à l'administration, qui prive ses décisions de leur caractère exécutoire, est de même nature que celui d'annuler ou de réformer ses décisions dans l'exercice de ses prérogatives de puissance publique, et relève pour cette raison de la seule compétence de la juridiction administrative, hors les matières réservées par nature à l'autorité judiciaire. L'article 136 du code de procédure pénale, qui déroge au principe de séparation des autorités administratives et judiciaires, ne peut fonder la compétence du juge judiciaire pour faire obstacle à l'exécution d'une décision administrative en dehors des cas de voie de fait. Une mesure d'exécution forcée, même irrégulière, ne constitue une voie de fait que si elle est manifestement insusceptible de se rattacher à un pouvoir appartenant à l'administration ; tel n'est pas le cas d'une mesure de consignation à bord prise sur le fondement d'un texte conférant à l'administration un pouvoir d'exécution forcée en matière de police des étrangers, alors même que cette mesure serait irrégulière.",
       "slugFiche": "tc-1997-prefet-de-police",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/1997-05-12/03056",
-      "liees": [],
+      "liees": [
+        "ce-1949-carlier"
+      ],
       "complete": true
     },
     {
@@ -13672,7 +13952,9 @@
       "portee": "Il n'y a pas voie de fait lorsque les actes contestés, même illégaux, ne sont pas manifestement insusceptibles de se rattacher à un pouvoir conféré par la loi à l'administration ; l'article 136 du code de procédure pénale ne fonde pas la compétence judiciaire pour adresser des injonctions à l'administration en dehors de la voie de fait.",
       "slugFiche": "tc-1997-eprefet-de-paris",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000007607110/",
-      "liees": [],
+      "liees": [
+        "tc-1986-eucat"
+      ],
       "complete": true
     },
     {
@@ -13693,7 +13975,10 @@
       "portee": "Le Conseil d'État juge qu'aucune disposition de valeur constitutionnelle, y compris l'article 55, n'habilite le juge administratif à faire prévaloir la coutume internationale sur la loi en cas de conflit entre ces deux normes. Il crée ainsi une dissymétrie entre le droit conventionnel, dont la supériorité sur la loi résulte exprément de l'article 55 et s'impose au juge depuis CE, ass., 1989, Nicolo, et le droit international coutumier, dont l'applicabilité en droit interne est admise implicitement sans qu'aucun fondement constitutionnel n'en assure la primauté sur la loi.",
       "slugFiche": "ce-1997-aquarone",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1997-06-06/148683",
-      "liees": [],
+      "liees": [
+        "ce-1989-nicolo",
+        "ce-2011-saleh"
+      ],
       "complete": true
     },
     {
@@ -13987,7 +14272,9 @@
       "portee": "Le Conseil d'État juge que des règles internes, y compris d'origine purement jurisprudentielle, dépourvues de mesures de publicité pour la passation des concessions de travaux publics et devenues incompatibles avec les objectifs d'une directive après l'expiration de son délai de transposition, ne peuvent plus servir de base légale à un acte administratif pris pour leur application. Il étend ainsi l'exception d'illégalité fondée sur la méconnaissance des objectifs d'une directive à l'état général du droit interne, sans pour autant reconnaître l'effet direct de la directive elle-même.",
       "slugFiche": "ce-1998-tete",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-02-06/138777",
-      "liees": [],
+      "liees": [
+        "ce-1978-cohn-bendit"
+      ],
       "complete": true
     },
     {
@@ -14008,7 +14295,9 @@
       "portee": "Le Conseil d'État juge qu'en l'absence d'une disposition législative le permettant expressément et hors situation d'urgence dûment établie, l'administration ne peut procéder elle-même à l'exécution forcée de ses décisions, en particulier lorsque leur violation éventuelle est passible de sanctions pénales. En refusant de rendre le libre usage d'un bien muré en exécution d'un tel acte irrégulier, l'administration porte une atteinte illegale au droit de propriété constitutive d'une décision manifestement insusceptible de se rattacher à l'exercice d'un pouvoir administratif, caractérisant ainsi une voie de fait et rendant la décision nulle et non avenue.",
       "slugFiche": "ce-1998-auger",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-03-11/169794",
-      "liees": [],
+      "liees": [
+        "tc-2013-bergoend"
+      ],
       "complete": true
     },
     {
@@ -14114,7 +14403,9 @@
       "portee": "La responsabilité du maître de l'ouvrage peut être engagée sans exiger une faute lourde lorsque ses services ont accepté sans réserves un projet conforme à des normes techniques qu'ils avaient eux-mêmes imposées mais révélées inadaptées.",
       "slugFiche": "ce-1998-ste-dodin",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-05-27/149830",
-      "liees": [],
+      "liees": [
+        "ce-2011-krupa"
+      ],
       "complete": true
     },
     {
@@ -14178,7 +14469,9 @@
       "portee": "La décision pose que, lorsque l’étendue réelle des conséquences dommageables d’un même fait n’est connue que postérieurement au jugement de première instance, la partie requérante est recevable à augmenter en appel le montant de ses prétentions par rapport à l’indemnité demandée devant les premiers juges.",
       "slugFiche": "ce-1998-dpt-de-l-isere",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-07-08/132302",
-      "liees": [],
+      "liees": [
+        "ce-1956-ville-de-paris-et-urbach"
+      ],
       "complete": true
     },
     {
@@ -14200,7 +14493,9 @@
       "portee": "Le Conseil d’État précise qu’un avis aux importateurs publié au Journal officiel peut constituer un acte administratif faisant grief lorsqu’il produit par lui-même des effets juridiques sur la délivrance de licences d’importation. Il conditionne ainsi la recevabilité du recours à la portée décisoire de l’avis, indépendamment de sa forme non signée et de sa présentation comme mesure d’information.",
       "slugFiche": "ce-1998-ste-demesa",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-09-18/120378",
-      "liees": [],
+      "liees": [
+        "ce-2020-gisti"
+      ],
       "complete": true
     },
     {
@@ -14221,7 +14516,9 @@
       "portee": "Pose que les contrats de recrutement d’agents non titulaires, eu égard à la nature particulière des liens qu’ils établissent entre la collectivité et ses agents, sont au nombre des actes dont l’annulation peut être demandée au juge administratif par un tiers justifiant d’un intérêt suffisant. Un conseiller municipal peut ainsi utilement invoquer, à l’appui d’un tel recours, la méconnaissance des compétences du conseil municipal.",
       "slugFiche": "ce-1998-cne-de-lisieux",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-10-30/149662",
-      "liees": [],
+      "liees": [
+        "ce-2015-castronovo"
+      ],
       "complete": true
     },
     {
@@ -14285,7 +14582,9 @@
       "portee": "Le Conseil d'État juge qu'un professionnel de l'immobilier, qui ne pouvait ignorer les aléas pesant sur un projet subordonné à une modification du plan d'occupation des sols et à l'accord du conseil municipal, a assumé ce risque en toute connaissance de cause et ne peut, dès lors, invoquer un préjudice anormal justifiant une indemnisation sans faute. Il juge néanmoins que la commune commet une faute lorsqu'elle incite fermement le porteur de projet à engager des frais d'études sous peine de rupture des pourparlers, ouvrant droit à une réparation partielle tenant compte du partage de responsabilité résultant de l'imprudence du requérant.",
       "slugFiche": "ce-1998-sille",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1998-11-16/175142",
-      "liees": [],
+      "liees": [
+        "ce-1977-ste-nvlle-du-palais-des-sports"
+      ],
       "complete": true
     },
     {
@@ -14433,7 +14732,9 @@
       "portee": "Le Conseil d'État juge qu'une décision ministérielle refusant le renouvellement d'autorisations d'exportation de matériels de guerre et prescrivant leur réimportation, prise pour l'exécution d'un décret transposant une résolution du Conseil de sécurité des Nations unies, n'est pas détachable, dans les circonstances où elle a été prise, de la conduite des relations internationales de la France et échappe, par suite, à tout contrôle juridictionnel.",
       "slugFiche": "ce-1999-ste-heli-union",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1999-03-12/162131",
-      "liees": [],
+      "liees": [
+        "ce-1995-asso-greenpeace-fr"
+      ],
       "complete": true
     },
     {
@@ -14497,7 +14798,10 @@
       "portee": "Le Conseil d'État se déclare incompétent pour apprécier si la condition de réciprocité posée par l'article 55 de la Constitution est remplie, et s'en remet entièrement, sans débat contradictoire, aux observations du ministre des Affaires étrangères : faute de réciprocité constatée par le ministre, le requérant n'est pas fondé à invoquer les stipulations du traité. Cette solution, issue de la jurisprudence Rekhou, sera condamnée par la Cour européenne des droits de l'homme puis abandonnée par le Conseil d'État lui-même.",
       "slugFiche": "ce-1999-chevrol-benkeddach",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1999-04-09/180277",
-      "liees": [],
+      "liees": [
+        "cedh-2003-chevrol-c-fr",
+        "ce-1990-gisti"
+      ],
       "complete": true
     },
     {
@@ -14646,7 +14950,10 @@
       "portee": "Le Conseil d'État juge que ni le fondement législatif de l'activité de loterie ni les caractéristiques générales des jeux de hasard ne suffisent à caractériser une mission de service public confiée à la Française des jeux, alors même que cette société privée exerce son activité en vertu d'un décret. Il en déduit que les décisions de son président-directeur général ne sont pas des actes administratifs et que le juge administratif est incompétent pour en connaître.",
       "slugFiche": "ce-1999-rolin",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1999-10-27/171169",
-      "liees": [],
+      "liees": [
+        "ce-1948-angrand",
+        "ce-2007-aprei"
+      ],
       "complete": true
     },
     {
@@ -14833,7 +15140,9 @@
       "portee": "Le Conseil d'État juge qu'il ne lui appartient pas de connaître, statuant au contentieux, du décret du Président de la République relatif à la composition du Gouvernement, pris sur proposition du Premier ministre en application de l'article 8 alinéa 1 de la Constitution, cet acte se rattachant aux rapports entre pouvoirs publics constitutionnels.",
       "slugFiche": "ce-1999-lemaire",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1999-12-29/196858",
-      "liees": [],
+      "liees": [
+        "ce-1933-desreumeaux"
+      ],
       "complete": true
     },
     {
@@ -14963,7 +15272,9 @@
       "portee": "Le Conseil d'État précise que le principe de laïcité et de neutralité des services publics fait obstacle à ce que les agents du service de l'enseignement public, qu'ils soient ou non chargés de fonctions d'enseignement, manifestent leurs croyances religieuses dans le cadre du service, notamment en portant un signe destiné à marquer leur appartenance à une religion.",
       "slugFiche": "ce-2000-marteaux",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2000-05-03/217017",
-      "liees": [],
+      "liees": [
+        "ce-1912-abbe-bouteyre"
+      ],
       "complete": true
     },
     {
@@ -15278,7 +15589,9 @@
       "portee": "La loi du 31 décembre 1957 ne vise que les actions en responsabilité extracontractuelle et suppose que le véhicule soit la cause déterminante du dommage ; lorsque le préjudice résulte de choix techniques inadaptés dans une opération d'ensemble de travaux publics, ou relève d'un contrat de droit public, la compétence administrative demeure entière.",
       "slugFiche": "tc-2001-cne-de-courdimanche",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/TC/decision/2001-02-12/03243",
-      "liees": [],
+      "liees": [
+        "ce-1969-ville-de-perpignan"
+      ],
       "complete": true
     },
     {
@@ -15428,7 +15741,9 @@
       "portee": "Le Conseil d’État applique la théorie du fonctionnaire de fait à une autorité maintenue irrégulièrement en fonctions au-delà de la limite d’âge. Il juge que l’irrégularité de cette investiture ne suffit pas à vicier les actes pris tant que la nomination ou le maintien n’a pas été annulé, ce qui préserve la validité des délégations de signature et des décisions prises sur leur fondement.",
       "slugFiche": "ce-2001-mtimet",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2001-05-16/231717",
-      "liees": [],
+      "liees": [
+        "cass-1883-engel-et-pelissier-aff-des-mariages-de-montrouge"
+      ],
       "complete": true
     },
     {
@@ -15635,7 +15950,9 @@
       "portee": "Le pouvoir adjudicateur qui attribue un marche a l’offre economiquement la plus avantageuse peut prendre en compte des criteres ecologiques, a condition qu’ils soient lies a l’objet du marche, ne lui conferent pas une liberte inconditionnee de choix, soient expressement mentionnes dans les documents de la procedure et respectent les principes fondamentaux du droit de l’Union, notamment la non-discrimination. Le principe d’egalite de traitement ne s’oppose pas a la prise en compte de tels criteres au seul motif que l’entreprise liee au pouvoir adjudicateur serait l’une des rares a pouvoir les satisfaire.",
       "slugFiche": "cjce-2002-concordia-bus-finland",
       "urlOfficielle": "https://infocuria.curia.europa.eu/tabs/redirect/juris/liste.jsf?language=fr&num=C-513/99",
-      "liees": [],
+      "liees": [
+        "cjce-1988-beentjes"
+      ],
       "complete": true
     },
     {
@@ -15677,7 +15994,10 @@
       "portee": "La décision précise que le juge administratif contrôle la régularité du décret de publication d'un engagement international au regard de l'article 53 de la Constitution, mais qu'il ne peut, dès lors que la ratification a été autorisée par une loi, se prononcer sur la constitutionnalité de cette loi d'autorisation. Elle étend à ce contentieux la théorie de la loi-écran et exclut tout contrôle indirect de la constitutionnalité de la loi par le biais du décret de publication.",
       "slugFiche": "ce-2002-cne-de-porta",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2002-07-08/239366",
-      "liees": [],
+      "liees": [
+        "ce-1936-arrighi-2",
+        "ce-2010-fede-nat-de-la-libre-pensee"
+      ],
       "complete": true
     },
     {
@@ -15869,7 +16189,10 @@
       "portee": "L'appréciation de la condition de réciprocité d'un traité international relève de la compétence naturelle du juge, appelé à trancher l'ensemble des questions de fait et de droit relevant de sa compétence, et ne saurait être renvoyée de manière décisive et sans recours à l'autorité ministérielle.",
       "slugFiche": "cedh-2003-chevrol-c-fr",
       "urlOfficielle": "https://hudoc.echr.coe.int/fre?i=001-65498",
-      "liees": [],
+      "liees": [
+        "ce-2010-cheriet-benseghir",
+        "ce-1999-chevrol-benkeddach"
+      ],
       "complete": true
     },
     {
@@ -15933,7 +16256,9 @@
       "portee": "La Cour européenne des droits de l’homme nuance CEDH, 28 septembre 1995, Procola c/ Luxembourg : la dualité des fonctions consultatives et juridictionnelles au sein d’un Conseil d’État n’entraîne pas, en soi et dans l’abstrait, une violation de l’article 6 § 1 de la Convention. Un problème d’impartialité objective ne naît que lorsque les avis consultatifs et le contentieux ultérieur peuvent passer pour « la même affaire » ou « la même décision » ; à défaut, les craintes des justiciables ne sont pas objectivement justifiées.",
       "slugFiche": "cedh-2003-kleyn-c-pays-bas",
       "urlOfficielle": "https://hudoc.echr.coe.int/fre?i=001-65635",
-      "liees": [],
+      "liees": [
+        "cedh-2006-sacilor-lormines-c-fr"
+      ],
       "complete": true
     },
     {
@@ -16151,7 +16476,9 @@
       "portee": "La décision pose que la justice est rendue de façon indivisible au nom de l’État et que la réparation des dommages nés de l’exercice de la fonction juridictionnelle assurée, sous le contrôle du Conseil d’État, par les juridictions administratives incombe à l’État seul, alors même que la loi a confié cette fonction à des instances relevant d’autres personnes morales. La règle est une règle d’imputation : elle désigne la personne publique responsable sans modifier les conditions de fond de la responsabilité, qui demeurent celles issues de CE, sect., 1978, Darmont.",
       "slugFiche": "ce-2004-popin",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2004-02-27/217257",
-      "liees": [],
+      "liees": [
+        "ce-1978-darmont"
+      ],
       "complete": true
     },
     {
@@ -16763,7 +17090,11 @@
       "portee": "Le Conseil d'État systématise les conditions de l'interventionnisme économique des personnes publiques en dehors de leurs missions de service public, en distinguant deux contrôles cumulatifs : celui de l'accès au marché (compétence de la personne publique, intérêt public pouvant résulter d'une carence de l'initiative privée) et celui des modalités concrètes de l'intervention (absence de distorsion du libre jeu de la concurrence au regard de la situation particulière de la personne publique).",
       "slugFiche": "ce-2006-ordre-des-avocats-au-barreau-de-paris",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2006-05-31/275531",
-      "liees": [],
+      "liees": [
+        "ce-1901-casanova",
+        "ce-1930-ch-synd-du-commerce-en-detail-de-nevers",
+        "ce-1964-ville-de-nanterre"
+      ],
       "complete": true
     },
     {
@@ -16847,7 +17178,10 @@
       "portee": "Le juge du bilan integre les atteintes graves portees a l’environnement parmi les interets publics susceptibles de faire obstacle a une declaration d’utilite publique : lorsque ces atteintes, eu egard a l’interet exceptionnel des sites, especes ou paysages concernes, excedent l’interet de l’operation, elles peuvent lui retirer son caractere d’utilite publique.",
       "slugFiche": "ce-2006-asso-interdep-le-et-interco-pour-la-protection-du-lac-de-sainte-croix-des-lacs-et-sites-du-verdon",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2006-07-10/288108",
-      "liees": [],
+      "liees": [
+        "ce-1971-ville-nouvelle-est",
+        "ce-2013-asso-coordination-interregionale-stop-tht"
+      ],
       "complete": true
     },
     {
@@ -16910,7 +17244,9 @@
       "portee": "La dualite des fonctions consultative et juridictionnelle du Conseil d'Etat n'est pas en soi contraire a l'article 6 § 1 de la Convention, a condition que soient assurees des garanties evitant qu'un meme membre connaisse de la meme affaire dans le cadre des deux fonctions ; en revanche, la nomination d'un membre de la formation de jugement a des fonctions importantes au sein du ministere partie adverse, peu avant ou pendant le delibere, fait naitre des doutes objectivement fondes sur l'independance et l'impartialite de cette formation.",
       "slugFiche": "cedh-2006-sacilor-lormines-c-fr",
       "urlOfficielle": "https://hudoc.echr.coe.int/fre?i=001-77923",
-      "liees": [],
+      "liees": [
+        "cedh-2003-kleyn-c-pays-bas"
+      ],
       "complete": true
     },
     {
@@ -16993,7 +17329,9 @@
       "portee": "Le Conseil d'État précise le régime des ordonnances de l'article 38 non ratifiées à l'expiration du délai d'habilitation : si elles conservent le caractère d'actes administratifs tant qu'elles ne sont pas ratifiées, leurs dispositions relevant du domaine législatif deviennent, passé ce délai, insusceptibles de modification ou d'abrogation par le pouvoir réglementaire, seul le législateur ou une nouvelle habilitation pouvant y procéder. Cette règle joue même lorsque les dispositions en cause sont entachées d'illégalité, l'administration ne pouvant alors que s'abstenir de faire droit à une demande d'abrogation.",
       "slugFiche": "ce-2006-cons-nat-l-de-l-ordre-des-medecins",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2006-12-11/279517",
-      "liees": [],
+      "liees": [
+        "ce-2020-fede-cfdt-des-finances"
+      ],
       "complete": true
     },
     {
@@ -17076,7 +17414,11 @@
       "portee": "Le Conseil d'État consacre un régime autonome de responsabilité de l'État du fait des lois contraires aux engagements internationaux de la France, distinct du régime traditionnel de responsabilité sans faute pour rupture de l'égalité devant les charges publiques : ce second régime, seul jusque-là reconnu, exige un préjudice grave et spécial et une loi n'ayant pas entendu exclure toute indemnisation, alors que le nouveau régime, fondé sur l'obligation de l'État d'assurer le respect des conventions internationales, ne pose pas cette double condition et permet de réparer l'ensemble des préjudices résultant de la méconnaissance des engagements internationaux.",
       "slugFiche": "ce-2007-gardedieu",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2007-02-08/279522",
-      "liees": [],
+      "liees": [
+        "ce-1989-nicolo",
+        "ce-1978-perthuis",
+        "ce-1992-ste-arizona-tobacco-products"
+      ],
       "complete": true
     },
     {
@@ -17120,7 +17462,10 @@
       "portee": "Le Conseil d'État systématise la méthode d'identification du service public géré par une personne privée en distinguant deux hypothèses : lorsque la personne privée est dotée de prérogatives de puissance publique pour l'accomplissement d'une mission d'intérêt général sous contrôle administratif, elle est chargée d'un service public (critères Narcy) ; à défaut de telles prérogatives, elle peut néanmoins être regardée comme assurant une mission de service public si un faisceau d'indices (intérêt général, conditions de création et de fonctionnement, obligations imposées, contrôle des objectifs) révèle l'intention de l'administration de lui confier cette mission, sauf exclusion législative expresse.",
       "slugFiche": "ce-2007-aprei",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2007-02-22/264541",
-      "liees": [],
+      "liees": [
+        "ce-1990-ville-de-melun-et-asso-melun-culture-loisirs",
+        "ce-1999-rolin"
+      ],
       "complete": true
     },
     {
@@ -17142,7 +17487,9 @@
       "portee": "Le pouvoir de police générale du Premier ministre, fondé sur les articles 21 et 37 de la Constitution, inclut les mesures justifiées par les nécessités de l'ordre public, au nombre desquelles figurent les impératifs de santé publique. Lorsque le législateur est intervenu dans un domaine relevant de ce pouvoir, il incombe au Premier ministre d'exercer sa compétence réglementaire sans méconnaître la loi ni en altérer la portée, y compris en adaptant les mesures aux données épidémiologiques disponibles.",
       "slugFiche": "ce-2007-le-gac",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2007-03-19/300467",
-      "liees": [],
+      "liees": [
+        "ce-1982-asso-auto-defense"
+      ],
       "complete": true
     },
     {
@@ -17309,7 +17656,11 @@
       "portee": "Le concurrent évincé de la conclusion d'un contrat administratif dispose d'un recours de pleine juridiction contestant directement la validité de ce contrat ou de certaines de ses clauses divisibles, exerçable dans un délai de deux mois à compter de la publicité appropriée mentionnant la conclusion du contrat, ce qui exclut corrélativement, à compter de la conclusion du contrat, la recevabilité d'un recours pour excès de pouvoir contre les actes détachables préalables ; le juge du contrat, constatant un vice, en apprécie les conséquences et peut prononcer la résiliation, la modification de clauses, la poursuite de l'exécution sous réserve de régularisation, l'indemnisation, ou l'annulation totale ou partielle après vérification de l'absence d'atteinte excessive à l'intérêt général ou aux droits des cocontractants ; pour des motifs de sécurité juridique, ce recours n'est ouvert qu'à l'encontre des contrats dont la procédure de passation a été engagée postérieurement à la décision, sous réserve des actions déjà engagées.",
       "slugFiche": "ce-2007-ste-tropic-travaux-signalisation",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2007-07-16/291545",
-      "liees": [],
+      "liees": [
+        "ce-2009-cne-de-beziers-i",
+        "ce-2014-dpt-du-tarn-et-garonne",
+        "ce-2013-cci-d-angouleme"
+      ],
       "complete": true
     },
     {
@@ -17603,7 +17954,9 @@
       "portee": "L'exploitation des pistes de ski, incluant leur entretien et leur mise en sécurité, constitue un service public industriel et commercial même lorsque la station est exploitée en régie directe par la commune ; les liens entre le service et ses usagers étant des liens de droit privé, les tribunaux judiciaires sont seuls compétents pour statuer sur les litiges avec l'exploitant, que la responsabilité soit recherchée pour faute ou sans faute.",
       "slugFiche": "ce-2009-beaufils",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2009-02-19/293020",
-      "liees": [],
+      "liees": [
+        "tc-1987-lhoste"
+      ],
       "complete": true
     },
     {
@@ -17773,7 +18126,10 @@
       "portee": "La décision abandonne la jurisprudence Cohn-Bendit et pose que tout justiciable peut se prévaloir, à l'appui d'un recours dirigé contre un acte administratif non réglementaire, des dispositions précises et inconditionnelles d'une directive non transposée dans les délais. Elle précise que les dispositions relatives à l'aménagement de la charge de la preuve en matière de discrimination, dépourvues d'effet direct devant le juge administratif en raison de la réserve tenant à la procédure inquisitoriale, appellent néanmoins un régime probatoire prétorien adapté, fondé sur le partage de la charge de la preuve entre le requérant et le défendeur.",
       "slugFiche": "ce-2009-perreux",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2009-10-30/298348",
-      "liees": [],
+      "liees": [
+        "cjce-1970-sace",
+        "cjce-1974-van-duyn"
+      ],
       "complete": true
     },
     {
@@ -17794,7 +18150,9 @@
       "portee": "Une partie a un contrat administratif peut saisir le juge du contrat d’un recours de plein contentieux contestant sa validite. Le juge n’accueille que les irregularites invocables au regard de la loyaute des relations contractuelles et, en tenant compte de la stabilite du lien contractuel, privilegie la poursuite du contrat ou sa resiliation, l’annulation etant reservee au contenu illicite du contrat ou a un vice d’une particuliere gravite affectant le consentement des parties.",
       "slugFiche": "ce-2009-cne-de-beziers-i",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2009-12-28/304802",
-      "liees": [],
+      "liees": [
+        "ce-2007-ste-tropic-travaux-signalisation"
+      ],
       "complete": true
     },
     {
@@ -18045,7 +18403,9 @@
       "portee": "Le Conseil d'État met fin à la jurisprudence Rekhou en affirmant sa compétence pour vérifier lui-même, dans l'exercice de ses pouvoirs d'instruction et après débat contradictoire, si la condition de réciprocité posée par l'article 55 de la Constitution est remplie, au lieu de s'en remettre à l'appréciation exclusive et non contradictoire du ministre des Affaires étrangères. Ce revirement tire les conséquences de la condamnation de la France par la Cour européenne des droits de l'homme pour violation du droit à un tribunal indépendant et impartial.",
       "slugFiche": "ce-2010-cheriet-benseghir",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2010-07-09/317747",
-      "liees": [],
+      "liees": [
+        "cedh-2003-chevrol-c-fr"
+      ],
       "complete": true
     },
     {
@@ -18066,7 +18426,9 @@
       "portee": "Le Conseil d'État précise l'étendue du contrôle du décret de publication d'un traité : il connaît des vices propres de ce décret et du respect de l'article 53 de la Constitution, notamment de l'exigence d'autorisation législative lorsque l'engagement modifie des dispositions de nature législative. En revanche, il refuse de contrôler la conformité du traité à la Constitution ou à d'autres engagements internationaux.",
       "slugFiche": "ce-2010-fede-nat-de-la-libre-pensee",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2010-07-09/327663",
-      "liees": [],
+      "liees": [
+        "ce-2002-cne-de-porta"
+      ],
       "complete": true
     },
     {
@@ -18232,7 +18594,9 @@
       "portee": "Une faute simple de l'administration lors de l'établissement ou du recouvrement de l'impôt engage la responsabilité de l'État si elle cause directement un préjudice, l'exigence de faute lourde étant abandonnée en matière fiscale.",
       "slugFiche": "ce-2011-krupa",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2011-03-21/306225",
-      "liees": [],
+      "liees": [
+        "ce-1998-ste-dodin"
+      ],
       "complete": true
     },
     {
@@ -18421,7 +18785,9 @@
       "portee": "Le Conseil d'État juge que la règle coutumière du droit public international d'immunité d'exécution des États étrangers, qui s'applique dans l'ordre juridique interne en vertu du Préambule de 1946 et de la loi du 9 juillet 1991, est susceptible d'engager la responsabilité sans faute de l'État français sur le fondement de la rupture d'égalité devant les charges publiques, dès lors que son application entraîne un préjudice grave et spécial. Il précise que le caractère général de la règle coutumière ne suffit pas à exclure le caractère spécial du préjudice, lequel s'apprécie au regard du nombre effectif de victimes d'agissements similaires, et que la connaissance par le salarié de la qualité diplomatique de son employeur ne caractérise pas une acceptation du risque de méconnaissance des règles d'ordre public du droit du travail.",
       "slugFiche": "ce-2011-saleh",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2011-10-14/329788",
-      "liees": [],
+      "liees": [
+        "ce-1997-aquarone"
+      ],
       "complete": true
     },
     {
@@ -18462,7 +18828,9 @@
       "portee": "Lorsque le législateur confie à des autorités nationales déterminées le soin de fixer de manière complète les modalités d'exercice d'une police spéciale des communications électroniques, le maire ne peut, au titre de sa police générale ni en se fondant sur le principe de précaution, adopter une réglementation locale portant sur l'implantation des antennes-relais destinée à protéger le public contre les ondes électromagnétiques.",
       "slugFiche": "ce-2011-cne-de-saint-denis",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2011-10-26/326492",
-      "liees": [],
+      "liees": [
+        "ce-1959-ste-les-films-lutetia"
+      ],
       "complete": true
     },
     {
@@ -18482,7 +18850,9 @@
       "portee": "Le Conseil d'État juge que le cumul, dans une même instance, de conclusions en annulation pour excès de pouvoir et de conclusions relevant du plein contentieux ne confère pas à l'ensemble le caractère d'une demande de plein contentieux : chaque chef de conclusions conserve son régime propre. Il juge que les conclusions relatives au principal et celles relatives aux intérêts sont de même nature, de sorte que le requérant recevable à demander par la voie du recours pour excès de pouvoir l'annulation de la décision le privant d'une somme est également recevable, par la même voie et sans ministère d'avocat, à demander l'injonction de versement des intérêts dus de plein droit sur cette somme.",
       "slugFiche": "ce-2011-marcou",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2011-12-09/337255",
-      "liees": [],
+      "liees": [
+        "ce-1912-lafage"
+      ],
       "complete": true
     },
     {
@@ -18586,7 +18956,9 @@
       "portee": "Le Conseil d'État redéfinit et clarifie les critères de l'effet direct des stipulations internationales, hors droit de l'Union européenne : intention exprimée des parties, économie générale du traité, contenu et termes de la stipulation, absence d'exigence d'un acte complémentaire. Il assouplit ainsi le critère en précisant que l'objet de régir les relations entre États doit être exclusif pour exclure l'effet direct, et écarte le critère formel selon lequel la seule désignation des États comme sujets de l'obligation suffirait à le dénier.",
       "slugFiche": "ce-2012-gisti",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2012-04-11/322326",
-      "liees": [],
+      "liees": [
+        "ce-1989-nicolo"
+      ],
       "complete": true
     },
     {
@@ -18651,7 +19023,9 @@
       "portee": "Le Conseil d'État subordonne l'invocabilité d'un traité international à l'appui d'un recours contre la validité d'un acte du droit de l'Union à une double condition : que la nature et l'économie de la convention ne s'y opposent pas, et que ses stipulations soient, par leur contenu, inconditionnelles et suffisamment précises, c'est-à-dire dépourvues de toute subordination à un acte ultérieur. Il précise qu'il lui appartient d'apprécier lui-même cet effet direct en l'absence de difficulté sérieuse, et de saisir la Cour de justice à titre préjudiciel dans le cas contraire, prolongeant ainsi la jurisprudence Arcelor au contentieux de la validité des actes de transposition.",
       "slugFiche": "ce-2012-air-algerie",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2012-12-06/347870",
-      "liees": [],
+      "liees": [
+        "cjce-1974-van-duyn"
+      ],
       "complete": true
     },
     {
@@ -18757,7 +19131,9 @@
       "portee": "Le moyen tire de la meconnaissance du principe de precaution est operant contre une declaration d’utilite publique. Le juge exerce un controle normal sur l’existence d’elements circonstancies accreditant l’hypothese d’un risque grave et irreversible et sur la realite des procedures d’evaluation, puis un controle restreint, limite a l’erreur manifeste d’appreciation, sur le choix des mesures de precaution ; le risque residuel et le cout de ces mesures sont ensuite integres dans la theorie du bilan.",
       "slugFiche": "ce-2013-asso-coordination-interregionale-stop-tht",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2013-04-12/342409",
-      "liees": [],
+      "liees": [
+        "ce-2006-asso-interdep-le-et-interco-pour-la-protection-du-lac-de-sainte-croix-des-lacs-et-sites-du-verdon"
+      ],
       "complete": true
     },
     {
@@ -18800,7 +19176,9 @@
       "portee": "Le Conseil d'État pose que, lorsqu'une décision juridictionnelle postérieure à la clôture de l'instruction conduit le juge à régler l'affaire sur un terrain dont les parties n'avaient pas débattu, celui-ci doit, pour respecter le caractère contradictoire de la procédure, soit rouvrir l'instruction en les invitant à s'exprimer sur les conséquences à en tirer, soit statuer par un jugement avant dire droit annonçant le terrain juridique retenu et recueillant leurs observations sur ce terrain. Cette obligation procédurale encadre les effets, en principe rétroactifs, des revirements de jurisprudence sur les instances en cours.",
       "slugFiche": "ce-2013-cci-d-angouleme",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2013-04-19/340093",
-      "liees": [],
+      "liees": [
+        "ce-2007-ste-tropic-travaux-signalisation"
+      ],
       "complete": true
     },
     {
@@ -18821,7 +19199,17 @@
       "portee": "Le Tribunal des conflits redéfinit restrictivement la voie de fait, désormais limitée à deux hypothèses cumulant une atteinte grave (à la liberté individuelle ou à l'extinction du droit de propriété) et soit une exécution forcée irrégulière, soit une décision manifestement insusceptible de se rattacher à un pouvoir administratif. L'implantation sans titre d'un ouvrage public, qui n'éteint pas le droit de propriété et ne procède pas d'un acte manifestement étranger aux pouvoirs de l'administration, relève désormais de la seule compétence administrative, même pour en ordonner le déplacement.",
       "slugFiche": "tc-2013-bergoend",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/2013-06-17/C3911",
-      "liees": [],
+      "liees": [
+        "ce-1998-auger",
+        "ce-1949-carlier",
+        "tc-1991-asso-mjc-boris-vian",
+        "tc-1956-cons-sauvy",
+        "ce-1961-klein",
+        "ce-1988-plante",
+        "ce-1961-werquin",
+        "tc-1940-ste-schneider-et-cie",
+        "tc-1952-de-la-murette"
+      ],
       "complete": true
     },
     {
@@ -18948,7 +19336,12 @@
       "portee": "Cet arrêt d'Assemblée parachève, après Tropic Travaux Signalisation (2007) pour les concurrents évincés et Béziers I et II (2009, 2011) pour les parties au contrat, l'unification du contentieux contractuel des tiers en un recours de pleine juridiction unique devant le juge du contrat, se substituant par principe au recours pour excès de pouvoir contre les actes détachables issu de l'arrêt Martin (CE, 1905). Il subjective les moyens invocables selon la qualité du requérant (moyens illimités pour le préfet et les élus locaux ; moyens en rapport direct avec l'intérêt lésé ou d'une gravité justifiant un relevé d'office pour les autres tiers, reprenant la logique SMIRGEOMES de 2008) et dote le juge du contrat d'une palette modulée de pouvoirs (poursuite de l'exécution, régularisation, résiliation, annulation totale ou partielle), dans la ligne de la jurisprudence Commune de Béziers. Il module dans le temps les effets de ce revirement en réservant la nouvelle voie de recours aux contrats signés à compter de sa lecture.",
       "slugFiche": "ce-2014-dpt-du-tarn-et-garonne",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2014-04-04/358994",
-      "liees": [],
+      "liees": [
+        "ce-2015-castronovo",
+        "ce-1996-cayzeele",
+        "marseille-2016-agl-services",
+        "ce-2007-ste-tropic-travaux-signalisation"
+      ],
       "complete": true
     },
     {
@@ -19011,7 +19404,10 @@
       "portee": "Un contrat conclu par une personne publique presente un caractere administratif lorsqu’il comporte une ou plusieurs clauses qui, notamment par les prerogatives reconnues a cette personne dans l’execution du contrat, impliquent, dans l’interet general, qu’il releve du regime exorbitant des contrats administratifs. Cette definition positive se substitue a la definition negative traditionnelle centree sur les droits et obligations etrangers au droit civil et commercial.",
       "slugFiche": "tc-2014-ste-axa-france-iard",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000029778703/",
-      "liees": [],
+      "liees": [
+        "ce-2018-cte-de-cnes-du-pays-roussillonnais",
+        "ce-1935-ste-fr-de-construction-mecanique"
+      ],
       "complete": true
     },
     {
@@ -19032,7 +19428,11 @@
       "portee": "Le Conseil d'État précise que la condition d'anormalité des conséquences d'un acte médical, au sens du II de l'article L. 1142-1 du code de la santé publique, est remplie lorsque l'acte a entraîné des conséquences notablement plus graves que celles auxquelles le patient était exposé, de manière suffisamment probable, en l'absence de traitement. À défaut d'une telle disproportion, l'anormalité peut néanmoins être retenue si la survenance du dommage présentait, dans les conditions où l'acte a été accompli, une probabilité faible — sauf lorsque la gravité de l'état du patient a elle-même conduit à pratiquer un acte comportant des risques élevés dont la réalisation cause le dommage.",
       "slugFiche": "ce-2014-bondoni",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000029893486/",
-      "liees": [],
+      "liees": [
+        "ce-2014-bourgeois",
+        "ce-2021-oniam-c-riviere",
+        "ce-2018-chappaz"
+      ],
       "complete": true
     },
     {
@@ -19052,7 +19452,9 @@
       "portee": "Le Conseil d'État précise, dans les mêmes termes que dans l'arrêt Bondoni rendu le même jour, le critère d'appréciation de la condition d'anormalité du dommage médical : à défaut de conséquences notablement plus graves que celles auxquelles le patient était exposé en l'absence de traitement, l'anormalité ne peut être retenue que si la survenance du dommage présentait une probabilité faible — et non lorsque la gravité de l'état du patient a elle-même commandé un acte à risque élevé dont la réalisation cause le dommage.",
       "slugFiche": "ce-2014-bourgeois",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000029893498/",
-      "liees": [],
+      "liees": [
+        "ce-2014-bondoni"
+      ],
       "complete": true
     },
     {
@@ -19139,7 +19541,10 @@
       "portee": "Le Conseil d'État confirme que les recours contre les contrats de recrutement d'agents publics non titulaires relèvent du contentieux de l'excès de pouvoir, régime maintenu malgré l'ouverture par ailleurs d'un recours de pleine juridiction contre la validité des contrats administratifs. Il juge que les membres de l'organe délibérant d'une collectivité territoriale justifient, du seul fait de cette qualité, d'un intérêt leur donnant qualité pour contester un tel contrat devant le juge de l'excès de pouvoir, et qu'ils peuvent, eu égard aux intérêts dont ils ont la charge, invoquer tout moyen à l'appui de leur recours, sans devoir démontrer que ce moyen se rattache à la méconnaissance des prérogatives propres de l'organe délibérant.",
       "slugFiche": "ce-2015-castronovo",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2015-02-02/373520",
-      "liees": [],
+      "liees": [
+        "ce-2014-dpt-du-tarn-et-garonne",
+        "ce-1998-cne-de-lisieux"
+      ],
       "complete": true
     },
     {
@@ -19265,7 +19670,10 @@
       "portee": "Le Conseil d'État pose que l'illégalité d'une demande de pièces complémentaires, lorsqu'elle porte sur une pièce non légalement exigible, entache d'illégalité la décision tacite d'opposition née à l'expiration du délai d'instruction ainsi affecté. Cette solution, ultérieurement abandonnée, marquait alors le principe selon lequel une demande irrégulière rejaillit sur la régularité de la décision implicite qui en résulte.",
       "slugFiche": "ce-2015-cne-d-asnieres-sur-nouere",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000031596645/",
-      "liees": [],
+      "liees": [
+        "ce-2022-cne-de-saint-herblain",
+        "ce-2026-vinci-immo-rhone-alpes-auvergne"
+      ],
       "complete": true
     },
     {
@@ -19371,7 +19779,9 @@
       "portee": "Le délai raisonnable de jugement s'apprécie globalement, instance par instance et concrètement selon la complexité de l'affaire, le déroulement de la procédure, le comportement des parties et l'intérêt du litige ; la durée du recours administratif préalable obligatoire est imputable au requérant lorsque celui-ci pouvait saisir le juge sans attendre la décision expresse de l'administration. La méconnaissance de ce délai ouvre droit à réparation, y compris, en matière fiscale, pour la fraction des intérêts de retard imputable à l'excès de durée devant le tribunal administratif.",
       "slugFiche": "ce-2016-ste-stud-arts",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2016-04-06/374489",
-      "liees": [],
+      "liees": [
+        "ce-2016-jarraud"
+      ],
       "complete": true
     },
     {
@@ -19437,7 +19847,9 @@
       "portee": "La cour applique l’office du juge du contrat (jurisprudence Tarn-et-Garonne) : une irrégularité de passation ayant eu une incidence sur le choix de l’attributaire n’entraîne pas, à elle seule, la résolution du marché lorsqu’elle n’a pas vicié le consentement de la personne publique ni affecté le bien-fondé des prestations. Sur le terrain indemnitaire, elle précise que, pour un marché à bons de commande, le manque à gagner du concurrent évincé ne revêt un caractère certain qu’en tant qu’il porte sur la valeur minimale du marché, et non sur le montant estimatif de l’offre.",
       "slugFiche": "marseille-2016-agl-services",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000032897923",
-      "liees": [],
+      "liees": [
+        "ce-2014-dpt-du-tarn-et-garonne"
+      ],
       "complete": true
     },
     {
@@ -19458,7 +19870,10 @@
       "portee": "Le principe de securite juridique fait obstacle a ce qu’une decision administrative individuelle notifiee a son destinataire, ou dont il est etabli qu’il en a eu connaissance, puisse etre contestee indefiniment. A defaut de mention reguliere des voies et delais de recours, le destinataire ne peut exercer de recours juridictionnel au-dela d’un delai raisonnable qui, sauf circonstances particulieres, n’excede en general pas un an a compter de la notification ou de la connaissance de la decision. Cette regle borne dans le temps les consequences du defaut d’information sans porter atteinte a la substance du droit au recours, et s’applique quelle que soit la date des faits.",
       "slugFiche": "ce-2016-czabaj",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2016-07-13/387763",
-      "liees": [],
+      "liees": [
+        "ce-2025-a-b-c-banque-de-france",
+        "ce-1985-testa"
+      ],
       "complete": true
     },
     {
@@ -19478,7 +19893,9 @@
       "portee": "La durée d'une procédure administrative préalable peut être incluse dans la durée globale d'appréciation du délai raisonnable de jugement lorsque, sans être formellement obligatoire, elle présente des caractéristiques particulières et constitue un préalable nécessaire à l'intervention du juge, notamment en cas d'expertise préalable.",
       "slugFiche": "ce-2016-jarraud",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2016-07-13/389760",
-      "liees": [],
+      "liees": [
+        "ce-2016-ste-stud-arts"
+      ],
       "complete": true
     },
     {
@@ -19689,7 +20106,9 @@
       "portee": "Le delai raisonnable de recours degage par la jurisprudence Czabaj s’applique a la contestation d’une decision administrative individuelle a objet purement pecuniaire. Ce delai se combine avec la regle selon laquelle l’expiration du delai de recours en annulation contre une telle decision fait obstacle a des conclusions indemnitaires de meme portee : au-dela du delai raisonnable, ni l’annulation ni la reparation fondee sur l’illegalite de la decision ne peuvent plus etre obtenues.",
       "slugFiche": "ce-2018-cte-de-cnes-du-pays-roussillonnais",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2018-03-09/405355",
-      "liees": [],
+      "liees": [
+        "tc-2014-ste-axa-france-iard"
+      ],
       "complete": true
     },
     {
@@ -19817,7 +20236,9 @@
       "portee": "Le Conseil d'État précise que, pour déterminer si la survenance d'un dommage présentait une probabilité faible au sens du critère d'anormalité, il convient de retenir non la probabilité générale de survenue d'un incident du type de celui subi, mais la probabilité plus spécifique qu'un tel incident entraîne une invalidité grave ou un décès. Une cour qui se fonde sur le taux général de survenue du risque, sans isoler la part de ce risque conduisant à une conséquence grave, commet une erreur de droit.",
       "slugFiche": "ce-2018-chappaz",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037499767/",
-      "liees": [],
+      "liees": [
+        "ce-2014-bondoni"
+      ],
       "complete": true
     },
     {
@@ -19838,7 +20259,9 @@
       "portee": "Le Conseil d'État juge qu'un accident médical non fautif, dont les conséquences remplissent les conditions de gravité et d'anormalité posées par le II de l'article L. 1142-1 du code de la santé publique, ouvre droit à réparation au titre de la solidarité nationale même lorsqu'une faute distincte de l'établissement a fait perdre à la victime une chance d'échapper à cet accident ou d'en limiter les conséquences. Il précise que le préjudice imputable à cette faute n'est que la perte de chance, distincte du dommage corporel lui-même qui demeure en lien direct avec l'accident non fautif : l'indemnité due par l'ONIAM est alors seulement réduite du montant mis à la charge du responsable de la perte de chance.",
       "slugFiche": "ce-2018-piton",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037599951/",
-      "liees": [],
+      "liees": [
+        "ce-2018-oniam"
+      ],
       "complete": true
     },
     {
@@ -19901,7 +20324,9 @@
       "portee": "Le Conseil d'État juge qu'un accident médical non fautif ouvre droit à réparation au titre de la solidarité nationale dès lors que ses conséquences remplissent les conditions de l'article L. 1142-1, alors même qu'une faute distincte aurait fait perdre à la victime une chance d'éviter cet accident ou d'en limiter les conséquences. Il précise que le préjudice imputable à cette faute est seulement la perte de chance, et non le dommage corporel lui-même qui demeure tout entier en lien avec l'accident non fautif : l'indemnité due par l'ONIAM n'est donc pas exclue mais réduite à proportion de celle mise à la charge du responsable de la perte de chance.",
       "slugFiche": "ce-2018-oniam",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000037942858",
-      "liees": [],
+      "liees": [
+        "ce-2018-piton"
+      ],
       "complete": true
     },
     {
@@ -20177,7 +20602,10 @@
       "portee": "La décision pose que les documents de portée générale émanant d’autorités publiques peuvent être déférés au juge de l’excès de pouvoir lorsqu’ils sont susceptibles d’avoir des effets notables sur les droits ou la situation de tiers, notamment lorsqu’ils ont un caractère impératif ou constituent des lignes directrices.",
       "slugFiche": "ce-2020-gisti",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2020-06-12/418142",
-      "liees": [],
+      "liees": [
+        "ce-1998-ste-demesa",
+        "ce-2025-asso-acceptess-t-et-a"
+      ],
       "complete": true
     },
     {
@@ -20325,7 +20753,9 @@
       "portee": "Le Conseil d'État synthétise le régime contentieux des ordonnances de l'article 38 non ratifiées. Il confirme qu'elles demeurent des actes administratifs attaquables par recours pour excès de pouvoir devant le Conseil d'État, compétent en premier et dernier ressort, ou par voie d'exception devant toute juridiction. Il précise que, dès l'expiration du délai d'habilitation, leurs dispositions relevant du domaine de la loi entrent dans le champ de l'article 61-1 de la Constitution : leur conformité aux droits et libertés constitutionnellement garantis ne peut alors être contestée que par voie de QPC, tandis que le Conseil d'État demeure compétent pour statuer sur les autres moyens de légalité et peut annuler l'ordonnance pour un motif étranger à la Constitution sans attendre l'issue de la QPC. La ratification ultérieure confère à l'ordonnance valeur législative rétroactive, rendant sans objet le recours pour excès de pouvoir.",
       "slugFiche": "ce-2020-fede-cfdt-des-finances",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2020-12-16/440258",
-      "liees": [],
+      "liees": [
+        "ce-2006-cons-nat-l-de-l-ordre-des-medecins"
+      ],
       "complete": true
     },
     {
@@ -20535,7 +20965,9 @@
       "portee": "Le Conseil d'État juge qu'une probabilité de survenance du dommage qui n'est pas inférieure ou égale à 5 % ne présente pas le caractère d'une probabilité faible, de nature à justifier la mise en œuvre de la solidarité nationale au titre de la condition d'anormalité posée par le II de l'article L. 1142-1 du code de la santé publique. Il fixe ainsi, pour la première fois de manière chiffrée, le seuil au-delà duquel un risque médical connu et avéré cesse d'être regardé comme faible.",
       "slugFiche": "ce-2021-oniam-c-riviere",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000044393391",
-      "liees": [],
+      "liees": [
+        "ce-2014-bondoni"
+      ],
       "complete": true
     },
     {
@@ -20641,7 +21073,9 @@
       "portee": "Le Conseil d'État confirme que la théorie jurisprudentielle de l'imprévision, fondée depuis 1916 sur la survenance d'un événement extérieur aux parties, imprévisible et bouleversant temporairement l'économie du contrat, subsiste indépendamment des dispositions du code de la commande publique relatives à la modification contractuelle pour circonstances imprévisibles (art. R. 2194-5, R. 3135-5), que le législateur a entendu codifier sans y déroger. Il précise la distinction structurante entre les deux régimes : la modification contractuelle est une simple faculté pour l'autorité contractante, plafonnée à 50 % du montant du contrat initial ; l'indemnité d'imprévision octroyée par le juge est un droit du cocontractant qui poursuit l'exécution, non soumise à ce plafond, et ne peut jamais se traduire par une modification des clauses contractuelles elles-mêmes. Il reprend enfin expressément le critère distinctif de la force majeure : la permanence, à la différence de la temporalité propre à l'imprévision.",
       "slugFiche": "ce-2022-avis-imprevision-commande-publique",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2022-09-15/405540",
-      "liees": [],
+      "liees": [
+        "ce-1916-cie-gale-d-eclairage-de-bordeaux"
+      ],
       "complete": true
     },
     {
@@ -20683,7 +21117,12 @@
       "portee": "Le Conseil d'État juge que le délai d'instruction n'est ni interrompu ni modifié par une demande de pièces complémentaires illégale, c'est-à-dire portant sur une pièce non exigée par le livre IV du code de l'urbanisme. Une telle demande est ainsi neutralisée sans effet sur la naissance de la décision tacite, qui intervient à l'expiration du délai d'instruction initial comme si la demande n'avait jamais été formulée.",
       "slugFiche": "ce-2022-cne-de-saint-herblain",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2022-12-09/454521",
-      "liees": [],
+      "liees": [
+        "ce-2015-cne-d-asnieres-sur-nouere",
+        "ce-2025-cne-de-contes",
+        "ce-2024-m-b-coti-chiavari",
+        "ce-2026-vinci-immo-rhone-alpes-auvergne"
+      ],
       "complete": true
     },
     {
@@ -20809,7 +21248,9 @@
       "portee": "Le Conseil d'État systématise en trois branches le régime des conséquences d'une demande de pièces manquantes sur le délai d'instruction : la réception de l'ensemble des pièces dans les trois mois fait courir un nouveau délai d'instruction pouvant aboutir à un permis tacite ; l'absence de régularisation dans ce délai fait naître une décision tacite de rejet, y compris si l'administration a formulé une seconde demande sans incidence sur ce délai ; et une demande portant sur une pièce non exigible par le livre IV du code de l'urbanisme reste, conformément à Saint-Herblain, sans effet sur le délai d'instruction.",
       "slugFiche": "ce-2024-m-b-coti-chiavari",
       "urlOfficielle": "https://www.legifrance.gouv.fr/ceta/id/CETATEXT000049501404",
-      "liees": [],
+      "liees": [
+        "ce-2022-cne-de-saint-herblain"
+      ],
       "complete": true
     },
     {
@@ -20850,7 +21291,9 @@
       "portee": "La décision applique, dans le domaine du changement de prénom et de la modification de la mention du sexe à l'état civil, la grille de contrôle des documents de portée générale dégagée par la jurisprudence GISTI de 2020 (CE, Ass., 12 juin 2020, n° 418142) : un tel document est susceptible de recours pour excès de pouvoir dès lors qu'il est de nature à produire des effets notables sur les droits des administrés. En l'espèce, le Conseil d'État confirme la légalité des circulaires du garde des sceaux relatives à ces procédures, jugeant qu'elles n'excèdent pas la compétence de leur auteur et ne portent pas une atteinte excessive à l'autonomie personnelle protégée par l'article 8 de la convention européenne des droits de l'homme, ni ne créent de discrimination prohibée par l'article 14 de la même convention. La décision applique un test préexistant à un domaine nouveau sans consacrer de principe inédit.",
       "slugFiche": "ce-2025-asso-acceptess-t-et-a",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2025-01-27/492376",
-      "liees": [],
+      "liees": [
+        "ce-2020-gisti"
+      ],
       "complete": true
     },
     {
@@ -20870,7 +21313,9 @@
       "portee": "Le Conseil d'État précise qu'une demande de pièces complémentaires, dès lors qu'elle porte au moins sur une pièce légalement exigible en application du livre IV du code de l'urbanisme, interrompt le délai de naissance d'un permis tacite, quand bien même cette pièce se révélerait en réalité inutile pour l'instruction du dossier. L'inutilité pratique d'une pièce exigible est ainsi sans incidence sur l'effet interruptif de la demande, seule important sa régularité formelle au regard des textes.",
       "slugFiche": "ce-2025-cne-de-contes",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/analyse/2025-02-04/494180",
-      "liees": [],
+      "liees": [
+        "ce-2022-cne-de-saint-herblain"
+      ],
       "complete": true
     },
     {
@@ -20890,7 +21335,9 @@
       "portee": "Le Conseil d'État juge que le point de départ de la prescription applicable à une demande indemnitaire fondée sur l'illegalité d'une décision administrative doit désormais être déterminé en se référant à la date à laquelle il est établi que le titulaire du droit a eu connaissance de cette décision, notamment mais non exclusivement par sa notification. Il unifie ainsi le régime de la prescription quinquennale de droit commun (courant dès cette date) et celui de la prescription quadriennale des créances publiques (courant à compter du 1er janvier de l'année suivante), abandonnant l'exigence antérieure d'une notification régulière comme condition exclusive du point de départ. Il aménage un régime transitoire, pour les personnes ayant déjà eu connaissance d'une décision autrement que par notification avant la présente décision, fixant le point de départ de la prescription quadriennale au 1er janvier 2026.",
       "slugFiche": "ce-2025-a-b-c-banque-de-france",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/2025-07-11/466060",
-      "liees": [],
+      "liees": [
+        "ce-2016-czabaj"
+      ],
       "complete": true
     },
     {
@@ -20931,7 +21378,10 @@
       "portee": "Le Conseil d'État précise que les articles R. 423-22 et R. 423-38 du code de l'urbanisme n'ont pour objet que de déterminer le délai d'instruction et les conditions de naissance d'une autorisation tacite en cas de dossier incomplet. Il en déduit que ces dispositions ne font pas obstacle à ce que l'autorité administrative oppose un refus exprès fondé sur l'insuffisance du dossier, dès lors que cette insuffisance l'empêche d'apprécier la conformité du projet, alors même qu'elle n'aurait pas préalablement invité le demandeur à produire les pièces manquantes.",
       "slugFiche": "ce-2026-vinci-immo-rhone-alpes-auvergne",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2026-08-03/497092",
-      "liees": [],
+      "liees": [
+        "ce-2015-cne-d-asnieres-sur-nouere",
+        "ce-2022-cne-de-saint-herblain"
+      ],
       "complete": true
     }
   ]

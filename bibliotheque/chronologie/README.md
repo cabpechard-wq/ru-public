@@ -30,16 +30,23 @@ fiche réelle sous `ru-public/arrets/<slug>/` (désambiguïsation par
 correspondance du paragraphe Objet pour les deux homonymes `TC, 1978, Sté
 Le Profil`).
 
-**`liees` reste vide pour les 995 entrées** : la propriété Notion
-« Décisions liées… » est une relation « lecture seule à ce stade… à
-alimenter seulement sur instruction expresse » — elle n'est pas encore
-renseignée côté Notion, indépendamment de l'export.
+**`liees`** est rempli depuis la relation Notion « Décisions liées… »
+(plus la réciproque « Lié à Jurisprudence »). Régénération :
+
+```bash
+# depuis la racine du monorepo
+set PYTHONPATH=.
+python site/export_chronologie_liees.py
+```
+
+Le champ texte libre « Relations JP » n'est **pas** exporté (pas d'ids
+stables). Seules les relations Notion pointant vers une fiche du fonds
+entrent dans `liees`.
 
 Ce paquet n'a pas encore d'étape automatisée dans le pipeline CI
-(`.github/workflows/deploy-pages.yml`) : la requête ci-dessus a été
-exécutée manuellement via les outils Notion MCP. Un prochain chantier
-consiste à ajouter un script équivalent à `extract/pull/jurisprudence.py`
-pour régénérer ce fichier à chaque run, comme `/arrets/` l'est déjà.
+(`.github/workflows/deploy-pages.yml`) pour régénérer le JSON complet
+(décisions + liees) à chaque run — `export_chronologie_liees.py` ne
+met à jour que le champ `liees` sur un JSON déjà présent.
 
 ### Frise : cinq lignes par juridiction, sans étiquette
 
@@ -50,12 +57,12 @@ d'étiquettes de ligne a été retirée (`.trow-label`) au profit de la seule
 couleur du marqueur — voir la légende. Toutes les décisions s'affichent
 individuellement (plus de regroupement « +N »).
 
-Quand une décision reliée à d'autres (`liees`) est sélectionnée et que
-« Afficher uniquement les décisions liées » est cochée, chaque marqueur
-affiche son Nom au lieu de l'étiquette d'année/mois/jour. Les flèches
-oranges arquées (`chainIndexMap`/`drawChainLinks`) existent depuis le
-livrable d'origine mais n'ont rien à tracer tant que `liees` reste vide
-(cf. ci-dessus) — vérifié fonctionnel avec des relations de test.
+Quand une décision reliée à d'autres (`liees`) est sélectionnée, la frise
+trace des flèches oranges arquées (`chainIndexMap` / `drawChainLinks`) entre
+les marqueurs de la chaîne chronologique (voisinage non orienté : `liees`
+directes + inverses). Si « Afficher uniquement les décisions liées » est
+cochée, chaque marqueur de la chaîne affiche son Nom au lieu de l'étiquette
+d'année/mois/jour.
 
 ### Charte graphique : suit l'« Ambiance » du site
 
