@@ -28,23 +28,20 @@
       rel="stylesheet"
     />
     <link id="theme-css" rel="stylesheet" href="../site.css?v=24" />
-    <link rel="stylesheet" href="./assets/chronologie.css?v=10" />
-    <script src="./assets/chronologie.js?v=10" defer></script>
+    <link rel="stylesheet" href="./assets/chronologie.css?v=69" />
+    <script src="./assets/relation-graph.js?v=69" defer></script>
+    <script src="./assets/chronologie.js?v=69" defer></script>
   <script>
 (function(){
   var API = "https://flipcards-auth.cab-pechard.workers.dev";
+  // Build local / API placeholder : pas de gate (évite redirect vers /membre/ absent).
+  if (!API || API.indexOf("EXAMPLE") !== -1) return;
   var token = sessionStorage.getItem("flipcards_token") || localStorage.getItem("flipcards_token") || "";
   function deny() {
     sessionStorage.removeItem("flipcards_ok");
     location.replace("../membre/");
   }
-  if (!token || !API || API.indexOf("EXAMPLE") !== -1) {
-    // Fallback admin: ancien flag session uniquement si API pas encore déployée
-    if (sessionStorage.getItem("flipcards_ok") === "1" && (!API || API.indexOf("EXAMPLE") !== -1)) {
-      return;
-    }
-    if (!token) { deny(); return; }
-  }
+  if (!token) { deny(); return; }
   fetch(API.replace(/\/$/, "") + "/api/me", {
     headers: { Authorization: "Bearer " + token }
   }).then(function(r){
@@ -71,14 +68,14 @@
           <h1 class="brand__title">Chronologie de la jurisprudence administrative</h1>
         </div>
         <div class="header-actions">
-                    <div class="segmented" role="group" aria-label="Échelle de la frise">
+                    <div class="segmented" role="group" aria-label="Mode d’affichage">
+            <button type="button" data-view="list">Liste</button>
+            <button type="button" data-view="timeline" class="is-active">Frise</button>
+          </div>
+          <div class="segmented" id="scale-segmented" role="group" aria-label="Échelle de la frise">
             <button type="button" data-scale="year" class="is-active">Années</button>
             <button type="button" data-scale="month">Mois</button>
             <button type="button" data-scale="day">Jours</button>
-          </div>
-          <div class="segmented" role="group" aria-label="Mode d’affichage">
-            <button type="button" data-view="timeline" class="is-active">Frise</button>
-            <button type="button" data-view="list">Liste</button>
           </div>
         </div>
       </div>
@@ -88,7 +85,7 @@
       <div id="chrono-alert" class="alert" hidden></div>
 
       <section class="filters" aria-label="Filtres">
-        <div class="filters__row">
+        <div class="filters__row filters__row--primary">
           <div class="field">
             <span class="field-label" id="label-search">Recherche</span>
             <input
@@ -121,7 +118,7 @@
           </div>
         </div>
 
-        <div class="filters__row">
+        <div class="filters__row filters__row--secondary">
           <fieldset class="field field--importance">
             <span class="field-label">Importance</span>
             <div class="chip-group" role="group" aria-label="Importance">
@@ -149,84 +146,165 @@
           <div class="field field--period">
             <span class="field-label">Période</span>
             <div class="period-stack">
-              <div class="period-row">
-                <input id="filter-date-from" type="date" aria-label="Date de début" />
+              <label class="period-row" for="filter-date-from">
                 <span class="period-row__label">Début</span>
-              </div>
-              <div class="period-row">
-                <input id="filter-date-to" type="date" aria-label="Date de fin" />
+                <input id="filter-date-from" type="date" aria-label="Date de début" />
+              </label>
+              <label class="period-row" for="filter-date-to">
                 <span class="period-row__label">Fin</span>
-              </div>
+                <input id="filter-date-to" type="date" aria-label="Date de fin" />
+              </label>
             </div>
           </div>
 
           <div class="field field--related">
-            <span class="field-label">Décisions liées…</span>
-            <label class="related-only-wrap is-visible" id="related-only-wrap">
-              <input id="filter-related-only" type="checkbox" disabled />
-              <span id="related-only-label">Afficher uniquement les décisions liées</span>
-            </label>
-          </div>
-
-          <div class="field field--reset">
-            <span class="field-label" aria-hidden="true">&nbsp;</span>
-            <button type="button" id="filter-reset" class="btn-reset">Réinitialiser les filtres</button>
+            <span class="field-label">Décisions liées</span>
+            <div class="related-panel">
+              <label class="related-only-wrap is-visible" id="related-only-wrap">
+                <input id="filter-related-only" type="checkbox" disabled />
+                <span id="related-only-label">Uniquement les décisions liées</span>
+              </label>
+              <div class="related-multi-row">
+                <label class="related-only-wrap is-visible" id="multi-relations-wrap">
+                  <input id="filter-multi-relations" type="checkbox" disabled />
+                  <span>Multi-relations</span>
+                </label>
+                <div class="multi-relations-depth" id="multi-relations-depth" hidden>
+                  <label class="multi-relations-depth__label" for="filter-relation-depth"
+                    >Niveaux</label
+                  >
+                  <select id="filter-relation-depth" aria-label="Nombre de niveaux de relations">
+                    <option value="1">1</option>
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7" disabled title="Niveau bientôt disponible">7</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="filters__tools">
-          <p class="active-filters" id="active-filters">
-            <strong>Filtres actifs :</strong>
-            <span class="active-filters__list" id="active-filters-list">aucun</span>
-          </p>
-          <span class="pill"
-            ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
-            décisions</span
-          >
+        <div class="filters__row filters__row--footer">
+          <div class="filters__status">
+            <div class="active-filters-wrap">
+              <p class="active-filters" id="active-filters">
+                <strong>Filtres actifs :</strong>
+                <span class="active-filters__list" id="active-filters-list">aucun</span>
+              </p>
+              <p class="active-filters__hint">
+                → cliquez dans la légende pour affiner la vue.
+              </p>
+            </div>
+            <span class="pill"
+              ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
+              décisions</span
+            >
+          </div>
+          <button type="button" id="filter-reset" class="btn-reset">
+            Réinitialiser les filtres
+          </button>
         </div>
       </section>
 
-      <div class="workspace">
+      <div class="workspace" id="chrono-workspace">
+        <section class="graph-panel" id="graph-panel" hidden aria-label="Graphe des relations">
+          <div class="panel-head">
+            <h2>Relations</h2>
+            <button
+              type="button"
+              id="graph-panel-close"
+              class="graph-panel__close"
+              aria-label="Fermer le graphe"
+              title="Fermer"
+            >
+              ×
+            </button>
+          </div>
+          <div class="graph-panel__stage">
+            <canvas id="relation-graph-canvas" width="480" height="520"></canvas>
+            <p class="graph-panel__hint">Souris pour naviguer :)</p>
+          </div>
+        </section>
+
         <section class="timeline-panel" id="timeline-panel" aria-label="Frise chronologique">
           <div class="panel-head">
+            <button
+              type="button"
+              id="orientation-toggle"
+              class="btn-orientation"
+              aria-pressed="true"
+              aria-label="Basculer vers la frise horizontale"
+              title="Basculer horizontale / verticale"
+            >
+              <svg
+                class="btn-orientation__icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.25"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M4 8h13" />
+                <path d="M14 5l3 3-3 3" />
+                <path d="M20 16H7" />
+                <path d="M10 13l-3 3 3 3" />
+              </svg>
+              <span class="visually-hidden" id="orientation-toggle-label">Verticale</span>
+            </button>
             <h2 id="timeline-title">Frise par années</h2>
+            <button
+              type="button"
+              id="chrono-order-toggle"
+              class="btn-chrono-order"
+              aria-pressed="false"
+              aria-label="Passer en ordre décroissant (plus récent en premier)"
+              title="Ordre : date croissante"
+            >
+              <svg
+                class="btn-chrono-order__icon"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.1"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M8 5v14" />
+                <path d="M5 16l3 3 3-3" />
+                <path d="M13 6h7" />
+                <path d="M13 12h5" />
+                <path d="M13 18h3" />
+              </svg>
+              <span class="visually-hidden" id="chrono-order-toggle-label"
+                >Date croissante</span
+              >
+            </button>
           </div>
           <div class="timeline-scroll" id="timeline-scroll">
             <div class="timeline" id="timeline" role="list"></div>
           </div>
-          <div class="legend" aria-hidden="true">
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> Tribunal des
-              conflits</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> Conseil
-              constitutionnel</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> Conseil
-              d’État</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> CAA / TA</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cass)"></span> Cour de
-              cassation</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> CA / TJ et
-              autres</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cij)"></span> CIJ</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cedh)"></span> CEDH</span
-            >
-            <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--marker-cjue)"></span> CJUE</span
-            >
+          <div class="legend" id="legend" aria-label="Légende">
+            <div
+              class="legend__block legend__block--juridictions"
+              id="legend-juridictions"
+              hidden
+              aria-label="Légende juridictions"
+            ></div>
+            <div
+              class="legend__block legend__block--importance"
+              id="legend-importance"
+              aria-label="Légende importance"
+            ></div>
+            <div class="legend__block legend__block--levels" id="legend-levels" hidden aria-label="Légende des niveaux de relations"></div>
           </div>
         </section>
 
@@ -238,7 +316,7 @@
         </section>
       </div>
 
-      <aside class="detail" id="detail" aria-live="polite"></aside>
+      <aside class="detail is-empty" id="detail" aria-live="polite" aria-hidden="true"></aside>
     </main>
     <div id="fiche-tip" class="fiche-tip" hidden role="tooltip" aria-hidden="true">
       <p class="fiche-tip__label">Fiche</p>

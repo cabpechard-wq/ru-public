@@ -150,7 +150,7 @@
         el.textContent = isMember ? "Ouvrir →" : "Démonstration";
         return;
       }
-      el.textContent = isMember ? "Ouvrir →" : "Aperçu · espace membre";
+      el.textContent = isMember ? "Ouvrir →" : "Aperçu (accès membres)";
     });
   }
 
