@@ -405,26 +405,21 @@
 
   function updateRelationDepthOptions() {
     if (!els.relationDepth) return;
-    var maxReachable = selectedHasLinks() ? maxReachableRelationDepth(state.selectedId) : 0;
-    if (maxReachable < 1) maxReachable = 1;
-    if (maxReachable > RELATION_DEPTH_SELECTABLE_MAX) {
-      maxReachable = RELATION_DEPTH_SELECTABLE_MAX;
-    }
 
+    // Toujours offrir 1–6 : ne pas révéler la profondeur max réelle du graphe.
     var options = els.relationDepth.options;
     var i;
     for (i = 0; i < options.length; i++) {
       var opt = options[i];
       var val = Number(opt.value);
       var isGhost = val === RELATION_DEPTH_UI_MAX;
-      var reachable = !isGhost && isFinite(val) && val >= 1 && val <= maxReachable;
-      opt.disabled = !reachable;
-      opt.classList.toggle("is-unreachable", !reachable);
+      var selectable =
+        !isGhost && isFinite(val) && val >= 1 && val <= RELATION_DEPTH_SELECTABLE_MAX;
+      opt.disabled = !selectable;
+      opt.classList.toggle("is-unreachable", !selectable);
       opt.classList.toggle("is-ghost", isGhost);
       if (isGhost) {
         opt.title = "Niveau bientôt disponible";
-      } else if (!reachable) {
-        opt.title = "Aucun chemin à ce niveau depuis la décision sélectionnée";
       } else {
         opt.removeAttribute("title");
       }
@@ -432,19 +427,17 @@
 
     if (state.objectLinks) {
       var depth = currentRelationDepth();
-      if (depth > maxReachable) {
-        state.relationDepth = maxReachable;
-        depth = maxReachable;
-      }
       els.relationDepth.value = String(depth);
       if (els.relationDepth.value !== String(depth)) {
-        els.relationDepth.selectedIndex = Math.max(0, maxReachable - 1);
-        state.relationDepth = Number(els.relationDepth.value) || maxReachable;
+        els.relationDepth.selectedIndex = Math.max(0, depth - 1);
+        state.relationDepth = Number(els.relationDepth.value) || 2;
       }
     }
 
     els.relationDepth.title =
-      "Profondeur max disponible pour cette décision : " + maxReachable + " (7 bientôt)";
+      "Profondeur de parcours des décisions liées (1–" +
+      RELATION_DEPTH_SELECTABLE_MAX +
+      " ; 7 bientôt)";
   }
 
   function syncObjectLinksPanel() {
