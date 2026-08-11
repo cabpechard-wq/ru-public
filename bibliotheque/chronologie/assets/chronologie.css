@@ -23,7 +23,6 @@
   --detail-w: 360px;
   --header-h: 64px;
   --col-w: 168px;
-  --timeline-min-h: 280px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -529,22 +528,9 @@ a {
 
 .timeline {
   position: relative;
-  display: flex;
-  gap: 0;
-  min-height: var(--timeline-min-h);
+  min-height: 160px;
   width: max-content;
   padding-bottom: 8px;
-}
-
-.timeline__axis {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 48%;
-  height: 2px;
-  background: var(--border);
-  pointer-events: none;
-  z-index: 0;
 }
 
 /* SVG overlay for chain arrows */
@@ -571,38 +557,42 @@ a {
   fill: var(--orange);
 }
 
-/* Segments de frise : jalon + rail horizontal d'unités */
-.tseg {
+/*
+ * Grille de la frise : cinq lignes fixes (une par catégorie de juridiction),
+ * alignées sur toute la largeur ; colonnes = unités chronologiques (années /
+ * mois / jours). Ligne 1 = jalon de segment, ligne 2 = étiquette d'unité,
+ * lignes 3-7 = les cinq lignes de juridiction.
+ */
+.tgrid {
+  --row-label-w: 190px;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  flex: 0 0 auto;
-  min-width: var(--seg-min-w, 120px);
   z-index: 2;
-  padding: 0 4px;
+  display: grid;
+  column-gap: var(--unit-gap, 14px);
+  row-gap: 4px;
+  align-items: center;
+  width: max-content;
 }
 
-.tseg__milestone {
-  position: relative;
-  height: 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding-left: 2px;
-}
-
-.tseg__tick {
-  position: absolute;
+.trow-label {
+  position: sticky;
   left: 0;
-  top: 28px;
-  width: 2px;
-  height: 14px;
-  background: var(--border);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 4px 12px 4px 0;
+  background: var(--canvas);
+  border-right: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--text-secondary);
+  line-height: 1.25;
 }
 
-.tseg__label {
+.tseg-head {
+  align-self: end;
+  padding: 0 0 8px 2px;
   font-size: 13px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
@@ -611,28 +601,9 @@ a {
   white-space: nowrap;
 }
 
-.tseg__rail {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: flex-end;
-  justify-content: flex-start;
-  gap: var(--unit-gap, 14px);
-  min-height: calc(var(--timeline-min-h) - 56px);
-  padding: 12px 8px 8px 0;
-  width: max-content;
-}
-
-.tunit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  flex: 0 0 auto;
-  min-width: var(--unit-min-w, 44px);
-}
-
-.tunit__label {
+.tunit-head {
+  align-self: end;
+  padding-bottom: 8px;
   font-size: 11px;
   font-variant-numeric: tabular-nums;
   color: var(--text-secondary);
@@ -641,50 +612,31 @@ a {
   line-height: 1.2;
 }
 
-.tunit__dots {
+.tcell {
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
   justify-content: center;
   align-items: center;
-  gap: 6px;
-  max-width: 72px;
-}
-
-.marker-with-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 4px;
-}
-
-.marker-with-date__date {
-  font-size: 10px;
-  font-variant-numeric: tabular-nums;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  line-height: 1.2;
+  padding: 2px 0;
+  min-width: var(--unit-min-w, 44px);
 }
 
 /* Années : jalons = décennies ; unités = années (horizontal) */
 .timeline[data-scale="year"] {
-  --seg-min-w: 140px;
   --unit-min-w: 52px;
   --unit-gap: 16px;
-  --timeline-min-h: 280px;
 }
 /* Mois : jalons = années ; unités = mois (horizontal, frise longue) */
 .timeline[data-scale="month"] {
-  --seg-min-w: 160px;
   --unit-min-w: 48px;
   --unit-gap: 12px;
-  --timeline-min-h: 270px;
 }
 /* Jours : jalons = mois ; unités = jours (horizontal) */
 .timeline[data-scale="day"] {
-  --seg-min-w: 120px;
   --unit-min-w: 40px;
   --unit-gap: 10px;
-  --timeline-min-h: 280px;
 }
 
 /* Decision markers */
@@ -750,27 +702,6 @@ a {
   z-index: 3;
 }
 
-.marker--cluster {
-  width: auto;
-  min-width: 28px;
-  height: 28px;
-  padding: 0 8px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-  color: #fff;
-  background: var(--text);
-  border-color: var(--canvas);
-}
-
-@media (prefers-color-scheme: dark) {
-  .marker--cluster {
-    background: var(--surface-2);
-    color: var(--text);
-  }
-}
-
 .marker[data-juridiction-key="ce"],
 .marker[data-juridiction-key="conseil-detat"] {
   --marker: var(--accent);
@@ -787,14 +718,20 @@ a {
   background: var(--orange);
 }
 .marker[data-juridiction-key="cass"],
-.marker[data-juridiction-key="cour-de-cassation"] {
+.marker[data-juridiction-key="cour-de-cassation"],
+.marker[data-juridiction-key="ca"],
+.marker[data-juridiction-key="cour-d-appel"],
+.marker[data-juridiction-key="tj"],
+.marker[data-juridiction-key="tribunal-judiciaire"] {
   --marker: #c4a035;
   background: #c4a035;
 }
 .marker[data-juridiction-key="cedh"],
 .marker[data-juridiction-key="cjue"],
+.marker[data-juridiction-key="cij"],
 .marker[data-juridiction-key="cour-europeenne-des-droits-de-lhomme"],
-.marker[data-juridiction-key="cour-de-justice-de-lunion-europeenne"] {
+.marker[data-juridiction-key="cour-de-justice-de-lunion-europeenne"],
+.marker[data-juridiction-key="cour-internationale-de-justice"] {
   --marker: var(--green);
   background: var(--green);
 }

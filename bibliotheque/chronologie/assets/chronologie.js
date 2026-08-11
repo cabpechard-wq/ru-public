@@ -78,11 +78,33 @@
     if (s.indexOf("tribunal-des-conflits") === 0) return "tc";
     if (s.indexOf("conseil-constitutionnel") === 0) return "cons-constit";
     if (s.indexOf("cour-de-cassation") === 0) return "cass";
+    if (s.indexOf("cour-d-appel") === 0) return "ca";
+    if (s.indexOf("tribunal-judiciaire") === 0) return "tj";
+    if (s.indexOf("cour-internationale-de-justice") === 0) return "cij";
     if (s.indexOf("cour-europeenne") === 0) return "cedh";
     if (s.indexOf("cour-de-justice") === 0) return "cjue";
     if (s.indexOf("cour-administrative") === 0) return "caa";
     if (s.indexOf("tribunal-administratif") === 0) return "ta";
     return s;
+  }
+
+  // Cinq lignes fixes de la frise, dans cet ordre d'affichage.
+  var JURIDICTION_ROWS = [
+    { key: "tc", label: "Tribunal des conflits" },
+    { key: "adm", label: "Juridictions adm. (CE, CAA, TA)" },
+    { key: "cons-constit", label: "Conseil constitutionnel" },
+    { key: "civ", label: "Juridictions civ. (Cass., CA, TJ…)" },
+    { key: "intl", label: "Juridictions int'les (CIJ/CEDH/CJUE)" },
+  ];
+
+  function juridictionRowKey(j) {
+    var k = juridictionKey(j);
+    if (k === "tc") return "tc";
+    if (k === "ce" || k === "caa" || k === "ta") return "adm";
+    if (k === "cons-constit") return "cons-constit";
+    if (k === "cass" || k === "ca" || k === "tj") return "civ";
+    if (k === "cedh" || k === "cjue" || k === "cij") return "intl";
+    return "adm";
   }
 
   function formatDateFr(iso) {
@@ -541,11 +563,6 @@
     return mon + " " + y;
   }
 
-  function dayLabel(iso) {
-    var p = parseDateParts(iso);
-    return String(p.d).padStart(2, "0") + "/" + String(p.m).padStart(2, "0");
-  }
-
   function sortDecisions(items, chainActive, chainMap) {
     return items.slice().sort(function (a, b) {
       if (chainActive && chainMap.has(a.id) && chainMap.has(b.id)) {
@@ -557,112 +574,37 @@
     });
   }
 
-  function makeTcol(key, labelText) {
-    var col = document.createElement("div");
-    col.className = "tcol";
-    col.dataset.key = String(key);
-
-    var label = document.createElement("div");
-    label.className = "tcol__label";
-    label.textContent = labelText;
-    col.appendChild(label);
-
-    var tick = document.createElement("div");
-    tick.className = "tcol__tick";
-    tick.setAttribute("aria-hidden", "true");
-    col.appendChild(tick);
-
-    var stack = document.createElement("div");
-    stack.className = "tcol__stack";
-    col.appendChild(stack);
-    return { col: col, stack: stack };
-  }
-
-  function makeSubCluster(labelText) {
-    var cluster = document.createElement("div");
-    cluster.className = "sub-cluster";
-    var lab = document.createElement("div");
-    lab.className = "sub-cluster__label";
-    lab.textContent = labelText;
-    cluster.appendChild(lab);
-    var dots = document.createElement("div");
-    dots.className = "sub-cluster__dots";
-    cluster.appendChild(dots);
-    return { cluster: cluster, dots: dots };
-  }
-
-  function appendMarkers(dots, items, chainActive, chainMap, withExactDate) {
-    items = sortDecisions(items, chainActive, chainMap);
-    if (!chainActive && !withExactDate && items.length > 6) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "marker marker--cluster";
-      btn.textContent = "+" + items.length;
-      btn.title = items.length + " décisions";
-      btn.setAttribute("aria-label", items.length + " décisions");
-      var sampleYear = items[0] && items[0].annee;
-      btn.addEventListener("click", function () {
-        if (sampleYear) openYearMenu(sampleYear);
-      });
-      dots.appendChild(btn);
-      return;
-    }
-    items.forEach(function (d) {
-      if (withExactDate) {
-        var wrap = document.createElement("div");
-        wrap.className = "marker-with-date";
-        var dl = document.createElement("div");
-        dl.className = "marker-with-date__date";
-        dl.textContent = dayLabel(d.date);
-        wrap.appendChild(dl);
-        wrap.appendChild(makeMarker(d, chainActive, chainMap));
-        dots.appendChild(wrap);
-      } else {
-        dots.appendChild(makeMarker(d, chainActive, chainMap));
-      }
+  function appendMarkers(dots, items, chainActive, chainMap) {
+    sortDecisions(items, chainActive, chainMap).forEach(function (d) {
+      dots.appendChild(makeMarker(d, chainActive, chainMap));
     });
   }
 
   /**
-   * Construit un segment de frise :
-   * - jalon (label) en tête de segment
-   * - rail horizontal d'unités (années / mois / jours)
+   * Regroupe les décisions d'une unité (année / mois / jour) par ligne de
+   * juridiction (JURIDICTION_ROWS), pour une frise à cinq lignes fixes.
    */
-  function makeSegment(key, milestoneLabel) {
-    var seg = document.createElement("div");
-    seg.className = "tseg";
-    seg.dataset.key = String(key);
-
-    var mile = document.createElement("div");
-    mile.className = "tseg__milestone";
-    mile.innerHTML =
-      '<span class="tseg__tick" aria-hidden="true"></span>' +
-      '<span class="tseg__label">' +
-      escapeHtml(milestoneLabel) +
-      "</span>";
-    seg.appendChild(mile);
-
-    var rail = document.createElement("div");
-    rail.className = "tseg__rail";
-    seg.appendChild(rail);
-    return { seg: seg, rail: rail };
+  function bucketByRow(items) {
+    var buckets = {};
+    JURIDICTION_ROWS.forEach(function (row) {
+      buckets[row.key] = [];
+    });
+    items.forEach(function (d) {
+      var key = juridictionRowKey(d.juridiction);
+      if (!buckets[key]) buckets[key] = [];
+      buckets[key].push(d);
+    });
+    return buckets;
   }
 
-  function makeUnit(unitLabel, showLabel) {
-    var unit = document.createElement("div");
-    unit.className = "tunit";
-    if (showLabel) {
-      var lab = document.createElement("div");
-      lab.className = "tunit__label";
-      lab.textContent = unitLabel;
-      unit.appendChild(lab);
-    }
-    var dots = document.createElement("div");
-    dots.className = "tunit__dots";
-    unit.appendChild(dots);
-    return { unit: unit, dots: dots };
-  }
-
+  /**
+   * Construit la frise sous forme de grille CSS :
+   * - colonne 1 : étiquettes des cinq lignes de juridiction (collées à gauche)
+   * - colonnes suivantes : une par unité (année / mois / jour), dans l'ordre chronologique
+   * - ligne 1 : jalon de segment (décennie / année / mois), fusionné sur ses unités
+   * - ligne 2 : étiquette de l'unité
+   * - lignes 3 à 7 : une par ligne de juridiction, alignées sur toute la largeur
+   */
   function renderTimeline() {
     var root = els.timeline;
     root.innerHTML = "";
@@ -673,11 +615,6 @@
       return;
     }
 
-    var axis = document.createElement("div");
-    axis.className = "timeline__axis";
-    axis.setAttribute("aria-hidden", "true");
-    root.appendChild(axis);
-
     var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("class", "timeline__links");
     svg.setAttribute("aria-hidden", "true");
@@ -687,8 +624,11 @@
     var chainActive = chainMap.size > 1;
     var scale = state.scale || "year";
 
+    // segments: [{ label, units: [{ label, items }] }], du plus ancien au plus récent.
+    var segments = [];
+
     if (scale === "month") {
-      // Jalons = années ; décisions rangées par mois (horizontal)
+      // Jalons = années ; unités = mois.
       var byYear = new Map();
       state.displayed.forEach(function (d) {
         if (!byYear.has(d.annee)) byYear.set(d.annee, []);
@@ -699,27 +639,23 @@
           return a - b;
         })
         .forEach(function (year) {
-          var built = makeSegment(year, String(year));
           var byMonth = new Map();
           byYear.get(year).forEach(function (d) {
             var parts = parseDateParts(d.date);
             if (!byMonth.has(parts.m)) byMonth.set(parts.m, []);
             byMonth.get(parts.m).push(d);
           });
-          Array.from(byMonth.keys())
+          var units = Array.from(byMonth.keys())
             .sort(function (a, b) {
               return a - b;
             })
-            .forEach(function (m) {
-              var mon = MONTH_SHORT[m - 1] || String(m);
-              var u = makeUnit(mon, true);
-              appendMarkers(u.dots, byMonth.get(m), chainActive, chainMap, false);
-              built.rail.appendChild(u.unit);
+            .map(function (m) {
+              return { label: MONTH_SHORT[m - 1] || String(m), items: byMonth.get(m) };
             });
-          root.appendChild(built.seg);
+          segments.push({ label: String(year), units: units });
         });
     } else if (scale === "day") {
-      // Jalons = mois ; décisions rangées par jours (horizontal)
+      // Jalons = mois ; unités = jours.
       var byYm = new Map();
       state.displayed.forEach(function (d) {
         var parts = parseDateParts(d.date);
@@ -731,7 +667,6 @@
           return a < b ? -1 : a > b ? 1 : 0;
         })
         .forEach(function (ym) {
-          var built = makeSegment(ym, monthLabel(ym));
           var byDay = new Map();
           byYm.get(ym).forEach(function (d) {
             var parts = parseDateParts(d.date);
@@ -739,19 +674,17 @@
             if (!byDay.has(dayKey)) byDay.set(dayKey, []);
             byDay.get(dayKey).push(d);
           });
-          Array.from(byDay.keys())
+          var units = Array.from(byDay.keys())
             .sort(function (a, b) {
               return Number(a) - Number(b);
             })
-            .forEach(function (dayKey) {
-              var u = makeUnit(dayKey, true);
-              appendMarkers(u.dots, byDay.get(dayKey), chainActive, chainMap, false);
-              built.rail.appendChild(u.unit);
+            .map(function (dayKey) {
+              return { label: dayKey, items: byDay.get(dayKey) };
             });
-          root.appendChild(built.seg);
+          segments.push({ label: monthLabel(ym), units: units });
         });
     } else {
-      // Années : jalons = décennies ; décisions rangées par années (horizontal)
+      // Jalons = décennies ; unités = années.
       var byDecade = new Map();
       state.displayed.forEach(function (d) {
         var dec = decadeOf(d.annee);
@@ -763,24 +696,75 @@
           return a - b;
         })
         .forEach(function (dec) {
-          var built = makeSegment(dec, String(dec));
           var byY = new Map();
           byDecade.get(dec).forEach(function (d) {
             if (!byY.has(d.annee)) byY.set(d.annee, []);
             byY.get(d.annee).push(d);
           });
-          Array.from(byY.keys())
+          var units = Array.from(byY.keys())
             .sort(function (a, b) {
               return a - b;
             })
-            .forEach(function (year) {
-              var u = makeUnit(String(year), true);
-              appendMarkers(u.dots, byY.get(year), chainActive, chainMap, false);
-              built.rail.appendChild(u.unit);
+            .map(function (year) {
+              return { label: String(year), items: byY.get(year) };
             });
-          root.appendChild(built.seg);
+          segments.push({ label: String(dec), units: units });
         });
     }
+
+    var grid = document.createElement("div");
+    grid.className = "tgrid";
+    var totalUnits = segments.reduce(function (n, seg) {
+      return n + seg.units.length;
+    }, 0);
+    grid.style.gridTemplateColumns =
+      "var(--row-label-w) repeat(" + totalUnits + ", minmax(var(--unit-min-w), auto))";
+    grid.style.gridTemplateRows = "auto auto repeat(" + JURIDICTION_ROWS.length + ", minmax(30px, auto))";
+
+    JURIDICTION_ROWS.forEach(function (row, i) {
+      var label = document.createElement("div");
+      label.className = "trow-label";
+      label.textContent = row.label;
+      label.style.gridColumn = "1";
+      label.style.gridRow = String(i + 3);
+      grid.appendChild(label);
+    });
+
+    var col = 2;
+    segments.forEach(function (seg) {
+      var segCount = seg.units.length;
+      var head = document.createElement("div");
+      head.className = "tseg-head";
+      head.textContent = seg.label;
+      head.style.gridColumn = col + " / " + (col + segCount);
+      head.style.gridRow = "1";
+      grid.appendChild(head);
+
+      seg.units.forEach(function (unit) {
+        var unitLabel = document.createElement("div");
+        unitLabel.className = "tunit-head";
+        unitLabel.textContent = unit.label;
+        unitLabel.style.gridColumn = String(col);
+        unitLabel.style.gridRow = "2";
+        grid.appendChild(unitLabel);
+
+        var buckets = bucketByRow(unit.items);
+        JURIDICTION_ROWS.forEach(function (row, i) {
+          var items = buckets[row.key];
+          if (!items || !items.length) return;
+          var cell = document.createElement("div");
+          cell.className = "tcell";
+          cell.style.gridColumn = String(col);
+          cell.style.gridRow = String(i + 3);
+          appendMarkers(cell, items, chainActive, chainMap);
+          grid.appendChild(cell);
+        });
+
+        col += 1;
+      });
+    });
+
+    root.appendChild(grid);
 
     scheduleDrawChainLinks();
   }
@@ -905,20 +889,6 @@
       path.setAttribute("stroke", "currentColor");
       svg.appendChild(path);
     }
-  }
-
-  function openYearMenu(year) {
-    var modeYear = document.querySelector('input[name="period-mode"][value="year"]');
-    if (modeYear) modeYear.checked = true;
-    state.filters.periodMode = "year";
-    els.yearFrom.value = String(year);
-    els.yearTo.value = String(year);
-    els.dateFrom.value = "";
-    els.dateTo.value = "";
-    syncPeriodModeUi();
-    readFiltersFromDom();
-    state.view = "list";
-    applyFilters();
   }
 
   function renderList() {
