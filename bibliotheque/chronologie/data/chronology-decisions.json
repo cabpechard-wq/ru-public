@@ -1,0 +1,638 @@
+{
+  "meta": {
+    "generatedAt": "2026-08-11T10:05:23Z",
+    "count": 28,
+    "version": 1,
+    "source": "notion-jurisprudence-sample+demo"
+  },
+  "decisions": [
+    {
+      "id": "ce-1822-laffitte",
+      "nom": "CE, 1822, Laffitte",
+      "date": "1822-05-01",
+      "annee": 1822,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ord.",
+      "importance": 3,
+      "theme": "42-Compétence de la juridiction administrative",
+      "notions": [
+        "Acte de gouvernement",
+        "Juridiction administrative"
+      ],
+      "objet": "Fondation du critère du mobile politique de l'acte de gouvernement",
+      "verso": "Toute réclamation tenant à une question politique échappe au contrôle du Conseil d'État, fondant la théorie extensive de l'acte de gouvernement selon le critère du mobile politique.",
+      "portee": "Le Conseil d'État juge irrecevable une réclamation pouvant être rattachée à une question politique, dont la décision appartient exclusivement au gouvernement, consacrant ainsi le critère du mobile politique comme fondement de la théorie extensive de l'acte de gouvernement.",
+      "slugFiche": "ce-1822-laffitte",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1875-prince-napoleon"
+      ],
+      "complete": true
+    },
+    {
+      "id": "tc-1873-blanco",
+      "nom": "TC, 1873, Blanco",
+      "date": "1873-02-08",
+      "annee": 1873,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 4,
+      "theme": "51-Principes généraux de la responsabilité de l'administration",
+      "notions": [
+        "Responsabilité de l'État (service public)",
+        "Juridiction administrative"
+      ],
+      "objet": "Fondement de la responsabilité de l'État et de la compétence administrative",
+      "verso": "La responsabilité de l'État à raison des dommages causés aux particuliers par le fait des personnes qu'il emploie dans le service public obéit à des règles spéciales, distinctes du code civil, dont la connaissance relève de la seule autorité administrative.",
+      "portee": "Le Tribunal des conflits consacre la responsabilité de l'État à raison des dommages causés par le fait des personnes qu'il emploie dans le service public, mettant fin à une tradition d'irresponsabilité, tout en la soumettant à des règles spéciales distinctes du code civil ; il en fait le critère de la compétence exclusive de la juridiction administrative pour en connaître.",
+      "slugFiche": "tc-1873-blanco",
+      "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1873-02-08/00012",
+      "liees": [
+        "tc-1873-dugave-bransiet",
+        "ce-1903-terrier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "tc-1873-dugave-bransiet",
+      "nom": "TC, 1873, Dugave et Bransiet",
+      "date": "1873-02-08",
+      "annee": 1873,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 4,
+      "theme": "51-Principes généraux de la responsabilité de l'administration",
+      "notions": [
+        "Responsabilité de l'État (service public)",
+        "Principe général du droit"
+      ],
+      "objet": "Inapplicabilité du régime civil de la responsabilité des commettants à l'État",
+      "verso": "Les règles du code civil relatives à la responsabilité des commettants du fait de leurs préposés ne s'appliquent pas aux rapports entre l'État et ses agents, la responsabilité de la puissance publique envers les tiers relevant d'un régime spécial distinct du droit civil.",
+      "portee": "Rendue le même jour que la décision Blanco, cette décision juge que le régime civil de la responsabilité des commettants du fait de leurs préposés ne s’étend pas aux rapports de l’État avec ses agents, marquant ainsi l’une des toutes premières utilisations de l’expression « principes généraux du droit » par le Tribunal des conflits pour fonder l’existence d’un régime spécial de responsabilité publique, distinct du droit civil.",
+      "slugFiche": "tc-1873-dugave-bransiet",
+      "urlOfficielle": null,
+      "liees": [
+        "tc-1873-blanco"
+      ],
+      "complete": true
+    },
+    {
+      "id": "tc-1873-pelletier",
+      "nom": "TC, 1873, Pelletier",
+      "date": "1873-07-30",
+      "annee": 1873,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 4,
+      "theme": "54-Responsabilité des agents publics",
+      "notions": [
+        "Faute de service"
+      ],
+      "objet": "Distinction entre acte administratif et fait personnel de l'agent ; compétence juridictionnelle en matière de responsabilité des agents publics",
+      "verso": "L'acte administratif, dont l'appréciation relève exclusivement de la juridiction administrative, se distingue du fait personnel de l'agent, seul susceptible d'engager sa responsabilité propre devant le juge judiciaire.",
+      "portee": "L’abrogation de l’article 75 de la Constitution de l’an VIII n’a pas étendu la compétence judiciaire aux actes administratifs. L’acte administratif, dont l’appréciation relève de la juridiction administrative, se distingue du fait personnel de l’agent, seul susceptible d’engager sa responsabilité propre devant le juge judiciaire ; une action fondée exclusivement sur un acte de police administrative, sans imputation de fait personnel, échappe au juge judiciaire.",
+      "slugFiche": "tc-1873-pelletier",
+      "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1873-07-30/00035",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1874-lezeret-de-la-maurinie",
+      "nom": "CE, 1874, Lezeret de la Maurinie",
+      "date": "1874-05-01",
+      "annee": 1874,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 1,
+      "theme": "11-État / déconcentration",
+      "notions": [
+        "Pouvoir hiérarchique",
+        "Moyen de légalité"
+      ],
+      "objet": "Refus du ministre de reconnaître son autorité hiérarchique (incompétence négative)",
+      "verso": "L’autorité administrative qui décline à tort sa compétence méconnaît l’étendue de ses pouvoirs et sa décision est annulée pour excès de pouvoir, alors même qu’elle aurait pu rejeter la demande en opportunité.",
+      "portee": "La décision annule le refus du ministre de la justice de reconnaître son autorité hiérarchique à l’égard du grand chancelier de la Légion d’honneur : l’autorité qui décline à tort sa compétence méconnaît l’étendue de ses pouvoirs et sa décision encourt l’annulation pour excès de pouvoir.",
+      "slugFiche": "ce-1874-lezeret-de-la-maurinie",
+      "urlOfficielle": null,
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1875-prince-napoleon",
+      "nom": "CE, 1875, Prince Napoléon",
+      "date": "1875-02-19",
+      "annee": 1875,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 4,
+      "theme": "42-Compétence de la juridiction administrative",
+      "notions": [
+        "Acte de gouvernement",
+        "Recevabilité du recours pour excès de pouvoir"
+      ],
+      "objet": "Abandon du critère du mobile politique pour définir l'acte de gouvernement",
+      "verso": "Le mobile politique d'un acte ne suffit plus, depuis cet arrêt, à le qualifier d'acte de gouvernement insusceptible de recours ; le Conseil d'État exerce désormais son contrôle juridictionnel au fond, même sur les actes animés par des considérations politiques.",
+      "portee": "Le Conseil d'État accepte d'examiner au fond la légalité d'un acte pris pour des considérations exclusivement politiques, abandonnant le critère du mobile politique qui, depuis CE, 1822, Laffitte, soustrayait de tels actes à tout contrôle juridictionnel.",
+      "slugFiche": "ce-1875-prince-napoleon",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1875-02-19/46707",
+      "liees": [
+        "ce-1822-laffitte"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1875-pariset",
+      "nom": "CE, 1875, Pariset",
+      "date": "1875-11-26",
+      "annee": 1875,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 4,
+      "theme": "34-Actes administratifs unilatéraux",
+      "notions": [
+        "Détournement de pouvoir",
+        "Moyen de légalité",
+        "Compétence de l'auteur de l'acte"
+      ],
+      "objet": "Détournement de pouvoir : usage d'une compétence de police dans un but financier étranger à sa finalité",
+      "verso": "Il y a détournement de pouvoir lorsque l’administration utilise une compétence dans un but autre que celui pour lequel elle lui a été conférée.",
+      "portee": "L'autorité administrative commet un détournement de pouvoir, ouvrant le recours pour excès de pouvoir, lorsqu'elle use d'une compétence — notamment de police — pour un objet autre que celui pour lequel cette compétence lui a été conférée ; une mesure de police des établissements dangereux ne peut servir un objectif financier de l'État.",
+      "slugFiche": "ce-1875-pariset",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1875-11-26/47544",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1876-ducatel",
+      "nom": "CE, 1876, Ducatel",
+      "date": "1876-07-21",
+      "annee": 1876,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 1,
+      "theme": "34-Actes administratifs unilatéraux",
+      "notions": [
+        "Fonctionnaire de fait",
+        "Répétition de l'indu",
+        "Moyen de légalité"
+      ],
+      "objet": "Paiement fiscal et limite du fonctionnaire de fait",
+      "verso": "Le paiement fiscal n’est libératoire que s’il est reçu par une personne ayant qualité pour le recevoir.",
+      "portee": "En matière de contributions directes, l'effet libératoire d'un paiement suppose qu'il ait été effectué entre les mains d'une personne ayant qualité pour le recevoir ; un versement accompli dans des circonstances anormales n'est pas opposable à l'administration, ce qui marque une limite à la théorie du fonctionnaire de fait.",
+      "slugFiche": "ce-1876-ducatel",
+      "urlOfficielle": null,
+      "liees": [
+        "cass-1883-engel-pelissier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1880-harouel-morin",
+      "nom": "CE, 1880, Harouel et Morin",
+      "date": "1880-04-30",
+      "annee": 1880,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 3,
+      "theme": "34-Actes administratifs unilatéraux",
+      "notions": [
+        "Moyen de légalité",
+        "Juridiction administrative"
+      ],
+      "objet": "Absence d’obligation générale de motivation des actes administratifs (sans texte)",
+      "verso": "En l’absence de texte l’imposant, l’administration n’est pas tenue de motiver ses décisions ; la motivation demeure une exception de source textuelle.",
+      "portee": "La décision pose le principe selon lequel les actes administratifs n’ont pas à être motivés lorsqu’aucun texte ne l’impose (« pas de motivation sans texte »).",
+      "slugFiche": "ce-1880-harouel-morin",
+      "urlOfficielle": null,
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1882-merly",
+      "nom": "CE, 1882, Merly",
+      "date": "1882-11-24",
+      "annee": 1882,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 1,
+      "theme": "41-Organisation et fonctionnement de la juridiction administrative",
+      "notions": [
+        "Juridiction administrative"
+      ],
+      "objet": "Compétence du juge administratif à l'égard des actes réglementant l'accès du public et de la presse aux séances d'une assemblée parlementaire",
+      "verso": "Les actes réglementant l'accès du public et de la presse aux séances d'une assemblée parlementaire échappent au contrôle du juge administratif.",
+      "portee": "S'inscrivant dans une ligne jurisprudentielle continue relative à l'incompétence du juge administratif à l'égard des actes parlementaires, la décision Merly écarte le contrôle juridictionnel sur les mesures réglementant l'accès du public et de la presse aux séances d'une assemblée parlementaire.",
+      "slugFiche": "ce-1882-merly",
+      "urlOfficielle": null,
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "cass-1883-engel-pelissier",
+      "nom": "Cass., 1883, Engel et Pélissier (aff. des mariages de Montrouge)",
+      "date": "1883-08-07",
+      "annee": 1883,
+      "juridiction": "Cour de cassation",
+      "formation": "Civ.",
+      "importance": 3,
+      "theme": "34-Actes administratifs unilatéraux",
+      "notions": [
+        "Fonctionnaire de fait",
+        "Sécurité juridique",
+        "Organisation du service"
+      ],
+      "objet": "Mariages célébrés par un officier irrégulièrement délégué",
+      "verso": "Les actes accomplis par une personne irrégulièrement investie mais présentant les apparences de la fonction peuvent être maintenus au titre du fonctionnaire de fait.",
+      "portee": "La Cour de cassation admet, dans l’affaire dite des mariages de Montrouge, que des actes accomplis par une personne irrégulièrement investie peuvent être maintenus lorsqu’elle présente les apparences de la fonction. La solution fonde classiquement la théorie du fonctionnaire de fait.",
+      "slugFiche": "cass-1883-engel-pelissier",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1876-ducatel"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1889-cadot",
+      "nom": "CE, 1889, Cadot",
+      "date": "1889-12-13",
+      "annee": 1889,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 4,
+      "theme": "41-Organisation et fonctionnement de la juridiction administrative",
+      "notions": [
+        "Séparation des pouvoirs"
+      ],
+      "objet": "Abandon implicite de la théorie du ministre-juge et affirmation de la compétence directe du Conseil d'État comme juge administratif de droit commun en premier ressort",
+      "verso": "L'arrêt Cadot fait implicitement du Conseil d'État le juge administratif de droit commun en premier ressort, mettant fin à l'exigence d'une décision préalable du ministre statuant comme juge.",
+      "portee": "L'apport de l'arrêt Cadot n'est pas formulé dans un considérant de principe mais résulte de la manière dont le Conseil d'État traite le litige : il statue directement sur la demande de Cadot, ce qui vaut abandon de la théorie du ministre-juge et auto-proclamation du Conseil d'État comme juge administratif de droit commun.",
+      "slugFiche": "ce-1889-cadot",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1889-12-13/66145",
+      "liees": [
+        "ce-1903-terrier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "tc-1894-loiseleur",
+      "nom": "TC, 1894, Loiseleur",
+      "date": "1894-11-24",
+      "annee": 1894,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 2,
+      "theme": "31-Service public",
+      "notions": [
+        "Service public",
+        "Domaine privé (aliénation)"
+      ],
+      "objet": "Exclusion de la gestion du domaine privé du champ du service public",
+      "verso": "La gestion du domaine privé d'une personne publique n'est pas un service public ; les litiges qui en résultent relèvent en principe du juge judiciaire.",
+      "portee": "Le Tribunal des conflits juge que la gestion, par une personne publique, de son domaine privé ne constitue pas une activité de service public : la personne publique agit alors comme un propriétaire ordinaire, dans les conditions du droit commun, de sorte que les litiges qui en résultent relèvent par principe du juge judiciaire.",
+      "slugFiche": "tc-1894-loiseleur",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1903-terrier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1895-cames",
+      "nom": "CE, 1895, Cames",
+      "date": "1895-06-21",
+      "annee": 1895,
+      "juridiction": "Conseil d'Etat",
+      "formation": "sect.",
+      "importance": 4,
+      "theme": "52-Responsabilité sans faute",
+      "notions": [
+        "Responsabilité sans faute (risque)",
+        "Responsabilité de l'État (service public)"
+      ],
+      "objet": "Reconnaissance d'une responsabilité sans faute de l'État employeur",
+      "verso": "L'État peut être reconnu responsable, en l'absence de toute faute de sa part comme de la victime, du dommage subi par un ouvrier de ses établissements industriels à l'occasion d'un accident survenu dans l'exercice de son travail.",
+      "portee": "Le Conseil d'État retient la responsabilité de l'État envers un ouvrier de ses établissements industriels victime d'un accident survenu dans l'exercice de son travail, alors même qu'aucune faute ne peut être imputée ni à l'ouvrier ni expressément à l'administration, retenant ainsi l'une des premières applications d'une responsabilité de la puissance publique indépendante de la preuve d'une faute.",
+      "slugFiche": "ce-1895-cames",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1895-06-21/82490",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "tc-1899-canal-de-gignac",
+      "nom": "TC, 1899, Asso. synd. du canal de Gignac",
+      "date": "1899-12-09",
+      "annee": 1899,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 4,
+      "theme": "32-Biens de l'administration",
+      "notions": [
+        "Insaisissabilité des biens publics",
+        "Établissement public"
+      ],
+      "objet": "Qualification d'établissement public d'une association syndicale autorisée (voies d'exécution)",
+      "verso": "Un organisme soumis à des sujétions exorbitantes du droit commun et investi de prérogatives de puissance publique, tel qu'une association syndicale autorisée, présente les caractères essentiels d'un établissement public dont les créanciers ne peuvent poursuivre le recouvrement par les voies d'exécution de droit privé.",
+      "portee": "Le Tribunal des conflits dégage le critère de la puissance publique — sujétions exorbitantes imposées aux administrés et prérogatives de contrainte confiées à l'autorité préfectorale — pour qualifier d'établissement public une association syndicale autorisée, et en déduit que ses créanciers ne peuvent poursuivre le recouvrement de leur créance par les voies d'exécution du droit privé.",
+      "slugFiche": "tc-1899-canal-de-gignac",
+      "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1899-12-09/00515",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1901-casanova",
+      "nom": "CE, 1901, Casanova",
+      "date": "1901-03-29",
+      "annee": 1901,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 3,
+      "theme": "41-Organisation et fonctionnement de la juridiction administrative",
+      "notions": [
+        "Intérêt pour agir (contribuable)",
+        "Recevabilité du recours pour excès de pouvoir"
+      ],
+      "objet": "Intérêt à agir du contribuable communal contre une délibération inscrivant une dépense au budget de la commune",
+      "verso": "Le contribuable communal justifie d'un intérêt lui donnant qualité pour contester une délibération inscrivant une dépense au budget de la commune.",
+      "portee": "Le contribuable communal justifie d'un intérêt lui donnant qualité pour contester une délibération qui inscrit une dépense au budget de la commune.",
+      "slugFiche": "ce-1901-casanova",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1901-03-29/94580",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1902-gaz-deville-les-rouen",
+      "nom": "CE, 1902, Cie nouv. du gaz de Déville-lès-Rouen",
+      "date": "1902-01-10",
+      "annee": 1902,
+      "juridiction": "Conseil d'Etat",
+      "formation": "sect.",
+      "importance": 3,
+      "theme": "35-Contrats administratifs",
+      "notions": [
+        "Mutabilité du service public",
+        "Continuité du service public"
+      ],
+      "objet": "Droit de préférence du concessionnaire pour un mode d’éclairage non prévu au contrat",
+      "verso": "Le concessionnaire de l’éclairage au gaz bénéficie d’un droit de préférence pour assurer un mode d’éclairage nouveau non prévu au contrat ; la commune ne peut le confier à un tiers qu’après mise en demeure infructueuse du concessionnaire.",
+      "portee": "Lorsque le contrat de concession d’éclairage garde le silence sur un mode d’éclairage nouveau apparu depuis sa conclusion, le concessionnaire bénéficie d’un droit de préférence pour assurer ce nouveau mode d’éclairage.",
+      "slugFiche": "ce-1902-gaz-deville-les-rouen",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1902-01-10/94624",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1902-neris-les-bains",
+      "nom": "CE, 1902, Cne de Néris-les-Bains",
+      "date": "1902-04-18",
+      "annee": 1902,
+      "juridiction": "Conseil d'Etat",
+      "formation": "sect.",
+      "importance": 4,
+      "theme": "33-Pouvoir de police",
+      "notions": [
+        "Nécessité et proportionnalité (police administrative)",
+        "Recevabilité du recours pour excès de pouvoir",
+        "Compétence de l'auteur de l'acte"
+      ],
+      "objet": "Concours des polices et recevabilité du recours du maire contre l’annulation préfectorale",
+      "verso": "Le maire peut, sur le même objet qu'une réglementation préfectorale de police, adopter pour sa commune des mesures plus rigoureuses justifiées par des motifs locaux, mais non les atténuer ; il est recevable à contester par la voie de l'excès de pouvoir l'annulation préfectorale de ses arrêtés de police municipale.",
+      "portee": "La police municipale appartient au maire et s'exerce sous la simple surveillance, non sous l'autorité, de l'administration supérieure. Si le préfet peut réglementer la police pour l'ensemble ou plusieurs communes du département, le maire demeure libre d'adopter, pour sa commune et pour des motifs qui lui sont propres, des mesures plus rigoureuses sur le même objet.",
+      "slugFiche": "ce-1902-neris-les-bains",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1902-04-18/04749",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "tc-1902-saint-just",
+      "nom": "TC, 1902, Sté immo. de St-Just",
+      "date": "1902-12-02",
+      "annee": 1902,
+      "juridiction": "Tribunal des conflits",
+      "formation": "",
+      "importance": 4,
+      "theme": "34-Actes administratifs unilatéraux",
+      "notions": [
+        "Séparation des pouvoirs",
+        "Juridiction administrative"
+      ],
+      "objet": "Conditions de l’exécution d’office des décisions administratives",
+      "verso": "L’exécution d’office est exceptionnelle : hors urgence ou texte, elle suppose l’absence d’autre voie de droit, la résistance et une mesure strictement nécessaire.",
+      "portee": "La décision reconnaît le privilège d’exécution d’office de l’administration, qui demeure subsidiaire et strictement encadré. Hors urgence ou texte l’autorisant expressément, il suppose notamment l’absence d’autre sanction légale, une décision fondée sur un texte précis, la résistance de l’intéressé et une mesure strictement nécessaire.",
+      "slugFiche": "tc-1902-saint-just",
+      "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1902-12-02/00543",
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1903-terrier",
+      "nom": "CE, 1903, Terrier",
+      "date": "1903-02-06",
+      "annee": 1903,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 4,
+      "theme": "42-Compétence de la juridiction administrative",
+      "notions": [
+        "Service public",
+        "Juridiction administrative"
+      ],
+      "objet": "Compétence administrative pour les litiges nés de l'exécution d'un service public départemental",
+      "verso": "Le Conseil d'État se reconnaît compétent pour les litiges nés de l'exécution d'un service public départemental, érigeant le service public en critère fédérateur de la compétence administrative, y compris pour les collectivités territoriales.",
+      "portee": "Le Conseil d'État se reconnaît compétent pour connaître des litiges nés de l'exécution d'un service public départemental : la décision étend aux collectivités territoriales la compétence administrative fondée sur le service public, posé comme critère fédérateur de la juridiction administrative.",
+      "slugFiche": "ce-1903-terrier",
+      "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1903-02-06/7496",
+      "liees": [
+        "ce-1889-cadot",
+        "tc-1873-blanco",
+        "ce-1916-ste-commerciale-ouest-africain"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1912-ste-des-granits-porphyroides",
+      "nom": "CE, 1912, Sté des granits porphyroïdes",
+      "date": "1912-07-31",
+      "annee": 1912,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 3,
+      "theme": "35-Contrats administratifs",
+      "notions": [
+        "Clause exorbitante (définition classique)",
+        "Marché public"
+      ],
+      "objet": "Qualification du contrat administratif (clause exorbitante)",
+      "verso": "Un contrat est administratif lorsqu’il comporte une clause exorbitante du droit commun, même hors service public strict.",
+      "portee": "La décision précise le critère de la clause exorbitante pour la qualification du contrat administratif.",
+      "slugFiche": "ce-1912-ste-des-granits-porphyroides",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1903-terrier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1916-ste-commerciale-ouest-africain",
+      "nom": "CE, 1916, Sté commerciale de l’Ouest africain",
+      "date": "1916-12-22",
+      "annee": 1916,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 4,
+      "theme": "31-Service public",
+      "notions": [
+        "Service public industriel et commercial",
+        "Service public"
+      ],
+      "objet": "Naissance de la catégorie du SPIC (Bac d’Eloka)",
+      "verso": "Le Conseil d’État reconnaît la catégorie du service public industriel et commercial géré dans des conditions analogues à celles d’une entreprise.",
+      "portee": "La décision pose la catégorie du SPIC et en tire des conséquences de régime et de compétence.",
+      "slugFiche": "ce-1916-bac-eloka",
+      "urlOfficielle": null,
+      "liees": [
+        "tc-1873-blanco",
+        "ce-1903-terrier"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1936-jamart",
+      "nom": "CE, 1936, Jamart",
+      "date": "1936-02-07",
+      "annee": 1936,
+      "juridiction": "Conseil d'Etat",
+      "formation": "",
+      "importance": 3,
+      "theme": "11-État / déconcentration",
+      "notions": [
+        "Pouvoir réglementaire du chef de service",
+        "Organisation du service"
+      ],
+      "objet": "Pouvoir réglementaire du chef de service (organisation)",
+      "verso": "Tout chef de service dispose du pouvoir d’édicter les mesures nécessaires au bon fonctionnement du service placé sous son autorité.",
+      "portee": "La décision pose le pouvoir réglementaire inhérent du chef de service pour l’organisation du service.",
+      "slugFiche": "ce-1936-jamart",
+      "urlOfficielle": null,
+      "liees": [],
+      "complete": true
+    },
+    {
+      "id": "ce-1945-aramu",
+      "nom": "CE, 1945, Aramu",
+      "date": "1945-10-26",
+      "annee": 1945,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ass.",
+      "importance": 4,
+      "theme": "23-Principes généraux du droit",
+      "notions": [
+        "Principe général du droit",
+        "Droits de la défense"
+      ],
+      "objet": "Consécration des principes généraux du droit (droits de la défense)",
+      "verso": "Les principes généraux du droit, dont les droits de la défense, s’imposent à l’administration même sans texte.",
+      "portee": "La décision consacre les principes généraux du droit comme normes opposables à l’administration.",
+      "slugFiche": "ce-1945-aramu",
+      "urlOfficielle": null,
+      "liees": [
+        "tc-1873-dugave-bransiet",
+        "ce-1950-dehaene"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1950-dehaene",
+      "nom": "CE, 1950, Dehaene",
+      "date": "1950-07-07",
+      "annee": 1950,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ass.",
+      "importance": 4,
+      "theme": "31-Service public",
+      "notions": [
+        "Droit de grève",
+        "Continuité du service public"
+      ],
+      "objet": "Conciliation du droit de grève et de la continuité du service public",
+      "verso": "Le droit de grève des agents publics se concilie avec la continuité du service public, que le gouvernement peut assurer en l’absence de loi.",
+      "portee": "La décision précise les conditions de limitation du droit de grève au nom de la continuité du service public.",
+      "slugFiche": "ce-1950-dehaene",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1945-aramu"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1989-nicolo",
+      "nom": "CE, 1989, Nicolo",
+      "date": "1989-10-20",
+      "annee": 1989,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ass.",
+      "importance": 4,
+      "theme": "25-Droit international",
+      "notions": [
+        "Effet direct (droit de l'Union européenne)",
+        "Primauté du droit de l'Union",
+        "Théorie de la loi-écran"
+      ],
+      "objet": "Contrôle de conventionnalité de la loi (abandon de la loi-écran)",
+      "verso": "Le juge administratif écarte une loi contraire à un traité international, y compris postérieure au traité.",
+      "portee": "La décision abandonne la théorie de la loi-écran et étend le contrôle de conventionnalité aux lois postérieures au traité.",
+      "slugFiche": "ce-1989-nicolo",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-2001-snip",
+        "ce-1998-sarran"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-1998-sarran",
+      "nom": "CE, 1998, Sarran",
+      "date": "1998-10-30",
+      "annee": 1998,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ass.",
+      "importance": 4,
+      "theme": "21-Principes du système normatif",
+      "notions": [
+        "Primauté de la Constitution (ordre interne)",
+        "Effet direct (traité international hors Union européenne)"
+      ],
+      "objet": "Suprématie de la Constitution sur les traités (ordre interne)",
+      "verso": "Dans l’ordre interne, la Constitution prime sur les traités internationaux.",
+      "portee": "La décision pose la primauté de la Constitution sur les engagements internationaux dans l’ordre juridique interne.",
+      "slugFiche": "ce-1998-sarran",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1989-nicolo"
+      ],
+      "complete": true
+    },
+    {
+      "id": "ce-2001-snip",
+      "nom": "CE, 2001, SNIP",
+      "date": "2001-12-03",
+      "annee": 2001,
+      "juridiction": "Conseil d'Etat",
+      "formation": "ass.",
+      "importance": 3,
+      "theme": "25-Droit international",
+      "notions": [
+        "Primauté du droit de l'Union",
+        "Effet direct (droit de l'Union européenne)"
+      ],
+      "objet": "Extension du contrôle de conventionnalité au droit dérivé de l’Union",
+      "verso": "Le juge administratif contrôle la compatibilité de la loi avec le droit dérivé de l’Union européenne.",
+      "portee": "La décision étend la jurisprudence Nicolo au droit dérivé de l’Union européenne.",
+      "slugFiche": "ce-2001-snip",
+      "urlOfficielle": null,
+      "liees": [
+        "ce-1989-nicolo"
+      ],
+      "complete": true
+    }
+  ]
+}

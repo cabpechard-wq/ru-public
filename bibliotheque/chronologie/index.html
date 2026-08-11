@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronologie de la jurisprudence — Bibliothèque</title>
+    <meta
+      name="description"
+      content="Frise chronologique des décisions de droit public et administratif. Filtrable par thème, notions et importance."
+    />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../site.css?v=24" />
+    <link rel="stylesheet" href="./assets/chronologie.css" />
+    <script>
+      window.__CHRONO_CONFIG__ = {
+        dataUrl: "./data/chronology-decisions.json",
+        ficheBaseUrl: "../../arrets/",
+        defaultMinImportance: 1,
+        supportedDataVersion: 1,
+      };
+    </script>
+    <script src="./assets/chronologie.js" defer></script>
+  </head>
+  <body>
+    <p class="site-crumb">
+      <a href="../../">Droit public et administratif</a>
+      <span class="sep">›</span>
+      <a href="../">Bibliothèque</a>
+      <span class="sep">›</span>
+      <strong>Chronologie de la jurisprudence</strong>
+    </p>
+
+    <header class="page-header">
+      <div class="page-header__inner">
+        <div class="brand">
+          <span class="brand__kicker">Bibliothèque · Jurisprudence</span>
+          <h1 class="brand__title">Chronologie de la jurisprudence</h1>
+        </div>
+        <div class="header-actions">
+          <div class="segmented" role="group" aria-label="Échelle de la frise">
+            <button type="button" data-scale="year" class="is-active">Années</button>
+            <button type="button" data-scale="month">Mois</button>
+            <button type="button" data-scale="day">Jours</button>
+          </div>
+          <div class="segmented" role="group" aria-label="Mode d’affichage">
+            <button type="button" data-view="timeline" class="is-active">Frise</button>
+            <button type="button" data-view="list">Liste</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main is-detail-closed" id="chrono-main">
+      <div class="intro">
+        <p>
+          Vue d’ensemble datée du fonds jurisprudentiel. Filtrez par thème, notions ou
+          importance ; ouvrez une décision pour sa synthèse et ses liens. Les données sont
+          régénérées depuis la base Notion — cette page ne se modifie pas à la main.
+        </p>
+        <div class="status-bar" aria-live="polite">
+          <span class="pill"
+            ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
+            décisions</span
+          >
+          <span class="pill">Export&nbsp;: <span id="meta-generated">—</span></span>
+        </div>
+      </div>
+
+      <div id="chrono-alert" class="alert" hidden></div>
+
+      <section class="filters" aria-label="Filtres">
+        <div class="filters__row">
+          <label class="field">
+            <span>Recherche</span>
+            <input
+              id="filter-search"
+              type="search"
+              placeholder="Nom, objet, verso, notion…"
+              autocomplete="off"
+            />
+          </label>
+
+          <label class="field">
+            <span>Thème</span>
+            <select id="filter-theme">
+              <option value="">Tous les thèmes</option>
+            </select>
+          </label>
+
+          <div class="field">
+            <span class="field-label" id="label-juridictions">Juridictions</span>
+            <div
+              id="filter-juridictions"
+              class="ms"
+              role="group"
+              aria-labelledby="label-juridictions"
+            ></div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-notions">Notions</span>
+            <div id="filter-notions" class="ms" role="group" aria-labelledby="label-notions"></div>
+          </div>
+        </div>
+
+        <div class="filters__row filters__row--period">
+          <fieldset class="field field--importance" style="border: 0; margin: 0; padding: 0">
+            <span>Importance</span>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; padding-top: 8px">
+              <label><input type="checkbox" name="importance" value="1" checked /> ★</label>
+              <label><input type="checkbox" name="importance" value="2" checked /> ★★</label>
+              <label><input type="checkbox" name="importance" value="3" checked /> ★★★</label>
+              <label><input type="checkbox" name="importance" value="4" checked /> ★★★★</label>
+            </div>
+          </fieldset>
+
+          <div class="field field--period">
+            <span>Période</span>
+            <div class="period-mode">
+              <label
+                ><input type="radio" name="period-mode" value="year" checked /> Par
+                année</label
+              >
+              <label
+                ><input type="radio" name="period-mode" value="date" /> Par date
+                exacte</label
+              >
+            </div>
+            <div class="period-fields" id="period-year-fields">
+              <div class="year-range">
+                <input id="filter-year-from" type="number" inputmode="numeric" placeholder="De" />
+                <span>→</span>
+                <input id="filter-year-to" type="number" inputmode="numeric" placeholder="À" />
+              </div>
+            </div>
+            <div class="period-fields" id="period-date-fields" hidden>
+              <div class="date-range">
+                <input id="filter-date-from" type="date" aria-label="Date de début" />
+                <span>→</span>
+                <input id="filter-date-to" type="date" aria-label="Date de fin" />
+              </div>
+            </div>
+          </div>
+
+          <div class="field field--related">
+            <span>Décisions liées…</span>
+            <label class="related-only-wrap is-visible" id="related-only-wrap">
+              <input id="filter-related-only" type="checkbox" disabled />
+              <span id="related-only-label">Afficher uniquement les décisions liées</span>
+            </label>
+          </div>
+
+          <div class="field field--reset">
+            <span>&nbsp;</span>
+            <button type="button" id="filter-reset">Réinitialiser les filtres</button>
+          </div>
+        </div>
+
+        <div class="filters__tools">
+          <p class="active-filters" id="active-filters">
+            <strong>Filtres actifs :</strong>
+            <span class="active-filters__list" id="active-filters-list">aucun</span>
+          </p>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="timeline-panel" id="timeline-panel" aria-label="Frise chronologique">
+          <div class="panel-head">
+            <h2 id="timeline-title">Frise par années</h2>
+          </div>
+          <div class="timeline-scroll" id="timeline-scroll">
+            <div class="timeline" id="timeline" role="list"></div>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--accent)"></span> Conseil
+              d’État</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--purple)"></span> Tribunal des
+              conflits</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--orange)"></span> Conseil
+              constitutionnel</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--green)"></span> CEDH /
+              CJUE</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: #c4a035"></span> Cour de
+              cassation</span
+            >
+          </div>
+        </section>
+
+        <section class="list-panel" id="list-panel" hidden aria-label="Liste chronologique">
+          <div class="panel-head">
+            <h2>Liste chronologique</h2>
+          </div>
+          <ol class="list" id="decision-list"></ol>
+        </section>
+      </div>
+
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </main>
+    <script src="../../auth.js?v=4"></script>
+    <script src="../../site-nav.js?v=26"></script>
+  </body>
+</html>
