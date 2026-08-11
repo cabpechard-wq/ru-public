@@ -59,13 +59,16 @@
         if (cur === p) a.classList.add("is-active");
       } else if (key === "ressources") {
         const onManuel = cur.indexOf("/manuel") !== -1;
-        const onArrets = cur.indexOf("/arrets") !== -1;
-        if (cur === p || onManuel || onArrets) {
+        const onChrono =
+          cur.indexOf("/bibliotheque/chronologie") !== -1 ||
+          (cur.indexOf("/chronologie") !== -1 && cur.indexOf("/bibliotheque") === -1);
+        if (cur === p || onManuel || onChrono) {
           a.classList.add("is-active");
         }
       } else if (key === "bibliotheque") {
         const onDict = cur.indexOf("/dictionnaire") !== -1;
-        if (cur === p || onDict) {
+        const onArrets = cur.indexOf("/arrets") !== -1;
+        if (cur === p || onDict || onArrets) {
           a.classList.add("is-active");
         }
       } else if (key === "exercices") {
@@ -134,6 +137,17 @@
       btn.setAttribute("aria-label", "Se connecter — Espace pédagogique");
       btn.dataset.authMode = "login";
     }
+  }
+
+  function applyHomeEntryAccess(isMember) {
+    document.querySelectorAll("[data-home-access]").forEach((el) => {
+      const mode = el.getAttribute("data-home-access");
+      if (mode === "public") {
+        el.textContent = "Accès public";
+        return;
+      }
+      el.textContent = isMember ? "Ouvrir →" : "Aperçu (accès membre)";
+    });
   }
 
   document.addEventListener("click", (e) => {
@@ -402,6 +416,7 @@
     refreshAuth().then((me) => {
       const ok = Boolean(me && me.email);
       applyHomeAuth(ok);
+      applyHomeEntryAccess(ok);
       applyManuelPreview(ok);
       applyTdRubriqueAccess(ok);
       applyFlipcardsEntry(ok);

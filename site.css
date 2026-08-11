@@ -3012,7 +3012,7 @@ input:focus {
 .home-pillar-actions {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: .4rem;
   margin: .15rem 0 .25rem;
 }
@@ -3024,6 +3024,30 @@ input:focus {
 .home-pillar-actions .btn {
   font-size: .72rem;
   padding: .28rem .65rem;
+}
+.home-pillar-entry {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  text-align: left;
+  font-size: .78rem;
+  line-height: 1.3;
+  padding: .45rem .75rem;
+}
+.home-pillar-entry__title {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+.home-pillar-entry__access {
+  flex: 0 0 auto;
+  font-size: .68em;
+  font-weight: 700;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  opacity: .88;
 }
 .home-pillar-cta {
   margin-top: auto;
