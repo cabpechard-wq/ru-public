@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chronologie de la jurisprudence administrative — Membres</title>
+    <meta
+      name="description"
+      content="Frise chronologique complète des décisions de droit public et administratif."
+    />
+    <script>
+      window.__CHRONO_CONFIG__ = {
+        dataUrl: "./data/chronology-decisions.json",
+        ficheBaseUrl: "../arrets/",
+        checkoutUrl: "../checkout/",
+        demo: false,
+        defaultMinImportance: 5,
+        supportedDataVersion: 1,
+      };
+    </script>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      id="theme-fonts"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
+      rel="stylesheet"
+    />
+    <link id="theme-css" rel="stylesheet" href="../site.css?v=24" />
+    <link rel="stylesheet" href="./assets/chronologie.css?v=8" />
+    <script src="./assets/chronologie.js?v=8" defer></script>
+  <script>
+(function(){
+  var API = "https://flipcards-auth.cab-pechard.workers.dev";
+  var token = sessionStorage.getItem("flipcards_token") || localStorage.getItem("flipcards_token") || "";
+  function deny() {
+    sessionStorage.removeItem("flipcards_ok");
+    location.replace("../membre/");
+  }
+  if (!token || !API || API.indexOf("EXAMPLE") !== -1) {
+    // Fallback admin: ancien flag session uniquement si API pas encore déployée
+    if (sessionStorage.getItem("flipcards_ok") === "1" && (!API || API.indexOf("EXAMPLE") !== -1)) {
+      return;
+    }
+    if (!token) { deny(); return; }
+  }
+  fetch(API.replace(/\/$/, "") + "/api/me", {
+    headers: { Authorization: "Bearer " + token }
+  }).then(function(r){
+    if (!r.ok) throw new Error("nope");
+    sessionStorage.setItem("flipcards_ok", "1");
+  }).catch(function(){ deny(); });
+})();
+</script>
+
+</head>
+  <body>
+    <p class="site-crumb">
+      <a href="../">Droit public et administratif</a>
+      <span class="sep">›</span>
+      <a href="../bibliotheque/">Bibliothèque</a>
+      <span class="sep">›</span>
+      <strong>Chronologie de la jurisprudence administrative</strong>
+    </p>
+
+    <header class="page-header">
+      <div class="page-header__inner">
+        <div class="brand">
+          <span class="brand__kicker">Bibliothèque · Jurisprudence</span>
+          <h1 class="brand__title">Chronologie de la jurisprudence administrative</h1>
+        </div>
+        <div class="header-actions">
+                    <div class="segmented" role="group" aria-label="Échelle de la frise">
+            <button type="button" data-scale="year" class="is-active">Années</button>
+            <button type="button" data-scale="month">Mois</button>
+            <button type="button" data-scale="day">Jours</button>
+          </div>
+          <div class="segmented" role="group" aria-label="Mode d’affichage">
+            <button type="button" data-view="timeline" class="is-active">Frise</button>
+            <button type="button" data-view="list">Liste</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main is-detail-closed" id="chrono-main">
+      <div id="chrono-alert" class="alert" hidden></div>
+
+      <section class="filters" aria-label="Filtres">
+        <div class="filters__row">
+          <div class="field">
+            <span class="field-label" id="label-search">Recherche</span>
+            <input
+              id="filter-search"
+              type="search"
+              placeholder="Mots clés (recherche générale)"
+              autocomplete="off"
+              aria-labelledby="label-search"
+            />
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-juridictions">Juridictions</span>
+            <div
+              id="filter-juridictions"
+              class="ms"
+              role="group"
+              aria-labelledby="label-juridictions"
+            ></div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-themes">Thèmes</span>
+            <select id="filter-theme" aria-labelledby="label-themes">
+              <option value="">Tous les thèmes</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="label-notions">Notions</span>
+            <div id="filter-notions" class="ms" role="group" aria-labelledby="label-notions"></div>
+          </div>
+        </div>
+
+        <div class="filters__row">
+          <fieldset class="field field--importance">
+            <span class="field-label">Importance</span>
+            <div class="chip-group" role="group" aria-label="Importance">
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="1" /><span>★</span></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="2" /><span
+                  >★★</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="3" /><span
+                  >★★★</span
+                ></label
+              >
+              <label class="chip"
+                ><input type="checkbox" name="importance" value="4" /><span
+                  >★★★★</span
+                ></label
+              >
+            </div>
+          </fieldset>
+
+          <div class="field field--period">
+            <span class="field-label">Période</span>
+            <div class="date-range">
+              <input id="filter-date-from" type="date" aria-label="Date de début" />
+              <span>→</span>
+              <input id="filter-date-to" type="date" aria-label="Date de fin" />
+            </div>
+          </div>
+
+          <div class="field field--related">
+            <span class="field-label">Décisions liées…</span>
+            <label class="related-only-wrap is-visible" id="related-only-wrap">
+              <input id="filter-related-only" type="checkbox" disabled />
+              <span id="related-only-label">Afficher uniquement les décisions liées</span>
+            </label>
+          </div>
+
+          <div class="field field--reset">
+            <span class="field-label" aria-hidden="true">&nbsp;</span>
+            <button type="button" id="filter-reset" class="btn-reset">Réinitialiser les filtres</button>
+          </div>
+        </div>
+
+        <div class="filters__tools">
+          <p class="active-filters" id="active-filters">
+            <strong>Filtres actifs :</strong>
+            <span class="active-filters__list" id="active-filters-list">aucun</span>
+          </p>
+          <span class="pill"
+            ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
+            décisions</span
+          >
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="timeline-panel" id="timeline-panel" aria-label="Frise chronologique">
+          <div class="panel-head">
+            <h2 id="timeline-title">Frise par années</h2>
+          </div>
+          <div class="timeline-scroll" id="timeline-scroll">
+            <div class="timeline" id="timeline" role="list"></div>
+          </div>
+          <div class="legend" aria-hidden="true">
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> 1 Tribunal des
+              conflits</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> 2 Conseil
+              constitutionnel</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> 3 Conseil
+              d’État</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> 4 CAA / TA</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cass)"></span> 5 Cour de
+              cassation</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> 6 CA / TJ et
+              autres</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cij)"></span> 7 CIJ</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cedh)"></span> 8 CEDH</span
+            >
+            <span class="legend__item"
+              ><span class="legend__swatch" style="--swatch: var(--marker-cjue)"></span> 9 CJUE</span
+            >
+          </div>
+        </section>
+
+        <section class="list-panel" id="list-panel" hidden aria-label="Liste chronologique">
+          <div class="panel-head">
+            <h2>Liste chronologique</h2>
+          </div>
+          <ol class="list" id="decision-list"></ol>
+        </section>
+      </div>
+
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </main>
+    <div id="fiche-tip" class="fiche-tip" hidden role="tooltip" aria-hidden="true">
+      <p class="fiche-tip__label">Fiche</p>
+      <p class="fiche-tip__nom" id="fiche-tip-nom"></p>
+      <p class="fiche-tip__meta" id="fiche-tip-meta"></p>
+      <p class="fiche-tip__objet" id="fiche-tip-objet"></p>
+      <p class="fiche-tip__verso" id="fiche-tip-verso"></p>
+    </div>
+    <script src="../auth.js?v=4"></script>
+    <script src="../site-nav.js?v=26"></script>
+  </body>
+</html>

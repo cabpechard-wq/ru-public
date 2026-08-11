@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ressources-universitaires.fr/schemas/chronology-decisions.json",
+  "title": "ChronologyDecisions",
+  "description": "Dataset de la chronologie juridique globale (Cours). Régénéré depuis la base Notion Jurisprudence.",
+  "type": "object",
+  "required": ["meta", "decisions"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["generatedAt", "count", "version"],
+      "additionalProperties": false,
+      "properties": {
+        "generatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Horodatage UTC de génération de l'export."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Nombre d'entrées dans decisions (doit correspondre à la longueur du tableau)."
+        },
+        "version": {
+          "type": "integer",
+          "const": 1,
+          "description": "Version du schéma. Incrémenter uniquement en cas de rupture."
+        },
+        "source": {
+          "type": "string",
+          "description": "Identifiant libre de la source (ex. notion-jurisprudence)."
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/decision" }
+    }
+  },
+  "definitions": {
+    "decision": {
+      "type": "object",
+      "required": [
+        "id",
+        "nom",
+        "date",
+        "annee",
+        "juridiction",
+        "formation",
+        "importance",
+        "theme",
+        "notions",
+        "objet",
+        "verso",
+        "portee",
+        "slugFiche",
+        "urlOfficielle",
+        "liees",
+        "complete"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+          "description": "Identifiant stable kebab-case. Jamais de titre libre. Ex. ce-1989-nicolo."
+        },
+        "nom": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Identifiant éditorial (champ Nom)."
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$",
+          "description": "Date de lecture ISO AAAA-MM-JJ."
+        },
+        "annee": {
+          "type": "integer",
+          "minimum": 1700,
+          "maximum": 2100
+        },
+        "juridiction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "formation": {
+          "type": "string",
+          "description": "Chaîne vide autorisée (TC, Cons. constit., etc.)."
+        },
+        "importance": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "theme": {
+          "type": "string",
+          "description": "Libellé exact de l'option Thème ; chaîne vide si non renseigné."
+        },
+        "notions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "objet": {
+          "type": "string"
+        },
+        "verso": {
+          "type": "string"
+        },
+        "portee": {
+          "type": "string"
+        },
+        "slugFiche": {
+          "type": ["string", "null"],
+          "description": "Slug de la fiche HTML du cours, ou null."
+        },
+        "urlOfficielle": {
+          "type": ["string", "null"],
+          "description": "URL pérenne Légifrance / juridiction, ou null."
+        },
+        "liees": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "uniqueItems": true,
+          "description": "Ids d'autres décisions du même fichier (relation Décisions liées…)."
+        },
+        "complete": {
+          "type": "boolean",
+          "description": "true si la fiche est jugée exploitable pédagogiquement (verso+objet+date, ou validée)."
+        }
+      }
+    }
+  }
+}

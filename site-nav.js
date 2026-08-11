@@ -331,6 +331,33 @@
     });
   }
 
+  function applyChronologieEntry(isMember) {
+    document.querySelectorAll("[data-chronologie-entry]").forEach((el) => {
+      const typeEl = el.querySelector("[data-chrono-type]");
+      const descEl = el.querySelector("[data-chrono-desc]");
+      const ctaEl = el.querySelector("[data-chrono-cta]");
+      if (isMember) {
+        el.setAttribute("href", abs("chronologie/"));
+        if (typeEl) typeEl.textContent = "Accès membre";
+        if (descEl) {
+          descEl.textContent =
+            "Frise complète du fonds : toutes les décisions, filtres, décisions liées et liens vers les fiches.";
+        }
+        if (ctaEl) ctaEl.textContent = "Ouvrir la chronologie →";
+        el.setAttribute("title", "Chronologie de la jurisprudence administrative (accès membre)");
+      } else {
+        el.setAttribute("href", abs("bibliotheque/chronologie/"));
+        if (typeEl) typeEl.textContent = "Démo";
+        if (descEl) {
+          descEl.textContent =
+            "Démo de la frise chronologique (15 décisions), avec lots de décisions liées et filtres.";
+        }
+        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
+        el.setAttribute("title", "Chronologie de la jurisprudence administrative (démo)");
+      }
+    });
+  }
+
   // Aperçu Manuel : verrouiller d'abord, déverrouiller si membre (évite le flash du texte complet)
   if (document.querySelector("article.manuel-prose")) {
     applyManuelPreview(false);
@@ -381,6 +408,7 @@
       applyFlipcardsDicoEntry(ok);
       applyRelierEntry(ok);
       applyRelierDicoEntry(ok);
+      applyChronologieEntry(ok);
       if (window.SiteTTS) window.SiteTTS.init(ok);
     });
   });
@@ -398,6 +426,8 @@
     if (cur.indexOf("/demo-relier-dico/") !== -1 || cur.endsWith("/demo-relier-dico")) return true;
     if (cur.indexOf("/relier-dico/") !== -1 || cur.endsWith("/relier-dico")) return true;
     if (cur.indexOf("/relier/") !== -1 || cur.endsWith("/relier")) return true;
+    if (cur.indexOf("/bibliotheque/chronologie/") !== -1) return true;
+    if (cur.indexOf("/chronologie/") !== -1 || cur.endsWith("/chronologie")) return true;
     return false;
   }
 

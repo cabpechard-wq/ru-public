@@ -3,15 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronologie de la jurisprudence — Bibliothèque</title>
+    <title>Chronologie de la jurisprudence administrative — Démo</title>
     <meta
       name="description"
-      content="Frise chronologique des décisions de droit public et administratif. Filtrable par thème, notions et importance."
+      content="Démo de la frise chronologique des décisions de droit public et administratif (15 arrêts)."
     />
     <script>
       window.__CHRONO_CONFIG__ = {
-        dataUrl: "./data/chronology-decisions.json",
+        dataUrl: "./data/chronology-decisions-demo.json",
         ficheBaseUrl: "../../arrets/",
+        checkoutUrl: "../../checkout/",
+        demo: true,
         defaultMinImportance: 5,
         supportedDataVersion: 1,
       };
@@ -25,8 +27,8 @@
       rel="stylesheet"
     />
     <link id="theme-css" rel="stylesheet" href="../../site.css?v=24" />
-    <link rel="stylesheet" href="./assets/chronologie.css?v=7" />
-    <script src="./assets/chronologie.js?v=7" defer></script>
+    <link rel="stylesheet" href="./assets/chronologie.css?v=8" />
+    <script src="./assets/chronologie.js?v=8" defer></script>
   </head>
   <body>
     <p class="site-crumb">
@@ -34,16 +36,19 @@
       <span class="sep">›</span>
       <a href="../">Bibliothèque</a>
       <span class="sep">›</span>
-      <strong>Chronologie de la jurisprudence</strong>
+      <strong>Chronologie de la jurisprudence administrative</strong>
     </p>
 
     <header class="page-header">
       <div class="page-header__inner">
         <div class="brand">
-          <span class="brand__kicker">Bibliothèque · Jurisprudence</span>
-          <h1 class="brand__title">Chronologie de la jurisprudence</h1>
+          <span class="brand__kicker">Bibliothèque · Démo</span>
+          <h1 class="brand__title">Chronologie de la jurisprudence administrative</h1>
         </div>
         <div class="header-actions">
+          <p class="demo-upsell" id="chrono-demo-upsell">
+            <a class="demo-upsell-link" href="../../checkout/">Accès à toutes les ressources…</a>
+          </p>
           <div class="segmented" role="group" aria-label="Échelle de la frise">
             <button type="button" data-scale="year" class="is-active">Années</button>
             <button type="button" data-scale="month">Mois</button>

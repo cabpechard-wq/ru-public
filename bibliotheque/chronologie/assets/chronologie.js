@@ -5,8 +5,10 @@
   "use strict";
 
   var DEFAULT_CONFIG = {
-    dataUrl: "./data/chronology-decisions.json",
+    dataUrl: "./data/chronology-decisions-demo.json",
     ficheBaseUrl: "/ressources/fiches/",
+    checkoutUrl: "../checkout/",
+    demo: false,
     defaultMinImportance: 1,
     supportedDataVersion: 1,
   };
@@ -140,6 +142,23 @@
     els.alert.hidden = false;
     els.alert.dataset.tone = tone || "warn";
     els.alert.textContent = message;
+  }
+
+  function syncDemoUi(data) {
+    var upsell = $("chrono-demo-upsell");
+    var isDemo = !!(config.demo || (data && data.meta && data.meta.demo));
+    if (upsell) upsell.hidden = !isDemo;
+    if (!isDemo) return;
+    var n = (data && data.decisions && data.decisions.length) || 0;
+    var total = (data && data.meta && data.meta.sourceCount) || null;
+    setAlert(
+      "Démo publique : " +
+        n +
+        " décisions" +
+        (total ? " sur " + total : "") +
+        ". Connectez-vous pour la frise complète.",
+      "info"
+    );
   }
 
   function buildIndex(data) {
@@ -1258,17 +1277,14 @@
     if (!data || !Array.isArray(data.decisions)) {
       throw new Error("Dataset invalide : propriété decisions manquante.");
     }
+    var versionWarn = "";
     if (data.meta && data.meta.version > config.supportedDataVersion) {
-      setAlert(
+      versionWarn =
         "Version de données " +
-          data.meta.version +
-          " supérieure à la version supportée (" +
-          config.supportedDataVersion +
-          "). Mettez à jour chronologie.js.",
-        "warn"
-      );
-    } else {
-      setAlert("");
+        data.meta.version +
+        " supérieure à la version supportée (" +
+        config.supportedDataVersion +
+        "). Mettez à jour chronologie.js.";
     }
 
     if (!data.meta) data.meta = { version: 1, count: data.decisions.length, generatedAt: null };
@@ -1282,6 +1298,8 @@
       el.checked = Number(el.value) >= config.defaultMinImportance;
     });
 
+    if (versionWarn) setAlert(versionWarn, "warn");
+    else syncDemoUi(data);
     readFiltersFromDom();
     applyFilters();
   }
