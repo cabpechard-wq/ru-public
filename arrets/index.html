@@ -26,204 +26,34 @@
 <div class="arrets-toolbar-row">
 <label class="arrets-search-field" for="arrets-filter"><span class="sr-only">Filtrer</span><input id="arrets-filter" type="search" placeholder="Rechercher un arrêt…" autocomplete="off"></label>
 <div class="arrets-theme-field">
-<span class="arrets-theme-label">Thème :</span>
-<select id="arrets-theme" aria-label="Filtrer par thème">
-<option value="">Tous</option>
-<option value="11-état / déconcentration">11-État / déconcentration</option>
-<option value="12-collectivités territoriales / décentralisation">12-Collectivités territoriales / décentralisation</option>
-<option value="13-entités publiques spécialisées">13-Entités publiques spécialisées</option>
-<option value="21-principes du système normatif">21-Principes du système normatif</option>
-<option value="22-constitution">22-Constitution</option>
-<option value="23-principes généraux du droit">23-Principes généraux du droit</option>
-<option value="24-loi et règlements">24-Loi et règlements</option>
-<option value="25-droit international">25-Droit international</option>
-<option value="31-service public">31-Service public</option>
-<option value="32-biens de l&#x27;administration">32-Biens de l&#x27;administration</option>
-<option value="33-pouvoir de police">33-Pouvoir de police</option>
-<option value="34-actes administratifs unilatéraux">34-Actes administratifs unilatéraux</option>
-<option value="35-contrats administratifs">35-Contrats administratifs</option>
-<option value="41-organisation et fonctionnement de la juridiction administrative">41-Organisation et fonctionnement de la juridiction administrative</option>
-<option value="42-compétence de la juridiction administrative">42-Compétence de la juridiction administrative</option>
-<option value="51-principes généraux de la responsabilité de l&#x27;administration">51-Principes généraux de la responsabilité de l&#x27;administration</option>
-<option value="52-responsabilité sans faute">52-Responsabilité sans faute</option>
-<option value="53-responsabilité pour faute">53-Responsabilité pour faute</option>
-<option value="54-responsabilité des agents publics">54-Responsabilité des agents publics</option>
-<option value="55-quasi-contrats">55-Quasi-contrats</option>
-</select></div>
+<span class="arrets-theme-label" id="label-arrets-theme">Thème :</span>
+<div id="arrets-theme" class="ms" role="group" aria-labelledby="label-arrets-theme"></div>
+</div>
 <button type="button" class="arrets-advanced-toggle" id="arrets-advanced-toggle" aria-expanded="false" aria-controls="arrets-advanced-panel">Filtre avancé</button>
 </div>
 <div class="arrets-advanced-panel" id="arrets-advanced-panel" hidden>
 <div class="arrets-advanced-row" role="group" aria-label="Filtre avancé">
-<label class="arrets-advanced-field" data-field="arrets-juridiction">
-<span class="arrets-advanced-label">Juridiction</span>
-<select id="arrets-juridiction" aria-label="Juridiction">
-<option value="">Toutes</option>
-<option value="conseil constitutionnel">Conseil constitutionnel</option>
-<option value="conseil d&#x27;etat">Conseil d&#x27;Etat</option>
-<option value="cour administrative d&#x27;appel">Cour administrative d&#x27;appel</option>
-<option value="cour de cassation">Cour de cassation</option>
-<option value="cour de justice de l&#x27;union européenne">Cour de justice de l&#x27;Union européenne</option>
-<option value="cour européenne des droits de l&#x27;homme">Cour européenne des droits de l&#x27;Homme</option>
-<option value="tribunal administratif">Tribunal administratif</option>
-<option value="tribunal des conflits">Tribunal des conflits</option>
-</select></label>
-<label class="arrets-advanced-field is-collapsed" data-field="arrets-formation">
-<span class="arrets-advanced-label">Formation de jugement</span>
-<select id="arrets-formation" aria-label="Formation de jugement" disabled>
-<option value="">Toutes</option>
-</select></label>
-<label class="arrets-advanced-field" data-field="arrets-date-year">
-<span class="arrets-advanced-label">Date</span>
-<select id="arrets-date-year" aria-label="Date">
-<option value="">Toutes les années</option>
-<option value="2026">2026</option>
-<option value="2025">2025</option>
-<option value="2024">2024</option>
-<option value="2023">2023</option>
-<option value="2022">2022</option>
-<option value="2021">2021</option>
-<option value="2020">2020</option>
-<option value="2019">2019</option>
-<option value="2018">2018</option>
-<option value="2017">2017</option>
-<option value="2016">2016</option>
-<option value="2015">2015</option>
-<option value="2014">2014</option>
-<option value="2013">2013</option>
-<option value="2012">2012</option>
-<option value="2011">2011</option>
-<option value="2010">2010</option>
-<option value="2009">2009</option>
-<option value="2008">2008</option>
-<option value="2007">2007</option>
-<option value="2006">2006</option>
-<option value="2005">2005</option>
-<option value="2004">2004</option>
-<option value="2003">2003</option>
-<option value="2002">2002</option>
-<option value="2001">2001</option>
-<option value="2000">2000</option>
-<option value="1999">1999</option>
-<option value="1998">1998</option>
-<option value="1997">1997</option>
-<option value="1996">1996</option>
-<option value="1995">1995</option>
-<option value="1994">1994</option>
-<option value="1993">1993</option>
-<option value="1992">1992</option>
-<option value="1991">1991</option>
-<option value="1990">1990</option>
-<option value="1989">1989</option>
-<option value="1988">1988</option>
-<option value="1987">1987</option>
-<option value="1986">1986</option>
-<option value="1985">1985</option>
-<option value="1984">1984</option>
-<option value="1983">1983</option>
-<option value="1982">1982</option>
-<option value="1981">1981</option>
-<option value="1980">1980</option>
-<option value="1979">1979</option>
-<option value="1978">1978</option>
-<option value="1977">1977</option>
-<option value="1976">1976</option>
-<option value="1975">1975</option>
-<option value="1974">1974</option>
-<option value="1973">1973</option>
-<option value="1972">1972</option>
-<option value="1971">1971</option>
-<option value="1970">1970</option>
-<option value="1969">1969</option>
-<option value="1968">1968</option>
-<option value="1967">1967</option>
-<option value="1966">1966</option>
-<option value="1965">1965</option>
-<option value="1964">1964</option>
-<option value="1963">1963</option>
-<option value="1962">1962</option>
-<option value="1961">1961</option>
-<option value="1960">1960</option>
-<option value="1959">1959</option>
-<option value="1958">1958</option>
-<option value="1957">1957</option>
-<option value="1956">1956</option>
-<option value="1955">1955</option>
-<option value="1954">1954</option>
-<option value="1953">1953</option>
-<option value="1952">1952</option>
-<option value="1951">1951</option>
-<option value="1950">1950</option>
-<option value="1949">1949</option>
-<option value="1948">1948</option>
-<option value="1947">1947</option>
-<option value="1946">1946</option>
-<option value="1945">1945</option>
-<option value="1944">1944</option>
-<option value="1943">1943</option>
-<option value="1942">1942</option>
-<option value="1941">1941</option>
-<option value="1940">1940</option>
-<option value="1939">1939</option>
-<option value="1938">1938</option>
-<option value="1937">1937</option>
-<option value="1936">1936</option>
-<option value="1935">1935</option>
-<option value="1934">1934</option>
-<option value="1933">1933</option>
-<option value="1932">1932</option>
-<option value="1931">1931</option>
-<option value="1930">1930</option>
-<option value="1929">1929</option>
-<option value="1928">1928</option>
-<option value="1926">1926</option>
-<option value="1925">1925</option>
-<option value="1923">1923</option>
-<option value="1922">1922</option>
-<option value="1921">1921</option>
-<option value="1920">1920</option>
-<option value="1919">1919</option>
-<option value="1918">1918</option>
-<option value="1917">1917</option>
-<option value="1916">1916</option>
-<option value="1914">1914</option>
-<option value="1913">1913</option>
-<option value="1912">1912</option>
-<option value="1911">1911</option>
-<option value="1910">1910</option>
-<option value="1909">1909</option>
-<option value="1908">1908</option>
-<option value="1907">1907</option>
-<option value="1906">1906</option>
-<option value="1905">1905</option>
-<option value="1903">1903</option>
-<option value="1902">1902</option>
-<option value="1901">1901</option>
-<option value="1899">1899</option>
-<option value="1895">1895</option>
-<option value="1894">1894</option>
-<option value="1889">1889</option>
-<option value="1883">1883</option>
-<option value="1882">1882</option>
-<option value="1880">1880</option>
-<option value="1876">1876</option>
-<option value="1875">1875</option>
-<option value="1874">1874</option>
-<option value="1873">1873</option>
-<option value="1822">1822</option>
-</select></label>
+<div class="arrets-advanced-field" data-field="arrets-juridiction">
+<span class="arrets-advanced-label" id="label-arrets-juridiction">Juridiction</span>
+<div id="arrets-juridiction" class="ms" role="group" aria-labelledby="label-arrets-juridiction"></div>
+</div>
+<div class="arrets-advanced-field is-collapsed" data-field="arrets-formation">
+<span class="arrets-advanced-label" id="label-arrets-formation">Formation de jugement</span>
+<div id="arrets-formation" class="ms" role="group" aria-labelledby="label-arrets-formation"></div>
+</div>
+<div class="arrets-advanced-field" data-field="arrets-date-year">
+<span class="arrets-advanced-label" id="label-arrets-date-year">Date</span>
+<div id="arrets-date-year" class="ms" role="group" aria-labelledby="label-arrets-date-year"></div>
+</div>
 <label class="arrets-advanced-field" data-field="arrets-reference"><span class="arrets-advanced-label">Référence</span><input id="arrets-reference" type="search" placeholder="n° requête, décision, RG…" autocomplete="off" aria-label="Filtrer par référence"></label>
 <label class="arrets-advanced-field" data-field="arrets-nom"><span class="arrets-advanced-label">Nom</span><input id="arrets-nom" type="search" placeholder="Intitulé de l’arrêt…" autocomplete="off" aria-label="Filtrer par nom"></label>
-<label class="arrets-advanced-field" data-field="arrets-importance">
-<span class="arrets-advanced-label">Importance</span>
-<select id="arrets-importance" aria-label="Filtrer par importance">
-<option value="">Toutes</option>
-<option value="1">★</option>
-<option value="2">★★</option>
-<option value="3">★★★</option>
-<option value="4">★★★★</option>
-</select></label>
+<div class="arrets-advanced-field" data-field="arrets-importance">
+<span class="arrets-advanced-label" id="label-arrets-importance">Importance</span>
+<div id="arrets-importance" class="ms" role="group" aria-labelledby="label-arrets-importance"></div>
+</div>
 </div></div>
 <script type="application/json" id="arrets-formation-map">{"conseil d'etat": ["10e et 3e ss-sect. réunies", "10e et 4e ss-sect. réunies", "10e et 7e ss-sect. réunies", "10e et 9e ch. réunies", "10e et 9e ss-sect. réunies", "1e et 2e ss-sect. réunies", "1e et 4e ch. réunies", "1e et 4e ss-sect. réunies", "1e ss-sect.", "1re et 10e ss-sect. réunies", "1re et 2e ss-sect. réunies", "1re et 4e ch. réunies", "1re et 4e ss-sect. réunies", "1re et 6e ch. réunies", "1re et 6e ss-sect. réunies", "2e et 6e ss-sect. réunies", "2e et 7e ch. réunies", "2e et 7e ss-sect. réunies", "3e et 5e ss-sect. réunies", "3e et 6e ss-sect. réunies", "3e et 8e ch. réunies", "3e et 8e ss-sect. réunies", "3e ss-sect.", "4e et 10e ss-sect. réunies", "4e et 1re ss-sect. réunies", "4e et 5e ss-sect. réunies", "4e et 6e ss-sect. réunies", "4e ss-sect.", "5e ch.", "5e et 3e ss-sect. réunies", "5e et 3e ss.-sect. réunies", "5e et 4e ss-sect. réunies", "5e et 6e ch. réunies", "5e ss-sect.", "6e et 10e ss-sect. réunies", "6e et 1re ss-sect. réunies", "6e et 2e ss-sect. réunies", "6e et 4e ss-sect. réunies", "6e et 5e ch. réunies", "6e ss-sect.", "7e et 10e ss-sect. réunies", "7e et 2e ss-sect. réunies", "7e et 5e ss-sect. réunies", "7e et 8e ss-sect. réunies", "8e et 10e ss-sect. réunies", "8e et 3e ss-sect. réunies", "8e et 7e ss-sect. réunies", "8e et 9e ss-sect. réunies", "9e et 10e ch. réunies", "9e et 10e ss-sect. réunies", "9e et 8e ss-sect. réunies", "ass.", "ord.", "réf. coll.", "sect.", "sect. contentieux", "sect. TP", "ss-sect. réunies"], "cour administrative d'appel": ["2e ch.", "4e ch.", "6e ch."], "cour de cassation": ["1re civ.", "2e civ.", "ass.", "ch. mixte", "Civ.", "Com.", "Crim.", "Soc."], "cour de justice de l'union européenne": ["1re ch.", "4e ch.", "ass.", "gr. ch."], "cour européenne des droits de l'homme": ["2e sect.", "5e section", "ass. plénière", "ch.", "gr. ch."]}</script>
+<script type="application/json" id="arrets-filter-options">{"themes": [{"value": "11-état / déconcentration", "label": "11-État / déconcentration"}, {"value": "12-collectivités territoriales / décentralisation", "label": "12-Collectivités territoriales / décentralisation"}, {"value": "13-entités publiques spécialisées", "label": "13-Entités publiques spécialisées"}, {"value": "21-principes du système normatif", "label": "21-Principes du système normatif"}, {"value": "22-constitution", "label": "22-Constitution"}, {"value": "23-principes généraux du droit", "label": "23-Principes généraux du droit"}, {"value": "24-loi et règlements", "label": "24-Loi et règlements"}, {"value": "25-droit international", "label": "25-Droit international"}, {"value": "31-service public", "label": "31-Service public"}, {"value": "32-biens de l'administration", "label": "32-Biens de l'administration"}, {"value": "33-pouvoir de police", "label": "33-Pouvoir de police"}, {"value": "34-actes administratifs unilatéraux", "label": "34-Actes administratifs unilatéraux"}, {"value": "35-contrats administratifs", "label": "35-Contrats administratifs"}, {"value": "41-organisation et fonctionnement de la juridiction administrative", "label": "41-Organisation et fonctionnement de la juridiction administrative"}, {"value": "42-compétence de la juridiction administrative", "label": "42-Compétence de la juridiction administrative"}, {"value": "51-principes généraux de la responsabilité de l'administration", "label": "51-Principes généraux de la responsabilité de l'administration"}, {"value": "52-responsabilité sans faute", "label": "52-Responsabilité sans faute"}, {"value": "53-responsabilité pour faute", "label": "53-Responsabilité pour faute"}, {"value": "54-responsabilité des agents publics", "label": "54-Responsabilité des agents publics"}, {"value": "55-quasi-contrats", "label": "55-Quasi-contrats"}], "juridictions": [{"value": "conseil constitutionnel", "label": "Conseil constitutionnel"}, {"value": "conseil d'etat", "label": "Conseil d'Etat"}, {"value": "cour administrative d'appel", "label": "Cour administrative d'appel"}, {"value": "cour de cassation", "label": "Cour de cassation"}, {"value": "cour de justice de l'union européenne", "label": "Cour de justice de l'Union européenne"}, {"value": "cour européenne des droits de l'homme", "label": "Cour européenne des droits de l'Homme"}, {"value": "tribunal administratif", "label": "Tribunal administratif"}, {"value": "tribunal des conflits", "label": "Tribunal des conflits"}], "years": [{"value": "2026", "label": "2026"}, {"value": "2025", "label": "2025"}, {"value": "2024", "label": "2024"}, {"value": "2023", "label": "2023"}, {"value": "2022", "label": "2022"}, {"value": "2021", "label": "2021"}, {"value": "2020", "label": "2020"}, {"value": "2019", "label": "2019"}, {"value": "2018", "label": "2018"}, {"value": "2017", "label": "2017"}, {"value": "2016", "label": "2016"}, {"value": "2015", "label": "2015"}, {"value": "2014", "label": "2014"}, {"value": "2013", "label": "2013"}, {"value": "2012", "label": "2012"}, {"value": "2011", "label": "2011"}, {"value": "2010", "label": "2010"}, {"value": "2009", "label": "2009"}, {"value": "2008", "label": "2008"}, {"value": "2007", "label": "2007"}, {"value": "2006", "label": "2006"}, {"value": "2005", "label": "2005"}, {"value": "2004", "label": "2004"}, {"value": "2003", "label": "2003"}, {"value": "2002", "label": "2002"}, {"value": "2001", "label": "2001"}, {"value": "2000", "label": "2000"}, {"value": "1999", "label": "1999"}, {"value": "1998", "label": "1998"}, {"value": "1997", "label": "1997"}, {"value": "1996", "label": "1996"}, {"value": "1995", "label": "1995"}, {"value": "1994", "label": "1994"}, {"value": "1993", "label": "1993"}, {"value": "1992", "label": "1992"}, {"value": "1991", "label": "1991"}, {"value": "1990", "label": "1990"}, {"value": "1989", "label": "1989"}, {"value": "1988", "label": "1988"}, {"value": "1987", "label": "1987"}, {"value": "1986", "label": "1986"}, {"value": "1985", "label": "1985"}, {"value": "1984", "label": "1984"}, {"value": "1983", "label": "1983"}, {"value": "1982", "label": "1982"}, {"value": "1981", "label": "1981"}, {"value": "1980", "label": "1980"}, {"value": "1979", "label": "1979"}, {"value": "1978", "label": "1978"}, {"value": "1977", "label": "1977"}, {"value": "1976", "label": "1976"}, {"value": "1975", "label": "1975"}, {"value": "1974", "label": "1974"}, {"value": "1973", "label": "1973"}, {"value": "1972", "label": "1972"}, {"value": "1971", "label": "1971"}, {"value": "1970", "label": "1970"}, {"value": "1969", "label": "1969"}, {"value": "1968", "label": "1968"}, {"value": "1967", "label": "1967"}, {"value": "1966", "label": "1966"}, {"value": "1965", "label": "1965"}, {"value": "1964", "label": "1964"}, {"value": "1963", "label": "1963"}, {"value": "1962", "label": "1962"}, {"value": "1961", "label": "1961"}, {"value": "1960", "label": "1960"}, {"value": "1959", "label": "1959"}, {"value": "1958", "label": "1958"}, {"value": "1957", "label": "1957"}, {"value": "1956", "label": "1956"}, {"value": "1955", "label": "1955"}, {"value": "1954", "label": "1954"}, {"value": "1953", "label": "1953"}, {"value": "1952", "label": "1952"}, {"value": "1951", "label": "1951"}, {"value": "1950", "label": "1950"}, {"value": "1949", "label": "1949"}, {"value": "1948", "label": "1948"}, {"value": "1947", "label": "1947"}, {"value": "1946", "label": "1946"}, {"value": "1945", "label": "1945"}, {"value": "1944", "label": "1944"}, {"value": "1943", "label": "1943"}, {"value": "1942", "label": "1942"}, {"value": "1941", "label": "1941"}, {"value": "1940", "label": "1940"}, {"value": "1939", "label": "1939"}, {"value": "1938", "label": "1938"}, {"value": "1937", "label": "1937"}, {"value": "1936", "label": "1936"}, {"value": "1935", "label": "1935"}, {"value": "1934", "label": "1934"}, {"value": "1933", "label": "1933"}, {"value": "1932", "label": "1932"}, {"value": "1931", "label": "1931"}, {"value": "1930", "label": "1930"}, {"value": "1929", "label": "1929"}, {"value": "1928", "label": "1928"}, {"value": "1926", "label": "1926"}, {"value": "1925", "label": "1925"}, {"value": "1923", "label": "1923"}, {"value": "1922", "label": "1922"}, {"value": "1921", "label": "1921"}, {"value": "1920", "label": "1920"}, {"value": "1919", "label": "1919"}, {"value": "1918", "label": "1918"}, {"value": "1917", "label": "1917"}, {"value": "1916", "label": "1916"}, {"value": "1914", "label": "1914"}, {"value": "1913", "label": "1913"}, {"value": "1912", "label": "1912"}, {"value": "1911", "label": "1911"}, {"value": "1910", "label": "1910"}, {"value": "1909", "label": "1909"}, {"value": "1908", "label": "1908"}, {"value": "1907", "label": "1907"}, {"value": "1906", "label": "1906"}, {"value": "1905", "label": "1905"}, {"value": "1903", "label": "1903"}, {"value": "1902", "label": "1902"}, {"value": "1901", "label": "1901"}, {"value": "1899", "label": "1899"}, {"value": "1895", "label": "1895"}, {"value": "1894", "label": "1894"}, {"value": "1889", "label": "1889"}, {"value": "1883", "label": "1883"}, {"value": "1882", "label": "1882"}, {"value": "1880", "label": "1880"}, {"value": "1876", "label": "1876"}, {"value": "1875", "label": "1875"}, {"value": "1874", "label": "1874"}, {"value": "1873", "label": "1873"}, {"value": "1822", "label": "1822"}], "importance": [{"value": "1", "label": "★"}, {"value": "2", "label": "★★"}, {"value": "3", "label": "★★★"}, {"value": "4", "label": "★★★★"}]}</script>
 </div>
 <div class="arrets-list">
 <a class="arrets-card" href="./ce-2026-vinci-immo-rhone-alpes-auvergne/" data-term="ce, 2026, vinci immo. rhône-alpes auvergne" data-theme="34-actes administratifs unilatéraux" data-juridiction="conseil d&#x27;etat" data-formation="6e et 5e ch. réunies" data-date-year="2026" data-importance="3" data-reference="497092" data-nom="ce, 2026, vinci immo. rhône-alpes auvergne"><p class="arrets-card-title">CE, 2026, Vinci Immo. Rhône-Alpes Auvergne</p>
@@ -3232,95 +3062,229 @@
   const cards = Array.from(document.querySelectorAll(".arrets-card"));
 
   let formationMap = {};
+  let filterOptions = { themes: [], juridictions: [], years: [], importance: [] };
   const mapEl = document.getElementById("arrets-formation-map");
+  const optEl = document.getElementById("arrets-filter-options");
   if (mapEl) {
-    try {
-      formationMap = JSON.parse(mapEl.textContent || "{}");
-    } catch (_) {}
+    try { formationMap = JSON.parse(mapEl.textContent || "{}"); } catch (_) {}
   }
+  if (optEl) {
+    try { filterOptions = Object.assign(filterOptions, JSON.parse(optEl.textContent || "{}")); } catch (_) {}
+  }
+
+  let openMsId = null;
 
   function norm(value) {
     return (value || "").trim().toLowerCase();
   }
 
+  function getMsSelected(root) {
+    if (!root) return [];
+    return Array.from(root.querySelectorAll('input[type="checkbox"]:checked')).map(function (cb) {
+      return cb.value;
+    });
+  }
+
+  function closeAllMs() {
+    document.querySelectorAll(".arrets-filters .ms__panel").forEach(function (p) {
+      p.hidden = true;
+    });
+    document.querySelectorAll(".arrets-filters .ms__toggle").forEach(function (t) {
+      t.setAttribute("aria-expanded", "false");
+    });
+    openMsId = null;
+  }
+
+  function buildMultiSelect(root, items, selected, placeholder, onChange) {
+    if (!root) return;
+    root.innerHTML = "";
+    root.classList.add("ms");
+
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "ms__toggle";
+    toggle.setAttribute("aria-haspopup", "listbox");
+    toggle.setAttribute("aria-expanded", "false");
+
+    var label = document.createElement("span");
+    label.className = "ms__toggle-label";
+    toggle.appendChild(label);
+
+    var chev = document.createElement("span");
+    chev.className = "ms__chevron";
+    chev.textContent = "▾";
+    chev.setAttribute("aria-hidden", "true");
+    toggle.appendChild(chev);
+
+    var panel = document.createElement("div");
+    panel.className = "ms__panel";
+    panel.hidden = true;
+    panel.setAttribute("role", "listbox");
+    panel.setAttribute("aria-multiselectable", "true");
+
+    if (!items.length) {
+      var empty = document.createElement("div");
+      empty.className = "ms__empty";
+      empty.textContent = "Aucune option";
+      panel.appendChild(empty);
+    } else {
+      items.forEach(function (item) {
+        var value = typeof item === "string" ? norm(item) : String(item.value || "");
+        var text = typeof item === "string" ? item : String(item.label || item.value || "");
+        var lab = document.createElement("label");
+        lab.className = "ms__option";
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.value = value;
+        cb.checked = selected.indexOf(value) !== -1;
+        cb.addEventListener("change", function () {
+          refreshLabel();
+          if (onChange) onChange();
+        });
+        var span = document.createElement("span");
+        span.textContent = text;
+        lab.appendChild(cb);
+        lab.appendChild(span);
+        panel.appendChild(lab);
+      });
+    }
+
+    root.appendChild(toggle);
+    root.appendChild(panel);
+
+    function refreshLabel() {
+      var sel = getMsSelected(root);
+      if (!sel.length) label.textContent = placeholder;
+      else if (sel.length === 1) {
+        var matched = items.find(function (item) {
+          var value = typeof item === "string" ? norm(item) : String(item.value || "");
+          return value === sel[0];
+        });
+        label.textContent = matched
+          ? (typeof matched === "string" ? matched : matched.label || matched.value)
+          : sel[0];
+      } else label.textContent = sel.length + " sélection(s)";
+    }
+
+    panel.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var willOpen = panel.hidden;
+      closeAllMs();
+      if (willOpen) {
+        panel.hidden = false;
+        toggle.setAttribute("aria-expanded", "true");
+        openMsId = root.id;
+      }
+    });
+
+    root._msRefreshLabel = refreshLabel;
+    refreshLabel();
+  }
+
+  function includesSelected(selected, value) {
+    if (!selected.length) return true;
+    return selected.indexOf(norm(value)) !== -1;
+  }
+
   function updateFormation() {
     if (!formation) return;
-    const jKey = norm(juridiction && juridiction.value);
-    const options = formationMap[jKey] || [];
-    formation.innerHTML = '<option value="">Toutes</option>';
-    options.forEach((label) => {
-      const opt = document.createElement("option");
-      opt.value = norm(label);
-      opt.textContent = label;
-      formation.appendChild(opt);
+    var jKeys = getMsSelected(juridiction);
+    var prev = getMsSelected(formation);
+    var seen = {};
+    var options = [];
+    jKeys.forEach(function (jKey) {
+      (formationMap[jKey] || []).forEach(function (labelText) {
+        var key = norm(labelText);
+        if (seen[key]) return;
+        seen[key] = true;
+        options.push({ value: key, label: labelText });
+      });
     });
-    const active = Boolean(jKey && options.length);
-    formation.disabled = !active;
-    const row = formationField && formationField.closest(".arrets-advanced-row");
+    options.sort(function (a, b) {
+      return a.label.localeCompare(b.label, "fr", { sensitivity: "base" });
+    });
+    var keep = prev.filter(function (v) {
+      return options.some(function (o) { return o.value === v; });
+    });
+    var active = Boolean(jKeys.length && options.length);
+    buildMultiSelect(formation, options, keep, "Toutes", apply);
     if (formationField) {
       formationField.classList.toggle("is-collapsed", !active);
     }
+    var row = formationField && formationField.closest(".arrets-advanced-row");
     if (row) {
       row.classList.toggle("has-formation", active);
-    }
-    if (!active) {
-      formation.value = "";
     }
   }
 
   function apply() {
-    const q = norm(input && input.value);
-    const th = norm(theme && theme.value);
-    const jv = norm(juridiction && juridiction.value);
-    const fv = norm(formation && formation.value);
-    const dy = norm(dateYear && dateYear.value);
-    const iv = norm(importance && importance.value);
-    const rv = norm(reference && reference.value);
-    const nv = norm(nom && nom.value);
+    var q = norm(input && input.value);
+    var th = getMsSelected(theme);
+    var jv = getMsSelected(juridiction);
+    var fv = getMsSelected(formation);
+    var dy = getMsSelected(dateYear);
+    var iv = getMsSelected(importance);
+    var rv = norm(reference && reference.value);
+    var nv = norm(nom && nom.value);
 
-    cards.forEach((el) => {
-      const okQ = !q
+    cards.forEach(function (el) {
+      var okQ = !q
         || norm(el.getAttribute("data-term")).includes(q)
         || norm(el.getAttribute("data-nom")).includes(q)
         || norm(el.textContent).includes(q);
-      const okT = !th || norm(el.getAttribute("data-theme")) === th;
-      const okJ = !jv || norm(el.getAttribute("data-juridiction")) === jv;
-      const okF = !fv || norm(el.getAttribute("data-formation")) === fv;
-      const okD = !dy || norm(el.getAttribute("data-date-year")) === dy;
-      const okI = !iv || norm(el.getAttribute("data-importance")) === iv;
-      const okR = !rv || norm(el.getAttribute("data-reference")).includes(rv);
-      const okN = !nv || norm(el.getAttribute("data-nom")).includes(nv);
+      var okT = includesSelected(th, el.getAttribute("data-theme"));
+      var okJ = includesSelected(jv, el.getAttribute("data-juridiction"));
+      var okF = includesSelected(fv, el.getAttribute("data-formation"));
+      var okD = includesSelected(dy, el.getAttribute("data-date-year"));
+      var okI = includesSelected(iv, el.getAttribute("data-importance"));
+      var okR = !rv || norm(el.getAttribute("data-reference")).includes(rv);
+      var okN = !nv || norm(el.getAttribute("data-nom")).includes(nv);
       el.hidden = !(okQ && okT && okJ && okF && okD && okI && okR && okN);
     });
   }
 
-  function onChange(el, eventName) {
-    if (!el) return;
-    el.addEventListener(eventName, () => {
-      if (el === juridiction) updateFormation();
-      apply();
-    });
+  function onJuridictionChange() {
+    updateFormation();
+    apply();
   }
 
-  onChange(input, "input");
-  onChange(theme, "change");
-  onChange(juridiction, "change");
-  onChange(formation, "change");
-  onChange(dateYear, "change");
-  onChange(importance, "change");
-  onChange(reference, "input");
-  onChange(nom, "input");
+  buildMultiSelect(theme, filterOptions.themes || [], [], "Tous les thèmes", apply);
+  buildMultiSelect(
+    juridiction,
+    filterOptions.juridictions || [],
+    [],
+    "Toutes",
+    onJuridictionChange
+  );
+  buildMultiSelect(dateYear, filterOptions.years || [], [], "Toutes les années", apply);
+  buildMultiSelect(importance, filterOptions.importance || [], [], "Toutes", apply);
+  updateFormation();
+
+  if (input) input.addEventListener("input", apply);
+  if (reference) reference.addEventListener("input", apply);
+  if (nom) nom.addEventListener("input", apply);
 
   if (advancedToggle && advancedPanel) {
-    advancedToggle.addEventListener("click", () => {
-      const open = advancedPanel.hidden;
+    advancedToggle.addEventListener("click", function () {
+      var open = advancedPanel.hidden;
       advancedPanel.hidden = !open;
       advancedToggle.setAttribute("aria-expanded", open ? "true" : "false");
       advancedToggle.classList.toggle("is-open", open);
     });
   }
 
-  updateFormation();
+  document.addEventListener("click", function (ev) {
+    if (!openMsId) return;
+    var t = ev.target;
+    if (t && t.closest && t.closest(".arrets-filters .ms")) return;
+    closeAllMs();
+  });
+
+  apply();
 })();
 </script>
 
