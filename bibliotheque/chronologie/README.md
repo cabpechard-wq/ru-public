@@ -41,6 +41,53 @@ exécutée manuellement via les outils Notion MCP. Un prochain chantier
 consiste à ajouter un script équivalent à `extract/pull/jurisprudence.py`
 pour régénérer ce fichier à chaque run, comme `/arrets/` l'est déjà.
 
+### Frise : cinq lignes par juridiction, sans étiquette
+
+`assets/chronologie.js` regroupe les décisions en cinq catégories fixes
+(Tribunal des conflits, Juridictions adm., Conseil constitutionnel,
+Juridictions civ., Juridictions int'les) rendues en grille CSS ; la colonne
+d'étiquettes de ligne a été retirée (`.trow-label`) au profit de la seule
+couleur du marqueur — voir la légende. Toutes les décisions s'affichent
+individuellement (plus de regroupement « +N »).
+
+Quand une décision reliée à d'autres (`liees`) est sélectionnée et que
+« Afficher uniquement les décisions liées » est cochée, chaque marqueur
+affiche son Nom au lieu de l'étiquette d'année/mois/jour. Les flèches
+oranges arquées (`chainIndexMap`/`drawChainLinks`) existent depuis le
+livrable d'origine mais n'ont rien à tracer tant que `liees` reste vide
+(cf. ci-dessus) — vérifié fonctionnel avec des relations de test.
+
+### Charte graphique : suit l'« Ambiance » du site
+
+Comme Flipcards et Relier, `chronologie.css` ne définit plus sa propre
+palette : elle hérite de `site.css` / `themes/*.css` via `site-theme.js`
+(dix ambiances : Campus, Amphithéâtre, Salle de TD, Salle de lecture ×4
+jour/nuit/accessibilité, Restau' U, Cafétéria, Résidence universitaire).
+Concrètement :
+
+- `--accent`, `--border`, `--radius`, `--accent-soft` ne sont **jamais**
+  redéfinis dans `chronologie.css` (mêmes noms que `site.css`) — ils
+  héritent du thème actif appliqué par `site-theme.js` (qui échange le
+  `<link id="theme-css">`).
+- `--text`/`--text-secondary`/`--canvas`/`--surface`/`--font` sont des
+  alias vers `--ink`/`--muted`/`--bg`/`--bg-elevated`/`--font-ui`.
+- Les six couleurs de marqueur (une par catégorie de juridiction) sont
+  dérivées de la palette du thème : `--marker-ce` (accent), `--marker-adm`
+  (link-dict), `--marker-tc` (secondary), `--marker-cons-constit`
+  (link-arret), `--marker-civ` (danger), `--marker-intl` (ok) ; les
+  flèches de décisions liées reprennent `--marker-cons-constit`
+  (`--chain-link`).
+- `index.html` porte `id="theme-css"`/`id="theme-fonts"` sur ses `<link>`
+  site.css / Google Fonts, comme `demo/index.html` (Flipcards), pour que
+  `site-theme.js` les retrouve et les mette à jour sans doublon.
+- L'ancien fallback `@media (prefers-color-scheme: dark)` a été supprimé :
+  le thème actif (pas la préférence OS) pilote désormais l'apparence.
+
+Vérifié en Playwright sur Campus, Amphithéâtre, Salle de TD, Salle de
+lecture (accessibilité) · jour et Cafétéria (dont un contrôle programmatique
+que la couleur du marqueur CE correspond bien à la valeur calculée de
+`--accent` du thème actif).
+
 ## Arborescence cible sur le site
 
 ```text

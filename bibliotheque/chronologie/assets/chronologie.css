@@ -1,48 +1,32 @@
-/* Chronologie juridique — Cours (Option A) */
+/* Chronologie juridique — Bibliothèque
+   Charte (couleurs, polices, rayon) héritée de site.css / themes/ via
+   site-theme.js, comme Flipcards et Relier : cette feuille ne redéfinit
+   jamais --accent, --border ou --radius (mêmes noms que site.css), elle
+   les laisse hériter du thème actif pour suivre le sélecteur "Ambiance". */
 
 :root {
-  --text: #2c2c2b;
-  --text-secondary: #7d7a75;
-  --canvas: #ffffff;
-  --surface: #f9f8f7;
-  --surface-2: #f0efed;
-  --border: #e6e5e3;
-  --accent: #2783de;
-  --accent-soft: #e5f2fc;
-  --green: #46a171;
-  --orange: #d5803b;
-  --orange-soft: #fbebde;
-  --red: #e56458;
-  --red-soft: #fce9e7;
-  --purple: #7b6bb0;
-  --radius: 8px;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04);
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell, "Noto Sans",
-    sans-serif;
+  --text: var(--ink);
+  --text-secondary: var(--muted);
+  --canvas: var(--bg);
+  --surface: var(--bg-elevated);
+  --surface-2: color-mix(in srgb, var(--bg-elevated) 82%, var(--ink) 10%);
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.12);
+  --font: var(--font-ui);
   --max: 1120px;
   --detail-w: 360px;
   --header-h: 64px;
   --col-w: 168px;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.65);
-    --canvas: #191919;
-    --surface: #202020;
-    --surface-2: #383836;
-    --border: rgba(255, 255, 255, 0.2);
-    --accent: #5e9fe8;
-    --accent-soft: rgba(94, 159, 232, 0.14);
-    --green: #72bc8f;
-    --orange: #de9255;
-    --orange-soft: rgba(222, 146, 85, 0.14);
-    --red: #e97366;
-    --red-soft: rgba(233, 115, 102, 0.14);
-    --purple: #bf8eda;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 4px 12px rgba(0, 0, 0, 0.28);
-  }
+  /* Couleurs par juridiction : dérivées de la palette du thème actif
+     (accent, secondary, link-dict, link-arret, ok, danger) plutôt que
+     de teintes fixes, pour suivre l'ambiance choisie. */
+  --marker-ce: var(--accent);
+  --marker-adm: var(--link-dict, var(--accent));
+  --marker-tc: var(--secondary, var(--accent));
+  --marker-cons-constit: var(--link-arret, var(--secondary, var(--accent)));
+  --marker-civ: var(--danger);
+  --marker-intl: var(--ok);
+  --chain-link: var(--marker-cons-constit);
 }
 
 *,
@@ -205,13 +189,13 @@ a {
   padding: 12px 16px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
-  background: var(--orange-soft);
+  background: color-mix(in srgb, var(--secondary, var(--accent)) 14%, var(--bg-elevated));
   color: var(--text);
   font-size: 14px;
 }
 
 .alert[data-tone="error"] {
-  background: var(--red-soft);
+  background: color-mix(in srgb, var(--danger) 16%, var(--bg-elevated));
 }
 
 /* —— Filters —— */
@@ -573,7 +557,7 @@ a {
 
 .timeline__links path {
   fill: none;
-  stroke: var(--orange);
+  stroke: var(--chain-link);
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -581,7 +565,7 @@ a {
 }
 
 .timeline__links polygon {
-  fill: var(--orange);
+  fill: var(--chain-link);
 }
 
 /*
@@ -591,7 +575,6 @@ a {
  * lignes 3-7 = les cinq lignes de juridiction.
  */
 .tgrid {
-  --row-label-w: 190px;
   position: relative;
   z-index: 2;
   display: grid;
@@ -599,22 +582,6 @@ a {
   row-gap: 4px;
   align-items: center;
   width: max-content;
-}
-
-.trow-label {
-  position: sticky;
-  left: 0;
-  z-index: 3;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 4px 12px 4px 0;
-  background: var(--canvas);
-  border-right: 1px solid var(--border);
-  font-size: 11px;
-  font-weight: 650;
-  color: var(--text-secondary);
-  line-height: 1.25;
 }
 
 .tseg-head {
@@ -748,18 +715,18 @@ a {
 
 .marker[data-juridiction-key="ce"],
 .marker[data-juridiction-key="conseil-detat"] {
-  --marker: var(--accent);
-  background: var(--accent);
+  --marker: var(--marker-ce);
+  background: var(--marker-ce);
 }
 .marker[data-juridiction-key="tc"],
 .marker[data-juridiction-key="tribunal-des-conflits"] {
-  --marker: var(--purple);
-  background: var(--purple);
+  --marker: var(--marker-tc);
+  background: var(--marker-tc);
 }
 .marker[data-juridiction-key="cons-constit"],
 .marker[data-juridiction-key="conseil-constitutionnel"] {
-  --marker: var(--orange);
-  background: var(--orange);
+  --marker: var(--marker-cons-constit);
+  background: var(--marker-cons-constit);
 }
 .marker[data-juridiction-key="cass"],
 .marker[data-juridiction-key="cour-de-cassation"],
@@ -767,8 +734,8 @@ a {
 .marker[data-juridiction-key="cour-d-appel"],
 .marker[data-juridiction-key="tj"],
 .marker[data-juridiction-key="tribunal-judiciaire"] {
-  --marker: #c4a035;
-  background: #c4a035;
+  --marker: var(--marker-civ);
+  background: var(--marker-civ);
 }
 .marker[data-juridiction-key="cedh"],
 .marker[data-juridiction-key="cjue"],
@@ -776,22 +743,22 @@ a {
 .marker[data-juridiction-key="cour-europeenne-des-droits-de-lhomme"],
 .marker[data-juridiction-key="cour-de-justice-de-lunion-europeenne"],
 .marker[data-juridiction-key="cour-internationale-de-justice"] {
-  --marker: var(--green);
-  background: var(--green);
+  --marker: var(--marker-intl);
+  background: var(--marker-intl);
 }
 .marker[data-juridiction-key="caa"],
 .marker[data-juridiction-key="ta"],
 .marker[data-juridiction-key="cour-administrative-dappel"],
 .marker[data-juridiction-key="tribunal-administratif"] {
-  --marker: #5e9fe8;
-  background: #5e9fe8;
+  --marker: var(--marker-adm);
+  background: var(--marker-adm);
 }
 
 .chain-arrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--orange);
+  color: var(--chain-link);
   font-size: 16px;
   font-weight: 700;
   line-height: 1;
@@ -919,9 +886,9 @@ a {
 
 .tag--stars {
   letter-spacing: 0.04em;
-  color: var(--orange);
-  border-color: color-mix(in srgb, var(--orange) 35%, var(--border));
-  background: var(--orange-soft);
+  color: var(--secondary, var(--accent));
+  border-color: color-mix(in srgb, var(--secondary, var(--accent)) 35%, var(--border));
+  background: color-mix(in srgb, var(--secondary, var(--accent)) 14%, var(--bg-elevated));
 }
 
 .empty {

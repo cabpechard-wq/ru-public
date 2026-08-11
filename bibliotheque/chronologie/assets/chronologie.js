@@ -731,20 +731,10 @@
     var totalUnits = segments.reduce(function (n, seg) {
       return n + seg.units.length;
     }, 0);
-    grid.style.gridTemplateColumns =
-      "var(--row-label-w) repeat(" + totalUnits + ", minmax(var(--unit-min-w), auto))";
+    grid.style.gridTemplateColumns = "repeat(" + totalUnits + ", minmax(var(--unit-min-w), auto))";
     grid.style.gridTemplateRows = "auto auto repeat(" + JURIDICTION_ROWS.length + ", minmax(30px, auto))";
 
-    JURIDICTION_ROWS.forEach(function (row, i) {
-      var label = document.createElement("div");
-      label.className = "trow-label";
-      label.textContent = row.label;
-      label.style.gridColumn = "1";
-      label.style.gridRow = String(i + 3);
-      grid.appendChild(label);
-    });
-
-    var col = 2;
+    var col = 1;
     segments.forEach(function (seg) {
       var segCount = seg.units.length;
       var head = document.createElement("div");
@@ -873,7 +863,7 @@
     marker.appendChild(tip);
     defs.appendChild(marker);
     svg.appendChild(defs);
-    svg.style.color = getComputedStyle(document.documentElement).getPropertyValue("--orange").trim() || "#d5803b";
+    svg.style.color = getComputedStyle(document.documentElement).getPropertyValue("--chain-link").trim() || "#d5803b";
 
     for (var i = 0; i < points.length - 1; i++) {
       var a = points[i];

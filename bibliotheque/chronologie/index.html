@@ -12,7 +12,7 @@
       window.__CHRONO_CONFIG__ = {
         dataUrl: "./data/chronology-decisions.json",
         ficheBaseUrl: "../../arrets/",
-        defaultMinImportance: 1,
+        defaultMinImportance: 5,
         supportedDataVersion: 1,
       };
     </script>
@@ -20,10 +20,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      id="theme-fonts"
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../site.css?v=24" />
+    <link id="theme-css" rel="stylesheet" href="../../site.css?v=24" />
     <link rel="stylesheet" href="./assets/chronologie.css" />
     <script src="./assets/chronologie.js" defer></script>
   </head>
@@ -99,20 +100,20 @@
             <span>Importance</span>
             <div class="chip-group" role="group" aria-label="Importance">
               <label class="chip"
-                ><input type="checkbox" name="importance" value="1" checked /><span>★</span></label
+                ><input type="checkbox" name="importance" value="1" /><span>★</span></label
               >
               <label class="chip"
-                ><input type="checkbox" name="importance" value="2" checked /><span
+                ><input type="checkbox" name="importance" value="2" /><span
                   >★★</span
                 ></label
               >
               <label class="chip"
-                ><input type="checkbox" name="importance" value="3" checked /><span
+                ><input type="checkbox" name="importance" value="3" /><span
                   >★★★</span
                 ></label
               >
               <label class="chip"
-                ><input type="checkbox" name="importance" value="4" checked /><span
+                ><input type="checkbox" name="importance" value="4" /><span
                   >★★★★</span
                 ></label
               >
@@ -183,26 +184,26 @@
           </div>
           <div class="legend" aria-hidden="true">
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--accent)"></span> Conseil
+              ><span class="legend__swatch" style="--swatch: var(--marker-ce)"></span> Conseil
               d’État</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: #5e9fe8"></span> CAA / TA</span
+              ><span class="legend__swatch" style="--swatch: var(--marker-adm)"></span> CAA / TA</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--purple)"></span> Tribunal des
+              ><span class="legend__swatch" style="--swatch: var(--marker-tc)"></span> Tribunal des
               conflits</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--orange)"></span> Conseil
+              ><span class="legend__swatch" style="--swatch: var(--marker-cons-constit)"></span> Conseil
               constitutionnel</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: #c4a035"></span> Cass. / CA /
+              ><span class="legend__swatch" style="--swatch: var(--marker-civ)"></span> Cass. / CA /
               TJ</span
             >
             <span class="legend__item"
-              ><span class="legend__swatch" style="--swatch: var(--green)"></span> CIJ / CEDH /
+              ><span class="legend__swatch" style="--swatch: var(--marker-intl)"></span> CIJ / CEDH /
               CJUE</span
             >
           </div>
