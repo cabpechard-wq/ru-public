@@ -24,3 +24,5 @@
   Access-Control-Allow-Origin: *
 /enchainements-logiques/data/chronology-decisions.json
   Access-Control-Allow-Origin: *
+/dictionnaire/entries.json
+  Access-Control-Allow-Origin: *
