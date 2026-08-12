@@ -16,3 +16,5 @@
 /enchainements-logiques/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+/demo/cards.json
+  Access-Control-Allow-Origin: *
