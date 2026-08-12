@@ -26,3 +26,5 @@
   Access-Control-Allow-Origin: *
 /dictionnaire/entries.json
   Access-Control-Allow-Origin: *
+/manuel/chapters.json
+  Access-Control-Allow-Origin: *
