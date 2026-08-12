@@ -302,7 +302,7 @@
             },
             {
               "type": "text",
-              "text": " : Etat monarchique &gt; Etat providence &gt; Etat stratège."
+              "text": " : Etat monarchique > Etat providence > Etat stratège."
             }
           ]
         },
@@ -1748,7 +1748,7 @@
           "runs": [
             {
               "type": "text",
-              "text": "=&gt"
+              "text": "=> "
             },
             {
               "type": "text",
@@ -18204,7 +18204,7 @@
             },
             {
               "type": "text",
-              "text": " &gt; Puis, "
+              "text": " > Puis, "
             },
             {
               "type": "text",
@@ -18223,7 +18223,7 @@
             },
             {
               "type": "text",
-              "text": " &gt; Les actes réglementaires contraires aux objectifs fixés par une directive, "
+              "text": " > Les actes réglementaires contraires aux objectifs fixés par une directive, "
             },
             {
               "type": "text",
@@ -18251,7 +18251,7 @@
             },
             {
               "type": "text",
-              "text": " &gt; Obligation de "
+              "text": " > Obligation de "
             },
             {
               "type": "text",
@@ -18279,7 +18279,7 @@
             },
             {
               "type": "text",
-              "text": " &gt; Le juge administratif peut aussi écarter la "
+              "text": " > Le juge administratif peut aussi écarter la "
             },
             {
               "type": "text",
