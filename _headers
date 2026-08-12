@@ -18,3 +18,5 @@
   Cache-Control: no-store
 /demo/cards.json
   Access-Control-Allow-Origin: *
+/demo-relier/cards.json
+  Access-Control-Allow-Origin: *
