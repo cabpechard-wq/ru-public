@@ -16,3 +16,15 @@
 /enchainements-logiques/*
   X-Robots-Tag: noindex, nofollow
   Cache-Control: no-store
+/demo/cards.json
+  Access-Control-Allow-Origin: *
+/demo-relier/cards.json
+  Access-Control-Allow-Origin: *
+/demo-enchainements-logiques/data/chronology-decisions-demo.json
+  Access-Control-Allow-Origin: *
+/enchainements-logiques/data/chronology-decisions.json
+  Access-Control-Allow-Origin: *
+/dictionnaire/entries.json
+  Access-Control-Allow-Origin: *
+/manuel/chapters.json
+  Access-Control-Allow-Origin: *
