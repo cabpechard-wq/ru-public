@@ -20,3 +20,7 @@
   Access-Control-Allow-Origin: *
 /demo-relier/cards.json
   Access-Control-Allow-Origin: *
+/demo-enchainements-logiques/data/chronology-decisions-demo.json
+  Access-Control-Allow-Origin: *
+/enchainements-logiques/data/chronology-decisions.json
+  Access-Control-Allow-Origin: *
