@@ -1664,6 +1664,7 @@ input:focus {
 .manuel-shell .manuel-content > .site-title,
 .manuel-shell .manuel-content > .manuel-prose,
 .manuel-shell .manuel-content > .site-linked-resources,
+.manuel-shell .manuel-content > .manuel-exercises,
 .manuel-shell .manuel-content > .manuel-chapternav,
 .manuel-shell .manuel-content > .site-tts--capsules {
   max-width: var(--read-column);
@@ -2540,6 +2541,43 @@ input:focus {
 .arrets-fiche-layout > .site-linked-resources,
 .arrets-fiche-layout > .manuel-chapternav {
   max-width: var(--read-column);
+}
+
+/* —— Exercices liés (Flipcards / Relations / Enchaînements) sous un chapitre —— */
+.manuel-exercises {
+  margin: 2rem 0 0;
+  padding: 1rem 1.15rem 1.15rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.manuel-exercises-group + .manuel-exercises-group {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.manuel-exercises-title {
+  margin: 0 0 .6rem;
+  font-family: var(--font-ui);
+  font-size: .92rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--secondary);
+}
+
+.manuel-exercises-count {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.manuel-exercises-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
 }
 
 /* —— Fiches d'arrêts —— */

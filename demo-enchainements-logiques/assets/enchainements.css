@@ -465,6 +465,19 @@ body {
   background: color-mix(in srgb, var(--danger) 16%, var(--bg-elevated));
 }
 
+.cours-banner {
+  margin: 0 0 1rem;
+  padding: .65rem .9rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  font-size: .88rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
+
 /* —— Filters —— */
 
 .filters {

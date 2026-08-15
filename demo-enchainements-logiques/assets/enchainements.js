@@ -42,6 +42,9 @@
     },
   };
 
+  var coursFilter = null;
+  var coursChapterTitle = "";
+
   var correctOrder = [];
   var userOrder = [];
   var checked = false;
@@ -626,6 +629,7 @@
     var list = (state.raw && state.raw.decisions) || [];
 
     state.filtered = list.filter(function (d) {
+      if (coursFilter && !coursFilter.has(String(d.nom || "").trim())) return false;
       if (f.themes.length && f.themes.indexOf(d.theme) === -1) return false;
       if (f.importance.length && f.importance.indexOf(d.importance) === -1) return false;
       if (f.juridictions.length && f.juridictions.indexOf(d.juridiction) === -1) return false;
@@ -1215,6 +1219,36 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
+  /** Filtre strict « ?cours=DP-XXX » depuis une page de chapitre du manuel (fonds membre uniquement). */
+  function applyCoursLock() {
+    if (!coursFilter) return;
+    var filters = document.querySelector(".filters");
+    if (filters) filters.hidden = true;
+    var banner = $("cours-banner");
+    if (banner) {
+      banner.hidden = false;
+      banner.textContent =
+        "Filtré sur le chapitre « " + coursChapterTitle + " » (" +
+        coursFilter.size + " décision(s)). Retirez « ?cours= » de l’URL pour tout le fonds.";
+    }
+  }
+
+  function loadCoursFilter() {
+    var ref = new URLSearchParams(location.search).get("cours");
+    if (!ref || config.demo) return Promise.resolve();
+    return fetch("../manuel/exercices.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (map) {
+        var entry = map && map[ref.toUpperCase()];
+        var titles = entry && entry.jurisprudence;
+        if (!titles || !titles.length) return;
+        coursFilter = new Set(titles);
+        coursChapterTitle = (entry && entry.title) || ref;
+        applyCoursLock();
+      })
+      .catch(function () {});
+  }
+
   function load() {
     return fetch(config.dataUrl, { cache: "no-store" })
       .then(function (r) {
@@ -1393,6 +1427,8 @@
     window.addEventListener("resize", hideFicheTip);
   }
 
-  bind();
-  load();
+  loadCoursFilter().then(function () {
+    bind();
+    load();
+  });
 })();
