@@ -2,9 +2,9 @@
   "meta": {
     "version": 1,
     "count": 15,
-    "generatedAt": "2026-08-15T13:49:46Z",
+    "generatedAt": "2026-08-15T18:42:33Z",
     "demo": true,
-    "sourceCount": 995
+    "sourceCount": 993
   },
   "decisions": [
     {
@@ -52,7 +52,10 @@
       "portee": "Le Tribunal des conflits consacre la responsabilité de l'État à raison des dommages causés par le fait des personnes qu'il emploie dans le service public, mettant fin à une tradition d'irresponsabilité, tout en la soumettant à des règles spéciales distinctes du code civil ; il en fait le critère de la compétence exclusive de la juridiction administrative pour en connaître.",
       "slugFiche": "tc-1873-blanco",
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/TC/decision/1873-02-08/00012",
-      "liees": [],
+      "liees": [
+        "ce-1903-terrier",
+        "ce-1889-cadot"
+      ],
       "complete": true,
       "faits": "La jeune Agnès Y..., âgée de cinq ans et demi, est blessée et amputée d'une cuisse après avoir été renversée par un wagonnet poussé par des ouvriers de la manufacture des tabacs de Bordeaux, établissement public. Son père assigne l'État devant le tribunal civil de Bordeaux en réparation du dommage, sur le fondement des articles 1382 à 1384 du code civil. Le préfet de la Gironde élève le conflit d'attributions.",
       "enjeu": "La responsabilité de l'État pour les dommages causés aux particuliers par le fait des personnes qu'il emploie dans le service public est-elle régie par les principes du code civil applicables aux rapports entre particuliers, et quelle juridiction est compétente pour en connaître ?",
@@ -104,6 +107,7 @@
       "slugFiche": "ce-1889-cadot",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1889-12-13/66145",
       "liees": [
+        "tc-1873-blanco",
         "ce-1903-terrier"
       ],
       "complete": true,
@@ -131,7 +135,8 @@
       "slugFiche": "ce-1903-terrier",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1903-02-06/7496",
       "liees": [
-        "ce-1889-cadot"
+        "ce-1889-cadot",
+        "tc-1873-blanco"
       ],
       "complete": true,
       "faits": "Le département de Saône-et-Loire alloue par délibération du conseil général une prime de 0,25 franc pour la destruction de vipères et inscrit un crédit de 200 francs au budget de l'exercice 1900. Le sieur Terrier capture des vipères et produit les certificats du maire, mais le préfet refuse le paiement au motif que le crédit est épuisé. Terrier saisit le conseil de préfecture, qui se déclare incompétent, puis forme un recours devant le Conseil d'État.",
@@ -314,6 +319,7 @@
       "urlOfficielle": "http://www.conseil-etat.fr/fr/arianeweb/CE/decision/1968-03-01/62814",
       "liees": [
         "cjce-1964-costa-c-enel",
+        "ce-1989-nicolo",
         "cass-1975-ste-des-cafes-jacques-vabre",
         "ce-1990-boisdet"
       ],
@@ -343,6 +349,7 @@
       "urlOfficielle": "https://www.legifrance.gouv.fr/juri/id/JURITEXT000006994625",
       "liees": [
         "cjce-1964-costa-c-enel",
+        "ce-1989-nicolo",
         "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
       ],
       "complete": true,
@@ -369,7 +376,11 @@
       "portee": "En jugeant du bien-fondé du moyen tiré de l'incompatibilité d'une loi postérieure avec un traité, plutôt que de se déclarer incompétent comme il le faisait depuis CE, sect., 1968, Synd. général des fabricants de semoules de Fr., le Conseil d'État affirme implicitement mais nécessairement sa compétence pour contrôler la compatibilité d'une loi, même postérieure, avec un traité international, et pour écarter, le cas échéant, son application. Il tire ainsi les conséquences de l'article 55 de la Constitution et rejoint la position adoptée quatorze ans plus tôt par la Cour de cassation (Cass., ch. mixte, 1975, Sté des cafés Jacques Vabre).",
       "slugFiche": "ce-1989-nicolo",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1989-10-20/108243",
-      "liees": [],
+      "liees": [
+        "cass-1975-ste-des-cafes-jacques-vabre",
+        "ce-1990-boisdet",
+        "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
+      ],
       "complete": true,
       "faits": "M. Nicolo conteste les opérations électorales du 18 juin 1989 relatives à l'élection des représentants au Parlement européen, en soutenant que la loi du 7 juillet 1977, qui inclut les départements et territoires d'outre-mer dans la circonscription unique, est incompatible avec l'article 227-1 du traité de Rome, lequel limite l'application du traité CEE à la République française.",
       "enjeu": "Le juge administratif peut-il examiner, et le cas échéant écarter, l'application d'une loi postérieure à un traité international lorsque cette loi est incompatible avec les stipulations claires du traité, alors que la jurisprudence antérieure lui refusait cette compétence ?",
@@ -395,6 +406,7 @@
       "slugFiche": "ce-1990-boisdet",
       "urlOfficielle": "https://www.conseil-etat.fr/fr/arianeweb/CE/decision/1990-09-24/58657",
       "liees": [
+        "ce-1989-nicolo",
         "ce-1968-synd-general-des-fabricants-de-semoules-de-fr"
       ],
       "complete": true,
