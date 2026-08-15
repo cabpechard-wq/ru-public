@@ -78,6 +78,18 @@ body { padding: 0 0 3.5rem; }
   border-radius: var(--radius);
   padding: .15rem 1.1rem 1.1rem;
 }
+.cours-banner {
+  margin: 0 0 1rem;
+  padding: .65rem .9rem;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--ink);
+  font-size: .88rem;
+  font-weight: 550;
+  line-height: 1.4;
+}
 .classifier + .classifier { border-top: 1px solid var(--border); }
 .classifier-row {
   display: flex; align-items: center; gap: .75rem; min-height: 3rem;
@@ -612,6 +624,7 @@ body { padding: 0 0 3.5rem; }
     </div>
     <p class="page-sub">Associez chaque notion à sa définition. Filtrez par lettre, choisissez la taille de série, puis reliez.</p>
     <div class="home-card">
+      <p class="cours-banner" id="cours-banner" hidden></p>
       
       <div class="classifier" data-group-panel="theme">
         <div class="classifier-row">
@@ -699,6 +712,9 @@ body { padding: 0 0 3.5rem; }
 </div>
 <script>
 const DATA = [{"id": "Acte administratif unilatéral", "recto": "Acte administratif unilatéral", "objet": "Acte juridique émanant d’une seule volonté administrative et modifiant l’ordonnancement juridique sans le consentement de son destinataire.", "portee": "", "faits": "", "slug": "acte-administratif-unilateral", "themes": ["A"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Clause générale de compétence", "recto": "Clause générale de compétence", "objet": "Aptitude reconnue à une collectivité territoriale pour intervenir dans toute affaire présentant un intérêt local, au-delà de ses compétences spécialement énumérées par les textes.", "portee": "", "faits": "", "slug": "clause-generale-de-competence", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Contrôle de légalité", "recto": "Contrôle de légalité", "objet": "Contrôle exercé par le représentant de l’État sur les actes des collectivités territoriales afin d’en assurer la conformité au droit, notamment par le déféré devant le juge administratif.", "portee": "", "faits": "", "slug": "controle-de-legalite", "themes": ["C"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Domaine public", "recto": "Domaine public", "objet": "Ensemble des biens appartenant à une personne publique et affectés soit à l’usage direct du public, soit à un service public sous réserve, dans ce cas, d’un aménagement indispensable ou d’une condition équivalente prévue par le droit positif.", "portee": "", "faits": "", "slug": "domaine-public", "themes": ["D"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Expropriation", "recto": "Expropriation", "objet": "Procédure permettant à une personne publique, pour cause d’utilité publique et moyennant une juste et préalable indemnité, de contraindre un propriétaire à céder son bien.", "portee": "", "faits": "", "slug": "expropriation", "themes": ["E"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Police administrative", "recto": "Police administrative", "objet": "Ensemble des mesures préventives destinées à préserver l’ordre public et à éviter les troubles, par opposition à la police judiciaire qui poursuit un but répressif.", "portee": "", "faits": "", "slug": "police-administrative", "themes": ["P"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Recours pour excès de pouvoir", "recto": "Recours pour excès de pouvoir", "objet": "Recours contentieux tendant à l’annulation d’un acte administratif unilatéral illégal par le juge administratif, la légalité de l’acte s’appréciant en principe à la date de son édiction.", "portee": "", "faits": "", "slug": "recours-pour-exces-de-pouvoir", "themes": ["R"], "notions": [], "importance": "", "importance_level": 0}, {"id": "Service public", "recto": "Service public", "objet": "Activité d’intérêt général assurée ou assumée par une personne publique, ou confiée sous son contrôle à une personne privée, et soumise à un régime juridique spécifique orienté vers la satisfaction de l’intérêt général.", "portee": "", "faits": "", "slug": "service-public", "themes": ["S"], "notions": [], "importance": "", "importance_level": 0}];
+const MANIFEST_KIND = null;
+let coursFilter = null;
+let coursChapterTitle = "";
 const SHOW_PORTEE = false;
 const SHOW_FAITS = false;
 const SHOW_ARRET_LINKS = false;
@@ -895,6 +911,7 @@ function selectedList(group) {
 }
 
 function matchesFilters(card) {
+  if (coursFilter && !coursFilter.has(card.recto)) return false;
   const themes = selectedList("theme");
   const notions = selectedList("notion");
   const levels = selectedList("importance").map(Number);
@@ -1493,7 +1510,37 @@ btnAnswers.addEventListener("click", showAnswers);
 btnReset.addEventListener("click", resetLinks);
 btnNew.addEventListener("click", newSeries);
 
-updateHomeCount();
+/** Filtre strict « ?cours=DP-XXX » depuis une page de chapitre du manuel. */
+function applyCoursLock() {
+  if (!coursFilter) return;
+  document.querySelectorAll(".classifier").forEach(el => { el.hidden = true; });
+  const banner = document.getElementById("cours-banner");
+  if (banner) {
+    banner.hidden = false;
+    banner.textContent = "Filtré sur le chapitre « " + coursChapterTitle + " » ("
+      + coursFilter.size + " paire(s)). Retirez « ?cours= » de l’URL pour tout le fonds.";
+  }
+}
+
+function initCoursFilter() {
+  const ref = new URLSearchParams(location.search).get("cours");
+  if (!ref || !MANIFEST_KIND) return Promise.resolve();
+  return fetch("../manuel/exercices.json", { cache: "no-store" })
+    .then(r => (r.ok ? r.json() : null))
+    .then(map => {
+      const entry = map && map[ref.toUpperCase()];
+      const titles = entry && entry[MANIFEST_KIND];
+      if (!titles || !titles.length) return;
+      coursFilter = new Set(titles);
+      coursChapterTitle = (entry && entry.title) || ref;
+      applyCoursLock();
+    })
+    .catch(() => {});
+}
+
+initCoursFilter().then(() => {
+  updateHomeCount();
+});
 </script>
 <script src="../auth.js?v=4"></script>
 <script src="../site-nav.js?v=26"></script>
