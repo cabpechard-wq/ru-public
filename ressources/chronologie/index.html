@@ -2,24 +2,23 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Chronologie de la jurisprudence administrative — Membres</title>
+    <title>Chronologie de la jurisprudence administrative — Démo</title>
     <meta
       name="description"
-      content="Frise chronologique complète des décisions de droit public et administratif."
+      content="Démo de la frise chronologique des décisions de droit public et administratif (15 arrêts)."
     />
     <script>
       window.__CHRONO_CONFIG__ = {
-        dataUrl: "./data/chronology-decisions.json",
-        ficheBaseUrl: "../arrets/",
-        checkoutUrl: "../checkout/",
-        demo: false,
+        dataUrl: "./data/chronology-decisions-demo.json",
+        ficheBaseUrl: "../../arrets/",
+        checkoutUrl: "../../checkout/",
+        demo: true,
         defaultMinImportance: 5,
         supportedDataVersion: 1,
       };
     </script>
-    <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,36 +26,16 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
       rel="stylesheet"
     />
-    <link id="theme-css" rel="stylesheet" href="../site.css?v=24" />
+    <link id="theme-css" rel="stylesheet" href="../../site.css?v=24" />
     <link rel="stylesheet" href="./assets/chronologie.css?v=69" />
     <script src="./assets/relation-graph.js?v=69" defer></script>
     <script src="./assets/chronologie.js?v=69" defer></script>
-  <script>
-(function(){
-  var API = "https://flipcards-auth.cab-pechard.workers.dev";
-  // Build local / API placeholder : pas de gate (évite redirect vers /membre/ absent).
-  if (!API || API.indexOf("EXAMPLE") !== -1) return;
-  var token = sessionStorage.getItem("flipcards_token") || localStorage.getItem("flipcards_token") || "";
-  function deny() {
-    sessionStorage.removeItem("flipcards_ok");
-    location.replace("../membre/");
-  }
-  if (!token) { deny(); return; }
-  fetch(API.replace(/\/$/, "") + "/api/me", {
-    headers: { Authorization: "Bearer " + token }
-  }).then(function(r){
-    if (!r.ok) throw new Error("nope");
-    sessionStorage.setItem("flipcards_ok", "1");
-  }).catch(function(){ deny(); });
-})();
-</script>
-
-</head>
+  </head>
   <body>
     <p class="site-crumb">
-      <a href="../">Droit public et administratif</a>
+      <a href="../../">Droit public et administratif</a>
       <span class="sep">›</span>
-      <a href="../ressources/">Cours magistral</a>
+      <a href="../">Cours magistral</a>
       <span class="sep">›</span>
       <strong>Chronologie de la jurisprudence administrative</strong>
     </p>
@@ -64,11 +43,14 @@
     <header class="page-header">
       <div class="page-header__inner">
         <div class="brand">
-          <span class="brand__kicker">Cours magistral · Jurisprudence</span>
+          <span class="brand__kicker">Cours magistral · Démo</span>
           <h1 class="brand__title">Chronologie de la jurisprudence administrative</h1>
         </div>
         <div class="header-actions">
-                    <div class="segmented" role="group" aria-label="Mode d’affichage">
+          <p class="demo-upsell" id="chrono-demo-upsell">
+            <a class="demo-upsell-link" href="../../checkout/">Accès à toutes les ressources…</a>
+          </p>
+          <div class="segmented" role="group" aria-label="Mode d’affichage">
             <button type="button" data-view="list">Liste</button>
             <button type="button" data-view="timeline" class="is-active">Frise</button>
           </div>
@@ -341,7 +323,7 @@
         </p>
       </div>
     </div>
-    <script src="../auth.js?v=4"></script>
-    <script src="../site-nav.js?v=30"></script>
+    <script src="../../auth.js?v=4"></script>
+    <script src="../../site-nav.js?v=30"></script>
   </body>
 </html>
