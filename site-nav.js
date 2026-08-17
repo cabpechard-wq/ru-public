@@ -158,6 +158,8 @@
     const existing = document.querySelector(".site-crumb");
     const force =
       cur.indexOf("/chronologie") !== -1 ||
+      cur.indexOf("/arrets") !== -1 ||
+      cur.indexOf("/dictionnaire") !== -1 ||
       cur.indexOf("/demo") !== -1 ||
       cur.indexOf("/flipcards") !== -1 ||
       cur.indexOf("/relier") !== -1 ||
