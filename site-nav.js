@@ -252,6 +252,131 @@
   }
   applyManuelExerciseDeepLinks();
 
+  /**
+   * Pied de page « Ressources liées » + compteurs d’exercices : même index que
+   * Flipcards / Relations (?cours=DP-XXX), sans plafond à 25.
+   */
+  function chapterCodeFromLocation() {
+    if (!/\/manuel\//.test(location.pathname || "")) return "";
+    const parts = (location.pathname || "")
+      .replace(/\/index\.html$/, "")
+      .split("/")
+      .filter(Boolean);
+    for (let i = parts.length - 1; i >= 0; i--) {
+      const m = /^dp-(\d+)$/i.exec(parts[i]);
+      if (m) return "DP-" + m[1];
+    }
+    return "";
+  }
+
+  function escLinked(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function linkedTitleKey(s) {
+    return String(s || "")
+      .normalize("NFC")
+      .replace(/[\u2018\u2019\u201B\u2032]/g, "'")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+  }
+
+  function hrefFromLiens(liens, kind, title) {
+    const bag = liens && liens[kind];
+    if (!bag) return "";
+    if (bag[title]) return abs(bag[title]);
+    const k = linkedTitleKey(title);
+    for (const t of Object.keys(bag)) {
+      if (linkedTitleKey(t) === k) return abs(bag[t]);
+    }
+    return "";
+  }
+
+  function syncManuelLinkedResources() {
+    const code = chapterCodeFromLocation();
+    const content = document.querySelector(".manuel-content");
+    if (!code || !content) return;
+    Promise.all([
+      fetch(abs("manuel/exercices.json"), { cache: "no-store" }).then((r) =>
+        r.ok ? r.json() : null
+      ),
+      fetch(abs("manuel/liens.json"), { cache: "no-store" }).then((r) =>
+        r.ok ? r.json() : null
+      ),
+    ])
+      .then(([map, liens]) => {
+        const entry = map && map[code];
+        if (!entry) return;
+        const jp = entry.jurisprudence || [];
+        const notions = entry.notions || [];
+        if (!jp.length && !notions.length) return;
+
+        const bits = [];
+        function pushLink(title, kind, cls) {
+          const href = hrefFromLiens(liens, kind, title);
+          if (bits.length) {
+            bits.push(
+              '<span class="site-linked-resources-sep" aria-hidden="true">·</span>'
+            );
+          }
+          if (href) {
+            bits.push(
+              '<a class="' +
+                cls +
+                '" href="' +
+                escLinked(href) +
+                '">' +
+                escLinked(title) +
+                "</a>"
+            );
+          } else {
+            bits.push(
+              '<span class="notion-link-inactive">' + escLinked(title) + "</span>"
+            );
+          }
+        }
+        jp.forEach((t) => pushLink(t, "jurisprudence", "arret-link"));
+        notions.forEach((t) => pushLink(t, "notions", "dict-link"));
+
+        let aside = content.querySelector(".site-linked-resources");
+        if (!aside) {
+          aside = document.createElement("aside");
+          aside.className = "site-linked-resources";
+          aside.setAttribute("aria-label", "Ressources liées");
+          const exercises = content.querySelector(".manuel-exercises");
+          const nav = content.querySelector(".manuel-chapternav");
+          if (exercises) content.insertBefore(aside, exercises);
+          else if (nav) content.insertBefore(aside, nav);
+          else content.appendChild(aside);
+        }
+        aside.innerHTML =
+          '<p class="site-linked-resources-title">Ressources liées…</p>' +
+          '<p class="site-linked-resources-links">' +
+          bits.join("") +
+          "</p>";
+
+        content.querySelectorAll(".manuel-exercises-group").forEach((group) => {
+          const title =
+            (group.querySelector(".manuel-exercises-title") || {}).textContent ||
+            "";
+          const countEl = group.querySelector(".manuel-exercises-count");
+          if (!countEl) return;
+          if (/jurisprudence/i.test(title)) {
+            countEl.textContent = "(" + jp.length + ")";
+          } else if (/notions/i.test(title)) {
+            countEl.textContent = "(" + notions.length + ")";
+          }
+        });
+      })
+      .catch(() => {});
+  }
+  syncManuelLinkedResources();
+
   function applyTdRubriqueAccess(isMember) {
     document.querySelectorAll("[data-ex-access]").forEach((el) => {
       el.textContent = isMember ? "Accès membre" : "Démo";
