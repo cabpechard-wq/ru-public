@@ -54,7 +54,7 @@
       if (html.indexOf("gd-filters-pack.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../assets/gd-filters-pack.js?v=1"><\/script></body>'
+          '<script src="../assets/gd-filters-pack.js?v=2"><\/script></body>'
         );
       }
     }
@@ -63,7 +63,7 @@
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../dico-cours-themes.js?v=1"><\/script></body>'
+          '<script src="../dico-cours-themes.js?v=2"><\/script></body>'
         );
       }
     }
