@@ -26,10 +26,10 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap"
       rel="stylesheet"
     />
-    <link id="theme-css" rel="stylesheet" href="../../site.css?v=24" />
-    <link rel="stylesheet" href="./assets/chronologie.css?v=69" />
+    <link id="theme-css" rel="stylesheet" href="../../site.css?v=25" />
+    <link rel="stylesheet" href="./assets/chronologie.css?v=71" />
     <script src="./assets/relation-graph.js?v=69" defer></script>
-    <script src="./assets/chronologie.js?v=70" defer></script>
+    <script src="./assets/chronologie.js?v=71" defer></script>
   </head>
   <body>
     <p class="site-crumb">
@@ -67,25 +67,49 @@
       <div id="chrono-alert" class="alert" hidden></div>
 
       <section class="filters" aria-label="Filtres">
-        <div class="filters__row filters__row--primary">
-          <div class="field">
-            <span class="field-label" id="label-search">Recherche</span>
+                <div class="arrets-toolbar-row">
+          <div class="field arrets-search-field">
+            <label class="sr-only" for="filter-search">Recherche</label>
             <input
               id="filter-search"
               type="search"
               placeholder="Mots clés (recherche générale)"
               autocomplete="off"
-              aria-labelledby="label-search"
             />
           </div>
+          <label class="arrets-theme-field" for="filter-reference">
+            <span class="arrets-theme-label">Référence :</span>
+            <input
+              id="filter-reference"
+              type="search"
+              placeholder="n° requête, décision, RG…"
+              autocomplete="off"
+              aria-label="Filtrer par référence"
+            />
+          </label>
+          <button type="button" class="arrets-advanced-toggle" id="filters-advanced-toggle" aria-expanded="false" aria-controls="filters-advanced-panel">Filtre avancé</button>
+        </div>
 
-          <div class="field">
+<div class="arrets-advanced-panel" id="filters-advanced-panel" hidden>
+        <div class="filters__row filters__row--primary">
+<div class="field">
             <span class="field-label" id="label-juridictions">Juridictions</span>
             <div
               id="filter-juridictions"
               class="ms"
               role="group"
               aria-labelledby="label-juridictions"
+            ></div>
+          </div>
+
+
+          <div class="field field--formation is-collapsed" data-field="filter-formations">
+            <span class="field-label" id="label-formations">Formation de jugement</span>
+            <div
+              id="filter-formations"
+              class="ms"
+              role="group"
+              aria-labelledby="label-formations"
             ></div>
           </div>
 
@@ -168,6 +192,8 @@
               </div>
             </div>
           </div>
+        </div>
+
         </div>
 
         <div class="filters__row filters__row--footer">

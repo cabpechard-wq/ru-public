@@ -498,6 +498,10 @@ body {
 }
 
 .filters__row--primary {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.filters__row--primary.has-formation {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
@@ -541,6 +545,30 @@ body {
   padding: 0;
   border: 0;
   min-height: 0;
+}
+
+.filters .field.is-collapsed,
+.filters .field--formation.is-collapsed {
+  display: none;
+}
+
+.filters .arrets-toolbar-row {
+  align-items: stretch;
+}
+
+.filters .arrets-search-field {
+  gap: 0;
+}
+
+.filters .arrets-theme-field input[type="search"] {
+  min-height: 48px;
+  height: 48px;
+  box-sizing: border-box;
+}
+
+.filters .arrets-advanced-panel:not([hidden]) {
+  display: grid;
+  gap: 16px;
 }
 
 .field--importance {
