@@ -1583,7 +1583,7 @@ input:focus {
   font-size: .76rem;
   min-width: 0;
   scrollbar-width: thin;
-  scrollbar-color: rgba(196, 163, 90, .28) transparent;
+  scrollbar-color: color-mix(in srgb, var(--accent) 42%, transparent) transparent;
 }
 
 .manuel-nav-side .manuel-nav-heading {
@@ -2436,13 +2436,15 @@ input:focus {
 .dict-toolbar select {
   width: min(100%, 18rem);
   max-width: 100%;
-  padding: .55rem .75rem;
+  padding: .55rem 1.6rem .55rem .75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg-elevated);
   color: var(--ink);
   font: 500 .88rem var(--font-ui);
   cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .dict-toolbar select:focus {
@@ -2963,6 +2965,21 @@ input:focus {
   border-radius: var(--radius);
   box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 12%, transparent);
   padding: .35rem;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 42%, transparent) transparent;
+}
+
+.arrets-filters .ms__panel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.arrets-filters .ms__panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.arrets-filters .ms__panel::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent) 32%, transparent);
+  border-radius: var(--radius);
 }
 
 .arrets-filters .ms__option {

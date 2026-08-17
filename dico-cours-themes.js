@@ -55,6 +55,21 @@
     return String(a).localeCompare(String(b), "fr");
   }
 
+  function compareThemes(a, b, pathA, pathB) {
+    if (window.CoursThemes) {
+      var byPath = CoursThemes.comparePaths(pathA, pathB);
+      if (byPath) return byPath;
+      return CoursThemes.compare(a, b);
+    }
+    return sortFr(a, b);
+  }
+
+  function themeText(s) {
+    return window.CoursThemes
+      ? CoursThemes.displayLabel(s)
+      : String(s || "").replace(/^\s*\d{1,2}(?:\.\d+)?\s*[-–.]\s*/, "").trim();
+  }
+
   /* ——— Dictionnaire ——— */
   function initDictionary() {
     var input = document.getElementById("dict-filter");
@@ -88,7 +103,7 @@
           var t = (a.textContent || "").trim();
           if (!t) return;
           labels.push(t);
-          themes[t] = true;
+          if (!themes[t]) themes[t] = a.getAttribute("href") || "";
         });
       });
       el.setAttribute("data-cours", labels.join("\n"));
@@ -101,11 +116,13 @@
     all.textContent = "Tous les thèmes";
     select.appendChild(all);
     Object.keys(themes)
-      .sort(sortFr)
+      .sort(function (a, b) {
+        return compareThemes(a, b, themes[a], themes[b]);
+      })
       .forEach(function (t) {
         var opt = document.createElement("option");
         opt.value = t;
-        opt.textContent = t;
+        opt.textContent = themeText(t);
         select.appendChild(opt);
       });
     if (current && themes[current]) select.value = current;
@@ -268,7 +285,7 @@
           '" data-color="' +
           escHtml(item.color) +
           '" aria-pressed="false">' +
-          escHtml(item.label) +
+          escHtml(themeText(item.label)) +
           "</button>"
         );
       })
@@ -312,7 +329,7 @@
         if (!label) return;
         labels.push(label);
         if (!catalogMap[label]) {
-          catalogMap[label] = { label: label, color: colorForPath(c.path) };
+          catalogMap[label] = { label: label, color: colorForPath(c.path), path: c.path || "" };
         }
       });
       if (!labels.length) return;
@@ -328,7 +345,9 @@
     });
 
     var catalog = Object.keys(catalogMap)
-      .sort(sortFr)
+      .sort(function (a, b) {
+        return compareThemes(a, b, catalogMap[a].path, catalogMap[b].path);
+      })
       .map(function (k) {
         return catalogMap[k];
       })

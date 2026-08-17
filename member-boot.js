@@ -68,11 +68,30 @@
         'faitsTip.style.left = left + "px";'
       );
     }
+    html = html.replace(/gd-filters-pack\.js\?v=\d+/g, "gd-filters-pack.js?v=3");
+    html = html.replace(/dico-cours-themes\.js\?v=\d+/g, "dico-cours-themes.js?v=3");
+    if (html.indexOf("cours-themes.js") === -1) {
+      var placed = false;
+      html = html.replace(
+        /<script src="[^"]*(?:gd-filters-pack|dico-cours-themes)\.js[^"]*"><\/script>/,
+        function (tag) {
+          if (placed) return tag;
+          placed = true;
+          return '<script src="../assets/cours-themes.js?v=1"><\/script>' + tag;
+        }
+      );
+      if (!placed) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../assets/cours-themes.js?v=1"><\/script></body>'
+        );
+      }
+    }
     if (pack === "flipcards" || pack === "relier") {
       if (html.indexOf("gd-filters-pack.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../assets/gd-filters-pack.js?v=2"><\/script></body>'
+          '<script src="../assets/gd-filters-pack.js?v=3"><\/script></body>'
         );
       }
       if (html.indexOf("gd-importance-stars.js") === -1) {
@@ -82,12 +101,12 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=32");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=33");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../dico-cours-themes.js?v=2"><\/script></body>'
+          '<script src="../dico-cours-themes.js?v=3"><\/script></body>'
         );
       }
     }

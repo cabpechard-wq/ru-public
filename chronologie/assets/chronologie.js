@@ -154,6 +154,16 @@
     return Array.from(new Set(arr.filter(Boolean))).sort(sortFr);
   }
 
+  function uniqueThemes(arr) {
+    return window.CoursThemes ? CoursThemes.uniqueSorted(arr) : uniqueSorted(arr);
+  }
+
+  function themeText(s) {
+    return window.CoursThemes
+      ? CoursThemes.displayLabel(s)
+      : String(s || "").replace(/^\s*\d{1,2}(?:\.\d+)?\s*[-–.]\s*/, "").trim();
+  }
+
   function escapeHtml(s) {
     return String(s == null ? "" : s)
       .replace(/&/g, "&amp;")
@@ -562,7 +572,7 @@
           onFilterChange();
         });
         var span = document.createElement("span");
-        span.textContent = v;
+        span.textContent = themeText(v);
         lab.appendChild(cb);
         lab.appendChild(span);
         panel.appendChild(lab);
@@ -575,7 +585,7 @@
     function refreshLabel() {
       var sel = getMsSelected(root);
       if (!sel.length) label.textContent = placeholder;
-      else if (sel.length === 1) label.textContent = sel[0];
+      else if (sel.length === 1) label.textContent = themeText(sel[0]);
       else label.textContent = sel.length + " sélection(s)";
     }
 
@@ -613,7 +623,7 @@
 
   function populateFilterOptions(data) {
     var decisions = data.decisions || [];
-    var themes = uniqueSorted(
+    var themes = uniqueThemes(
       decisions.map(function (d) {
         return d.theme;
       })

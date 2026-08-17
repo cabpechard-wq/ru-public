@@ -575,6 +575,8 @@ a {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent) 42%, transparent) transparent;
 }
 
 .filters .ms__option {
