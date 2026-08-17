@@ -50,6 +50,16 @@
     if (pack === "relier" || pack === "relier-dico") {
       html = patchRelierSeries(html);
     }
+    if (pack === "relier") {
+      html = html.replace(
+        /Associez chaque nom à sa objet/g,
+        "Associez chaque décision à sa objet"
+      );
+      html = html.replace(
+        /Associez chaque nom à son objet/g,
+        "Associez chaque décision à son objet"
+      );
+    }
     if (pack === "flipcards" || pack === "relier") {
       if (html.indexOf("gd-filters-pack.js") === -1) {
         html = html.replace(
