@@ -3,10 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
-<meta http-equiv="refresh" content="0; url=./app.html">
 <title>Espace membres</title>
+<script>
+  location.replace("./app.html" + location.search + location.hash);
+</script>
 </head>
 <body>
-<p><a href="./app.html">Ouvrir l’espace membres</a></p>
+<p><a id="member-app-link" href="./app.html">Ouvrir l’espace membres</a></p>
+<script>
+  var dest = "./app.html" + location.search + location.hash;
+  var a = document.getElementById("member-app-link");
+  if (a) a.setAttribute("href", dest);
+</script>
 </body>
 </html>

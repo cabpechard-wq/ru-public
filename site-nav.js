@@ -237,6 +237,21 @@
     }
   });
 
+  /** Les liens d’exercices du manuel doivent ouvrir l’app déjà filtrée, pas le menu. */
+  function applyManuelExerciseDeepLinks() {
+    document.querySelectorAll(".manuel-exercises a[href]").forEach((a) => {
+      const href = a.getAttribute("href");
+      if (!href || href.indexOf("cours=") === -1) return;
+      let next = href;
+      ["flipcards-dico", "relier-dico", "flipcards", "relier"].forEach((folder) => {
+        const re = new RegExp("(/" + folder + "/)(?:index\\.html)?\\?");
+        next = next.replace(re, "$1app.html?");
+      });
+      if (next !== href) a.setAttribute("href", next);
+    });
+  }
+  applyManuelExerciseDeepLinks();
+
   function applyTdRubriqueAccess(isMember) {
     document.querySelectorAll("[data-ex-access]").forEach((el) => {
       el.textContent = isMember ? "Accès membre" : "Démo";
