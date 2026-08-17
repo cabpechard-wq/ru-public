@@ -545,7 +545,33 @@
       speedWrap,
       voiceWrap
     );
-    root.append(capsules, progressWrap);
+
+    const isArretFiche = resource === "arrets" || document.querySelector(".arrets-fiche-page");
+    let chronoLink = null;
+    if (isArretFiche) {
+      const toolbar = document.createElement("div");
+      toolbar.className = "site-tts-toolbar";
+      chronoLink = document.createElement("a");
+      chronoLink.className = "arrets-fiche-chrono-link";
+      chronoLink.textContent = "Voir dans la Chronologie";
+      const slug = (location.pathname || "")
+        .replace(/\/index\.html$/, "")
+        .replace(/\/+$/, "")
+        .split("/")
+        .pop();
+      function chronoHref(member) {
+        const base = member ? "/chronologie/" : "/ressources/chronologie/";
+        return slug ? base + "?id=" + encodeURIComponent(slug) : base;
+      }
+      chronoLink.href = chronoHref(false);
+      chronoLink._setMember = function (member) {
+        chronoLink.href = chronoHref(Boolean(member));
+      };
+      toolbar.append(capsules, chronoLink);
+      root.append(toolbar, progressWrap);
+    } else {
+      root.append(capsules, progressWrap);
+    }
 
     const anchor =
       prose.closest(".manuel-content")?.querySelector(".site-title") || prose;
@@ -565,6 +591,7 @@
       speedSelect,
     };
     articleUi = ui;
+    if (chronoLink) ui.chronoLink = chronoLink;
 
     function updateHint() {
       ui.btnPlay.textContent = "Écouter";
@@ -739,6 +766,9 @@
       isMember = Boolean(member);
       stopAll();
       if (articleUi && articleUi._updateHint) articleUi._updateHint();
+      if (articleUi && articleUi.chronoLink && articleUi.chronoLink._setMember) {
+        articleUi.chronoLink._setMember(isMember);
+      }
     },
     stop: stopAll,
   };

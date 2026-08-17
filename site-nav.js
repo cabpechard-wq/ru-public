@@ -688,7 +688,7 @@
       return;
     }
     const s = document.createElement("script");
-    s.src = abs("site-tts.js?v=9");
+    s.src = abs("site-tts.js?v=10");
     s.onload = () => cb();
     s.onerror = () => cb();
     document.body.appendChild(s);
