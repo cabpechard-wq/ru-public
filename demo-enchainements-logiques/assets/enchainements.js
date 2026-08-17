@@ -33,10 +33,12 @@
     objectLinkQuery: "",
     filters: {
       q: "",
+      reference: "",
       themes: [],
       notions: [],
       importance: [],
       juridictions: [],
+      formations: [],
       dateFrom: null,
       dateTo: null,
     },
@@ -335,6 +337,36 @@
       "Toutes les juridictions"
     );
     buildMultiSelect(els.notions, notions, state.filters.notions, "Toutes les notions");
+    updateFormationOptions();
+  }
+
+  function updateFormationOptions() {
+    if (!els.formations) return;
+    var jKeys = getMsSelected(els.juridictions);
+    var prev = getMsSelected(els.formations);
+    var decisions = (state.raw && state.raw.decisions) || [];
+    var seen = {};
+    var options = [];
+    if (jKeys.length) {
+      decisions.forEach(function (d) {
+        if (jKeys.indexOf(d.juridiction) === -1) return;
+        var f = String(d.formation || "").trim();
+        if (!f || seen[f]) return;
+        seen[f] = true;
+        options.push(f);
+      });
+      options = uniqueSorted(options);
+    }
+    var keep = prev.filter(function (v) {
+      return options.indexOf(v) !== -1;
+    });
+    state.filters.formations = keep;
+    buildMultiSelect(els.formations, options, keep, "Toutes les formations");
+    var active = Boolean(jKeys.length && options.length);
+    var field = els.formations.closest(".field");
+    if (field) field.classList.toggle("is-collapsed", !active);
+    var row = els.formations.closest(".filters__row--primary");
+    if (row) row.classList.toggle("has-formation", active);
   }
 
   function selectedImportance() {
@@ -347,9 +379,11 @@
 
   function readFiltersFromDom() {
     state.filters.q = ((els.search && els.search.value) || "").trim().toLowerCase();
+    state.filters.reference = ((els.reference && els.reference.value) || "").trim().toLowerCase();
     state.filters.themes = getMsSelected(els.themes);
     state.filters.notions = getMsSelected(els.notions);
     state.filters.juridictions = getMsSelected(els.juridictions);
+    state.filters.formations = getMsSelected(els.formations);
     state.filters.importance = selectedImportance();
     state.filters.dateFrom = (els.dateFrom && els.dateFrom.value) || null;
     state.filters.dateTo = (els.dateTo && els.dateTo.value) || null;
@@ -361,6 +395,7 @@
     if (els.themes && els.themes._msRefreshLabel) els.themes._msRefreshLabel();
     if (els.notions && els.notions._msRefreshLabel) els.notions._msRefreshLabel();
     if (els.juridictions && els.juridictions._msRefreshLabel) els.juridictions._msRefreshLabel();
+    if (els.formations && els.formations._msRefreshLabel) els.formations._msRefreshLabel();
   }
 
   function updateCounts() {
@@ -376,6 +411,7 @@
     var f = state.filters;
 
     if (f.q) parts.push('recherche « ' + f.q + ' »');
+    if (f.reference) parts.push("référence « " + f.reference + " »");
     if (f.themes.length) {
       parts.push("thème" + (f.themes.length > 1 ? "s" : "") + " : " + f.themes.join(", "));
     }
@@ -385,6 +421,14 @@
           (f.juridictions.length > 1 ? "s" : "") +
           " : " +
           f.juridictions.join(", ")
+      );
+    }
+    if (f.formations && f.formations.length) {
+      parts.push(
+        "formation" +
+          (f.formations.length > 1 ? "s" : "") +
+          " : " +
+          f.formations.join(", ")
       );
     }
     if (f.notions.length) {
@@ -642,6 +686,13 @@
       if (f.themes.length && f.themes.indexOf(d.theme) === -1) return false;
       if (f.importance.length && f.importance.indexOf(d.importance) === -1) return false;
       if (f.juridictions.length && f.juridictions.indexOf(d.juridiction) === -1) return false;
+      if (f.formations && f.formations.length && f.formations.indexOf(d.formation) === -1) {
+        return false;
+      }
+      if (f.reference) {
+        var ref = String(d.reference || "").toLowerCase();
+        if (ref.indexOf(f.reference) === -1) return false;
+      }
       if (f.notions.length) {
         var ok = f.notions.every(function (n) {
           return (d.notions || []).indexOf(n) !== -1;
@@ -692,16 +743,25 @@
   }
 
   function onFilterChange() {
+    var prevJ = (state.filters.juridictions || []).join("\0");
     readFiltersFromDom();
+    var nextJ = (state.filters.juridictions || []).join("\0");
+    if (prevJ !== nextJ) {
+      updateFormationOptions();
+      readFiltersFromDom();
+    }
     applyFilters();
   }
 
   function resetFilters() {
     if (els.search) els.search.value = "";
+    if (els.reference) els.reference.value = "";
     state.filters.q = "";
+    state.filters.reference = "";
     state.filters.themes = [];
     state.filters.notions = [];
     state.filters.juridictions = [];
+    state.filters.formations = [];
     state.filters.importance = [];
     state.filters.dateFrom = null;
     state.filters.dateTo = null;
@@ -1307,9 +1367,13 @@
     els.alert = $("ench-alert");
     els.setupHint = $("setup-hint");
     els.search = $("filter-search");
+    els.reference = $("filter-reference");
     els.themes = $("filter-themes");
     els.notions = $("filter-notions");
     els.juridictions = $("filter-juridictions");
+    els.formations = $("filter-formations");
+    els.advancedToggle = $("filters-advanced-toggle");
+    els.advancedPanel = $("filters-advanced-panel");
     els.dateFrom = $("filter-date-from");
     els.dateTo = $("filter-date-to");
     els.relatedOnly = $("filter-related-only");
@@ -1340,6 +1404,15 @@
     els.status = $("ench-status");
 
     if (els.search) els.search.addEventListener("input", onFilterChange);
+    if (els.reference) els.reference.addEventListener("input", onFilterChange);
+    if (els.advancedToggle && els.advancedPanel) {
+      els.advancedToggle.addEventListener("click", function () {
+        var open = els.advancedPanel.hidden;
+        els.advancedPanel.hidden = !open;
+        els.advancedToggle.setAttribute("aria-expanded", open ? "true" : "false");
+        els.advancedToggle.classList.toggle("is-open", open);
+      });
+    }
     if (els.dateFrom) els.dateFrom.addEventListener("change", onFilterChange);
     if (els.dateTo) els.dateTo.addEventListener("change", onFilterChange);
     document.querySelectorAll('input[name="importance"]').forEach(function (el) {

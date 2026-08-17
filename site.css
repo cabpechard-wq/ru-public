@@ -2693,7 +2693,21 @@ input:focus {
   min-width: 10rem;
 }
 
+.arrets-theme-field input[type="search"] {
+  flex: 1 1 auto;
+  min-width: 10rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: .55rem .75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  color: var(--ink);
+  font: 500 .88rem var(--font-ui);
+}
+
 .arrets-search-field input[type="search"]:focus,
+.arrets-theme-field input[type="search"]:focus,
 .arrets-theme-field .ms__toggle:focus-visible,
 .arrets-advanced-field .ms__toggle:focus-visible {
   outline: 2px solid var(--accent-soft);
@@ -2752,6 +2766,104 @@ input:focus {
 
 .arrets-advanced-row.has-formation {
   grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+}
+
+.arrets-advanced-row--secondary {
+  margin-top: .55rem;
+  align-items: start;
+}
+
+.arrets-advanced-field--importance {
+  min-width: 12rem;
+}
+
+.arrets-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.arrets-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: .35rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font: 600 .78rem var(--font-ui);
+  cursor: pointer;
+}
+
+.arrets-chip input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.arrets-chip:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.arrets-chip:has(input:checked) {
+  background: var(--selection-pressed-bg, var(--accent));
+  border-color: var(--selection-pressed-border, var(--accent));
+  color: var(--selection-pressed-fg, var(--bg));
+}
+
+.arrets-period-stack {
+  display: grid;
+  gap: .35rem;
+}
+
+.arrets-period-row {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+.arrets-period-label {
+  flex: 0 0 3.2rem;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.arrets-period-row input[type="date"] {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: .4rem .5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+  font: 500 .84rem var(--font-ui);
+}
+
+.filters .arrets-toolbar-row {
+  align-items: stretch;
+}
+
+.filters .arrets-search-field {
+  margin: 0;
+}
+
+.filters .arrets-advanced-panel:not([hidden]) {
+  display: grid;
+  gap: 16px;
+}
+
+.gd-filters {
+  margin: 0 0 1rem;
+}
+
+.gd-filters .classifier {
+  display: none !important;
 }
 
 .arrets-advanced-field {
