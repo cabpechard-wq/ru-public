@@ -1167,10 +1167,15 @@ function showFaitsTip(sourceEl) {
 
   const wrapRect = boardWrap.getBoundingClientRect();
   const itemRect = sourceEl.getBoundingClientRect();
-  const tipW = Math.min(352, Math.max(220, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.42)));
+  const gap = 12;
+  const viewportPad = 8;
+  // Toujours à gauche de la décision (symétrique de la portée, à droite de l’objet)
+  const available = itemRect.left - viewportPad - gap;
+  let tipW = Math.min(352, Math.max(180, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.32)));
+  if (available >= 140) tipW = Math.min(tipW, available);
   faitsTip.style.width = tipW + "px";
-  const left = itemRect.left - wrapRect.left - tipW - 12;
-  faitsTip.style.left = Math.max(0, left) + "px";
+  const left = itemRect.left - wrapRect.left - tipW - gap;
+  faitsTip.style.left = left + "px";
 
   const midY = itemRect.top + itemRect.height / 2 - wrapRect.top;
   faitsTip.style.top = Math.max(8, midY - 28) + "px";
