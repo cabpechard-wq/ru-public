@@ -2527,7 +2527,8 @@ input:focus {
   margin: 0;
   font-family: var(--font-ui);
   font-size: .9rem;
-  line-height: 1.55;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
 .site-linked-resources-links a {
