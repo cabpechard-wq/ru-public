@@ -23,6 +23,14 @@
         'const MANIFEST_KIND = "' + kind + '";'
       );
     }
+    if (pack === "flipcards-dico" || pack === "relier-dico") {
+      if (html.indexOf("dico-cours-themes.js") === -1) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../dico-cours-themes.js?v=1"><\/script></body>'
+        );
+      }
+    }
     if (!new URLSearchParams(location.search).get("cours")) return html;
     return html.replace(
       /(initCoursFilter\(\)\s*\.then\(\s*(?:\(\)\s*=>|function\s*\(\s*\)\s*)\s*\{)([\s\S]*?)(\n\}\);)/,
