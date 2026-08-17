@@ -57,6 +57,12 @@
           '<script src="../assets/gd-filters-pack.js?v=1"><\/script></body>'
         );
       }
+      if (html.indexOf("gd-importance-stars.js") === -1) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../assets/gd-importance-stars.js?v=1"><\/script></body>'
+        );
+      }
     }
     html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=31");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
