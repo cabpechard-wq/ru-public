@@ -425,6 +425,16 @@ a:hover { color: var(--accent-hover); }
 
 .site-crumb .sep { opacity: .45; }
 
+.wrap > .site-crumb {
+  margin: 0 0 1.1rem;
+}
+
+.wrap.is-study > .site-crumb,
+:fullscreen .site-crumb,
+:-webkit-full-screen .site-crumb {
+  display: none;
+}
+
 .site-hero-kicker {
   margin: 0 0 .35rem;
   font-size: .65rem;

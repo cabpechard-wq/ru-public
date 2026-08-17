@@ -49,6 +49,132 @@
   document.body.prepend(header);
   document.body.classList.add("site-body");
 
+  function pathNorm() {
+    return (location.pathname || "")
+      .replace(/\/index\.html$/, "")
+      .replace(/\/+$/, "") || "/";
+  }
+
+  function crumbSep() {
+    return '<span class="sep" aria-hidden="true">›</span>';
+  }
+
+  function renderCrumbs(items) {
+    const parts = [];
+    items.forEach((item, i) => {
+      if (i) parts.push(crumbSep());
+      const last = i === items.length - 1 || item.current;
+      if (last) parts.push("<strong>" + item.label + "</strong>");
+      else parts.push('<a href="' + item.href + '">' + item.label + "</a>");
+    });
+    return parts.join("");
+  }
+
+  function trailForPath(cur) {
+    const home = { href: abs("index.html"), label: "Droit public et administratif" };
+    const bu = { href: abs("bibliotheque/"), label: "Bibliothèque universitaire" };
+    const cours = { href: abs("ressources/"), label: "Cours magistral" };
+    const td = { href: abs("exercices/"), label: "Travaux dirigés" };
+    const segs = cur.replace(/^\//, "").split("/").filter(Boolean);
+    const first = segs[0] || "";
+
+    if (!first) return null;
+
+    if (first === "chronologie" || (first === "ressources" && segs[1] === "chronologie") || (first === "bibliotheque" && segs[1] === "chronologie")) {
+      return [home, cours, { label: "Chronologie de la jurisprudence administrative", current: true }];
+    }
+    if (first === "ressources") {
+      return [home, { label: "Cours magistral", current: true }];
+    }
+    if (first === "bibliotheque") {
+      return [home, { label: "Bibliothèque universitaire", current: true }];
+    }
+    if (first === "dictionnaire") {
+      return [home, bu, { label: "Dictionnaire juridique", current: true }];
+    }
+    if (first === "arrets") {
+      const trail = [home, bu, { href: abs("arrets/"), label: "Fiches d'arrêts et de décisions" }];
+      if (segs.length > 1) trail.push({ label: "Fiche", current: true });
+      else trail[trail.length - 1].current = true;
+      return trail;
+    }
+    if (first === "manuel") return null;
+    if (first === "exercices") {
+      return [home, { label: "Travaux dirigés", current: true }];
+    }
+    if (first === "demo" || first === "flipcards") {
+      return [home, td, { label: "Flipcards", href: abs("exercices/") }, { label: "Grands arrêts", current: true }];
+    }
+    if (first === "demo-flipcards-dico" || first === "flipcards-dico") {
+      return [home, td, { label: "Flipcards", href: abs("exercices/") }, { label: "Grandes notions", current: true }];
+    }
+    if (first === "demo-relier" || first === "relier") {
+      return [home, td, { label: "Relations", href: abs("exercices/") }, { label: "Grands arrêts", current: true }];
+    }
+    if (first === "demo-relier-dico" || first === "relier-dico") {
+      return [home, td, { label: "Relations", href: abs("exercices/") }, { label: "Grandes notions", current: true }];
+    }
+    if (first === "demo-enchainements-logiques" || first === "enchainements-logiques") {
+      return [home, td, { label: "Enchaînements logiques", current: true }];
+    }
+    if (first === "checkout") {
+      return [home, { label: "Inscriptions", current: true }];
+    }
+    if (first === "membre") {
+      const trail = [home, { href: abs("membre/"), label: "Espace pédagogique" }];
+      if (segs[1] === "forgot") trail.push({ label: "Mot de passe oublié", current: true });
+      else if (segs[1] === "compte") trail.push({ label: "Compte", current: true });
+      else if (segs[1] === "reset") trail.push({ label: "Réinitialisation", current: true });
+      else trail[trail.length - 1].current = true;
+      return trail;
+    }
+    if (first === "mentions-legales") {
+      return [home, { label: "Mentions légales", current: true }];
+    }
+    if (first === "cgv") {
+      return [home, { label: "CGV", current: true }];
+    }
+    return [home, { label: document.title.replace(/\s+[—–-].*$/, "").trim() || first, current: true }];
+  }
+
+  function insertCrumbEl(html) {
+    const el = document.createElement("p");
+    el.className = "site-crumb";
+    el.setAttribute("aria-label", "Fil d’Ariane");
+    el.innerHTML = html;
+    const wrap = document.getElementById("app") || document.querySelector(".wrap");
+    const main = document.querySelector("main");
+    if (wrap) wrap.insertBefore(el, wrap.firstChild);
+    else if (main) main.insertBefore(el, main.firstChild);
+    else header.insertAdjacentElement("afterend", el);
+    return el;
+  }
+
+  function ensureSiteCrumbs() {
+    const cur = pathNorm();
+    const trail = trailForPath(cur);
+    if (!trail) return;
+    const html = renderCrumbs(trail);
+    const existing = document.querySelector(".site-crumb");
+    const force =
+      cur.indexOf("/chronologie") !== -1 ||
+      cur.indexOf("/demo") !== -1 ||
+      cur.indexOf("/flipcards") !== -1 ||
+      cur.indexOf("/relier") !== -1 ||
+      cur.indexOf("/enchainements-logiques") !== -1 ||
+      cur.indexOf("/mentions-legales") !== -1 ||
+      cur.indexOf("/cgv") !== -1 ||
+      cur.indexOf("/membre") !== -1;
+    if (existing && !force) return;
+    if (existing) {
+      existing.setAttribute("aria-label", "Fil d’Ariane");
+      existing.innerHTML = html;
+      return;
+    }
+    insertCrumbEl(html);
+  }
+  ensureSiteCrumbs();
+
   header.querySelectorAll("[data-nav]").forEach((a) => {
     const key = a.getAttribute("data-nav");
     const href = a.getAttribute("href") || "";
@@ -59,9 +185,7 @@
         if (cur === p) a.classList.add("is-active");
       } else if (key === "ressources") {
         const onManuel = cur.indexOf("/manuel") !== -1;
-        const onChrono =
-          cur.indexOf("/bibliotheque/chronologie") !== -1 ||
-          (cur.indexOf("/chronologie") !== -1 && cur.indexOf("/bibliotheque") === -1);
+        const onChrono = cur.indexOf("/chronologie") !== -1;
         if (cur === p || onManuel || onChrono) {
           a.classList.add("is-active");
         }
@@ -518,7 +642,7 @@
         if (ctaEl) ctaEl.textContent = "Ouvrir la chronologie →";
         el.setAttribute("title", "Chronologie de la jurisprudence administrative (accès membre)");
       } else {
-        el.setAttribute("href", abs("bibliotheque/chronologie/"));
+        el.setAttribute("href", abs("ressources/chronologie/"));
         if (typeEl) typeEl.textContent = "Démo";
         if (descEl) {
           descEl.textContent =
@@ -600,7 +724,6 @@
     if (cur.indexOf("/demo-relier-dico/") !== -1 || cur.endsWith("/demo-relier-dico")) return true;
     if (cur.indexOf("/relier-dico/") !== -1 || cur.endsWith("/relier-dico")) return true;
     if (cur.indexOf("/relier/") !== -1 || cur.endsWith("/relier")) return true;
-    if (cur.indexOf("/bibliotheque/chronologie/") !== -1) return true;
     if (cur.indexOf("/chronologie/") !== -1 || cur.endsWith("/chronologie")) return true;
     if (cur.indexOf("/demo-enchainements-logiques/") !== -1 || cur.endsWith("/demo-enchainements-logiques")) return true;
     if (cur.indexOf("/enchainements-logiques/") !== -1 || cur.endsWith("/enchainements-logiques")) return true;
@@ -644,7 +767,7 @@
 
   // Sélecteur de charte (Campus par défaut) — chargé après le bandeau
   const themeJs = document.createElement("script");
-  themeJs.src = new URL("site-theme.js?v=17", script.src).href;
+  themeJs.src = new URL("site-theme.js?v=18", script.src).href;
   themeJs.onerror = function () {
     console.warn("[site-theme] Impossible de charger site-theme.js — rebuild du site requis.");
   };
