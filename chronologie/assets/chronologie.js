@@ -2538,6 +2538,25 @@
     else syncDemoUi(data);
     readFiltersFromDom();
     applyFilters();
+    applyDeepLink();
+  }
+
+  function applyDeepLink() {
+    var params = new URLSearchParams(location.search || "");
+    var raw = params.get("id") || params.get("decision") || "";
+    if (!raw && location.hash) raw = String(location.hash).replace(/^#/, "");
+    if (!raw) return;
+    var key = slugKey(raw);
+    var id = null;
+    if (state.byId.has(raw)) id = raw;
+    else if (state.byId.has(key)) id = key;
+    else {
+      state.byId.forEach(function (d, did) {
+        if (id) return;
+        if (slugKey(did) === key || slugKey(d.slugFiche || "") === key) id = did;
+      });
+    }
+    if (id) focus(id);
   }
 
   function getState() {
