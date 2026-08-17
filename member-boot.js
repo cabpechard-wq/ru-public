@@ -15,6 +15,30 @@
     return "";
   }
 
+  function patchRelierSeries(html) {
+    if (html.indexOf('data-size="all"') === -1) {
+      html = html.replace(
+        /<button type="button" class="chip chip-size" data-size="3" aria-pressed="true">3<\/button>/,
+        '<button type="button" class="chip chip-size" data-size="all" aria-pressed="true">Tout</button>' +
+          '<button type="button" class="chip chip-size" data-size="3" aria-pressed="false">3</button>'
+      );
+    }
+    html = html.replace(/let seriesSize = 3;/, "let seriesSize = Infinity;");
+    html = html.replace(
+      /seriesSize = Number\(btn\.dataset\.size\) \|\| 3;/,
+      'seriesSize = btn.dataset.size === "all" ? Infinity : (Number(btn.dataset.size) || Infinity);'
+    );
+    html = html.replace(
+      /return "Tout le set · série de " \+ seriesSize;/,
+      'return Number.isFinite(seriesSize) ? "Tout le set · série de " + seriesSize : "Tout le set · toute la série";'
+    );
+    html = html.replace(
+      /bits\.push\("série de " \+ seriesSize\);/,
+      'bits.push(Number.isFinite(seriesSize) ? "série de " + seriesSize : "toute la série");'
+    );
+    return html;
+  }
+
   function patchMemberHtml(html, pack) {
     var kind = packKind(pack);
     if (kind) {
@@ -22,6 +46,17 @@
         /(const|let|var)\s+MANIFEST_KIND\s*=\s*null\s*;/,
         'const MANIFEST_KIND = "' + kind + '";'
       );
+    }
+    if (pack === "relier" || pack === "relier-dico") {
+      html = patchRelierSeries(html);
+    }
+    if (pack === "flipcards-dico" || pack === "relier-dico") {
+      if (html.indexOf("dico-cours-themes.js") === -1) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../dico-cours-themes.js?v=1"><\/script></body>'
+        );
+      }
     }
     if (!new URLSearchParams(location.search).get("cours")) return html;
     return html.replace(

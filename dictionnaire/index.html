@@ -47,6 +47,10 @@
 <a href="#lettre-V">V</a>
 </nav>
 <p class="dict-toolbar">
+<label class="sr-only" for="dict-theme">Thème</label>
+<select id="dict-theme" aria-label="Thème">
+<option value="">Tous les thèmes</option>
+</select>
 <label class="sr-only" for="dict-filter">Filtrer</label>
 <input id="dict-filter" type="search" placeholder="Filtrer une entrée…" autocomplete="off">
 </p>
@@ -1239,28 +1243,8 @@
 </main>
 <script src="../auth.js?v=4"></script>
 <script src="../site-tts.js?v=9"></script>
-<script src="../site-nav.js?v=26"></script>
-
-<script>
-(function () {
-  const input = document.getElementById("dict-filter");
-  if (!input) return;
-  const entries = Array.from(document.querySelectorAll(".dict-entry"));
-  const sections = Array.from(document.querySelectorAll(".dict-letter"));
-  input.addEventListener("input", () => {
-    const q = (input.value || "").trim().toLowerCase();
-    entries.forEach((el) => {
-      const ok = !q || (el.getAttribute("data-term") || "").includes(q)
-        || (el.textContent || "").toLowerCase().includes(q);
-      el.hidden = !ok;
-    });
-    sections.forEach((sec) => {
-      const any = Array.from(sec.querySelectorAll(".dict-entry")).some((e) => !e.hidden);
-      sec.hidden = !any;
-    });
-  });
-})();
-</script>
+<script src="../site-nav.js?v=28"></script>
+<script src="../dico-cours-themes.js?v=1"></script>
 
 </body>
 </html>
