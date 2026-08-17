@@ -665,7 +665,8 @@ body { padding: 0 0 3.5rem; }
       </div>
       <div class="series-row" role="group" aria-label="Taille de série">
         <span class="series-label">Série</span>
-        <button type="button" class="chip chip-size" data-size="3" aria-pressed="true">3</button>
+        <button type="button" class="chip chip-size" data-size="all" aria-pressed="true">Tout</button>
+        <button type="button" class="chip chip-size" data-size="3" aria-pressed="false">3</button>
         <button type="button" class="chip chip-size" data-size="5" aria-pressed="false">5</button>
         <button type="button" class="chip chip-size" data-size="10" aria-pressed="false">10</button>
       </div>
@@ -729,7 +730,7 @@ const SHOW_ARRET_LINKS = false;
 const LEFT_LABEL = "Notion";
 const RIGHT_LABEL = "Définition";
 const selected = { theme: new Set(), notion: new Set(), importance: new Set() };
-let seriesSize = 3;
+let seriesSize = Infinity;
 let series = [];          // indices dans DATA
 let links = new Map();    // sourceId -> targetId
 let verified = false;
@@ -933,16 +934,20 @@ function filteredIndexes() {
   return DATA.map((_, idx) => idx).filter(idx => matchesFilters(DATA[idx]));
 }
 
+function seriesHint() {
+  return Number.isFinite(seriesSize) ? ("série de " + seriesSize) : "toute la série";
+}
+
 function selectionHint() {
   const themes = selectedList("theme");
   const notions = selectedList("notion");
   const levels = selectedList("importance");
-  if (!themes.length && !notions.length && !levels.length) return "Tout le set · série de " + seriesSize;
+  if (!themes.length && !notions.length && !levels.length) return "Tout le set · " + seriesHint();
   const bits = [];
   if (themes.length) bits.push(themes.length + " thème(s)");
   if (notions.length) bits.push(notions.length + " notion(s)");
   if (levels.length) bits.push(levels.length + " importance(s)");
-  bits.push("série de " + seriesSize);
+  bits.push(seriesHint());
   return bits.join(" · ");
 }
 
@@ -1503,7 +1508,7 @@ document.querySelectorAll(".chip[data-group]").forEach(btn => {
 
 document.querySelectorAll(".chip-size").forEach(btn => {
   btn.addEventListener("click", () => {
-    seriesSize = Number(btn.dataset.size) || 3;
+    seriesSize = btn.dataset.size === "all" ? Infinity : (Number(btn.dataset.size) || Infinity);
     document.querySelectorAll(".chip-size").forEach(c => {
       c.setAttribute("aria-pressed", c === btn ? "true" : "false");
     });
