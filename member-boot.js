@@ -57,8 +57,14 @@
           '<script src="../assets/gd-filters-pack.js?v=2"><\/script></body>'
         );
       }
+      if (html.indexOf("gd-importance-stars.js") === -1) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../assets/gd-importance-stars.js?v=1"><\/script></body>'
+        );
+      }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=31");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=32");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
