@@ -45,6 +45,15 @@
   var coursFilter = null;
   var coursChapterTitle = "";
 
+  function coursTitleKey(s) {
+    return String(s || "")
+      .normalize("NFC")
+      .replace(/[\u2018\u2019\u201B\u2032]/g, "'")
+      .replace(/\s+/g, " ")
+      .trim()
+      .toLowerCase();
+  }
+
   var correctOrder = [];
   var userOrder = [];
   var checked = false;
@@ -629,7 +638,7 @@
     var list = (state.raw && state.raw.decisions) || [];
 
     state.filtered = list.filter(function (d) {
-      if (coursFilter && !coursFilter.has(String(d.nom || "").trim())) return false;
+      if (coursFilter && !coursFilter.has(coursTitleKey(d.nom))) return false;
       if (f.themes.length && f.themes.indexOf(d.theme) === -1) return false;
       if (f.importance.length && f.importance.indexOf(d.importance) === -1) return false;
       if (f.juridictions.length && f.juridictions.indexOf(d.juridiction) === -1) return false;
@@ -1242,7 +1251,7 @@
         var entry = map && map[ref.toUpperCase()];
         var titles = entry && entry.jurisprudence;
         if (!titles || !titles.length) return;
-        coursFilter = new Set(titles);
+        coursFilter = new Set(titles.map(coursTitleKey));
         coursChapterTitle = (entry && entry.title) || ref;
         applyCoursLock();
       })
@@ -1429,6 +1438,8 @@
 
   loadCoursFilter().then(function () {
     bind();
-    load();
+    return load();
+  }).then(function () {
+    if (coursFilter && state.displayed && state.displayed.length >= 2) enterGame();
   });
 })();

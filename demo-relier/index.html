@@ -1007,6 +1007,14 @@ const DATA = [{"id": "fa2ebc53-0f01-4a3b-8432-a966a1830403", "recto": "TC, 1873,
 const MANIFEST_KIND = null;
 let coursFilter = null;
 let coursChapterTitle = "";
+function coursTitleKey(s) {
+  return String(s || "")
+    .normalize("NFC")
+    .replace(/[\u2018\u2019\u201B\u2032]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
 const SHOW_PORTEE = true;
 const SHOW_FAITS = true;
 const SHOW_ARRET_LINKS = true;
@@ -1203,7 +1211,7 @@ function selectedList(group) {
 }
 
 function matchesFilters(card) {
-  if (coursFilter && !coursFilter.has(card.recto)) return false;
+  if (coursFilter && !coursFilter.has(coursTitleKey(card.recto))) return false;
   const themes = selectedList("theme");
   const notions = selectedList("notion");
   const levels = selectedList("importance").map(Number);
@@ -1823,7 +1831,7 @@ function initCoursFilter() {
       const entry = map && map[ref.toUpperCase()];
       const titles = entry && entry[MANIFEST_KIND];
       if (!titles || !titles.length) return;
-      coursFilter = new Set(titles);
+      coursFilter = new Set(titles.map(coursTitleKey));
       coursChapterTitle = (entry && entry.title) || ref;
       applyCoursLock();
     })
@@ -1832,6 +1840,7 @@ function initCoursFilter() {
 
 initCoursFilter().then(() => {
   updateHomeCount();
+  if (coursFilter) enterGame();
 });
 </script>
 <script src="../auth.js?v=4"></script>
