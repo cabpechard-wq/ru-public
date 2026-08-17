@@ -52,12 +52,16 @@
     }
     if (pack === "relier") {
       html = html.replace(
-        /const tipW = Math\.min\(352, Math\.max\(220, Math\.min\(wrapRect\.width \* 0\.42, window\.innerWidth \* 0\.42\)\)\);\s*faitsTip\.style\.width = tipW \+ "px";\s*const left = itemRect\.left - wrapRect\.left - tipW - 12;\s*faitsTip\.style\.left = Math\.max\(0, left\) \+ "px";/,
-        'const gap = 12;\n  const viewportPad = 8;\n  const available = itemRect.left - viewportPad - gap;\n  let tipW = Math.min(352, Math.max(180, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.32)));\n  if (available >= 140) tipW = Math.min(tipW, available);\n  faitsTip.style.width = tipW + "px";\n  const left = itemRect.left - wrapRect.left - tipW - gap;\n  faitsTip.style.left = left + "px";'
+        /Associez chaque nom à sa objet/g,
+        "Associez chaque décision à sa objet"
       );
       html = html.replace(
-        /faitsTip\.style\.left = Math\.max\(0, left\) \+ "px";/,
-        'faitsTip.style.left = left + "px";'
+        /Associez chaque nom à son objet/g,
+        "Associez chaque décision à son objet"
+      );
+      html = html.replace(
+        /const tipW = Math\.min\(352, Math\.max\(220, Math\.min\(wrapRect\.width \* 0\.42, window\.innerWidth \* 0\.42\)\)\);\s*faitsTip\.style\.width = tipW \+ "px";\s*const left = itemRect\.left - wrapRect\.left - tipW - 12;\s*faitsTip\.style\.left = Math\.max\(0, left\) \+ "px";/,
+        'const gap = 12;\n  const viewportPad = 8;\n  const available = itemRect.left - viewportPad - gap;\n  let tipW = Math.min(352, Math.max(180, Math.min(wrapRect.width * 0.42, window.innerWidth * 0.32)));\n  if (available >= 140) tipW = Math.min(tipW, available);\n  faitsTip.style.width = tipW + "px";\n  const left = itemRect.left - wrapRect.left - tipW - gap;\n  faitsTip.style.left = left + "px";'
       );
       html = html.replace(
         /faitsTip\.style\.left = Math\.max\(0, left\) \+ "px";/,
@@ -68,16 +72,22 @@
       if (html.indexOf("gd-filters-pack.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../assets/gd-filters-pack.js?v=1"><\/script></body>'
+          '<script src="../assets/gd-filters-pack.js?v=2"><\/script></body>'
+        );
+      }
+      if (html.indexOf("gd-importance-stars.js") === -1) {
+        html = html.replace(
+          /<\/body>/i,
+          '<script src="../assets/gd-importance-stars.js?v=1"><\/script></body>'
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=31");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=32");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../dico-cours-themes.js?v=1"><\/script></body>'
+          '<script src="../dico-cours-themes.js?v=2"><\/script></body>'
         );
       }
     }

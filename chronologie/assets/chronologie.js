@@ -133,10 +133,25 @@
     return p[2] + "/" + p[1] + "/" + p[0];
   }
 
+  function foldFr(s) {
+    return String(s || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/œ/gi, "oe")
+      .replace(/æ/gi, "ae")
+      .toLowerCase();
+  }
+
+  function sortFr(a, b) {
+    var ka = foldFr(a);
+    var kb = foldFr(b);
+    if (ka < kb) return -1;
+    if (ka > kb) return 1;
+    return String(a).localeCompare(String(b), "fr");
+  }
+
   function uniqueSorted(arr) {
-    return Array.from(new Set(arr.filter(Boolean))).sort(function (a, b) {
-      return a.localeCompare(b, "fr", { sensitivity: "base" });
-    });
+    return Array.from(new Set(arr.filter(Boolean))).sort(sortFr);
   }
 
   function escapeHtml(s) {

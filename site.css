@@ -81,6 +81,7 @@ a:hover { color: var(--accent-hover); }
   gap: .1rem;
   text-decoration: none;
   color: inherit;
+  flex: 0 0 auto;
   min-width: 0;
   position: relative;
   z-index: 3;
@@ -141,14 +142,14 @@ a:hover { color: var(--accent-hover); }
   background: transparent;
 }
 
-/* —— Recherche globale (1er élément du groupe de liens, avant Accueil) —— */
+/* —— Recherche globale (à droite du titre, avant les liens) —— */
 .site-nav-search {
   position: relative;
   z-index: 2;
-  flex: 0 1 14rem;
-  width: 14rem;
-  max-width: min(14rem, 42vw);
-  min-width: 8rem;
+  flex: 1 1 16rem;
+  width: auto;
+  max-width: 22rem;
+  min-width: 10rem;
   margin: 0;
 }
 
@@ -286,12 +287,11 @@ a:hover { color: var(--accent-hover); }
     flex-wrap: wrap;
   }
   .site-nav-search {
-    flex: 1 1 100%;
-    width: 100%;
+    flex: 1 1 12rem;
+    width: auto;
     max-width: none;
-    min-width: 0;
-    order: -1;
-    margin: 0 0 .15rem;
+    min-width: 8rem;
+    margin: 0;
   }
 }
 
@@ -2380,13 +2380,14 @@ input:focus {
 
 .dict-index {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex: 1 1 auto;
   align-items: center;
-  gap: .35rem .45rem;
+  align-content: center;
+  gap: .2rem .35rem;
   margin: 0;
   min-width: 0;
-  overflow-x: auto;
+  overflow: visible;
   font-family: var(--font-ui);
   font-size: .82rem;
   font-weight: 650;
@@ -2412,7 +2413,7 @@ input:focus {
   align-items: center;
   justify-content: flex-end;
   gap: 0.5rem 0.65rem;
-  margin: 0;
+  margin: 0 0 0 auto;
   font-family: var(--font-ui);
 }
 
@@ -2454,9 +2455,14 @@ input:focus {
     flex-wrap: wrap;
   }
 
+  .dict-index {
+    flex: 1 1 100%;
+  }
+
   .dict-toolbar {
     flex: 1 1 100%;
     justify-content: stretch;
+    margin-left: 0;
   }
 
   .dict-toolbar input[type="search"],

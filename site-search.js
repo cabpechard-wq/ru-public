@@ -108,9 +108,15 @@
       "</label>" +
       '<div class="site-nav-search-panel" hidden role="listbox" aria-label="Résultats de recherche"></div>';
 
+    const brand = nav.querySelector(".site-nav-brand");
     const links = nav.querySelector(".site-nav-links");
-    if (links) links.insertBefore(wrap, links.firstChild);
-    else nav.appendChild(wrap);
+    if (brand && brand.parentNode === nav) {
+      nav.insertBefore(wrap, brand.nextSibling);
+    } else if (links && links.parentNode === nav) {
+      nav.insertBefore(wrap, links);
+    } else {
+      nav.appendChild(wrap);
+    }
     return wrap;
   }
 
