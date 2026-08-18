@@ -778,6 +778,29 @@ a:hover { color: var(--accent-hover); }
   padding: 1.15rem 1.25rem 1.25rem;
 }
 
+.site-panel + .site-panel {
+  margin-top: 1rem;
+}
+
+.site-panel h2 {
+  margin: 0 0 .35rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.btn.danger {
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
+.btn.danger:hover {
+  background: color-mix(in srgb, var(--danger) 16%, transparent);
+  color: var(--danger);
+  border-color: var(--danger);
+}
+
 .site-grid {
   display: grid;
   gap: 1rem;

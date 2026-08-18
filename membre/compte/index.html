@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
 <meta name="robots" content="noindex">
-<title>Compte — Grands arrêts</title>
+<title>Mon compte — Droit public et administratif</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
@@ -14,51 +14,104 @@
 <body>
 <main class="site-main narrow">
   <p class="site-crumb">
-    <a href="../../">Grands arrêts</a>
+    <a href="../../">Droit public et administratif</a>
     <span class="sep">›</span>
-    <a href="../">Connexion</a>
+    <a href="../">Espace pédagogique</a>
     <span class="sep">›</span>
-    <strong>Compte</strong>
+    <strong>Mon compte</strong>
   </p>
-  <h1 class="site-title">Modifier le mot de passe</h1>
-  <p class="site-lead" id="who">Connexion requise…</p>
-  <div class="site-panel">
-    <form id="f" class="hidden">
-      <label class="field" for="old">Ancien mot de passe</label>
-      <input id="old" type="password" required autocomplete="current-password">
-      <label class="field" for="pw">Nouveau (min. 10)</label>
-      <input id="pw" type="password" minlength="10" required autocomplete="new-password">
-      <label class="field" for="pw2">Confirmer</label>
-      <input id="pw2" type="password" minlength="10" required autocomplete="new-password">
-      <button class="btn block" type="submit" style="margin-top:1rem">Enregistrer</button>
-    </form>
-    <div id="msg" class="site-note"></div>
+  <p class="site-hero-kicker">Espace pédagogique</p>
+  <h1 class="site-title">Mon compte</h1>
+  <p class="site-lead" id="who">Vérification de la session…</p>
+
+  <div id="need-login" class="site-panel hidden">
+    <p class="site-lead" style="margin:0">Connecte-toi pour modifier ton mot de passe ou gérer ton abonnement.</p>
     <div class="form-links">
-      <a href="../">Connexion</a> · <a href="../../flipcards/app.html">Flipcards</a>
+      <a class="btn" href="../">Se connecter</a>
+      <a href="../forgot/" style="margin-left:.75rem">Mot de passe oublié</a>
+    </div>
+  </div>
+
+  <div id="account" class="hidden">
+    <div class="site-panel">
+      <h2>Mot de passe</h2>
+      <p class="site-lead" style="margin:0 0 .5rem">10 caractères minimum. Après enregistrement, tu restes connecté sur cet appareil.</p>
+      <form id="pw-form">
+        <label class="field" for="old">Mot de passe actuel</label>
+        <input id="old" type="password" required autocomplete="current-password">
+        <label class="field" for="pw">Nouveau mot de passe</label>
+        <input id="pw" type="password" minlength="10" required autocomplete="new-password">
+        <label class="field" for="pw2">Confirmer le nouveau mot de passe</label>
+        <input id="pw2" type="password" minlength="10" required autocomplete="new-password">
+        <button class="btn block" type="submit" style="margin-top:1rem">Enregistrer le mot de passe</button>
+      </form>
+      <div id="pw-msg" class="site-note"></div>
+    </div>
+
+    <div class="site-panel">
+      <h2>Abonnement</h2>
+      <p class="site-lead" style="margin:0">
+        Tu peux résilier à tout moment. La résiliation prend effet à la fin de la période déjà payée&nbsp;: l’accès reste ouvert jusqu’à cette date, sans remboursement au prorata
+        (sauf obligation légale contraire). Détail dans les <a href="../../cgv/">CGV</a>, article 7.
+      </p>
+      <form id="cancel-form" style="margin-top:1rem">
+        <label class="field" style="display:flex;align-items:flex-start;gap:.45rem;font-weight:500;color:var(--muted)">
+          <input type="checkbox" id="cancel-confirm" required style="width:auto;margin-top:.2rem">
+          <span>Je confirme vouloir mettre fin au renouvellement de mon abonnement.</span>
+        </label>
+        <button class="btn danger block" type="submit" style="margin-top:1rem">Mettre fin à l’abonnement</button>
+      </form>
+      <div id="cancel-msg" class="site-note"></div>
+      <p class="site-note" style="margin-top:.85rem">
+        Tu peux aussi utiliser le lien «&nbsp;Gérer l’abonnement&nbsp;» des e-mails Stripe, ou écrire à
+        <a id="cancel-mail" href="mailto:cab.pechard@gmail.com">cab.pechard@gmail.com</a>.
+      </p>
     </div>
   </div>
 </main>
-<script src="../../auth.js?v=4"></script>
-<script src="../../site-nav.js?v=30"></script>
+<script src="../../auth.js?v=5"></script>
+<script src="../../site-nav.js?v=34"></script>
 <script>
 (async function () {
   const who = document.getElementById("who");
   const me = await FLIPCARDS_AUTH.requireSession();
   if (!me) {
-    who.innerHTML = 'Connecte-toi d’abord : <a href="../">espace abonné</a>.';
+    who.textContent = "Connexion requise";
+    document.getElementById("need-login").classList.remove("hidden");
     return;
   }
-  who.textContent = "Compte : " + me.email;
-  document.getElementById("f").classList.remove("hidden");
 
-  document.getElementById("f").addEventListener("submit", async (e) => {
+  const email = me.email || "";
+  who.textContent = email;
+  document.getElementById("account").classList.remove("hidden");
+
+  const mail = document.getElementById("cancel-mail");
+  mail.href =
+    "mailto:cab.pechard@gmail.com"
+    + "?subject=" + encodeURIComponent("Résiliation d’abonnement — " + email)
+    + "&body=" + encodeURIComponent(
+      "Bonjour,\n\nJe souhaite mettre fin au renouvellement de mon abonnement (espace pédagogique Droit public et administratif).\n\nE-mail du compte : "
+      + email
+      + "\n\nMerci."
+    );
+
+  document.getElementById("pw-form").addEventListener("submit", async (e) => {
     e.preventDefault();
-    const msg = document.getElementById("msg");
+    const msg = document.getElementById("pw-msg");
+    msg.className = "site-note";
     msg.textContent = "";
     const pw = document.getElementById("pw").value;
     const pw2 = document.getElementById("pw2").value;
-    if (pw.length < 10) { msg.className = "site-note err"; msg.textContent = "10 caractères minimum."; return; }
-    if (pw !== pw2) { msg.className = "site-note err"; msg.textContent = "Confirmation différente."; return; }
+    if (pw.length < 10) {
+      msg.className = "site-note err";
+      msg.textContent = "10 caractères minimum.";
+      return;
+    }
+    if (pw !== pw2) {
+      msg.className = "site-note err";
+      msg.textContent = "La confirmation ne correspond pas.";
+      return;
+    }
     try {
       const data = await FLIPCARDS_AUTH.api("/api/change-password", {
         method: "POST",
@@ -67,12 +120,54 @@
           new_password: pw,
         },
       });
-      FLIPCARDS_AUTH.setToken(data.token, true);
+      if (data.token) FLIPCARDS_AUTH.setToken(data.token, true);
       msg.className = "site-note ok";
       msg.textContent = "Mot de passe mis à jour.";
+      document.getElementById("pw-form").reset();
     } catch (ex) {
       msg.className = "site-note err";
-      msg.textContent = ex.message || "Erreur";
+      msg.textContent = ex.message || "Impossible d’enregistrer le mot de passe.";
+    }
+  });
+
+  async function tryApi(path, body) {
+    try {
+      return await FLIPCARDS_AUTH.api(path, { method: "POST", body: body || {} });
+    } catch (ex) {
+      if (ex.status === 404) return null;
+      throw ex;
+    }
+  }
+
+  document.getElementById("cancel-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById("cancel-msg");
+    msg.className = "site-note";
+    msg.textContent = "Traitement…";
+    const returnUrl = new URL("./", location.href).href;
+    try {
+      const portal =
+        await tryApi("/api/billing-portal", { return_url: returnUrl })
+        || await tryApi("/api/portal", { return_url: returnUrl });
+      if (portal && portal.url) {
+        location.href = portal.url;
+        return;
+      }
+      const cancelled =
+        await tryApi("/api/cancel-subscription", { confirm: true })
+        || await tryApi("/api/unsubscribe", { confirm: true });
+      if (cancelled && (cancelled.ok || cancelled.message)) {
+        msg.className = "site-note ok";
+        msg.textContent = cancelled.message
+          || "Le renouvellement a été arrêté. L’accès reste ouvert jusqu’à la fin de la période déjà payée.";
+        return;
+      }
+      msg.className = "site-note";
+      msg.textContent = "Ouverture d’un e-mail de résiliation…";
+      location.href = mail.href;
+    } catch (ex) {
+      msg.className = "site-note err";
+      msg.textContent = ex.message || "Impossible de traiter la résiliation pour le moment.";
     }
   });
 })();
