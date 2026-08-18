@@ -21,7 +21,7 @@
     <strong>Mot de passe oublié</strong>
   </p>
   <h1 class="site-title">Mot de passe oublié</h1>
-  <p class="site-lead">Entre l’e-mail utilisé lors du paiement. Si un compte existe, un lien de réinitialisation (valable 1&nbsp;h) est envoyé. Pense à vérifier les indésirables.</p>
+  <p class="site-lead">Entrez l’e-mail utilisé lors de l’abonnement : vous recevrez un lien de réinitialisation valable 1 heure.</p>
   <div class="site-panel">
     <form id="f">
       <label class="field" for="email">E-mail</label>
@@ -29,34 +29,57 @@
       <button class="btn block" type="submit" style="margin-top:1rem">Envoyer le lien</button>
     </form>
     <div class="site-note" id="msg"></div>
+    <p class="site-note hidden" id="help">
+      Si vous ne recevez pas l’e-mail de réinitialisation,
+      <a id="help-mail" href="mailto:cab.pechard@gmail.com">cliquez ici</a>.
+    </p>
     <div class="form-links"><a href="../">Retour connexion</a></div>
   </div>
 </main>
 <script src="../../auth.js?v=5"></script>
 <script src="../../site-nav.js?v=34"></script>
 <script>
-document.getElementById("f").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const msg = document.getElementById("msg");
-  msg.className = "site-note";
-  msg.textContent = "Envoi…";
-  try {
-    const data = await FLIPCARDS_AUTH.api("/api/forgot", {
-      method: "POST",
-      body: {
-        email: document.getElementById("email").value.trim(),
-        origin: location.origin,
-        reset_url: new URL("../reset/", location.href).href,
-      },
-    });
-    msg.className = "site-note ok";
-    msg.textContent = (data.message || "Si un compte existe, un e-mail de réinitialisation a été envoyé.")
-      + " Si rien n’arrive, vérifie les indésirables, ou écris à cab.pechard@gmail.com.";
-  } catch (ex) {
-    msg.className = "site-note err";
-    msg.textContent = ex.message || "Erreur";
-  }
-});
+(function () {
+  const help = document.getElementById("help");
+  const helpMail = document.getElementById("help-mail");
+  const contactHref = function (email) {
+    return "mailto:cab.pechard@gmail.com"
+      + "?subject=" + encodeURIComponent("Mot de passe oublié — espace pédagogique")
+      + "&body=" + encodeURIComponent(
+        "Bonjour,\n\nJe n’ai pas reçu l’e-mail de réinitialisation de mot de passe.\n\nE-mail du compte : "
+        + (email || "")
+        + "\n\nMerci."
+      );
+  };
+  helpMail.href = contactHref("");
+
+  document.getElementById("f").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const msg = document.getElementById("msg");
+    const email = document.getElementById("email").value.trim();
+    helpMail.href = contactHref(email);
+    msg.className = "site-note";
+    msg.textContent = "Envoi…";
+    help.classList.add("hidden");
+    try {
+      const data = await FLIPCARDS_AUTH.api("/api/forgot", {
+        method: "POST",
+        body: {
+          email,
+          origin: location.origin,
+          reset_url: new URL("../reset/", location.href).href,
+        },
+      });
+      msg.className = "site-note ok";
+      msg.textContent = data.message || "Si un compte existe, un e-mail de réinitialisation a été envoyé.";
+      help.classList.remove("hidden");
+    } catch (ex) {
+      msg.className = "site-note err";
+      msg.textContent = ex.message || "Erreur";
+      help.classList.remove("hidden");
+    }
+  });
+})();
 </script>
 </body>
 </html>
