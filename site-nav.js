@@ -10,6 +10,38 @@
   // Exposé pour site-search.js (même racine d'assets)
   window.SiteNavAbs = abs;
 
+  function applyFondsCount(kind, n) {
+    const count = Number(n);
+    if (!count) return;
+    if (kind === "jurisprudence") window.FONDS_JURISPRUDENCE_COUNT = count;
+    if (kind === "dictionnaire") window.FONDS_DICTIONNAIRE_COUNT = count;
+    document.querySelectorAll('[data-fonds-count="' + kind + '"]').forEach((el) => {
+      el.textContent = String(count);
+    });
+  }
+
+  function loadFondsCounts() {
+    const juris = fetch(abs("chronologie/data/chronology-meta.json"), { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((meta) => {
+        const n = meta && (Number(meta.count) || (Array.isArray(meta.decisions) && meta.decisions.length));
+        applyFondsCount("jurisprudence", n);
+        return n || 0;
+      })
+      .catch(() => 0);
+    const dico = fetch(abs("dictionnaire/entries-meta.json"), { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((meta) => {
+        const n = meta && (Number(meta.count) || (Array.isArray(meta.entries) && meta.entries.length));
+        applyFondsCount("dictionnaire", n);
+        return n || 0;
+      })
+      .catch(() => 0);
+    return Promise.all([juris, dico]);
+  }
+
+  loadFondsCounts();
+
   if (!document.querySelector('link[rel="icon"]')) {
     const fav = document.createElement("link");
     fav.rel = "icon";
@@ -498,8 +530,68 @@
   function applyTdRubriqueAccess(isMember) {
     if (!isMember) return;
     document.querySelectorAll("[data-ex-access]").forEach((el) => {
-      el.textContent = "Accès membre";
+      el.textContent = "Accès complet";
     });
+    document.querySelectorAll(".ex-list-rubriques .ex-item-type").forEach((el) => {
+      if ((el.textContent || "").trim() === "Démonstration") {
+        el.textContent = "Accès complet";
+      }
+    });
+  }
+
+  function applyLoggedInCopy(isMember) {
+    if (!isMember) return;
+
+    document.querySelectorAll(".ex-item").forEach((item) => {
+      const title = ((item.querySelector(".ex-item-title") || {}).textContent || "");
+      const desc = item.querySelector(".ex-item-desc");
+      const cta = item.querySelector(".ex-item-cta");
+      if (desc && /Fiches d['’]arrêts/.test(title)) {
+        desc.innerHTML = (desc.innerHTML || "").replace(/\b8 \/ /g, "");
+      }
+      if (cta && /^\s*Aperçus/.test(cta.textContent || "")) {
+        cta.textContent = "Consulter →";
+      }
+      if (desc) {
+        desc.innerHTML = (desc.innerHTML || "").replace(/\b15 \/ /g, "");
+      }
+    });
+
+    document.querySelectorAll(
+      "[data-flipcards-entry], [data-flipcards-dico-entry], [data-relier-entry], [data-relier-dico-entry], [data-enchainements-entry]"
+    ).forEach((el) => {
+      el.innerHTML = (el.innerHTML || "").replace(/\b8 \/ /g, "");
+    });
+
+    document.querySelectorAll(".arrets-index .site-lead").forEach((el) => {
+      el.innerHTML = (el.innerHTML || "").replace(/\b8 \/ /g, "");
+    });
+
+    document.querySelectorAll(".page-sub").forEach((el) => {
+      let html = el.innerHTML;
+      html = html.replace(/\b8 \/ /g, "").replace(/\b15 \/ /g, "");
+      html = html.replace(/\s*\(utilisateurs connectés\)\s*/g, " ");
+      html = html.replace(/ {2,}/g, " ");
+      el.innerHTML = html;
+    });
+
+    function stripChronoDemoFraction() {
+      const alert = document.getElementById("chrono-alert");
+      if (!alert) return;
+      const t = alert.textContent || "";
+      const next = t.replace(/\b15 \/ /g, "").replace(/\b8 \/ /g, "");
+      if (next !== t) alert.textContent = next;
+    }
+    stripChronoDemoFraction();
+    const chronoAlert = document.getElementById("chrono-alert");
+    if (chronoAlert && !chronoAlert._ruFractionBound) {
+      chronoAlert._ruFractionBound = true;
+      new MutationObserver(stripChronoDemoFraction).observe(chronoAlert, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+    }
   }
 
   function applyFlipcardsEntry(isMember) {
@@ -648,6 +740,7 @@
       applyRelierDicoEntry(ok);
       applyChronologieEntry(ok);
       applyEnchainementsEntry(ok);
+      applyLoggedInCopy(ok);
       if (window.SiteTTS) window.SiteTTS.init(ok);
     });
   });

@@ -65,6 +65,7 @@
   var ficheTipId = null;
   var openMsId = null;
   var inGame = false;
+  var homeLeadText = "";
 
   var els = {};
 
@@ -537,7 +538,7 @@
     if (els.setupHint) {
       if (!on) {
         els.setupHint.textContent =
-          "Affinez les filtres, puis lancez l’exercice — ou activez « Décisions liées par leur objet » pour constituer un enchaînement (au hasard ou en choisissant une décision).";
+          "Affinez les filtres, puis lancez l’exercice ou activez « Décisions liées par leur objet » pour constituer un enchaînement (au hasard ou en choisissant une décision).";
       } else if (state.objectLinkMode === "random") {
         els.setupHint.textContent =
           "Tirez un set au hasard parmi les décisions liées qui passent les filtres (profondeur réglable).";
@@ -1307,8 +1308,8 @@
     if (els.screenGame) els.screenGame.hidden = true;
     if (els.screenHome) els.screenHome.hidden = false;
     if (els.lead) {
-      els.lead.textContent =
-        "Affinez le lot avec les filtres (comme en Chronologie), puis lancez l’exercice : remettre les décisions dans l’ordre chronologique — les dates restent cachées.";
+      els.lead.textContent = homeLeadText ||
+        "Affinez le lot avec les filtres, puis lancez l’exercice qui consiste à remettre les décisions dans l’ordre (chrono)logique.";
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
@@ -1389,6 +1390,7 @@
     els.screenHome = $("screen-home");
     els.screenGame = $("screen-game");
     els.lead = $("ench-lead");
+    homeLeadText = els.lead ? String(els.lead.textContent || "").trim() : "";
     els.alert = $("ench-alert");
     els.setupHint = $("setup-hint");
     els.search = $("filter-search");

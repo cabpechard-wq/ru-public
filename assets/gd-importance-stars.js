@@ -42,6 +42,14 @@
     document.head.appendChild(style);
   }
 
+  function setStarText(el, label) {
+    if (!el) return;
+    var next = label || "";
+    if (el.textContent !== next) el.textContent = next;
+    var hide = !next;
+    if (el.hidden !== hide) el.hidden = hide;
+  }
+
   function decorateTermRow(el) {
     if (!el) return;
     var recto = el.querySelector(".term-recto");
@@ -65,10 +73,7 @@
       head.appendChild(stars);
       recto.insertBefore(head, recto.firstChild);
     }
-    var starsEl = head.querySelector(".term-stars");
-    if (!starsEl) return;
-    starsEl.textContent = label;
-    starsEl.hidden = !label;
+    setStarText(head.querySelector(".term-stars"), label);
   }
 
   function decorateTermRows() {
@@ -87,17 +92,35 @@
       stars.setAttribute("aria-hidden", "true");
       btn.appendChild(stars);
     }
-    stars.textContent = label;
-    stars.hidden = !label;
+    setStarText(stars, label);
   }
 
   function decoratePairSources() {
     document.querySelectorAll(".pair-item.is-source").forEach(decoratePairBtn);
   }
 
+  var obs = null;
+  var roots = [];
+  var decorating = false;
+
+  function observeRoots() {
+    if (!obs) return;
+    roots.forEach(function (root) {
+      obs.observe(root, { childList: true });
+    });
+  }
+
   function decorateAll() {
-    decorateTermRows();
-    decoratePairSources();
+    if (decorating) return;
+    decorating = true;
+    if (obs) obs.disconnect();
+    try {
+      decorateTermRows();
+      decoratePairSources();
+    } finally {
+      decorating = false;
+      observeRoots();
+    }
   }
 
   function wrapFn(name, after) {
@@ -125,15 +148,14 @@
     };
     window.makeSourceBtn.__gdStarsPatched = true;
   }
-  decorateAll();
 
-  var roots = [document.getElementById("terms-list"), document.getElementById("board-rows")].filter(
+  roots = [document.getElementById("terms-list"), document.getElementById("board-rows")].filter(
     Boolean
   );
   if (roots.length && typeof MutationObserver === "function") {
-    var obs = new MutationObserver(decorateAll);
-    roots.forEach(function (root) {
-      obs.observe(root, { childList: true, subtree: true });
+    obs = new MutationObserver(function () {
+      decorateAll();
     });
   }
+  decorateAll();
 })();
