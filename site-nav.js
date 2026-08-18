@@ -249,36 +249,24 @@
   }
 
   function applyHomeAuth(isMember) {
+    if (!isMember) return;
     const panel = document.getElementById("espace-membre");
-    if (panel) panel.hidden = Boolean(isMember);
+    if (panel) panel.hidden = true;
 
     const btn = document.querySelector("[data-home-auth-btn]");
     if (!btn) return;
-    if (isMember) {
-      btn.textContent = "Déconnexion";
-      btn.href = "#";
-      btn.setAttribute("aria-label", "Se déconnecter");
-      btn.dataset.authMode = "logout";
-    } else {
-      btn.textContent = "Se connecter";
-      btn.href = abs("membre/");
-      btn.setAttribute("aria-label", "Se connecter — Espace pédagogique");
-      btn.dataset.authMode = "login";
-    }
+    btn.textContent = "Déconnexion";
+    btn.href = "#";
+    btn.setAttribute("aria-label", "Se déconnecter");
+    btn.dataset.authMode = "logout";
   }
 
   function applyHomeEntryAccess(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-home-access]").forEach((el) => {
       const mode = el.getAttribute("data-home-access");
-      if (mode === "public") {
-        el.textContent = "Libre d'accès";
-        return;
-      }
-      if (mode === "demo") {
-        el.textContent = isMember ? "Ouvrir →" : "Démonstration";
-        return;
-      }
-      el.textContent = isMember ? "Ouvrir →" : "Aperçu (accès membres)";
+      if (mode === "public") return;
+      el.textContent = "Ouvrir →";
     });
   }
 
@@ -504,155 +492,102 @@
   syncManuelLinkedResources();
 
   function applyTdRubriqueAccess(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-ex-access]").forEach((el) => {
-      el.textContent = isMember ? "Accès membre" : "Démo";
+      el.textContent = "Accès membre";
     });
   }
 
   function applyFlipcardsEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-flipcards-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-fc-type]");
       const descEl = el.querySelector("[data-fc-desc]");
       const ctaEl = el.querySelector("[data-fc-cta]");
-      if (isMember) {
-        el.setAttribute("href", abs("flipcards/app.html"));
-        if (typeEl) typeEl.textContent = "Accès membre";
-        if (descEl) {
-          descEl.textContent =
-            "Jeu complet des flipcards : tous les arrêts, filtres par thèmes et notions, mode étude.";
-        }
-        if (ctaEl) ctaEl.textContent = "Ouvrir les flipcards →";
-        el.setAttribute("title", "Flipcards — Grands arrêts (accès membre)");
-      } else {
-        el.setAttribute("href", abs("demo/"));
-        if (typeEl) typeEl.textContent = "Démo";
-        if (descEl) {
-          descEl.textContent =
-            "Cartes recto / verso sur la jurisprudence essentielle. Thèmes, notions clés, règles de droit et portée des arrêts.";
-        }
-        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
-        el.setAttribute("title", "Flipcards — Grands arrêts (démo)");
+      el.setAttribute("href", abs("flipcards/app.html"));
+      if (typeEl) typeEl.textContent = "Accès membre";
+      if (descEl) {
+        descEl.textContent =
+          "Jeu complet des flipcards : tous les arrêts, filtres par thèmes et notions, mode étude.";
       }
+      if (ctaEl) ctaEl.textContent = "Ouvrir les flipcards →";
+      el.setAttribute("title", "Flipcards — Grands arrêts (accès membre)");
     });
   }
 
   function applyFlipcardsDicoEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-flipcards-dico-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-fcd-type]");
       const descEl = el.querySelector("[data-fcd-desc]");
       const ctaEl = el.querySelector("[data-fcd-cta]");
-      if (isMember) {
-        el.setAttribute("href", abs("flipcards-dico/app.html"));
-        if (typeEl) typeEl.textContent = "Accès membre";
-        if (descEl) {
-          descEl.textContent =
-            "Jeu complet Flipcards dictionnaire : toutes les notions et définitions, filtre par lettre.";
-        }
-        if (ctaEl) ctaEl.textContent = "Ouvrir Flipcards dictionnaire →";
-        el.setAttribute("title", "Flipcards — Grandes notions (accès membre)");
-      } else {
-        el.setAttribute("href", abs("demo-flipcards-dico/"));
-        if (typeEl) typeEl.textContent = "Démo";
-        if (descEl) {
-          descEl.textContent =
-            "Cartes recto / verso du dictionnaire : notion d’un côté, définition de l’autre. Filtre par lettre.";
-        }
-        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
-        el.setAttribute("title", "Flipcards — Grandes notions (démo)");
+      el.setAttribute("href", abs("flipcards-dico/app.html"));
+      if (typeEl) typeEl.textContent = "Accès membre";
+      if (descEl) {
+        descEl.textContent =
+          "Jeu complet Flipcards dictionnaire : toutes les notions et définitions, filtre par lettre.";
       }
+      if (ctaEl) ctaEl.textContent = "Ouvrir Flipcards dictionnaire →";
+      el.setAttribute("title", "Flipcards — Grandes notions (accès membre)");
     });
   }
 
   function applyRelierEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-relier-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-rl-type]");
       const descEl = el.querySelector("[data-rl-desc]");
       const ctaEl = el.querySelector("[data-rl-cta]");
-      if (isMember) {
-        el.setAttribute("href", abs("relier/app.html"));
-        if (typeEl) typeEl.textContent = "Accès membre";
-        if (descEl) {
-          descEl.textContent =
-            "Jeu complet Relier : toutes les décisions avec objet, filtres par thèmes et notions.";
-        }
-        if (ctaEl) ctaEl.textContent = "Ouvrir Relier →";
-        el.setAttribute("title", "Relations — Grands arrêts (accès membre)");
-      } else {
-        el.setAttribute("href", abs("demo-relier/"));
-        if (typeEl) typeEl.textContent = "Démo";
-        if (descEl) {
-          descEl.textContent =
-            "Associez chaque décision à son objet. Glisser-déposer, filtres par thèmes et notions.";
-        }
-        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
-        el.setAttribute("title", "Relations — Grands arrêts (démo)");
+      el.setAttribute("href", abs("relier/app.html"));
+      if (typeEl) typeEl.textContent = "Accès membre";
+      if (descEl) {
+        descEl.textContent =
+          "Jeu complet Relier : toutes les décisions avec objet, filtres par thèmes et notions.";
       }
+      if (ctaEl) ctaEl.textContent = "Ouvrir Relier →";
+      el.setAttribute("title", "Relations — Grands arrêts (accès membre)");
     });
   }
 
   function applyRelierDicoEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-relier-dico-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-rld-type]");
       const descEl = el.querySelector("[data-rld-desc]");
       const ctaEl = el.querySelector("[data-rld-cta]");
-      if (isMember) {
-        el.setAttribute("href", abs("relier-dico/app.html"));
-        if (typeEl) typeEl.textContent = "Accès membre";
-        if (descEl) {
-          descEl.textContent =
-            "Jeu complet Relier dictionnaire : toutes les notions et définitions, filtre par lettre.";
-        }
-        if (ctaEl) ctaEl.textContent = "Ouvrir Relier dictionnaire →";
-        el.setAttribute("title", "Relations — Grandes notions (accès membre)");
-      } else {
-        el.setAttribute("href", abs("demo-relier-dico/"));
-        if (typeEl) typeEl.textContent = "Démo";
-        if (descEl) {
-          descEl.textContent =
-            "Associez chaque notion du dictionnaire à sa définition. Glisser-déposer, filtre par lettre.";
-        }
-        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
-        el.setAttribute("title", "Relations — Grandes notions (démo)");
+      el.setAttribute("href", abs("relier-dico/app.html"));
+      if (typeEl) typeEl.textContent = "Accès membre";
+      if (descEl) {
+        descEl.textContent =
+          "Jeu complet Relier dictionnaire : toutes les notions et définitions, filtre par lettre.";
       }
+      if (ctaEl) ctaEl.textContent = "Ouvrir Relier dictionnaire →";
+      el.setAttribute("title", "Relations — Grandes notions (accès membre)");
     });
   }
 
   function applyEnchainementsEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-enchainements-entry]").forEach((el) => {
-      if (isMember) {
-        el.setAttribute("href", abs("enchainements-logiques/"));
-        el.setAttribute("title", "Enchaînements logiques (accès membre)");
-      } else {
-        el.setAttribute("href", abs("demo-enchainements-logiques/"));
-        el.setAttribute("title", "Enchaînements logiques (démo)");
-      }
+      el.setAttribute("href", abs("enchainements-logiques/"));
+      el.setAttribute("title", "Enchaînements logiques (accès membre)");
     });
   }
 
   function applyChronologieEntry(isMember) {
+    if (!isMember) return;
     document.querySelectorAll("[data-chronologie-entry]").forEach((el) => {
       const typeEl = el.querySelector("[data-chrono-type]");
       const descEl = el.querySelector("[data-chrono-desc]");
       const ctaEl = el.querySelector("[data-chrono-cta]");
-      if (isMember) {
-        el.setAttribute("href", abs("chronologie/"));
-        if (typeEl) typeEl.textContent = "Accès membre";
-        if (descEl) {
-          descEl.textContent =
-            "Frise complète du fonds : toutes les décisions, filtres, décisions liées et liens vers les fiches.";
-        }
-        if (ctaEl) ctaEl.textContent = "Ouvrir la chronologie →";
-        el.setAttribute("title", "Chronologie de la jurisprudence administrative (accès membre)");
-      } else {
-        el.setAttribute("href", abs("ressources/chronologie/"));
-        if (typeEl) typeEl.textContent = "Démo";
-        if (descEl) {
-          descEl.textContent =
-            "Démo de la frise chronologique (15 décisions), avec lots de décisions liées et filtres.";
-        }
-        if (ctaEl) ctaEl.textContent = "Essayer la démo →";
-        el.setAttribute("title", "Chronologie de la jurisprudence administrative (démo)");
+      el.setAttribute("href", abs("chronologie/"));
+      if (typeEl) typeEl.textContent = "Accès membre";
+      if (descEl) {
+        descEl.textContent =
+          "Frise complète du fonds : toutes les décisions, filtres, décisions liées et liens vers les fiches.";
       }
+      if (ctaEl) ctaEl.textContent = "Ouvrir la chronologie →";
+      el.setAttribute("title", "Chronologie de la jurisprudence administrative (accès membre)");
     });
   }
 
