@@ -35,11 +35,11 @@
 
   <form id="setpw" class="site-panel hidden">
     <p class="ok">Paiement confirmé pour <strong id="email"></strong>.</p>
-    <p class="site-lead" style="margin:.75rem 0 0">Choisis ton mot de passe (4 caractères minimum) pour te reconnecter plus tard.</p>
+    <p class="site-lead" style="margin:.75rem 0 0">Choisissez un mot de passe pour vous reconnecter plus tard.</p>
     <label class="field" for="pw">Mot de passe</label>
-    <input id="pw" type="password" minlength="4" required autocomplete="new-password">
+    <input id="pw" type="password" required autocomplete="new-password">
     <label class="field" for="pw2">Confirmer</label>
-    <input id="pw2" type="password" minlength="4" required autocomplete="new-password">
+    <input id="pw2" type="password" required autocomplete="new-password">
     <button class="btn block" type="submit" style="margin-top:1rem">Enregistrer et ouvrir les flipcards</button>
   </form>
 
@@ -93,7 +93,6 @@
     err.textContent = "";
     const pw = document.getElementById("pw").value;
     const pw2 = document.getElementById("pw2").value;
-    if (pw.length < 4) { err.textContent = "4 caractères minimum."; return; }
     if (pw !== pw2) { err.textContent = "Les mots de passe ne correspondent pas."; return; }
     try {
       const data = await FLIPCARDS_AUTH.api("/api/set-password", {
