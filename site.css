@@ -869,6 +869,12 @@ a:hover { color: var(--accent-hover); }
   color: var(--muted);
 }
 
+.site-foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem .65rem;
+}
+
 /* —— Exercise catalog —— */
 .ex-list {
   display: grid;
