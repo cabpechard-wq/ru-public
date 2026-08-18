@@ -184,13 +184,13 @@
     els.alert.textContent = message;
   }
 
-  function syncDemoUi(data) {
-    var upsell = $("chrono-demo-upsell");
-    var isDemo = !!(config.demo || (data && data.meta && data.meta.demo));
-    if (upsell) upsell.hidden = !isDemo;
-    if (!isDemo) return;
-    var n = (data && data.decisions && data.decisions.length) || 0;
-    var total = (data && data.meta && data.meta.sourceCount) || null;
+  function chronologyMetaUrl() {
+    var script = document.querySelector('script[src*="chronologie.js"]');
+    if (script && script.src) return new URL("../data/chronology-meta.json", script.src).href;
+    return new URL("data/chronology-meta.json", location.href).href;
+  }
+
+  function paintDemoAlert(n, total) {
     setAlert(
       "Démonstration publique (" +
         n +
@@ -198,6 +198,29 @@
         " décisions). Connectez-vous pour accéder au fond complet.",
       "info"
     );
+  }
+
+  function syncDemoUi(data) {
+    var upsell = $("chrono-demo-upsell");
+    var isDemo = !!(config.demo || (data && data.meta && data.meta.demo));
+    if (upsell) upsell.hidden = !isDemo;
+    if (!isDemo) return;
+    var n = (data && data.decisions && data.decisions.length) || 0;
+    var fallback = (data && data.meta && data.meta.sourceCount) || null;
+    var known = Number(window.FONDS_JURISPRUDENCE_COUNT) || 0;
+    paintDemoAlert(n, known || fallback);
+    if (known) return;
+    fetch(chronologyMetaUrl(), { credentials: "same-origin" })
+      .then(function (r) {
+        return r.ok ? r.json() : null;
+      })
+      .then(function (meta) {
+        var total = meta && Number(meta.count);
+        if (!total) return;
+        window.FONDS_JURISPRUDENCE_COUNT = total;
+        paintDemoAlert(n, total);
+      })
+      .catch(function () {});
   }
 
   function buildIndex(data) {
