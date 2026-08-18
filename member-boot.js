@@ -19,14 +19,27 @@
     if (html.indexOf('data-size="all"') === -1) {
       html = html.replace(
         /<button type="button" class="chip chip-size" data-size="3" aria-pressed="true">3<\/button>/,
-        '<button type="button" class="chip chip-size" data-size="all" aria-pressed="true">Tout</button>' +
+        '<button type="button" class="chip chip-size" data-size="all" aria-pressed="false">Tout</button>' +
           '<button type="button" class="chip chip-size" data-size="3" aria-pressed="false">3</button>'
       );
     }
-    html = html.replace(/let seriesSize = 3;/, "let seriesSize = Infinity;");
+    html = html.replace(/(class="chip chip-size"[^>]*aria-pressed=")true(")/g, "$1false$2");
+    html = html.replace(/(data-size="10"\s+aria-pressed=")false(")/, "$1true$2");
+    if (html.indexOf("RELIER_BOARD_MAX") === -1) {
+      html = html.replace(
+        /let seriesSize = (?:Infinity|\d+);/,
+        "const RELIER_BOARD_MAX = 20;\nlet seriesSize = 10;"
+      );
+    } else {
+      html = html.replace(/let seriesSize = Infinity;/, "let seriesSize = 10;");
+    }
     html = html.replace(
       /seriesSize = Number\(btn\.dataset\.size\) \|\| 3;/,
-      'seriesSize = btn.dataset.size === "all" ? Infinity : (Number(btn.dataset.size) || Infinity);'
+      'seriesSize = btn.dataset.size === "all" ? Infinity : (Number(btn.dataset.size) || 10);'
+    );
+    html = html.replace(
+      /seriesSize = btn\.dataset\.size === "all" \? Infinity : \(Number\(btn\.dataset\.size\) \|\| Infinity\);/,
+      'seriesSize = btn.dataset.size === "all" ? Infinity : (Number(btn.dataset.size) || 10);'
     );
     html = html.replace(
       /return "Tout le set · série de " \+ seriesSize;/,
@@ -36,6 +49,26 @@
       /bits\.push\("série de " \+ seriesSize\);/,
       'bits.push(Number.isFinite(seriesSize) ? "série de " + seriesSize : "toute la série");'
     );
+    if (html.indexOf("RELIER_BOARD_MAX") !== -1) {
+      html = html.replace(
+        /const size = Math\.min\(seriesSize, pool\.length\);/,
+        "const size = Number.isFinite(seriesSize) ? Math.min(seriesSize, pool.length, RELIER_BOARD_MAX) : Math.min(pool.length, RELIER_BOARD_MAX);"
+      );
+      html = html.replace(
+        /const need = Math\.min\(seriesSize, n\);/,
+        "const need = Number.isFinite(seriesSize) ? Math.min(seriesSize, n, RELIER_BOARD_MAX) : Math.min(n, RELIER_BOARD_MAX);"
+      );
+    }
+    if (html.indexOf('classList.add("is-play")') === -1) {
+      html = html.replace(
+        /home\.hidden = true;\s*game\.hidden = false;\s*renderBoard\(\);/,
+        'home.hidden = true;\n  game.hidden = false;\n  var appPlay = document.getElementById("app");\n  if (appPlay) appPlay.classList.add("is-play");\n  renderBoard();'
+      );
+      html = html.replace(
+        /home\.hidden = false;\s*game\.hidden = true;\s*updateHomeCount\(\);/,
+        'home.hidden = false;\n  game.hidden = true;\n  var appPlay = document.getElementById("app");\n  if (appPlay) appPlay.classList.remove("is-play");\n  updateHomeCount();'
+      );
+    }
     return html;
   }
 
@@ -54,8 +87,12 @@
     html = html.replace(/\.wrap \{ max-width: 48rem;/g, ".wrap { max-width: 52rem;");
     html = html.replace(/\.wrap\.is-study \{ max-width: 36rem;/g, ".wrap.is-study { max-width: 40rem;");
     html = html.replace(
+      ".wrap:has(#screen-game:not([hidden])) { max-width: 68rem; }",
+      ".wrap.is-play { max-width: 68rem; }"
+    );
+    html = html.replace(
       ".wrap { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 0; }",
-      ".wrap { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 0; }\n.wrap:has(#screen-game:not([hidden])) { max-width: 68rem; }"
+      ".wrap { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 0; }\n.wrap.is-play { max-width: 68rem; }"
     );
     html = html.replace(/max-width: 48rem;/g, function (m, offset) {
       var slice = html.slice(Math.max(0, offset - 80), offset + 40);
@@ -104,6 +141,7 @@
       );
     }
     html = html.replace(/gd-filters-pack\.js\?v=\d+/g, "gd-filters-pack.js?v=4");
+    html = html.replace(/gd-importance-stars\.js\?v=\d+/g, "gd-importance-stars.js?v=2");
     html = html.replace(/dico-cours-themes\.js\?v=\d+/g, "dico-cours-themes.js?v=3");
     html = patchMemberGuestCopy(html, pack);
     if (html.indexOf("cours-themes.js") === -1) {
@@ -133,7 +171,7 @@
       if (html.indexOf("gd-importance-stars.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../assets/gd-importance-stars.js?v=1"><\/script></body>'
+          '<script src="../assets/gd-importance-stars.js?v=2"><\/script></body>'
         );
       }
     }
