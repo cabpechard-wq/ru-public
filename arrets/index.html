@@ -3056,6 +3056,7 @@
 </main>
 <script src="../auth.js?v=4"></script>
 <script src="../site-nav.js?v=31"></script>
+<script src="../assets/cours-themes.js?v=1"></script>
 
 <script>
 (function () {
@@ -3112,6 +3113,17 @@
       var lb = typeof b === "string" ? b : String((b && (b.label || b.value)) || "");
       return sortFr(la, lb);
     });
+  }
+
+  function sortThemeOptions(items) {
+    if (window.CoursThemes && CoursThemes.sortOptions) return CoursThemes.sortOptions(items);
+    return sortFilterOptions(items);
+  }
+
+  function themeText(s) {
+    return window.CoursThemes
+      ? CoursThemes.displayLabel(s)
+      : String(s || "").replace(/^\s*\d{1,2}(?:\.\d+)?\s*[-–.]\s*/, "").trim();
   }
 
   function getMsSelected(root) {
@@ -3184,7 +3196,7 @@
           if (onChange) onChange();
         });
         var span = document.createElement("span");
-        span.textContent = text;
+        span.textContent = themeText(text);
         lab.appendChild(cb);
         lab.appendChild(span);
         panel.appendChild(lab);
@@ -3202,9 +3214,11 @@
           var value = typeof item === "string" ? item : String(item.value || "");
           return value === sel[0];
         });
-        label.textContent = matched
-          ? (typeof matched === "string" ? matched : matched.label || matched.value)
-          : sel[0];
+        label.textContent = themeText(
+          matched
+            ? (typeof matched === "string" ? matched : matched.label || matched.value)
+            : sel[0]
+        );
       } else label.textContent = sel.length + " sélection(s)";
     }
 
@@ -3309,7 +3323,7 @@
     apply();
   }
 
-  buildMultiSelect(theme, sortFilterOptions(filterOptions.themes), [], "Tous les thèmes", apply);
+  buildMultiSelect(theme, sortThemeOptions(filterOptions.themes), [], "Tous les thèmes", apply);
   buildMultiSelect(notions, sortFilterOptions(filterOptions.notions), [], "Toutes les notions", apply);
   buildMultiSelect(
     juridiction,
