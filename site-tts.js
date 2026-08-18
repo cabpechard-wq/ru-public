@@ -33,7 +33,8 @@
   const FEMALE_HINTS =
     /\b(denise|julie|brigitte|caroline|elsa|hortense|claude|female|femme|f[eé]minin|virginie|am[eé]lie|google français female)\b/i;
 
-  const PREVIEW_MAX_CHARS = 480;
+  const PREVIEW_MAX_SECONDS = 30;
+  const PREVIEW_MAX_MS = PREVIEW_MAX_SECONDS * 1000;
   const MS_PER_CHAR = 55;
   const SKIP_SECONDS = 10;
 
@@ -46,6 +47,7 @@
   let speechRate = 1;
   let estimatedTotalMs = 0;
   let progressTimer = null;
+  let previewLimitTimer = null;
   let speechStartTime = 0;
   let pausedAccum = 0;
   let pauseStart = 0;
@@ -197,27 +199,70 @@
     return m + ":" + String(s).padStart(2, "0");
   }
 
-  function extractArticleText(previewOnly) {
+  function isPreviewArticle() {
+    return !isMember && mode === "article";
+  }
+
+  function applyPreviewCap(text) {
+    if (!isPreviewArticle() || !text) return text;
+    const max = Math.max(1, charsForSeconds(PREVIEW_MAX_SECONDS));
+    if (text.length <= max) return text;
+    return text.slice(0, max).replace(/\s+\S*$/, "") + "\u2026";
+  }
+
+  function articleTotalMs(charCount) {
+    const raw = estimateDurationMs(charCount);
+    return isPreviewArticle() ? Math.min(raw, PREVIEW_MAX_MS) : raw;
+  }
+
+  function speakingElapsedMs() {
+    const pausedNow = pauseStart ? performance.now() - pauseStart : 0;
+    return Math.max(0, performance.now() - speechStartTime - pausedAccum - pausedNow);
+  }
+
+  function clearPreviewLimit() {
+    if (previewLimitTimer) {
+      clearTimeout(previewLimitTimer);
+      previewLimitTimer = null;
+    }
+  }
+
+  function stopForPreviewLimit(ui) {
+    speakSession++;
+    window.speechSynthesis.cancel();
+    clearProgressTimer();
+    clearPreviewLimit();
+    if (ui) finishArticlePlayback(ui);
+    else stopAll();
+  }
+
+  function armPreviewLimit(ui) {
+    clearPreviewLimit();
+    if (!isPreviewArticle() || !ui) return;
+    const left = Math.max(0, PREVIEW_MAX_MS - speakingElapsedMs());
+    previewLimitTimer = window.setTimeout(() => {
+      previewLimitTimer = null;
+      stopForPreviewLimit(ui);
+    }, left);
+  }
+
+  function extractArticleText() {
     const prose = document.querySelector("article.manuel-prose");
     if (!prose) return "";
     const clone = prose.cloneNode(true);
     clone.querySelectorAll("script, style").forEach((n) => n.remove());
-    let text = normalizeText(clone.innerText || clone.textContent || "");
-    if (previewOnly && text.length > PREVIEW_MAX_CHARS) {
-      text = text.slice(0, PREVIEW_MAX_CHARS).replace(/\s+\S*$/, "") + "\u2026";
-    }
-    return text;
+    return normalizeText(clone.innerText || clone.textContent || "");
   }
 
   function buildArticleSpeechText() {
-    const body = extractArticleText(false);
+    const body = extractArticleText();
     if (!body) return "";
     const titleEl =
       document.querySelector("article.manuel-prose")?.closest(".manuel-content")
         ?.querySelector(".site-title") ||
       document.querySelector(".arrets-fiche-layout .site-title");
     const title = titleEl ? normalizeText(titleEl.textContent) : "";
-    return title ? title + ". " + body : body;
+    return applyPreviewCap(title ? title + ". " + body : body);
   }
 
   function buildEntrySpeechText(entry) {
@@ -280,6 +325,10 @@
         progressTimer = requestAnimationFrame(tick);
         return;
       }
+      if (isPreviewArticle() && speakingElapsedMs() >= PREVIEW_MAX_MS) {
+        stopForPreviewLimit(ui);
+        return;
+      }
       const elapsed = performance.now() - speechStartTime - pausedAccum;
       const estOffset = Math.min(
         fullText.length,
@@ -324,6 +373,7 @@
 
   function finishArticlePlayback(ui) {
     clearProgressTimer();
+    clearPreviewLimit();
     currentCharOffset = fullText.length;
     ui.progressFill.style.width = "100%";
     ui.seekInput.value = "100";
@@ -341,6 +391,7 @@
     speakSession++;
     window.speechSynthesis.cancel();
     clearProgressTimer();
+    clearPreviewLimit();
     if (articleUi) {
       resetProgress(articleUi);
       setArticleUiState(articleUi, "idle");
@@ -373,9 +424,10 @@
 
     window.speechSynthesis.cancel();
     clearProgressTimer();
+    clearPreviewLimit();
 
     currentCharOffset = offset;
-    estimatedTotalMs = estimateDurationMs(fullText.length);
+    estimatedTotalMs = isArticle ? articleTotalMs(fullText.length) : estimateDurationMs(fullText.length);
     if (isArticle && ui) {
       ui.seekInput.disabled = false;
       updateProgressUI(ui);
@@ -408,6 +460,7 @@
       if (isArticle && ui) {
         setArticleUiState(ui, "playing");
         startProgressTimer(ui);
+        armPreviewLimit(ui);
       } else if (entryUi) {
         setEntryUiState(entryUi, "playing");
       }
@@ -416,6 +469,7 @@
     utter.onpause = () => {
       if (mySession !== speakSession) return;
       pauseStart = performance.now();
+      clearPreviewLimit();
       if (isArticle && ui) setArticleUiState(ui, "paused");
       else if (entryUi) setEntryUiState(entryUi, "paused");
     };
@@ -424,8 +478,12 @@
       if (mySession !== speakSession) return;
       if (pauseStart) pausedAccum += performance.now() - pauseStart;
       pauseStart = 0;
-      if (isArticle && ui) setArticleUiState(ui, "playing");
-      else if (entryUi) setEntryUiState(entryUi, "playing");
+      if (isArticle && ui) {
+        setArticleUiState(ui, "playing");
+        armPreviewLimit(ui);
+      } else if (entryUi) {
+        setEntryUiState(entryUi, "playing");
+      }
     };
 
     utter.onend = () => {
@@ -594,7 +652,7 @@
     if (chronoLink) ui.chronoLink = chronoLink;
 
     function updateHint() {
-      ui.btnPlay.textContent = "Écouter";
+      ui.btnPlay.textContent = isPreviewArticle() ? "Écouter (aperçu 30 s)" : "Écouter";
     }
 
     btnPlay.addEventListener("click", () => {
@@ -638,8 +696,8 @@
 
     speedSelect.addEventListener("change", () => {
       speechRate = parseFloat(speedSelect.value) || 1;
-      if (!fullText) fullText = buildArticleSpeechText();
-      if (fullText) estimatedTotalMs = estimateDurationMs(fullText.length);
+      fullText = buildArticleSpeechText();
+      if (fullText) estimatedTotalMs = articleTotalMs(fullText.length);
       if (window.speechSynthesis.speaking) {
         speakArticleFromOffset(currentCharOffset, ui);
       } else {
