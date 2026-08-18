@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page introuvable</title>
+<script>
+(function () {
+  var p = location.pathname || "";
+  if (p.indexOf("/manuel/") === 0 || p === "/manuel") {
+    location.replace(p.replace("/manuel", "/cours") + location.search + location.hash);
+    return;
+  }
+  if (p.indexOf("/ressources/chronologie") === 0) {
+    location.replace("/demo-chronologie/" + location.search + location.hash);
+    return;
+  }
+})();
+</script>
+</head>
+<body>
+<p>Page introuvable. <a href="/">Retour à l’accueil</a>.</p>
+</body>
+</html>

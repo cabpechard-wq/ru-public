@@ -69,7 +69,7 @@ function relativePrefix(pageFile) {
 }
 
 function chapterCodeFromFile(pageFile) {
-  const rel = path.relative(path.join(ROOT, "manuel"), pageFile);
+  const rel = path.relative(path.join(ROOT, "cours"), pageFile);
   const parts = rel.split(path.sep);
   for (let i = parts.length - 1; i >= 0; i--) {
     const m = /^dp-(\d+)$/i.exec(parts[i]);
@@ -168,7 +168,7 @@ function patchCounts(html, jpCount, notionCount) {
 
 function main() {
   const exercices = JSON.parse(
-    fs.readFileSync(path.join(ROOT, "manuel", "exercices.json"), "utf8")
+    fs.readFileSync(path.join(ROOT, "cours", "exercices.json"), "utf8")
   );
   const arrestMap = buildArrestMap();
   const dictMap = buildDictMap();
@@ -183,13 +183,13 @@ function main() {
     }
   }
   fs.writeFileSync(
-    path.join(ROOT, "manuel", "liens.json"),
+    path.join(ROOT, "cours", "liens.json"),
     JSON.stringify(liens) + "\n"
   );
 
   let patched = 0;
   let uncapped = 0;
-  for (const page of walk(path.join(ROOT, "manuel"))) {
+  for (const page of walk(path.join(ROOT, "cours"))) {
     const code = chapterCodeFromFile(page);
     const entry = code && exercices[code];
     let html = fs.readFileSync(page, "utf8");

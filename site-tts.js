@@ -11,7 +11,7 @@
     const p = (location.pathname || "").toLowerCase();
     if (p.includes("/dictionnaire")) return "dictionary";
     if (p.includes("/arrets")) return "arrets";
-    if (p.includes("/manuel")) return "manuel";
+    if (p.includes("/cours")) return "manuel";
     if (p.includes("/exercices")) return "exercices";
     return "other";
   }
@@ -560,7 +560,7 @@
         .split("/")
         .pop();
       function chronoHref(member) {
-        const base = member ? "/chronologie/" : "/ressources/chronologie/";
+        const base = member ? "/chronologie/" : "/demo-chronologie/";
         return slug ? base + "?id=" + encodeURIComponent(slug) : base;
       }
       chronoLink.href = chronoHref(false);

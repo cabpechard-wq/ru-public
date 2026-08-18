@@ -324,7 +324,7 @@
     list.forEach(function (entry) {
       var labels = [];
       (entry.cours || []).forEach(function (c) {
-        if (String((c && c.path) || "").indexOf("/manuel/") === -1) return;
+        if (String((c && c.path) || "").indexOf("/cours/") === -1) return;
         var label = String((c && c.label) || "").trim();
         if (!label) return;
         labels.push(label);

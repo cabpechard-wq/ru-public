@@ -28,7 +28,7 @@
     '<nav class="site-nav-links" aria-label="Navigation">' +
       '<a data-nav="home" href="' + abs("index.html") + '">Accueil</a>' +
       '<a data-nav="bibliotheque" href="' + abs("bibliotheque/") + '">BU</a>' +
-      '<a data-nav="ressources" href="' + abs("ressources/") + '">Cours</a>' +
+      '<a data-nav="ressources" href="' + abs("cours/") + '">Cours</a>' +
       '<a data-nav="exercices" href="' + abs("exercices/") + '">Salles de TD</a>' +
       '<a data-nav="checkout" href="' + abs("checkout/") + '">Inscriptions</a>' +
       '<span class="site-nav-guest">' +
@@ -73,18 +73,18 @@
   function trailForPath(cur) {
     const home = { href: abs("index.html"), label: "Droit public et administratif" };
     const bu = { href: abs("bibliotheque/"), label: "Bibliothèque universitaire" };
-    const cours = { href: abs("ressources/"), label: "Cours magistral" };
+    const cours = { href: abs("cours/"), label: "Cours" };
     const td = { href: abs("exercices/"), label: "Travaux dirigés" };
     const segs = cur.replace(/^\//, "").split("/").filter(Boolean);
     const first = segs[0] || "";
 
     if (!first) return null;
 
-    if (first === "chronologie" || (first === "ressources" && segs[1] === "chronologie") || (first === "bibliotheque" && segs[1] === "chronologie")) {
+    if (first === "chronologie" || first === "demo-chronologie" || (first === "ressources" && segs[1] === "chronologie") || (first === "bibliotheque" && segs[1] === "chronologie")) {
       return [home, cours, { label: "Chronologie de la jurisprudence administrative", current: true }];
     }
     if (first === "ressources") {
-      return [home, { label: "Cours magistral", current: true }];
+      return [home, { href: abs("cours/"), label: "Cours", current: true }];
     }
     if (first === "bibliotheque") {
       return [home, { label: "Bibliothèque universitaire", current: true }];
@@ -98,7 +98,7 @@
       else trail[trail.length - 1].current = true;
       return trail;
     }
-    if (first === "manuel") return null;
+    if (first === "cours") return null;
     if (first === "exercices") {
       return [home, { label: "Travaux dirigés", current: true }];
     }
@@ -158,6 +158,7 @@
     const existing = document.querySelector(".site-crumb");
     const force =
       cur.indexOf("/chronologie") !== -1 ||
+      cur.indexOf("/demo-chronologie") !== -1 ||
       cur.indexOf("/arrets") !== -1 ||
       cur.indexOf("/dictionnaire") !== -1 ||
       cur.indexOf("/demo") !== -1 ||
@@ -186,9 +187,9 @@
       if (key === "home") {
         if (cur === p) a.classList.add("is-active");
       } else if (key === "ressources") {
-        const onManuel = cur.indexOf("/manuel") !== -1;
-        const onChrono = cur.indexOf("/chronologie") !== -1;
-        if (cur === p || onManuel || onChrono) {
+        const onCours = cur.indexOf("/cours") !== -1;
+        const onChrono = cur.indexOf("/chronologie") !== -1 || cur.indexOf("/demo-chronologie") !== -1;
+        if (cur === p || onCours || onChrono) {
           a.classList.add("is-active");
         }
       } else if (key === "bibliotheque") {
@@ -371,7 +372,7 @@
    * Flipcards / Relations (?cours=DP-XXX), sans plafond à 25.
    */
   function chapterCodeFromLocation() {
-    if (!/\/manuel\//.test(location.pathname || "")) return "";
+    if (!/\/cours\//.test(location.pathname || "")) return "";
     const parts = (location.pathname || "")
       .replace(/\/index\.html$/, "")
       .split("/")
@@ -416,10 +417,10 @@
     const content = document.querySelector(".manuel-content");
     if (!code || !content) return;
     Promise.all([
-      fetch(abs("manuel/exercices.json"), { cache: "no-store" }).then((r) =>
+      fetch(abs("cours/exercices.json"), { cache: "no-store" }).then((r) =>
         r.ok ? r.json() : null
       ),
-      fetch(abs("manuel/liens.json"), { cache: "no-store" }).then((r) =>
+      fetch(abs("cours/liens.json"), { cache: "no-store" }).then((r) =>
         r.ok ? r.json() : null
       ),
     ])
@@ -650,7 +651,7 @@
 
   function shouldShowErrorReport() {
     const cur = location.pathname || "";
-    if (cur.indexOf("/manuel") !== -1) return true;
+    if (cur.indexOf("/cours") !== -1) return true;
     if (cur.indexOf("/dictionnaire") !== -1) return true;
     if (cur.indexOf("/arrets") !== -1) return true;
     if (cur.indexOf("/demo/") !== -1 || cur.endsWith("/demo")) return true;
@@ -662,6 +663,7 @@
     if (cur.indexOf("/relier-dico/") !== -1 || cur.endsWith("/relier-dico")) return true;
     if (cur.indexOf("/relier/") !== -1 || cur.endsWith("/relier")) return true;
     if (cur.indexOf("/chronologie/") !== -1 || cur.endsWith("/chronologie")) return true;
+    if (cur.indexOf("/demo-chronologie/") !== -1 || cur.endsWith("/demo-chronologie")) return true;
     if (cur.indexOf("/demo-enchainements-logiques/") !== -1 || cur.endsWith("/demo-enchainements-logiques")) return true;
     if (cur.indexOf("/enchainements-logiques/") !== -1 || cur.endsWith("/enchainements-logiques")) return true;
     return false;
