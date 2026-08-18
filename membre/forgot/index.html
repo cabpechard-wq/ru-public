@@ -14,14 +14,14 @@
 <body>
 <main class="site-main narrow">
   <p class="site-crumb">
-    <a href="../../">Grands arrêts</a>
+    <a href="../../">Droit public et administratif</a>
     <span class="sep">›</span>
-    <a href="../">Connexion</a>
+    <a href="../">Espace pédagogique</a>
     <span class="sep">›</span>
     <strong>Mot de passe oublié</strong>
   </p>
   <h1 class="site-title">Mot de passe oublié</h1>
-  <p class="site-lead">Entre l’e-mail utilisé chez Stripe. Tu recevras un lien de réinitialisation (valable 1 h).</p>
+  <p class="site-lead">Entre l’e-mail utilisé lors du paiement. Si un compte existe, un lien de réinitialisation (valable 1&nbsp;h) est envoyé. Pense à vérifier les indésirables.</p>
   <div class="site-panel">
     <form id="f">
       <label class="field" for="email">E-mail</label>
@@ -32,8 +32,8 @@
     <div class="form-links"><a href="../">Retour connexion</a></div>
   </div>
 </main>
-<script src="../../auth.js?v=4"></script>
-<script src="../../site-nav.js?v=30"></script>
+<script src="../../auth.js?v=5"></script>
+<script src="../../site-nav.js?v=34"></script>
 <script>
 document.getElementById("f").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -43,10 +43,15 @@ document.getElementById("f").addEventListener("submit", async (e) => {
   try {
     const data = await FLIPCARDS_AUTH.api("/api/forgot", {
       method: "POST",
-      body: { email: document.getElementById("email").value.trim() },
+      body: {
+        email: document.getElementById("email").value.trim(),
+        origin: location.origin,
+        reset_url: new URL("../reset/", location.href).href,
+      },
     });
     msg.className = "site-note ok";
-    msg.textContent = data.message || "Si un compte existe, un e-mail a été envoyé.";
+    msg.textContent = (data.message || "Si un compte existe, un e-mail de réinitialisation a été envoyé.")
+      + " Si rien n’arrive, vérifie les indésirables, ou écris à cab.pechard@gmail.com.";
   } catch (ex) {
     msg.className = "site-note err";
     msg.textContent = ex.message || "Erreur";

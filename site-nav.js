@@ -35,7 +35,7 @@
         '<a data-nav="membre" href="' + abs("membre/") + '">Espace pédagogique</a>' +
       "</span>" +
       '<span class="site-nav-auth" hidden>' +
-        '<a class="site-nav-user" href="' + abs("index.html") + '" title="Espace pédagogique">' +
+        '<a class="site-nav-user" href="' + abs("membre/compte/") + '" title="Mon compte">' +
           '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
             '<circle cx="12" cy="8" r="3.75"/>' +
             '<path d="M4.5 20.25c0-3.6 3.35-6.25 7.5-6.25s7.5 2.65 7.5 6.25v.75H4.5v-.75z"/>' +
@@ -123,7 +123,7 @@
     if (first === "membre") {
       const trail = [home, { href: abs("membre/"), label: "Espace pédagogique" }];
       if (segs[1] === "forgot") trail.push({ label: "Mot de passe oublié", current: true });
-      else if (segs[1] === "compte") trail.push({ label: "Compte", current: true });
+      else if (segs[1] === "compte") trail.push({ label: "Mon compte", current: true });
       else if (segs[1] === "reset") trail.push({ label: "Réinitialisation", current: true });
       else trail[trail.length - 1].current = true;
       return trail;
