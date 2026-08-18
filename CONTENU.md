@@ -8,9 +8,10 @@ Le bandeau, le pied de page et **les changements une fois connecté** sont dans 
 | Vous voulez changer… | Fichier |
 |---|---|
 | Accueil | `index.html` |
-| Bibliothèque (hub) | `bibliotheque/index.html` |
+| Bibliothèque universitaire (hub) | `bibliotheque-universitaire/index.html` |
+| **Cours magistral** (hub) | `cours-magistral/index.html` |
 | **Cours** (sommaire + fiches) | `cours/index.html` et `cours/dp-000/…/index.html` |
-| Travaux dirigés (hub) | `exercices/index.html` |
+| Travaux dirigés (hub) | `travaux-diriges/index.html` |
 | Inscriptions | `checkout/index.html` |
 | Connexion / mot de passe / compte | `membre/index.html`, `membre/forgot/`, `membre/reset/`, `membre/compte/` |
 | Dictionnaire | `dictionnaire/index.html` (+ `entries.json`) |
@@ -25,7 +26,9 @@ Le bandeau, le pied de page et **les changements une fois connecté** sont dans 
 Anciennes adresses **redirigées** (ne plus y écrire le contenu) :
 
 - `/manuel/…` → `/cours/…`
-- `/ressources/` → `/cours/`
+- `/bibliotheque/` → `/bibliotheque-universitaire/`
+- `/ressources/` → `/cours-magistral/`
+- `/exercices/` → `/travaux-diriges/`
 - `/ressources/chronologie/` et `/bibliotheque/chronologie/` → `/demo-chronologie/`
 
 ## Une fois connecté (ne pas chercher dans chaque HTML)

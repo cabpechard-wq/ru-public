@@ -192,11 +192,10 @@
     var n = (data && data.decisions && data.decisions.length) || 0;
     var total = (data && data.meta && data.meta.sourceCount) || null;
     setAlert(
-      "Démo publique : " +
+      "Démonstration publique (" +
         n +
-        " décisions" +
-        (total ? " sur " + total : "") +
-        ". Connectez-vous pour la frise complète.",
+        (total ? " / " + total : "") +
+        " décisions). Connectez-vous pour accéder au fond complet.",
       "info"
     );
   }
@@ -1975,15 +1974,15 @@
 
     var html = "";
     html += '<div class="detail__head">';
+    html += '<div class="detail__head-main">';
     html += "<h2>" + escapeHtml(d.nom) + "</h2>";
+    html += '<div class="detail__meta">';
+    html += '<span class="tag" title="Date">' + escapeHtml(formatDateFr(d.date)) + "</span>";
+    html += '<span class="tag tag--stars" title="Importance">' + stars(d.importance) + "</span>";
+    html += "</div>";
+    html += "</div>";
     html +=
       '<button type="button" class="detail__close" id="detail-close" aria-label="Fermer">×</button>';
-    html += "</div>";
-
-    // Capsules: Date + Importance only (no Thème)
-    html += '<div class="detail__meta">';
-    html += '<span class="tag">' + escapeHtml(formatDateFr(d.date)) + "</span>";
-    html += '<span class="tag tag--stars">' + stars(d.importance) + "</span>";
     html += "</div>";
 
     if (d.objet) {

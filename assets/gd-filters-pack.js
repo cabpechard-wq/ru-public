@@ -39,13 +39,13 @@
     '<div id="gd-filter-notions" class="ms" role="group" aria-labelledby="label-gd-notions"></div></div>' +
     "</div>" +
     '<div class="arrets-advanced-row arrets-advanced-row--secondary">' +
-    '<fieldset class="arrets-advanced-field arrets-advanced-field--importance"><span class="arrets-advanced-label">Importance</span>' +
+    '<div class="arrets-advanced-field arrets-advanced-field--importance"><span class="arrets-advanced-label">Importance</span>' +
     '<div class="arrets-chip-group" role="group" aria-label="Importance">' +
     '<label class="arrets-chip"><input type="checkbox" name="gd-importance" value="1"><span>★</span></label>' +
     '<label class="arrets-chip"><input type="checkbox" name="gd-importance" value="2"><span>★★</span></label>' +
     '<label class="arrets-chip"><input type="checkbox" name="gd-importance" value="3"><span>★★★</span></label>' +
     '<label class="arrets-chip"><input type="checkbox" name="gd-importance" value="4"><span>★★★★</span></label>' +
-    "</div></fieldset>" +
+    "</div></div>" +
     '<div class="arrets-advanced-field arrets-advanced-field--period"><span class="arrets-advanced-label">Période</span>' +
     '<div class="arrets-period-stack">' +
     '<label class="arrets-period-row" for="gd-date-from"><span class="arrets-period-label">Début</span>' +

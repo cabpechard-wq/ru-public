@@ -26,7 +26,8 @@ html, body {
   font-family: var(--font-ui);
 }
 body { padding: 0 0 3.5rem; }
-.wrap { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 0; }
+.wrap { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 0; }
+.wrap:has(#screen-game:not([hidden])) { max-width: 68rem; }
 .screen[hidden] { display: none !important; }
 .page-heading {
   display: flex;
@@ -622,7 +623,7 @@ body { padding: 0 0 3.5rem; }
       <h1 class="page-title">Relations (Grands notions) - démo</h1>
       <p class="demo-upsell"><a class="demo-upsell-link" href="../checkout/">Accès à toutes les ressources…</a></p>
     </div>
-    <p class="page-sub">Associez chaque notion à sa définition. Filtrez par thème (page de cours) ou par lettre, choisissez la taille de série, puis reliez.</p>
+    <p class="page-sub">Associez chaque notion à sa définition. Filtrez par thème (utilisateurs connectés) ou par lettre, choisissez la taille de série, puis reliez.<br>Pour un set au hasard, laisser la sélection vide.</p>
     <div class="home-card">
       <p class="cours-banner" id="cours-banner" hidden></p>
       
