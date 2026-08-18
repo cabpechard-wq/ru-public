@@ -96,27 +96,27 @@
 
   function ensureUI() {
     const nav = document.querySelector(".site-nav");
-    if (!nav || nav.querySelector(".site-nav-search")) return null;
+    if (!nav) return null;
 
-    const wrap = document.createElement("div");
-    wrap.className = "site-nav-search";
-    wrap.innerHTML =
-      '<label class="site-nav-search-label" for="site-search-input">' +
-        '<span class="visually-hidden">Rechercher</span>' +
-        '<input id="site-search-input" class="site-nav-search-input" type="search" ' +
-          'placeholder="Rechercher…" autocomplete="off" ' +
-          'spellcheck="false" enterkeyhint="search" />' +
-      "</label>" +
-      '<div class="site-nav-search-panel" hidden role="listbox" aria-label="Résultats de recherche"></div>';
+    let wrap = nav.querySelector(".site-nav-search");
+    if (!wrap) {
+      wrap = document.createElement("div");
+      wrap.className = "site-nav-search";
+      wrap.innerHTML =
+        '<label class="site-nav-search-label" for="site-search-input">' +
+          '<span class="visually-hidden">Rechercher</span>' +
+          '<input id="site-search-input" class="site-nav-search-input" type="search" ' +
+            'placeholder="Rechercher…" autocomplete="off" ' +
+            'spellcheck="false" enterkeyhint="search" />' +
+        "</label>" +
+        '<div class="site-nav-search-panel" hidden role="listbox" aria-label="Résultats de recherche"></div>';
+    }
 
     const brand = nav.querySelector(".site-nav-brand");
-    const links = nav.querySelector(".site-nav-links");
-    if (brand && brand.parentNode === nav) {
-      nav.insertBefore(wrap, brand.nextSibling);
-    } else if (links && links.parentNode === nav) {
-      nav.insertBefore(wrap, links);
-    } else {
-      nav.appendChild(wrap);
+    const host = brand ? brand.parentNode : nav;
+    const before = brand ? brand.nextSibling : nav.querySelector(".site-nav-links");
+    if (wrap.parentNode !== host || (brand && wrap.previousElementSibling !== brand)) {
+      host.insertBefore(wrap, before);
     }
     return wrap;
   }
@@ -175,7 +175,13 @@
 
   function init() {
     const wrap = ensureUI();
-    if (!wrap) return;
+    if (!wrap) {
+      if (!init.tries) init.tries = 0;
+      if (init.tries++ < 40) setTimeout(init, 50);
+      return;
+    }
+    if (wrap.dataset.bound === "1") return;
+    wrap.dataset.bound = "1";
     const input = wrap.querySelector(".site-nav-search-input");
     const panel = wrap.querySelector(".site-nav-search-panel");
     let timer = null;

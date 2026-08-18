@@ -122,6 +122,10 @@
       "background-repeat:no-repeat;background-position:right .55rem center;}" +
       ".site-theme-picker select:focus{outline:2px solid var(--accent,#c4a35a);outline-offset:2px;}" +
       ".site-amphi-fond-picker{display:none!important;}" +
+      ".site-nav{justify-content:flex-start}" +
+      ".site-nav-brand{order:1}" +
+      ".site-nav-search{order:2}" +
+      ".site-nav-links{order:3;margin-left:auto}" +
       ".site-nav-link{display:inline-flex;align-items:center;gap:.35rem;position:relative}" +
       ".site-nav-icon{display:none;width:1.15rem;height:1.15rem;flex:0 0 auto}" +
       ".site-nav-links .site-nav-link{color:var(--muted);text-decoration:none;padding:.35rem .2rem;border-radius:var(--radius)}" +

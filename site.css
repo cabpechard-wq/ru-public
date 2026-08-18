@@ -66,7 +66,7 @@ a:hover { color: var(--accent-hover); }
   z-index: 40;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 1rem;
   min-height: var(--nav-h);
   padding: .75rem clamp(1.25rem, 4vw, 3rem);
@@ -85,6 +85,7 @@ a:hover { color: var(--accent-hover); }
   min-width: 0;
   position: relative;
   z-index: 3;
+  order: 1;
 }
 
 .site-nav-kicker {
@@ -127,6 +128,7 @@ a:hover { color: var(--accent-hover); }
   position: relative;
   z-index: 3;
   margin-left: auto;
+  order: 3;
 }
 
 .site-nav-links > a,
@@ -168,6 +170,7 @@ a:hover { color: var(--accent-hover); }
   max-width: 22rem;
   min-width: 10rem;
   margin: 0;
+  order: 2;
 }
 
 .site-nav-search-label {
