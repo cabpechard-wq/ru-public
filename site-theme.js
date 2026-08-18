@@ -122,7 +122,33 @@
       "background-repeat:no-repeat;background-position:right .55rem center;}" +
       ".site-theme-picker select:focus{outline:2px solid var(--accent,#c4a35a);outline-offset:2px;}" +
       ".site-amphi-fond-picker{display:none!important;}" +
-      "@media (max-width:720px){.site-theme-picker label{display:none;}.site-theme-picker select{max-width:11rem;font-size:.72rem;}}" +
+      ".site-nav-link{display:inline-flex;align-items:center;gap:.35rem;position:relative}" +
+      ".site-nav-icon{display:none;width:1.15rem;height:1.15rem;flex:0 0 auto}" +
+      ".site-nav-links .site-nav-link{color:var(--muted);text-decoration:none;padding:.35rem .2rem;border-radius:var(--radius)}" +
+      ".site-nav-links .site-nav-link:hover,.site-nav-links .site-nav-link.is-active{color:var(--accent);background:transparent}" +
+      "@media (max-width:720px){" +
+      ".site-nav{flex-wrap:wrap;gap:.45rem .65rem;padding:.5rem .75rem;min-height:0}" +
+      ".site-nav-product{display:none}" +
+      ".site-nav-search{flex:1 1 10rem;width:auto;max-width:none;min-width:7rem;margin:0}" +
+      ".site-nav-search-input{padding:.32rem .6rem;font-size:.75rem}" +
+      ".site-theme-picker label{display:none}" +
+      ".site-theme-picker select{max-width:9.5rem;font-size:.7rem;padding:.22rem 1.35rem .22rem .4rem}" +
+      "}" +
+      "@media (max-width:640px){" +
+      ".site-nav{flex-direction:row;flex-wrap:wrap;align-items:center;gap:.4rem .55rem;padding:.4rem .7rem;min-height:0}" +
+      ".site-nav-brand{flex:1 1 auto;min-width:0}" +
+      ".site-nav-kicker{font-size:.58rem;letter-spacing:.1em}" +
+      ".site-nav-search{flex:1 1 8rem;min-width:6.5rem}" +
+      ".site-nav-links{flex:1 1 100%;justify-content:space-between;flex-wrap:wrap;gap:.1rem;font-size:.72rem}" +
+      ".site-nav-link,.site-nav-logout{width:2.2rem;min-width:2.2rem;height:2.2rem;padding:0;justify-content:center;gap:0}" +
+      ".site-nav-icon{display:block}" +
+      ".site-nav-link-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}" +
+      ".site-nav-guest,.site-nav-auth{display:inline-flex;align-items:center}" +
+      ".site-nav-user{padding:.28rem}" +
+      ".site-nav-user span{display:none}" +
+      ".site-theme-picker{margin-left:0;flex:0 0 auto}" +
+      ".site-theme-picker select{max-width:7.2rem;font-size:.65rem;padding:.2rem 1.2rem .2rem .35rem}" +
+      "}" +
       ".dict-toolbar select,.arrets-filters select,.arrets-advanced-field select,.filters select,.filters .field select{" +
       "appearance:none;-webkit-appearance:none;color:var(--ink);background-color:var(--bg-elevated,var(--bg));" +
       "border:1px solid var(--border);border-radius:var(--radius,2px);font-family:var(--font-ui,inherit);" +
@@ -294,7 +320,7 @@
   let cachedManifest = null;
 
   function start() {
-    fetch(abs("themes/manifest.json?v=9"))
+    fetch(abs("themes/manifest.json?v=10"))
       .then((r) => (r.ok ? r.json() : FALLBACK))
       .catch(() => FALLBACK)
       .then((manifest) => {

@@ -50,6 +50,30 @@
     document.head.appendChild(fav);
   }
 
+  function navIcon(paths) {
+    return (
+      '<svg class="site-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      paths +
+      "</svg>"
+    );
+  }
+
+  function navLink(attrs, label, paths) {
+    return (
+      "<a " +
+      attrs +
+      ' class="site-nav-link" title="' +
+      label +
+      '" aria-label="' +
+      label +
+      '">' +
+      navIcon(paths) +
+      '<span class="site-nav-link-label">' +
+      label +
+      "</span></a>"
+    );
+  }
+
   const header = document.createElement("header");
   header.className = "site-nav";
   header.innerHTML =
@@ -58,13 +82,37 @@
       '<span class="site-nav-product"><em>Droit</em> public et administratif</span>' +
     "</a>" +
     '<nav class="site-nav-links" aria-label="Navigation">' +
-      '<a data-nav="home" href="' + abs("index.html") + '">Accueil</a>' +
-      '<a data-nav="bibliotheque" href="' + abs("bibliotheque-universitaire/") + '">BU</a>' +
-      '<a data-nav="ressources" href="' + abs("cours-magistral/") + '">Cours</a>' +
-      '<a data-nav="exercices" href="' + abs("travaux-diriges/") + '">Salles de TD</a>' +
-      '<a data-nav="checkout" href="' + abs("checkout/") + '">Inscriptions</a>' +
+      navLink(
+        'data-nav="home" href="' + abs("index.html") + '"',
+        "Accueil",
+        '<path d="M4 11.2 12 4l8 7.2"/><path d="M6.5 10.2V20h11V10.2"/>'
+      ) +
+      navLink(
+        'data-nav="bibliotheque" href="' + abs("bibliotheque-universitaire/") + '"',
+        "BU",
+        '<path d="M5 5.2A2.2 2.2 0 0 1 7.2 3H20v16.5H7.2A2.2 2.2 0 0 0 5 21.7z"/><path d="M5 5.2v16.5"/><path d="M9 7.2h7M9 11h7"/>'
+      ) +
+      navLink(
+        'data-nav="ressources" href="' + abs("cours-magistral/") + '"',
+        "Cours",
+        '<path d="M3.5 10.2 12 4l8.5 6.2"/><path d="M6 10.2V20h4.2V10.2M13.8 10.2V20H18V10.2"/><path d="M4 20h16"/>'
+      ) +
+      navLink(
+        'data-nav="exercices" href="' + abs("travaux-diriges/") + '"',
+        "Salles de TD",
+        '<rect x="3.5" y="4.5" width="17" height="12" rx="1.4"/><path d="M8 20.5h8M12 16.5v4"/>'
+      ) +
+      navLink(
+        'data-nav="checkout" href="' + abs("checkout/") + '"',
+        "Inscriptions",
+        '<path d="M8 4.2h8a2 2 0 0 1 2 2V20H6V6.2a2 2 0 0 1 2-2z"/><path d="M9 2.6h6v2.8H9z"/><path d="M9 11h6M9 14.5h4"/>'
+      ) +
       '<span class="site-nav-guest">' +
-        '<a data-nav="membre" href="' + abs("membre/") + '">Espace pédagogique</a>' +
+        navLink(
+          'data-nav="membre" href="' + abs("membre/") + '"',
+          "Espace pédagogique",
+          '<circle cx="12" cy="8" r="3.1"/><path d="M5 19.4c.9-3.1 3.4-4.9 7-4.9s6.1 1.8 7 4.9"/>'
+        ) +
       "</span>" +
       '<span class="site-nav-auth" hidden>' +
         '<a class="site-nav-user" href="' + abs("membre/compte/") + '" title="Mon compte">' +
@@ -74,7 +122,10 @@
           "</svg>" +
           '<span data-nav-email></span>' +
         "</a>" +
-        '<button type="button" class="site-nav-logout" data-nav-logout>Déconnexion</button>' +
+        '<button type="button" class="site-nav-logout" data-nav-logout title="Déconnexion" aria-label="Déconnexion">' +
+          navIcon('<path d="M10 7V5.2A2.2 2.2 0 0 1 12.2 3h6.6A2.2 2.2 0 0 1 21 5.2v13.6A2.2 2.2 0 0 1 18.8 21h-6.6A2.2 2.2 0 0 1 10 18.8V17"/><path d="M4 12h11M8.5 8.5 4 12l4.5 3.5"/>') +
+          '<span class="site-nav-link-label">Déconnexion</span>' +
+        "</button>" +
       "</span>" +
     "</nav>";
 
@@ -802,7 +853,7 @@
 
   // Sélecteur de charte (Campus par défaut) — chargé après le bandeau
   const themeJs = document.createElement("script");
-  themeJs.src = new URL("site-theme.js?v=20", script.src).href;
+  themeJs.src = new URL("site-theme.js?v=21", script.src).href;
   themeJs.onerror = function () {
     console.warn("[site-theme] Impossible de charger site-theme.js — rebuild du site requis.");
   };
@@ -810,7 +861,7 @@
 
   // Recherche full-text (Cours + Dictionnaire + Arrêts)
   const searchJs = document.createElement("script");
-  searchJs.src = new URL("site-search.js?v=7", script.src).href;
+  searchJs.src = new URL("site-search.js?v=8", script.src).href;
   searchJs.onerror = function () {
     console.warn("[site-search] Impossible de charger site-search.js — rebuild du site requis.");
   };
