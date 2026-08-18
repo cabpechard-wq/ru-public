@@ -19,13 +19,13 @@
   </p>
   <p class="site-hero-kicker text-secondary">Offres de lancement</p>
   <h1 class="site-title">Inscriptions</h1>
-  <p class="site-lead">Accès à l’amphithéâtre et aux travaux dirigés.<br>Résiliable à tout moment.</p>
+  <p class="site-lead">Accès à toutes les ressources : cours, exercices, fonds documentaires.<br>Résiliable à tout moment.</p>
 
   <div class="site-grid">
     <div class="site-card">
       <h2>Mensuel</h2>
       <div class="site-price">6,90 €<span> / mois</span></div>
-      <p>Accès complet et mises à jour.</p>
+      <p>Accès complet au site, à l’appli et aux mises à jour.</p>
       <a class="btn" id="btn-monthly" href="#configure" aria-disabled="true">Choisir mensuel</a>
     </div>
     <div class="site-card orange">
@@ -36,6 +36,7 @@
     </div>
   </div>
 
+  <p class="site-note" id="cgv-hint">Vous devez accepter les CGV pour activer les liens d’abonnement.</p>
   <label class="checkout-consent" for="cgv-consent">
     <input type="checkbox" id="cgv-consent" name="cgv_consent" required>
     <span>
@@ -46,8 +47,11 @@
       en renonçant expressément à mon droit de rétractation une fois l’accès délivré.
     </span>
   </label>
-  <p class="site-note" id="cgv-hint">Cochez la case pour activer le paiement.</p>
-  <p class="site-foot"><a class="btn secondary" href="../demo/">Essayer la démo (8 cartes)</a></p>
+  <p class="site-foot site-foot-links">
+    <a class="btn secondary" href="../exercices/">Voir les exercices (démo)</a>
+    <a class="btn secondary" href="../ressources/">Voir les cours (aperçus)</a>
+    <a class="btn secondary" href="../bibliotheque/">Voir les fonds (accès libre / démo)</a>
+  </p>
 </main>
 <script>
 window.FLIPCARDS_CHECKOUT = {
