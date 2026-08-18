@@ -27,7 +27,7 @@ html, body {
 }
 body { padding: 0 0 3.5rem; }
 .wrap { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 0; }
-.wrap:has(#screen-game:not([hidden])) { max-width: 68rem; }
+.wrap.is-play { max-width: 68rem; }
 .screen[hidden] { display: none !important; }
 .page-heading {
   display: flex;
@@ -1023,6 +1023,7 @@ const SHOW_ARRET_LINKS = true;
 const LEFT_LABEL = "Nom";
 const RIGHT_LABEL = "Objet";
 const selected = { theme: new Set(), notion: new Set(), importance: new Set() };
+const RELIER_BOARD_MAX = 20;
 let seriesSize = Infinity;
 let series = [];          // indices dans DATA
 let links = new Map();    // sourceId -> targetId
@@ -1348,7 +1349,9 @@ function updateHomeCount() {
   const n = filteredIndexes().length;
   homeCount.textContent = String(n);
   homeHint.textContent = selectionHint();
-  const need = Math.min(seriesSize, n);
+  const need = Number.isFinite(seriesSize)
+    ? Math.min(seriesSize, n, RELIER_BOARD_MAX)
+    : Math.min(n, RELIER_BOARD_MAX);
   btnStart.disabled = need < 2;
 }
 
@@ -1571,7 +1574,9 @@ function enterGame() {
   }
   emptyFilter.hidden = true;
   boardWrap.hidden = false;
-  const size = Math.min(seriesSize, pool.length);
+  const size = Number.isFinite(seriesSize)
+    ? Math.min(seriesSize, pool.length, RELIER_BOARD_MAX)
+    : Math.min(pool.length, RELIER_BOARD_MAX);
   series = shuffleArray(pool).slice(0, size);
   const themes = selectedList("theme");
   const notions = selectedList("notion");
@@ -1584,6 +1589,8 @@ function enterGame() {
   gameSummary.textContent = bits.join(" · ");
   home.hidden = true;
   game.hidden = false;
+  const appWrap = document.getElementById("app");
+  if (appWrap) appWrap.classList.add("is-play");
   renderBoard();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
@@ -1592,6 +1599,8 @@ function leaveGame() {
   drag = null;
   home.hidden = false;
   game.hidden = true;
+  const appWrap = document.getElementById("app");
+  if (appWrap) appWrap.classList.remove("is-play");
   updateHomeCount();
 }
 
@@ -1856,7 +1865,7 @@ initCoursFilter().then(() => {
 </script>
 <script src="../assets/cours-themes.js?v=1"></script>
 <script src="../assets/gd-filters-pack.js?v=4"></script>
-<script src="../assets/gd-importance-stars.js?v=1"></script>
+<script src="../assets/gd-importance-stars.js?v=2"></script>
 <script src="../auth.js?v=4"></script>
 <script src="../site-nav.js?v=38"></script>
 </body>
