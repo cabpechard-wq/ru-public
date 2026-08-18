@@ -10,6 +10,28 @@
   // Exposé pour site-search.js (même racine d'assets)
   window.SiteNavAbs = abs;
 
+  function applyFondsJurisprudenceCount(n) {
+    const count = Number(n);
+    if (!count) return;
+    window.FONDS_JURISPRUDENCE_COUNT = count;
+    document.querySelectorAll('[data-fonds-count="jurisprudence"]').forEach((el) => {
+      el.textContent = String(count);
+    });
+  }
+
+  function loadFondsJurisprudenceCount() {
+    return fetch(abs("chronologie/data/chronology-meta.json"), { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((meta) => {
+        const n = meta && (Number(meta.count) || (Array.isArray(meta.decisions) && meta.decisions.length));
+        applyFondsJurisprudenceCount(n);
+        return n || 0;
+      })
+      .catch(() => 0);
+  }
+
+  loadFondsJurisprudenceCount();
+
   if (!document.querySelector('link[rel="icon"]')) {
     const fav = document.createElement("link");
     fav.rel = "icon";
@@ -515,26 +537,24 @@
       const desc = item.querySelector(".ex-item-desc");
       const cta = item.querySelector(".ex-item-cta");
       if (desc && /Fiches d['’]arrêts/.test(title)) {
-        desc.textContent = (desc.textContent || "").replace(/\b8 \/ /g, "");
+        desc.innerHTML = (desc.innerHTML || "").replace(/\b8 \/ /g, "");
       }
       if (cta && /^\s*Aperçus/.test(cta.textContent || "")) {
         cta.textContent = "Consulter →";
       }
       if (desc) {
-        desc.textContent = (desc.textContent || "").replace(/\b15 \/ /g, "");
+        desc.innerHTML = (desc.innerHTML || "").replace(/\b15 \/ /g, "");
       }
     });
 
     document.querySelectorAll(
       "[data-flipcards-entry], [data-flipcards-dico-entry], [data-relier-entry], [data-relier-dico-entry], [data-enchainements-entry]"
     ).forEach((el) => {
-      const t = el.textContent || "";
-      const next = t.replace(/\b8 \/ /g, "").replace(/\s+/g, " ").trim();
-      if (next && next !== t.trim()) el.textContent = next;
+      el.innerHTML = (el.innerHTML || "").replace(/\b8 \/ /g, "");
     });
 
     document.querySelectorAll(".arrets-index .site-lead").forEach((el) => {
-      el.textContent = (el.textContent || "").replace(/\b8 \/ /g, "");
+      el.innerHTML = (el.innerHTML || "").replace(/\b8 \/ /g, "");
     });
 
     document.querySelectorAll(".page-sub").forEach((el) => {

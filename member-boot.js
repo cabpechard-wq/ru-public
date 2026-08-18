@@ -72,14 +72,59 @@
     return html;
   }
 
+  function countPackData(html) {
+    var match = html.match(/\b(?:const|let|var)\s+DATA\s*=\s*\[/);
+    if (!match || match.index == null) return 0;
+    var start = html.indexOf("[", match.index);
+    if (start < 0) return 0;
+    var depth = 0;
+    var inStr = false;
+    var quote = "";
+    var esc = false;
+    for (var i = start; i < html.length; i++) {
+      var c = html[i];
+      if (inStr) {
+        if (esc) {
+          esc = false;
+          continue;
+        }
+        if (c === "\\") {
+          esc = true;
+          continue;
+        }
+        if (c === quote) inStr = false;
+        continue;
+      }
+      if (c === '"' || c === "'") {
+        inStr = true;
+        quote = c;
+        continue;
+      }
+      if (c === "[") depth++;
+      else if (c === "]") {
+        depth--;
+        if (depth === 0) {
+          try {
+            var parsed = JSON.parse(html.slice(start, i + 1));
+            return Array.isArray(parsed) ? parsed.length : 0;
+          } catch (_) {
+            return 0;
+          }
+        }
+      }
+    }
+    return 0;
+  }
+
   function patchMemberGuestCopy(html, pack) {
+    var fondsN = countPackData(html);
     html = html.replace(/\b8 \/ /g, "");
     html = html.replace(/\b15 \/ /g, "");
     html = html.replace(/\s*\(utilisateurs connectés\)\s*/g, " ");
     html = html.replace(/thème \(page de cours\)/g, "thème");
     html = html.replace(/thème \(page de cours ou une lettre\)/g, "thème ou une lettre");
-    if (pack === "flipcards" || pack === "relier") {
-      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (993 cartes)");
+    if ((pack === "flipcards" || pack === "relier") && fondsN) {
+      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (" + fondsN + " cartes)");
     }
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (401 cartes)");
@@ -175,7 +220,7 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=38");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=39");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
