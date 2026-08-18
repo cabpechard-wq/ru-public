@@ -498,8 +498,70 @@
   function applyTdRubriqueAccess(isMember) {
     if (!isMember) return;
     document.querySelectorAll("[data-ex-access]").forEach((el) => {
-      el.textContent = "Accès membre";
+      el.textContent = "Accès complet";
     });
+    document.querySelectorAll(".ex-list-rubriques .ex-item-type").forEach((el) => {
+      if ((el.textContent || "").trim() === "Démonstration") {
+        el.textContent = "Accès complet";
+      }
+    });
+  }
+
+  function applyLoggedInCopy(isMember) {
+    if (!isMember) return;
+
+    document.querySelectorAll(".ex-item").forEach((item) => {
+      const title = ((item.querySelector(".ex-item-title") || {}).textContent || "");
+      const desc = item.querySelector(".ex-item-desc");
+      const cta = item.querySelector(".ex-item-cta");
+      if (desc && /Fiches d['’]arrêts/.test(title)) {
+        desc.textContent = (desc.textContent || "").replace(/\b8 \/ /g, "");
+      }
+      if (cta && /^\s*Aperçus/.test(cta.textContent || "")) {
+        cta.textContent = "Consulter →";
+      }
+      if (desc) {
+        desc.textContent = (desc.textContent || "").replace(/\b15 \/ /g, "");
+      }
+    });
+
+    document.querySelectorAll(
+      "[data-flipcards-entry], [data-flipcards-dico-entry], [data-relier-entry], [data-relier-dico-entry], [data-enchainements-entry]"
+    ).forEach((el) => {
+      const t = el.textContent || "";
+      const next = t.replace(/\b8 \/ /g, "").replace(/\s+/g, " ").trim();
+      if (next && next !== t.trim()) el.textContent = next;
+    });
+
+    document.querySelectorAll(".arrets-index .site-lead").forEach((el) => {
+      el.textContent = (el.textContent || "").replace(/\b8 \/ /g, "");
+    });
+
+    document.querySelectorAll(".page-sub").forEach((el) => {
+      let html = el.innerHTML;
+      html = html.replace(/\b8 \/ /g, "").replace(/\b15 \/ /g, "");
+      html = html.replace(/\s*\(utilisateurs connectés\)\s*/g, " ");
+      html = html.replace(/ {2,}/g, " ");
+      el.innerHTML = html;
+    });
+
+    function stripChronoDemoFraction() {
+      const alert = document.getElementById("chrono-alert");
+      if (!alert) return;
+      const t = alert.textContent || "";
+      const next = t.replace(/\b15 \/ /g, "").replace(/\b8 \/ /g, "");
+      if (next !== t) alert.textContent = next;
+    }
+    stripChronoDemoFraction();
+    const chronoAlert = document.getElementById("chrono-alert");
+    if (chronoAlert && !chronoAlert._ruFractionBound) {
+      chronoAlert._ruFractionBound = true;
+      new MutationObserver(stripChronoDemoFraction).observe(chronoAlert, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+    }
   }
 
   function applyFlipcardsEntry(isMember) {
@@ -648,6 +710,7 @@
       applyRelierDicoEntry(ok);
       applyChronologieEntry(ok);
       applyEnchainementsEntry(ok);
+      applyLoggedInCopy(ok);
       if (window.SiteTTS) window.SiteTTS.init(ok);
     });
   });

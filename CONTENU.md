@@ -42,6 +42,7 @@ Anciennes adresses **redirigées** (ne plus y écrire le contenu) :
 | `site-search.js` | Barre de recherche |
 
 Hors connexion, l’accueil et les TD restent **tels qu’écrits dans le HTML**.
+Une fois connecté, `site-nav.js` (`applyLoggedInCopy`) retire les mentions « 8 / » et « 15 / », remplace « Aperçus » par « Consulter » et « Démonstration » (TD) par « Accès complet ».
 
 ## Chronologie : un seul moteur
 

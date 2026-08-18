@@ -39,6 +39,41 @@
     return html;
   }
 
+  function patchMemberGuestCopy(html, pack) {
+    html = html.replace(/\b8 \/ /g, "");
+    html = html.replace(/\b15 \/ /g, "");
+    html = html.replace(/\s*\(utilisateurs connectés\)\s*/g, " ");
+    html = html.replace(/thème \(page de cours\)/g, "thème");
+    html = html.replace(/thème \(page de cours ou une lettre\)/g, "thème ou une lettre");
+    if (pack === "flipcards" || pack === "relier") {
+      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (993 cartes)");
+    }
+    if (pack === "flipcards-dico" || pack === "relier-dico") {
+      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (401 cartes)");
+    }
+    html = html.replace(/\.wrap \{ max-width: 48rem;/g, ".wrap { max-width: 52rem;");
+    html = html.replace(/\.wrap\.is-study \{ max-width: 36rem;/g, ".wrap.is-study { max-width: 40rem;");
+    html = html.replace(
+      ".wrap { max-width: 68rem; margin: 0 auto; padding: 1.5rem 1rem 0; }",
+      ".wrap { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 0; }\n.wrap:has(#screen-game:not([hidden])) { max-width: 68rem; }"
+    );
+    html = html.replace(/max-width: 48rem;/g, function (m, offset) {
+      var slice = html.slice(Math.max(0, offset - 80), offset + 40);
+      if (slice.indexOf("fullscreen") !== -1 || slice.indexOf("wrap") !== -1) {
+        return "max-width: 52rem;";
+      }
+      return m;
+    });
+    html = html.replace(/max-width: 36rem;/g, function (m, offset) {
+      var slice = html.slice(Math.max(0, offset - 80), offset + 40);
+      if (slice.indexOf("is-study") !== -1 || slice.indexOf("study-main") !== -1) {
+        return "max-width: 40rem;";
+      }
+      return m;
+    });
+    return html;
+  }
+
   function patchMemberHtml(html, pack) {
     var kind = packKind(pack);
     if (kind) {
@@ -70,6 +105,7 @@
     }
     html = html.replace(/gd-filters-pack\.js\?v=\d+/g, "gd-filters-pack.js?v=4");
     html = html.replace(/dico-cours-themes\.js\?v=\d+/g, "dico-cours-themes.js?v=3");
+    html = patchMemberGuestCopy(html, pack);
     if (html.indexOf("cours-themes.js") === -1) {
       var placed = false;
       html = html.replace(
@@ -101,7 +137,7 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=35");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=38");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
