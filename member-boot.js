@@ -126,8 +126,8 @@
     if ((pack === "flipcards" || pack === "relier") && fondsN) {
       html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (" + fondsN + " cartes)");
     }
-    if (pack === "flipcards-dico" || pack === "relier-dico") {
-      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (401 cartes)");
+    if ((pack === "flipcards-dico" || pack === "relier-dico") && fondsN) {
+      html = html.replace(/tout le set \(8 cartes\)/g, "tout le set (" + fondsN + " cartes)");
     }
     html = html.replace(/\.wrap \{ max-width: 48rem;/g, ".wrap { max-width: 52rem;");
     html = html.replace(/\.wrap\.is-study \{ max-width: 36rem;/g, ".wrap.is-study { max-width: 40rem;");
@@ -220,7 +220,7 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=39");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=40");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(

@@ -10,27 +10,37 @@
   // Exposé pour site-search.js (même racine d'assets)
   window.SiteNavAbs = abs;
 
-  function applyFondsJurisprudenceCount(n) {
+  function applyFondsCount(kind, n) {
     const count = Number(n);
     if (!count) return;
-    window.FONDS_JURISPRUDENCE_COUNT = count;
-    document.querySelectorAll('[data-fonds-count="jurisprudence"]').forEach((el) => {
+    if (kind === "jurisprudence") window.FONDS_JURISPRUDENCE_COUNT = count;
+    if (kind === "dictionnaire") window.FONDS_DICTIONNAIRE_COUNT = count;
+    document.querySelectorAll('[data-fonds-count="' + kind + '"]').forEach((el) => {
       el.textContent = String(count);
     });
   }
 
-  function loadFondsJurisprudenceCount() {
-    return fetch(abs("chronologie/data/chronology-meta.json"), { credentials: "same-origin" })
+  function loadFondsCounts() {
+    const juris = fetch(abs("chronologie/data/chronology-meta.json"), { credentials: "same-origin" })
       .then((r) => (r.ok ? r.json() : null))
       .then((meta) => {
         const n = meta && (Number(meta.count) || (Array.isArray(meta.decisions) && meta.decisions.length));
-        applyFondsJurisprudenceCount(n);
+        applyFondsCount("jurisprudence", n);
         return n || 0;
       })
       .catch(() => 0);
+    const dico = fetch(abs("dictionnaire/entries-meta.json"), { credentials: "same-origin" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((meta) => {
+        const n = meta && (Number(meta.count) || (Array.isArray(meta.entries) && meta.entries.length));
+        applyFondsCount("dictionnaire", n);
+        return n || 0;
+      })
+      .catch(() => 0);
+    return Promise.all([juris, dico]);
   }
 
-  loadFondsJurisprudenceCount();
+  loadFondsCounts();
 
   if (!document.querySelector('link[rel="icon"]')) {
     const fav = document.createElement("link");
