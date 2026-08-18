@@ -3804,3 +3804,8 @@ input[type="radio"] {
   }
 }
 
+/* Accueil / bandeau : « Droit » comme « Universitaires » */
+.home-hero-copy .site-title-hero em,
+.site-nav-product em {
+  color: var(--ink);
+}

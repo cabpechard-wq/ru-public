@@ -17,7 +17,6 @@
   };
 
   const CAMPUS_HOME_TITLE_HTML = "<em>Droit</em> public et administratif";
-  const HOME_EYEBROW = "Droit public et administratif";
 
   function scriptBase() {
     const el =
@@ -212,17 +211,15 @@
     const eyebrow =
       document.querySelector("[data-home-eyebrow]") ||
       document.querySelector(".home-hero-eyebrow");
+    h1.innerHTML = CAMPUS_HOME_TITLE_HTML;
+    h1.classList.add("is-campus-hero");
     if (theme.id === "campus") {
-      h1.innerHTML = CAMPUS_HOME_TITLE_HTML;
-      h1.classList.add("is-campus-hero");
       if (eyebrow) eyebrow.hidden = true;
       return;
     }
-    h1.textContent = HOME_TITLES[theme.id] || theme.label || theme.id;
-    h1.classList.remove("is-campus-hero");
     if (eyebrow) {
       eyebrow.hidden = false;
-      eyebrow.textContent = HOME_EYEBROW;
+      eyebrow.textContent = HOME_TITLES[theme.id] || theme.label || theme.id;
     }
   }
 
@@ -324,7 +321,7 @@
   let cachedManifest = null;
 
   function start() {
-    fetch(abs("themes/manifest.json?v=10"))
+    fetch(abs("themes/manifest.json?v=11"))
       .then((r) => (r.ok ? r.json() : FALLBACK))
       .catch(() => FALLBACK)
       .then((manifest) => {
