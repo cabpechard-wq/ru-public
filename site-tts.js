@@ -12,7 +12,7 @@
     if (p.includes("/dictionnaire")) return "dictionary";
     if (p.includes("/arrets")) return "arrets";
     if (p.includes("/cours")) return "manuel";
-    if (p.includes("/exercices")) return "exercices";
+    if (p.includes("/travaux-diriges") || p.includes("/exercices")) return "exercices";
     return "other";
   }
 

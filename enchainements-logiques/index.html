@@ -27,9 +27,9 @@
       rel="stylesheet"
     />
     <link id="theme-css" rel="stylesheet" href="../site.css?v=25" />
-    <link rel="stylesheet" href="./assets/enchainements.css?v=21" />
+    <link rel="stylesheet" href="./assets/enchainements.css?v=22" />
     <script src="../assets/cours-themes.js?v=1" defer></script>
-    <script src="./assets/enchainements.js?v=23" defer></script>
+    <script src="./assets/enchainements.js?v=24" defer></script>
   <script>
 (function(){
   var API = "https://flipcards-auth.cab-pechard.workers.dev";
@@ -55,7 +55,7 @@
     <p class="site-crumb">
       <a href="../">Droit public et administratif</a>
       <span class="sep">›</span>
-      <a href="../exercices/">Travaux dirigés</a>
+      <a href="../travaux-diriges/">Travaux dirigés</a>
       <span class="sep">›</span>
       <strong>Enchaînements logiques</strong>
     </p>
@@ -247,22 +247,29 @@
                 <strong>Filtres actifs :</strong>
                 <span class="active-filters__list" id="active-filters-list">aucun</span>
               </p>
+              <p class="ench-setup__start-hint" id="start-hint">
+                Sélectionnez au moins 2 décisions via les filtres.
+              </p>
             </div>
             <span class="pill"
               ><strong id="count-filtered">0</strong>&nbsp;/&nbsp;<span id="count-total">0</span>
               décisions</span
             >
           </div>
-          <button type="button" id="filter-reset" class="btn-reset">
-            Réinitialiser les filtres
-          </button>
+          <div class="filters__footer-actions">
+            <button type="button" id="filter-reset" class="btn-reset">
+              Réinitialiser les filtres
+            </button>
+            <button type="button" class="btn-start" id="btn-start" disabled>
+              Lancer l’exercice
+            </button>
+          </div>
         </div>
       </section>
 
       <div class="ench-setup__body">
         <p class="ench-setup__hint" id="setup-hint">
-          Affinez les filtres, puis lancez l’exercice — ou activez «&nbsp;Décisions liées par leur
-          objet&nbsp;» pour constituer un enchaînement (au hasard ou en choisissant une décision).
+          Affinez les filtres, puis lancez l’exercice ou activez « Décisions liées par leur objet » pour constituer un enchaînement (au hasard ou en choisissant une décision).
         </p>
         <ol
           class="ench-pick-list"
@@ -270,14 +277,6 @@
           hidden
           aria-label="Sélection d’une décision"
         ></ol>
-        <div class="ench-setup__actions">
-          <button type="button" class="btn outline-accent" id="btn-start" disabled>
-            Lancer l’exercice
-          </button>
-          <p class="ench-setup__start-hint" id="start-hint">
-            Sélectionnez au moins 2 décisions via les filtres.
-          </p>
-        </div>
       </div>
     </section>
 

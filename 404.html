@@ -15,6 +15,22 @@
     location.replace("/demo-chronologie/" + location.search + location.hash);
     return;
   }
+  if (p.indexOf("/bibliotheque/chronologie") === 0) {
+    location.replace("/demo-chronologie/" + location.search + location.hash);
+    return;
+  }
+  if ((p === "/bibliotheque" || p.indexOf("/bibliotheque/") === 0) && p.indexOf("/bibliotheque-universitaire") !== 0) {
+    location.replace(p.replace("/bibliotheque", "/bibliotheque-universitaire") + location.search + location.hash);
+    return;
+  }
+  if (p === "/exercices" || p.indexOf("/exercices/") === 0) {
+    location.replace(p.replace("/exercices", "/travaux-diriges") + location.search + location.hash);
+    return;
+  }
+  if (p === "/ressources" || p.indexOf("/ressources/") === 0) {
+    location.replace(p.replace("/ressources", "/cours-magistral") + location.search + location.hash);
+    return;
+  }
 })();
 </script>
 </head>

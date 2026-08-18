@@ -527,6 +527,9 @@ a {
 .filters .period-row input[type="date"] {
   width: 100%;
   min-width: 0;
+  appearance: auto;
+  -webkit-appearance: auto;
+  color-scheme: inherit;
 }
 
 /* Multi-select dropdowns */
@@ -1959,6 +1962,14 @@ button.legend__item--level.is-dimmed:hover {
   background: var(--surface);
 }
 
+.detail__head-main {
+  min-width: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .detail__head h2 {
   margin: 0;
   font-size: 1.05rem;
@@ -1977,11 +1988,11 @@ button.legend__item--level.is-dimmed:hover {
   line-height: 1;
 }
 
-.detail__meta {
+.detail__head .detail__meta {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  padding: 10px 14px 0;
+  padding: 0;
 }
 
 .detail__section {

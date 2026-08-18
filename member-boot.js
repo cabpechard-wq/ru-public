@@ -68,7 +68,7 @@
         'faitsTip.style.left = left + "px";'
       );
     }
-    html = html.replace(/gd-filters-pack\.js\?v=\d+/g, "gd-filters-pack.js?v=3");
+    html = html.replace(/gd-filters-pack\.js\?v=\d+/g, "gd-filters-pack.js?v=4");
     html = html.replace(/dico-cours-themes\.js\?v=\d+/g, "dico-cours-themes.js?v=3");
     if (html.indexOf("cours-themes.js") === -1) {
       var placed = false;
@@ -91,7 +91,7 @@
       if (html.indexOf("gd-filters-pack.js") === -1) {
         html = html.replace(
           /<\/body>/i,
-          '<script src="../assets/gd-filters-pack.js?v=3"><\/script></body>'
+          '<script src="../assets/gd-filters-pack.js?v=4"><\/script></body>'
         );
       }
       if (html.indexOf("gd-importance-stars.js") === -1) {

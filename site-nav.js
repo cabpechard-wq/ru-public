@@ -27,9 +27,9 @@
     "</a>" +
     '<nav class="site-nav-links" aria-label="Navigation">' +
       '<a data-nav="home" href="' + abs("index.html") + '">Accueil</a>' +
-      '<a data-nav="bibliotheque" href="' + abs("bibliotheque/") + '">BU</a>' +
-      '<a data-nav="ressources" href="' + abs("cours/") + '">Cours</a>' +
-      '<a data-nav="exercices" href="' + abs("exercices/") + '">Salles de TD</a>' +
+      '<a data-nav="bibliotheque" href="' + abs("bibliotheque-universitaire/") + '">BU</a>' +
+      '<a data-nav="ressources" href="' + abs("cours-magistral/") + '">Cours</a>' +
+      '<a data-nav="exercices" href="' + abs("travaux-diriges/") + '">Salles de TD</a>' +
       '<a data-nav="checkout" href="' + abs("checkout/") + '">Inscriptions</a>' +
       '<span class="site-nav-guest">' +
         '<a data-nav="membre" href="' + abs("membre/") + '">Espace pédagogique</a>' +
@@ -72,9 +72,9 @@
 
   function trailForPath(cur) {
     const home = { href: abs("index.html"), label: "Droit public et administratif" };
-    const bu = { href: abs("bibliotheque/"), label: "Bibliothèque universitaire" };
-    const cours = { href: abs("cours/"), label: "Cours" };
-    const td = { href: abs("exercices/"), label: "Travaux dirigés" };
+    const bu = { href: abs("bibliotheque-universitaire/"), label: "Bibliothèque universitaire" };
+    const cours = { href: abs("cours-magistral/"), label: "Cours magistral" };
+    const td = { href: abs("travaux-diriges/"), label: "Travaux dirigés" };
     const segs = cur.replace(/^\//, "").split("/").filter(Boolean);
     const first = segs[0] || "";
 
@@ -83,10 +83,10 @@
     if (first === "chronologie" || first === "demo-chronologie" || (first === "ressources" && segs[1] === "chronologie") || (first === "bibliotheque" && segs[1] === "chronologie")) {
       return [home, cours, { label: "Chronologie de la jurisprudence administrative", current: true }];
     }
-    if (first === "ressources") {
-      return [home, { href: abs("cours/"), label: "Cours", current: true }];
+    if (first === "ressources" || first === "cours-magistral") {
+      return [home, { href: abs("cours-magistral/"), label: "Cours magistral", current: true }];
     }
-    if (first === "bibliotheque") {
+    if (first === "bibliotheque" || first === "bibliotheque-universitaire") {
       return [home, { label: "Bibliothèque universitaire", current: true }];
     }
     if (first === "dictionnaire") {
@@ -99,20 +99,20 @@
       return trail;
     }
     if (first === "cours") return null;
-    if (first === "exercices") {
+    if (first === "exercices" || first === "travaux-diriges") {
       return [home, { label: "Travaux dirigés", current: true }];
     }
     if (first === "demo" || first === "flipcards") {
-      return [home, td, { label: "Flipcards", href: abs("exercices/") }, { label: "Grands arrêts", current: true }];
+      return [home, td, { label: "Flipcards", href: abs("travaux-diriges/") }, { label: "Grands arrêts", current: true }];
     }
     if (first === "demo-flipcards-dico" || first === "flipcards-dico") {
-      return [home, td, { label: "Flipcards", href: abs("exercices/") }, { label: "Grandes notions", current: true }];
+      return [home, td, { label: "Flipcards", href: abs("travaux-diriges/") }, { label: "Grandes notions", current: true }];
     }
     if (first === "demo-relier" || first === "relier") {
-      return [home, td, { label: "Relations", href: abs("exercices/") }, { label: "Grands arrêts", current: true }];
+      return [home, td, { label: "Relations", href: abs("travaux-diriges/") }, { label: "Grands arrêts", current: true }];
     }
     if (first === "demo-relier-dico" || first === "relier-dico") {
-      return [home, td, { label: "Relations", href: abs("exercices/") }, { label: "Grandes notions", current: true }];
+      return [home, td, { label: "Relations", href: abs("travaux-diriges/") }, { label: "Grandes notions", current: true }];
     }
     if (first === "demo-enchainements-logiques" || first === "enchainements-logiques") {
       return [home, td, { label: "Enchaînements logiques", current: true }];
@@ -188,18 +188,21 @@
         if (cur === p) a.classList.add("is-active");
       } else if (key === "ressources") {
         const onCours = cur.indexOf("/cours") !== -1;
+        const onCoursMagistral = cur.indexOf("/cours-magistral") !== -1;
         const onChrono = cur.indexOf("/chronologie") !== -1 || cur.indexOf("/demo-chronologie") !== -1;
-        if (cur === p || onCours || onChrono) {
+        if (cur === p || onCours || onCoursMagistral || onChrono) {
           a.classList.add("is-active");
         }
       } else if (key === "bibliotheque") {
         const onDict = cur.indexOf("/dictionnaire") !== -1;
         const onArrets = cur.indexOf("/arrets") !== -1;
-        if (cur === p || onDict || onArrets) {
+        const onBu = cur.indexOf("/bibliotheque") !== -1;
+        if (cur === p || onDict || onArrets || onBu) {
           a.classList.add("is-active");
         }
       } else if (key === "exercices") {
-        // actif sur /exercices/, /demo/, /flipcards/, /demo-relier/, /relier/
+        const onTd = cur.indexOf("/travaux-diriges") !== -1 || cur.indexOf("/exercices") !== -1;
+        // actif sur /travaux-diriges/, /demo/, /flipcards/, /demo-relier/, /relier/
         const onDemo = cur.indexOf("/demo/") !== -1 || cur.endsWith("/demo");
         const onFlip = (cur.indexOf("/flipcards/") !== -1 || cur.endsWith("/flipcards"))
           && cur.indexOf("/flipcards-dico") === -1;
@@ -212,7 +215,7 @@
         const onFlipDico = cur.indexOf("/flipcards-dico/") !== -1 || cur.endsWith("/flipcards-dico");
         const onDemoEnch = cur.indexOf("/demo-enchainements-logiques/") !== -1 || cur.endsWith("/demo-enchainements-logiques");
         const onEnch = cur.indexOf("/enchainements-logiques/") !== -1 || cur.endsWith("/enchainements-logiques");
-        if (cur === p || onDemo || onFlip || onDemoRelier || onRelier || onDemoRelierDico || onRelierDico || onDemoFlipDico || onFlipDico || onDemoEnch || onEnch) {
+        if (cur === p || onTd || onDemo || onFlip || onDemoRelier || onRelier || onDemoRelierDico || onRelierDico || onDemoFlipDico || onFlipDico || onDemoEnch || onEnch) {
           a.classList.add("is-active");
         }
       } else if (cur === p || (p !== "/" && cur.startsWith(p + "/"))) {
