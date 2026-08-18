@@ -220,7 +220,7 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=43");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=44");
     html = html.replace(/site-search\.js\?v=\d+/g, "site-search.js?v=9");
     var favTag = '<link rel="icon" href="../favicon.svg" type="image/svg+xml">';
     if (/rel=["'](?:shortcut )?icon["']/i.test(html)) {
