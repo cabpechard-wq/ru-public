@@ -42,13 +42,17 @@
 
   loadFondsCounts();
 
-  if (!document.querySelector('link[rel="icon"]')) {
-    const fav = document.createElement("link");
-    fav.rel = "icon";
+  (function ensureFavicon() {
+    const href = abs("favicon.svg");
+    let fav = document.querySelector('link[rel="icon"], link[rel="shortcut icon"]');
+    if (!fav) {
+      fav = document.createElement("link");
+      fav.rel = "icon";
+      document.head.appendChild(fav);
+    }
     fav.type = "image/svg+xml";
-    fav.href = abs("favicon.svg");
-    document.head.appendChild(fav);
-  }
+    fav.href = href;
+  })();
 
   function navIcon(paths) {
     return (
@@ -853,7 +857,7 @@
 
   // Sélecteur de charte (Campus par défaut) — chargé après le bandeau
   const themeJs = document.createElement("script");
-  themeJs.src = new URL("site-theme.js?v=21", script.src).href;
+  themeJs.src = new URL("site-theme.js?v=22", script.src).href;
   themeJs.onerror = function () {
     console.warn("[site-theme] Impossible de charger site-theme.js — rebuild du site requis.");
   };
@@ -861,7 +865,8 @@
 
   // Recherche full-text (Cours + Dictionnaire + Arrêts)
   const searchJs = document.createElement("script");
-  searchJs.src = new URL("site-search.js?v=8", script.src).href;
+  searchJs.async = false;
+  searchJs.src = new URL("site-search.js?v=9", script.src).href;
   searchJs.onerror = function () {
     console.warn("[site-search] Impossible de charger site-search.js — rebuild du site requis.");
   };

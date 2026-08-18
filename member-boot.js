@@ -220,7 +220,14 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=42");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=43");
+    html = html.replace(/site-search\.js\?v=\d+/g, "site-search.js?v=9");
+    var favTag = '<link rel="icon" href="../favicon.svg" type="image/svg+xml">';
+    if (/rel=["'](?:shortcut )?icon["']/i.test(html)) {
+      html = html.replace(/<link\b[^>]*rel=["'](?:shortcut )?icon["'][^>]*>/gi, favTag);
+    } else {
+      html = html.replace(/<head([^>]*)>/i, "<head$1>" + favTag);
+    }
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
