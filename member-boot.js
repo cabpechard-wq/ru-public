@@ -220,7 +220,7 @@
         );
       }
     }
-    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=40");
+    html = html.replace(/site-nav\.js\?v=\d+/g, "site-nav.js?v=41");
     if (pack === "flipcards-dico" || pack === "relier-dico") {
       if (html.indexOf("dico-cours-themes.js") === -1) {
         html = html.replace(
