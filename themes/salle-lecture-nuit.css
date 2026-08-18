@@ -3766,3 +3766,9 @@ input[type="radio"] {
     grid-template-columns: 1fr;
   }
 }
+
+/* Accueil / bandeau : « Droit » comme « Universitaires » */
+.home-hero-copy .site-title-hero em,
+.site-nav-product em {
+  color: var(--secondary);
+}
