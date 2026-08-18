@@ -1330,7 +1330,7 @@
   function loadCoursFilter() {
     var ref = new URLSearchParams(location.search).get("cours");
     if (!ref || config.demo) return Promise.resolve();
-    return fetch("../manuel/exercices.json", { cache: "no-store" })
+    return fetch("../cours/exercices.json", { cache: "no-store" })
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (map) {
         var entry = map && map[ref.toUpperCase()];

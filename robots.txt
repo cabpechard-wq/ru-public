@@ -9,5 +9,6 @@ Allow: /demo/
 Allow: /demo-relier/
 Allow: /demo-relier-dico/
 Allow: /demo-flipcards-dico/
+Allow: /demo-chronologie/
 Allow: /bibliotheque/chronologie/
 Allow: /demo-enchainements-logiques/

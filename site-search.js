@@ -12,6 +12,7 @@
   }
 
   const SECTION_LABEL = {
+    cours: "Cours",
     manuel: "Cours",
     dictionnaire: "Dictionnaire",
     arrets: "Arrêts",
@@ -129,14 +130,14 @@
       panel.hidden = false;
       return;
     }
-    const sections = { manuel: [], dictionnaire: [], arrets: [] };
+    const sections = { cours: [], manuel: [], dictionnaire: [], arrets: [] };
     hits.forEach((h) => {
       const sec = h.doc.section;
       if (sections[sec]) sections[sec].push(h);
-      else sections.manuel.push(h);
+      else sections.cours.push(h);
     });
     let html = "";
-    ["manuel", "dictionnaire", "arrets"].forEach((sec) => {
+    ["cours", "manuel", "dictionnaire", "arrets"].forEach((sec) => {
       const group = sections[sec];
       if (!group.length) return;
       html +=

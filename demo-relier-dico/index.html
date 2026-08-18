@@ -1538,7 +1538,7 @@ function applyCoursLock() {
 function initCoursFilter() {
   const ref = new URLSearchParams(location.search).get("cours");
   if (!ref || !MANIFEST_KIND) return Promise.resolve();
-  return fetch("../manuel/exercices.json", { cache: "no-store" })
+  return fetch("../cours/exercices.json", { cache: "no-store" })
     .then(r => (r.ok ? r.json() : null))
     .then(map => {
       const entry = map && map[ref.toUpperCase()];
